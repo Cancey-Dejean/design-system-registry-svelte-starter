@@ -1,0 +1,4 @@
+interface:
+  display_name: "Sync Registry Metadata"
+  short_description: "Keep _registry.mdx and _preview.tsx in sync with registry item source"
+  default_prompt: "Use $sync-registry-metadata to update _registry.mdx and _preview.tsx for the changed registry item."

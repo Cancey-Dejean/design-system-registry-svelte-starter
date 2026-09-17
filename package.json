@@ -13,7 +13,13 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "registry:generate": "bun run scripts/generate-registry-json.ts",
+    "registry:doctor": "bun run scripts/doctor.ts",
     "registry:build": "bun run registry:generate && shadcn-svelte registry build registry.generated.json --output static/r"
+  },
+  "dependencies": {
+    "@orama/orama": "^3.1.18",
+    "github-slugger": "^2.0.0",
+    "shiki": "^4.4.3"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "latest",
@@ -61,10 +67,5 @@
       "version": "1.4.2",
       "onFail": "download"
     }
-  },
-  "dependencies": {
-    "@orama/orama": "^3.1.18",
-    "github-slugger": "^2.0.0",
-    "shiki": "^4.4.3"
   }
 }
