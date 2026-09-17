@@ -52,7 +52,10 @@
         <h1 class="text-3xl font-semibold tracking-tight">{metadata.title}</h1>
         <Badge variant="secondary">{metadata.type}</Badge>
       </div>
-      <CopyPageButton text={copyPageText} />
+      <div class="flex items-center gap-2">
+        <CopyPageButton text={copyPageText} />
+        <PagePager {prev} {next} />
+      </div>
     </div>
     {#if metadata.description}
       <p class="text-lg text-muted-foreground">{metadata.description}</p>
@@ -127,7 +130,5 @@
       </div>
     </section>
   {/if}
-
-  <PagePager {prev} {next} />
 </article>
 <PageToc items={tocItems} />

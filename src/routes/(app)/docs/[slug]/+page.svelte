@@ -17,12 +17,14 @@
       <h1 class="text-3xl font-semibold tracking-tight">
         {data.metadata.title}
       </h1>
-      <CopyPageButton text={copyPageText} />
+      <div class="flex items-center gap-2">
+        <CopyPageButton text={copyPageText} />
+        <PagePager prev={data.prev} next={data.next} />
+      </div>
     </div>
     <article class="prose dark:prose-invert max-w-none">
       <doc.Body />
     </article>
-    <PagePager prev={data.prev} next={data.next} />
   </article>
   <PageToc items={data.toc} />
 {/if}
