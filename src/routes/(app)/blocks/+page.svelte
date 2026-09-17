@@ -4,7 +4,7 @@
   let { data } = $props();
 </script>
 
-<div class="flex flex-col gap-4 py-8">
+<div class="flex flex-col gap-4 py-8 grow">
   <h1 class="text-3xl font-semibold tracking-tight">Blocks</h1>
   <RegistryItemList items={data.items} basePath="/blocks" />
 </div>
