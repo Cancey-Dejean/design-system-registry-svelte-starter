@@ -1,6 +1,5 @@
 <script lang="ts">
   import * as Tabs from "$lib/components/ui/tabs/index.js";
-  import { Badge } from "$lib/components/ui/badge/index.js";
   import TerminalIcon from "@lucide/svelte/icons/terminal";
   import CopyIcon from "@lucide/svelte/icons/copy";
   import AppWindowIcon from "@lucide/svelte/icons/app-window";
@@ -57,10 +56,7 @@
 <article id="item-doc-content" class="flex min-w-0 flex-1 flex-col gap-8">
   <header class="flex flex-col gap-2">
     <div class="flex items-center justify-between gap-2">
-      <div class="flex items-center gap-2">
-        <h1 class="text-3xl font-semibold tracking-tight">{metadata.title}</h1>
-        <Badge variant="secondary">{metadata.type}</Badge>
-      </div>
+      <h1 class="text-3xl font-semibold tracking-tight">{metadata.title}</h1>
       <div class="flex items-center gap-2">
         <CopyPageButton text={copyPageText} />
         <PagePager {prev} {next} />
