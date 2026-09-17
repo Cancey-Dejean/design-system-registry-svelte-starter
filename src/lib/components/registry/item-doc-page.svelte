@@ -37,8 +37,12 @@
   let dependencyArgs = $derived(
     metadata.dependencies?.length ? metadata.dependencies.join(" ") : null,
   );
-  let cliArgs = $derived(`shadcn-svelte@latest add ${registryConfig.homepage}/r/${name}.json`);
-  let copyPageText = $derived(`# ${metadata.title}\n\n${getRegistryItemRawSource(section, name) ?? ""}`);
+  let cliArgs = $derived(
+    `shadcn-svelte@latest add ${registryConfig.homepage}/r/${name}.json`,
+  );
+  let copyPageText = $derived(
+    `# ${metadata.title}\n\n${getRegistryItemRawSource(section, name) ?? ""}`,
+  );
   let tocItems = $derived([
     { id: "installation", label: "Installation" },
     ...(content ? [{ id: "usage", label: "Usage" }] : []),
@@ -69,7 +73,9 @@
         <Tabs.Trigger value="code">Code</Tabs.Trigger>
       </Tabs.List>
       <Tabs.Content value="preview">
-        <div class="flex min-h-48 items-center justify-center rounded-md border p-8">
+        <div
+          class="flex min-h-48 items-center justify-center rounded-md border p-8"
+        >
           {#await previewPromise}
             <p class="text-sm text-muted-foreground">Loading preview…</p>
           {:then Preview}
@@ -88,7 +94,9 @@
   </section>
 
   <section class="flex flex-col gap-3">
-    <h2 id="installation" class="text-xl font-semibold tracking-tight">Installation</h2>
+    <h2 id="installation" class="text-xl font-semibold tracking-tight">
+      Installation
+    </h2>
     <Tabs.Root value="cli">
       <Tabs.List>
         <Tabs.Trigger value="cli">CLI</Tabs.Trigger>
@@ -125,7 +133,9 @@
   {#if content}
     <section class="flex flex-col gap-3">
       <h2 id="usage" class="text-xl font-semibold tracking-tight">Usage</h2>
-      <div class="prose dark:prose-invert max-w-none">
+      <div
+        class="prose prose-sm min-w-0 max-w-none prose-neutral dark:prose-invert prose-headings:font-semibold prose-headings:tracking-tight prose-headings:text-primary prose-p:text-foreground/90 prose-a:font-medium prose-a:text-primary prose-a:underline prose-a:underline-offset-3 prose-blockquote:*:before:content-none prose-blockquote:*:after:content-none prose-strong:text-primary prose-code:rounded-sm prose-code:bg-muted prose-code:px-1 prose-code:py-0.5 prose-code:text-[0.9em] prose-code:text-foreground prose-code:before:content-none prose-code:after:content-none prose-li:text-foreground/80 prose-hr:border-foreground/20 prose-blockquote:[&_p]:text-foreground/75 [&_table]:!border-[color:var(--border)] [&_td]:!border-[color:var(--border)] [&_th]:!border-[color:var(--border)]"
+      >
         <content.Body />
       </div>
     </section>

@@ -4,19 +4,9 @@ description: Give AI coding tools the right context for using and authoring this
 order: 7
 ---
 
-This template is designed to work well with coding agents and LLM-powered tools. It exposes Markdown-first routes for reading context, and it ships an installable Agent Skill for authoring registry items correctly.
+This template is designed to work well with coding agents and LLM-powered tools. It exposes Markdown-first routes for reading context, and it ships the `shadcn-svelte` Agent Skill under `.agents/skills/shadcn-svelte` for working with shadcn-svelte primitives in the docs shell (imports, component composition, styling rules).
 
-## Install the Registry Skill
-
-From this repository (or your fork):
-
-```sh
-npx skills add <owner>/<repo> --skill shadcn-registry
-```
-
-The skill teaches agents to scaffold items under `registry/items/**`, write `_registry.mdx` and `_preview.svelte`, and run `scripts/doctor.ts`.
-
-For consuming shadcn-svelte primitives in the docs shell, use the separate `shadcn-svelte` skill under `.agents/skills/shadcn-svelte`.
+There's no separate authoring skill for registry items yet — see [Registry](/docs/registry) for how items are structured, and validate changes with `bun run registry:generate`.
 
 ## Machine-readable routes
 

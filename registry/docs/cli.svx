@@ -7,10 +7,10 @@ order: 5
 Install a registry item with the command shown on its docs page. Package managers are interchangeable:
 
 ```sh
-npx shadcn-svelte@latest add https://design-system-registry-svelte.vercel.app/r/button.json
-pnpm dlx shadcn-svelte@latest add https://design-system-registry-svelte.vercel.app/r/button.json
-yarn dlx shadcn-svelte@latest add https://design-system-registry-svelte.vercel.app/r/button.json
-bunx --bun shadcn-svelte@latest add https://design-system-registry-svelte.vercel.app/r/button.json
+npx shadcn-svelte@latest add https://design-system-starter-svelte-docs.vercel.app/r/button.json
+pnpm dlx shadcn-svelte@latest add https://design-system-starter-svelte-docs.vercel.app/r/button.json
+yarn dlx shadcn-svelte@latest add https://design-system-starter-svelte-docs.vercel.app/r/button.json
+bunx --bun shadcn-svelte@latest add https://design-system-starter-svelte-docs.vercel.app/r/button.json
 ```
 
 The command displayed on item pages uses the `homepage` value from `registry/config.ts` for the base URL. Update `homepage` before deploying.
@@ -18,5 +18,5 @@ The command displayed on item pages uses the `homepage` value from `registry/con
 Human-facing item pages also work with the CLI through content negotiation. A browser can view [`/components/button`](/components/button), while the CLI receives the installable item JSON from the same URL when it sends a `shadcn` user agent or the shadcn JSON Accept header:
 
 ```sh
-npx shadcn-svelte@latest add https://design-system-registry-svelte.vercel.app/components/button
+npx shadcn-svelte@latest add https://design-system-starter-svelte-docs.vercel.app/components/button
 ```

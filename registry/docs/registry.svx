@@ -1,39 +1,45 @@
 ---
 title: Registry
-description: Scaffold and author installable registry items under registry/items.
+description: Author installable registry items under registry/items and generate their JSON.
 order: 4
 ---
 
-Registry items live under `registry/items/**` and can be installed by shadcn-compatible CLIs. Start new items with the scaffold command so the folder, `_registry.mdx`, source file, metadata, and generated registry JSON paths follow the template conventions.
-
-```sh
-bun --bun ./scripts/new.ts --type registry:ui --name example-card --description "A compact card component."
-```
-
-Or run the command without flags for an interactive prompt:
-
-```sh
-bun --bun ./scripts/new.ts
-```
-
-These authoring scripts expect [Bun](https://bun.com/). Consumers of the published registry do not need Bun — they install with `npx`, `pnpm dlx`, `yarn dlx`, or `bunx`.
+Registry items live under `registry/items/<section>/<name>/`. Each item is a folder with an `_registry.svx` metadata file, a live preview, and a Storybook story. There's no scaffold CLI yet — copy an existing item folder as a starting point (`registry/items/components/button` is a good one) and adjust it.
 
 ## Item layout
 
 ```text
-registry/items/components/example-card/
-  example-card.svelte
-  _registry.mdx
+registry/items/components/badge/
+  _registry.svx
   _preview.svelte
-  stories/example-card.stories.ts
+  stories/badge.stories.ts
 ```
 
-- `_registry.mdx` — YAML frontmatter (name, type, files, dependencies) plus optional Usage MDX
-- `_preview.svelte` — live docs demo (never published in item JSON)
-- Source `.svelte` / `.ts` files — published to consumers via `/r/<name>.json`
+- `_registry.svx` — YAML frontmatter (`name`, `type`, `files`, `dependencies`) plus optional Markdown usage docs, rendered on the item's docs page
+- `_preview.svelte` — live demo shown in the "Preview" tab (never published in the item JSON)
+- `stories/*.stories.ts` — the matching Storybook story
 
-Validate the catalog after changes:
+## Where the source lives
+
+`files[].path` in `_registry.svx` points to the actual source file — it doesn't have to live inside the item folder:
+
+- **Components that wrap a shadcn-svelte primitive** (`button`, `badge`, `card`, `accordion`, `tabs`) point at `src/lib/components/ui/<name>/...` — the same file the `shadcn-svelte` CLI would generate, reused as-is.
+- **Blocks and utilities authored for this registry** (`hero`, `announcement-bar`, `cn`) keep their source directly in the item folder (or `src/lib/utils.ts` for `cn`) and reference it the same way.
+
+```yaml
+files:
+  - path: src/lib/components/ui/button/button.svelte
+    type: registry:ui
+    target: components/ui/button/button.svelte
+```
+
+`target` is where the file lands in a consumer's project when installed via the CLI.
+
+## Generating and validating
 
 ```sh
-bun --bun ./scripts/doctor.ts
+bun run registry:generate   # writes registry.generated.json from registry/items/**
+bun run registry:build      # generate, then build static/r/*.json via `shadcn-svelte registry build`
 ```
+
+Run `registry:generate` after adding or editing an item to catch missing files or malformed frontmatter before it reaches `static/r`.

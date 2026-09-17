@@ -10,46 +10,46 @@ Start with [styles](/docs/styles) so your project has the design system CSS foun
 
 ## Configure the registry
 
-Your project must already be set up with [shadcn-svelte](https://www.shadcn-svelte.com/docs/installation). Then add this registry to `components.json` so the CLI can resolve `@design-system-ui-svelte/*` items:
+Your project must already be set up with [shadcn-svelte](https://www.shadcn-svelte.com/docs/installation). Then add this registry to `components.json` so the CLI can resolve `@design-system-ui/*` items:
 
 ```json
 {
   "registries": {
-    "@design-system-ui-svelte": "https://design-system-registry-svelte.vercel.app/r/{name}.json"
+    "@design-system-ui": "https://design-system-starter-svelte-docs.vercel.app/r/{name}.json"
   }
 }
 ```
 
-Update the URL to your deployed `homepage` from `registry/config.ts`. Do this once per project. Without it, installs fail with `Unknown registry "@design-system-ui-svelte"`.
+Update the URL to your deployed `homepage` from `registry/config.ts`. Do this once per project. Without it, installs fail with `Unknown registry "@design-system-ui"`.
 
 ## Install an item
 
 ### npm
 
 ```sh
-npx shadcn-svelte@latest add @design-system-ui-svelte/button
+npx shadcn-svelte@latest add @design-system-ui/button
 ```
 
 ### pnpm
 
 ```sh
-pnpm dlx shadcn-svelte@latest add @design-system-ui-svelte/button
+pnpm dlx shadcn-svelte@latest add @design-system-ui/button
 ```
 
 ### yarn
 
 ```sh
-yarn dlx shadcn-svelte@latest add @design-system-ui-svelte/button
+yarn dlx shadcn-svelte@latest add @design-system-ui/button
 ```
 
 ### bun
 
 ```sh
-bunx --bun shadcn-svelte@latest add @design-system-ui-svelte/button
+bunx --bun shadcn-svelte@latest add @design-system-ui/button
 ```
 
 You can also install via the full item URL without registering the namespace:
 
 ```sh
-npx shadcn-svelte@latest add https://design-system-registry-svelte.vercel.app/r/button.json
+npx shadcn-svelte@latest add https://design-system-starter-svelte-docs.vercel.app/r/button.json
 ```

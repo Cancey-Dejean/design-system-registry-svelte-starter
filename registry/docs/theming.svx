@@ -4,7 +4,7 @@ description: Customize the docs shell and published components with your own des
 order: 6
 ---
 
-The docs app uses the local shadcn-svelte configuration in `components.json` and the global theme in `src/styles/globals.css`.
+The docs app uses the local shadcn-svelte configuration in `components.json` and the global theme in `src/lib/styles/app.css`. See [Styles](/docs/styles) for what's defined there.
 
 Published registry items are independent from the docs shell. Put installable component source in `registry/items/**`, and include any required CSS, dependencies, or registry dependencies in the item frontmatter.
 

@@ -1,11 +1,53 @@
 ---
-title: Theming
-description: Customize the docs shell and published components with your own design tokens.
-order: 6
+title: Styles
+description: The Tailwind v4 design tokens that power the docs shell and every published component.
+order: 2
 ---
 
-The docs app uses the local shadcn-svelte configuration in `components.json` and the global theme in `src/styles/globals.css`.
+Every color, radius, and font in this project is a CSS custom property defined in `src/lib/styles/app.css`. Components consume them through Tailwind's semantic utilities (`bg-primary`, `text-muted-foreground`, `border-border`) instead of hardcoded values, so retheming the whole system means editing one file.
 
-Published registry items are independent from the docs shell. Put installable component source in `registry/items/**`, and include any required CSS, dependencies, or registry dependencies in the item frontmatter.
+```css
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn-svelte/tailwind.css";
+@import "@fontsource-variable/inter";
 
-Use semantic tokens such as `background`, `foreground`, `primary`, `muted`, and `border` so installed components remain easy to customize. Prefer Tailwind classes like `bg-primary` and `text-muted-foreground` over raw color values.
+:root {
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  /* ...card, popover, secondary, muted, accent, destructive, border, ring, chart-*, sidebar-* */
+  --radius: 0.625rem;
+}
+```
+
+## Light and dark
+
+`.dark` redefines the same custom properties with an inverted palette. Dark mode is toggled by adding/removing the `dark` class on `<html>` — see the theme toggle in the docs header.
+
+## Accent colors
+
+Three accent presets ship out of the box, switched with a `data-accent` attribute on `<html>`:
+
+```css
+:root[data-accent="amber"] { --primary: oklch(0.66 0.19 41); /* ... */ }
+:root[data-accent="violet"] { --primary: oklch(0.54 0.25 293); /* ... */ }
+```
+
+Default (no attribute) uses the neutral `--primary` defined in `:root`. Each accent also has a `.dark` variant.
+
+## Mapping tokens into Tailwind
+
+The `@theme inline` block maps each custom property to a Tailwind color/radius utility (`--color-primary: var(--primary)`, `--radius-lg: var(--radius)`, and so on), which is what makes `bg-primary` and `rounded-lg` resolve to the tokens above.
+
+## Using this in your own project
+
+This file isn't an installable registry item — there's no `styles` entry in the catalog. Copy `src/lib/styles/app.css` into your project (or start from the [shadcn-svelte `init`](https://www.shadcn-svelte.com/docs/installation) output) and import it once from your root layout, the same way this project does in `src/routes/+layout.svelte`:
+
+```svelte
+<script>
+  import '$lib/styles/app.css';
+</script>
+```
+
+Do this before installing components, so the semantic classes they use resolve correctly. See [Theming](/docs/theming) for how to override tokens.
