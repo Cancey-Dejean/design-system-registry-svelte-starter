@@ -20,7 +20,10 @@
     <header class="flex h-16 shrink-0 items-center justify-between gap-2 px-4">
       <div class="flex items-center gap-2">
         <Sidebar.Trigger class="-ms-1" />
-        <Separator orientation="vertical" class="me-2 data-[orientation=vertical]:h-4" />
+        <Separator
+          orientation="vertical"
+          class="me-2 data-[orientation=vertical]:h-4"
+        />
         <SiteBreadcrumb sections={data.sections} />
       </div>
       <div class="flex items-center gap-1">
@@ -46,8 +49,10 @@
         <ThemeToggle />
       </div>
     </header>
-    <div class="flex flex-1 flex-col gap-4 p-4 pt-0">
-      {@render children()}
+    <div class="flex min-w-0 flex-1 flex-col gap-4 pt-6 pr-4 pl-6">
+      <div class="flex min-w-0 items-start gap-8">
+        {@render children()}
+      </div>
     </div>
     <SiteFooter />
   </Sidebar.Inset>
