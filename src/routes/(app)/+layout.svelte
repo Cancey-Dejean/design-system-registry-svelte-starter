@@ -50,7 +50,7 @@
       </div>
     </header>
     <div class="flex min-w-0 flex-1 flex-col gap-4 pt-6 pr-4 pl-6">
-      <div class="flex min-w-0 items-start gap-8">
+      <div class="flex min-w-0 items-stretch gap-8">
         {@render children()}
       </div>
     </div>

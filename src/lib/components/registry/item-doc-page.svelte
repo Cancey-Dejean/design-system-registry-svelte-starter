@@ -41,8 +41,7 @@
   let copyPageText = $derived(`# ${metadata.title}\n\n${getRegistryItemRawSource(section, name) ?? ""}`);
 </script>
 
-<div class="mx-auto flex max-w-4xl gap-8 py-8">
-  <div id="item-doc-content" class="flex min-w-0 flex-1 flex-col gap-8">
+<article id="item-doc-content" class="flex min-w-0 flex-1 flex-col gap-8">
   <header class="flex flex-col gap-2">
     <div class="flex items-center justify-between gap-2">
       <div class="flex items-center gap-2">
@@ -126,6 +125,5 @@
   {/if}
 
   <PagePager {prev} {next} />
-  </div>
-  <PageToc containerId="item-doc-content" />
-</div>
+</article>
+<PageToc containerId="item-doc-content" />

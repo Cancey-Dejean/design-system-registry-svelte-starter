@@ -10,7 +10,7 @@
   let {
     sections,
     ref = $bindable(null),
-    collapsible = "icon",
+    collapsible = "offcanvas",
     ...restProps
   }: { sections: SiteNavSection[] } & ComponentProps<typeof Sidebar.Root> = $props();
 </script>
