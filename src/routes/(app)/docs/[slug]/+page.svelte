@@ -12,19 +12,17 @@
 </script>
 
 {#if doc}
-  <div class="mx-auto flex max-w-4xl gap-8 py-8">
-    <article id="doc-content" class="flex min-w-0 flex-1 flex-col gap-8">
-      <div class="flex items-center justify-between gap-2">
-        <h1 class="text-3xl font-semibold tracking-tight">
-          {data.metadata.title}
-        </h1>
-        <CopyPageButton text={copyPageText} />
-      </div>
-      <article class="prose dark:prose-invert max-w-none">
-        <doc.Body />
-      </article>
-      <PagePager prev={data.prev} next={data.next} />
+  <article id="doc-content" class="flex min-w-0 flex-1 flex-col gap-8">
+    <div class="flex items-center justify-between gap-2">
+      <h1 class="text-3xl font-semibold tracking-tight">
+        {data.metadata.title}
+      </h1>
+      <CopyPageButton text={copyPageText} />
+    </div>
+    <article class="prose dark:prose-invert max-w-none">
+      <doc.Body />
     </article>
-    <PageToc containerId="doc-content" />
-  </div>
+    <PagePager prev={data.prev} next={data.next} />
+  </article>
+  <PageToc containerId="doc-content" />
 {/if}
