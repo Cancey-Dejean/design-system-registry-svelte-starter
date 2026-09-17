@@ -158,6 +158,9 @@
   }
   html {
     @apply font-sans;
+    /* Keeps headings clear of the sticky header when jumped to via an anchor
+       link (e.g. the "On This Page" TOC or a URL hash). */
+    scroll-padding-top: 6rem;
   }
 }
 
