@@ -4,6 +4,14 @@ description: Notable changes to the design system.
 order: 6
 ---
 
+## Phase 2
+
+- CLI/registry distribution: `registry.json` and per-item `/r/<name>.json`, built via `bun run registry:build` from the same `_registry.svx` frontmatter used everywhere else.
+- `/registry` overview page, and a live "CLI" install tab on every item page.
+- `⌘K`/`Ctrl K` search across docs and registry items, powered by Orama.
+- `llms.txt`/`llms-full.txt` and a raw-Markdown `.md` twin of every content page.
+- Amber and Violet accent color presets, alongside the existing light/dark toggle.
+
 ## Phase 1
 
 - Doc-shell built on shadcn-svelte's `sidebar-07` block.

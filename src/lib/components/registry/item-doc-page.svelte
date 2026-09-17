@@ -9,6 +9,7 @@
     type RegistryItemMetadata,
   } from "$lib/registry/catalog";
   import type { RegistrySectionId } from "$lib/registry/sections";
+  import { registryConfig } from "$registry/config";
 
   let {
     section,
@@ -26,6 +27,9 @@
   let previewPromise = $derived(loadRegistryItemPreview(section, name));
   let dependencyCommand = $derived(
     metadata.dependencies?.length ? `bun add ${metadata.dependencies.join(" ")}` : null,
+  );
+  let cliCommand = $derived(
+    `bun x shadcn-svelte@latest add ${registryConfig.homepage}/r/${name}.json`,
   );
 </script>
 
@@ -67,11 +71,14 @@
 
   <section class="flex flex-col gap-3">
     <h2 class="text-xl font-semibold tracking-tight">Installation</h2>
-    <Tabs.Root value="manual">
+    <Tabs.Root value="cli">
       <Tabs.List>
+        <Tabs.Trigger value="cli">CLI</Tabs.Trigger>
         <Tabs.Trigger value="manual">Manual</Tabs.Trigger>
-        <Tabs.Trigger value="cli" disabled>CLI (Phase 2)</Tabs.Trigger>
       </Tabs.List>
+      <Tabs.Content value="cli">
+        <InstallCommand command={cliCommand} />
+      </Tabs.Content>
       <Tabs.Content value="manual">
         <div class="flex flex-col gap-4">
           {#if dependencyCommand}
@@ -93,11 +100,6 @@
             </div>
           {/if}
         </div>
-      </Tabs.Content>
-      <Tabs.Content value="cli">
-        <p class="text-sm text-muted-foreground">
-          CLI distribution via a hosted registry.json is planned for Phase 2.
-        </p>
       </Tabs.Content>
     </Tabs.Root>
   </section>

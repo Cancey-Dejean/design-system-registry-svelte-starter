@@ -4,17 +4,17 @@ description: What this design system is and how it's put together.
 order: 0
 ---
 
-design-system-ui is a small design system built on top of [shadcn-svelte](https://www.shadcn-svelte.com), documented alongside a live component registry.
+design-system-ui is a small design system built on top of [shadcn-svelte](https://www.shadcn-svelte.com), documented alongside a live, installable component registry.
 
-Every component, block, and utility in this site is backed by a real file in the `registry/items` folder — the same source used to render its live preview, its Storybook story, and (eventually) its CLI-installable JSON payload.
+Every component, block, and utility in this site is backed by a real file in the `registry/items` folder — the same source used to render its live preview, its Storybook story, and its CLI-installable JSON payload.
 
-## What's here today
+## What's here
 
 - **Docs** — installation, styling, and theming guides.
 - **Components** — small, composable UI primitives.
 - **Blocks** — larger compositions built from components.
 - **Utilities** — helpers and hooks shared across the system.
-
-## What's coming later
-
-CLI distribution via a hosted `registry.json`, full-text search, `llms.txt`/Markdown twins of every page, and multiple accent themes are planned for a later phase.
+- **Registry** — a flat index of everything above, plus CLI installation via `registry.json`.
+- **Search** — press <kbd>⌘K</kbd> (or <kbd>Ctrl K</kbd>) anywhere on the site.
+- **`llms.txt`/`.md` twins** — every page has a plain-text or raw-Markdown counterpart for LLM consumption.
+- **Accent themes** — light/dark, each with Default, Amber, or Violet accent colors.

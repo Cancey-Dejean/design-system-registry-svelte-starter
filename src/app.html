@@ -15,6 +15,11 @@
                 ? "dark"
                 : "light";
           document.documentElement.classList.toggle("dark", theme === "dark");
+
+          var accent = localStorage.getItem("accent-theme");
+          if (accent && accent !== "default") {
+            document.documentElement.setAttribute("data-accent", accent);
+          }
         } catch {}
       })();
     </script>

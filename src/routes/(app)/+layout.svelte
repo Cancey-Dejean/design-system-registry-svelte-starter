@@ -5,6 +5,7 @@
   import SiteBreadcrumb from "$lib/components/site-breadcrumb.svelte";
   import SiteFooter from "$lib/components/site-footer.svelte";
   import ThemeToggle from "$lib/components/theme-toggle.svelte";
+  import AccentThemeToggle from "$lib/components/accent-theme-toggle.svelte";
 
   let { data, children } = $props();
 </script>
@@ -18,7 +19,10 @@
         <Separator orientation="vertical" class="me-2 data-[orientation=vertical]:h-4" />
         <SiteBreadcrumb sections={data.sections} />
       </div>
-      <ThemeToggle />
+      <div class="flex items-center gap-1">
+        <AccentThemeToggle />
+        <ThemeToggle />
+      </div>
     </header>
     <div class="flex flex-1 flex-col gap-4 p-4 pt-0">
       {@render children()}

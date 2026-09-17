@@ -1,11 +1,13 @@
 ---
 title: Theming
-description: Light and dark mode, and what's next for accent themes.
+description: Light/dark mode and accent color presets.
 order: 4
 ---
 
 Theming is class-based: adding `.dark` to `<html>` swaps every CSS variable in `app.css` to its dark-mode value. The toggle in the site header flips this class and persists the choice to `localStorage`; a small inline script in `app.html` reads that value before the page paints, so there's no flash of the wrong theme on load.
 
-## One theme, for now
+## Accent colors
 
-This phase ships a single neutral theme with light and dark variants. Multiple accent color presets (the way the reference React site offers several) are planned for a later phase.
+On top of the base neutral theme, a `data-accent` attribute on `<html>` (Default, Amber, or Violet) overrides just the accent-relevant tokens — `--primary`, `--ring`, `--sidebar-primary`, `--sidebar-ring` — for both light and dark. The palette dropdown next to the light/dark toggle switches it, persisted to `localStorage` under `accent-theme` and applied by the same no-flash boot script as the light/dark choice.
+
+Add a new preset by adding a `:root[data-accent="<id>"]`/`:root.dark[data-accent="<id>"]` pair to `app.css` and an entry to `accentThemes` in `src/lib/accent-theme.ts`.

@@ -8,6 +8,9 @@ node_modules
 /.svelte-kit
 /build
 /storybook-static
+/registry.generated.json
+/static/r
+/static/registry.json
 
 # OS
 .DS_Store

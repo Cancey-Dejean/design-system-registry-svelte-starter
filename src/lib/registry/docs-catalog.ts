@@ -14,7 +14,17 @@ interface DocModule {
 
 const docModules = import.meta.glob<DocModule>("/registry/docs/*.svx", { eager: true });
 
+const docRawSources = import.meta.glob<string>("/registry/docs/*.svx", {
+  eager: true,
+  query: "?raw",
+  import: "default",
+});
+
 const DOC_PATH_PATTERN = /\/registry\/docs\/([^/]+)\.svx$/;
+
+function stripFrontmatter(raw: string): string {
+  return raw.replace(/^---\n[\s\S]*?\n---\n/, "").trim();
+}
 
 export interface DocCatalogEntry {
   slug: string;
@@ -40,4 +50,11 @@ export function getAllDocs(): DocCatalogEntry[] {
 
 export function getDoc(slug: string): DocCatalogEntry | null {
   return getAllDocs().find((doc) => doc.slug === slug) ?? null;
+}
+
+export function getDocRawSource(slug: string): string | null {
+  for (const [path, raw] of Object.entries(docRawSources)) {
+    if (slugFromPath(path) === slug) return stripFrontmatter(raw);
+  }
+  return null;
 }

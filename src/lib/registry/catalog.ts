@@ -42,6 +42,17 @@ const previewSourceLoaders = import.meta.glob<string>("/registry/items/*/*/_prev
   import: "default",
 });
 
+// Raw source of the _registry.svx frontmatter+body, for llms.txt/.md twins.
+const registryRawSources = import.meta.glob<string>("/registry/items/*/*/_registry.svx", {
+  eager: true,
+  query: "?raw",
+  import: "default",
+});
+
+function stripFrontmatter(raw: string): string {
+  return raw.replace(/^---\n[\s\S]*?\n---\n/, "").trim();
+}
+
 const ITEM_PATH_PATTERN = /\/registry\/items\/([^/]+)\/([^/]+)\/_registry\.svx$/;
 
 export interface RegistryCatalogItem {
@@ -119,4 +130,12 @@ export async function loadRegistryItemPreviewSource(
   const loadSource = previewSourceLoaders[previewPath];
   if (!loadSource) return null;
   return await loadSource();
+}
+
+/** Raw markdown body of the _registry.svx (frontmatter stripped), for llms.txt/.md twins. */
+export function getRegistryItemRawSource(section: RegistrySectionId, name: string): string | null {
+  const entryPath = findEntryPath(section, name);
+  if (!entryPath) return null;
+  const raw = registryRawSources[entryPath];
+  return raw ? stripFrontmatter(raw) : null;
 }

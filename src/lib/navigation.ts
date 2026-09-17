@@ -42,6 +42,11 @@ export function getSiteNavigationSections(): SiteNavSection[] {
   return [docsSection, ...registryNavSections];
 }
 
+export const registryOverviewLink: SiteNavItem = {
+  title: "Registry",
+  url: "/registry",
+};
+
 export function isNavItemActive(url: string, pathname: string): boolean {
   return pathname === url || pathname.startsWith(`${url}/`);
 }

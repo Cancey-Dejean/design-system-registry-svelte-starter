@@ -1,7 +1,9 @@
 <script lang="ts">
+  import { page } from "$app/state";
   import * as Sidebar from "$lib/components/ui/sidebar/index.js";
   import NavSection from "./nav-section.svelte";
-  import type { SiteNavSection } from "$lib/navigation";
+  import SearchDialog from "./search-dialog.svelte";
+  import { isNavItemActive, registryOverviewLink, type SiteNavSection } from "$lib/navigation";
   import { registryConfig } from "$registry/config";
   import type { ComponentProps } from "svelte";
 
@@ -28,11 +30,27 @@
         </Sidebar.MenuButton>
       </Sidebar.MenuItem>
     </Sidebar.Menu>
+    <div class="px-2">
+      <SearchDialog />
+    </div>
   </Sidebar.Header>
   <Sidebar.Content>
     {#each sections as section (section.id)}
       <NavSection {section} />
     {/each}
   </Sidebar.Content>
+  <Sidebar.Footer>
+    <Sidebar.Menu>
+      <Sidebar.MenuItem>
+        <Sidebar.MenuButton isActive={isNavItemActive(registryOverviewLink.url, page.url.pathname)}>
+          {#snippet child({ props })}
+            <a href={registryOverviewLink.url} {...props}>
+              <span>{registryOverviewLink.title}</span>
+            </a>
+          {/snippet}
+        </Sidebar.MenuButton>
+      </Sidebar.MenuItem>
+    </Sidebar.Menu>
+  </Sidebar.Footer>
   <Sidebar.Rail />
 </Sidebar.Root>
