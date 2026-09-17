@@ -14,7 +14,7 @@
   let { data, children } = $props();
 </script>
 
-<Sidebar.Provider>
+<Sidebar.Provider open={data.sidebarOpen}>
   <AppSidebar sections={data.sections} />
   <Sidebar.Inset>
     <header class="flex h-16 shrink-0 items-center justify-between gap-2 px-4">
