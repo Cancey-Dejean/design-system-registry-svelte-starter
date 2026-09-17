@@ -1,6 +1,9 @@
 <script lang="ts">
   import CheckIcon from "@lucide/svelte/icons/check";
   import CopyIcon from "@lucide/svelte/icons/copy";
+  import ChevronDownIcon from "@lucide/svelte/icons/chevron-down";
+  import TerminalIcon from "@lucide/svelte/icons/terminal";
+  import * as DropdownMenu from "$lib/components/ui/dropdown-menu/index.js";
   import { cn } from "$lib/utils";
 
   type PackageManager = "bun" | "npm" | "pnpm" | "yarn";
@@ -61,24 +64,35 @@
   }
 </script>
 
-<div class={cn("flex flex-col gap-1", className)}>
-  <div class="flex gap-1">
-    {#each PACKAGE_MANAGERS as pm (pm)}
-      <button
-        type="button"
-        onclick={() => selectManager(pm)}
-        class={cn(
-          "rounded px-2 py-1 text-xs",
-          pm === manager
-            ? "bg-muted font-medium text-foreground"
-            : "text-muted-foreground hover:text-foreground",
-        )}
-      >
-        {pm}
-      </button>
-    {/each}
-  </div>
-  <div class="flex items-center justify-between gap-2 rounded-md border bg-muted px-3 py-2 font-mono text-sm">
+<div class={cn("flex flex-col gap-2", className)}>
+  <DropdownMenu.Root>
+    <DropdownMenu.Trigger>
+      {#snippet child({ props })}
+        <button
+          {...props}
+          type="button"
+          class="flex w-full items-center gap-2 rounded-lg border bg-background px-3 py-2 text-sm hover:bg-accent"
+        >
+          <TerminalIcon class="size-4 text-muted-foreground" />
+          <span class="font-medium">{manager}</span>
+          <ChevronDownIcon class="ms-auto size-4 text-muted-foreground" />
+        </button>
+      {/snippet}
+    </DropdownMenu.Trigger>
+    <DropdownMenu.Content align="start" class="w-40">
+      {#each PACKAGE_MANAGERS as pm (pm)}
+        <DropdownMenu.Item onSelect={() => selectManager(pm)} class="justify-between">
+          {pm}
+          {#if pm === manager}
+            <CheckIcon class="size-4" />
+          {/if}
+        </DropdownMenu.Item>
+      {/each}
+    </DropdownMenu.Content>
+  </DropdownMenu.Root>
+  <div
+    class="flex items-center justify-between gap-2 rounded-lg border bg-muted px-3 py-2 font-mono text-sm"
+  >
     <code class="overflow-x-auto whitespace-pre">{command}</code>
     <button
       type="button"

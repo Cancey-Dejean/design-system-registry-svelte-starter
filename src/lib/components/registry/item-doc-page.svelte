@@ -1,6 +1,10 @@
 <script lang="ts">
   import * as Tabs from "$lib/components/ui/tabs/index.js";
   import { Badge } from "$lib/components/ui/badge/index.js";
+  import TerminalIcon from "@lucide/svelte/icons/terminal";
+  import CopyIcon from "@lucide/svelte/icons/copy";
+  import AppWindowIcon from "@lucide/svelte/icons/app-window";
+  import CodeIcon from "@lucide/svelte/icons/code";
   import InstallCommand from "./install-command.svelte";
   import CodeBlock from "./code-block.svelte";
   import PageToc from "./page-toc.svelte";
@@ -69,9 +73,15 @@
 
   <section class="flex flex-col gap-3">
     <Tabs.Root value="preview">
-      <Tabs.List>
-        <Tabs.Trigger value="preview">Preview</Tabs.Trigger>
-        <Tabs.Trigger value="code">Code</Tabs.Trigger>
+      <Tabs.List variant="line">
+        <Tabs.Trigger value="preview">
+          <AppWindowIcon data-icon="inline-start" class="size-4" />
+          Preview
+        </Tabs.Trigger>
+        <Tabs.Trigger value="code">
+          <CodeIcon data-icon="inline-start" class="size-4" />
+          Code
+        </Tabs.Trigger>
       </Tabs.List>
       <Tabs.Content value="preview">
         <div
@@ -99,9 +109,15 @@
       Installation
     </h2>
     <Tabs.Root value="cli">
-      <Tabs.List>
-        <Tabs.Trigger value="cli">CLI</Tabs.Trigger>
-        <Tabs.Trigger value="manual">Manual</Tabs.Trigger>
+      <Tabs.List variant="line">
+        <Tabs.Trigger value="cli">
+          <TerminalIcon data-icon="inline-start" class="size-4" />
+          CLI
+        </Tabs.Trigger>
+        <Tabs.Trigger value="manual">
+          <CopyIcon data-icon="inline-start" class="size-4" />
+          Manual
+        </Tabs.Trigger>
       </Tabs.List>
       <Tabs.Content value="cli">
         <InstallCommand kind="exec" args={cliArgs} />
