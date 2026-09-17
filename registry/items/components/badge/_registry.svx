@@ -1,0 +1,27 @@
+---
+name: badge
+type: registry:ui
+title: Badge
+description: A small label for status, counts, or categories.
+dependencies:
+  - tailwind-variants
+files:
+  - path: src/lib/components/ui/badge/badge.svelte
+    type: registry:ui
+    target: components/ui/badge/badge.svelte
+  - path: src/lib/components/ui/badge/index.ts
+    type: registry:ui
+    target: components/ui/badge/index.ts
+---
+
+This site uses `Badge` to label each item's registry `type` on its doc page.
+
+```svelte
+<script lang="ts">
+  import { Badge } from "$lib/components/ui/badge";
+</script>
+
+<Badge>Default</Badge>
+<Badge variant="secondary">Secondary</Badge>
+<Badge variant="outline">Outline</Badge>
+```

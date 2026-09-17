@@ -1,0 +1,18 @@
+---
+title: Agents
+description: Notes for AI coding agents working in this repo.
+order: 5
+---
+
+This project uses `vp` (the Vite+ toolchain) to run scripts — use `vp dev`, `vp build`, and `vp check` rather than calling `vite`/`svelte-kit` directly.
+
+## Adding a registry item
+
+1. Create `registry/items/<section>/<name>/` where `<section>` is `components`, `blocks`, or `utilities`.
+2. Add `_registry.svx` (frontmatter + usage prose), `_preview.svelte` (live demo), and `stories/<name>.stories.svelte`.
+3. The catalog picks it up automatically — no manifest to update.
+
+## Conventions
+
+- shadcn-svelte primitives live in `src/lib/components/ui/`; registry items live in `registry/items/`. Don't mix the two.
+- Registry item metadata types come from `src/lib/registry/item-types.ts` — keep new items within that union.

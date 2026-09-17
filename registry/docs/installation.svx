@@ -1,0 +1,30 @@
+---
+title: Installation
+description: How to set up the project locally.
+order: 1
+---
+
+## Prerequisites
+
+- [Bun](https://bun.sh) 1.4+
+- Node.js 22+
+
+## Setup
+
+```bash
+bun install
+bun run dev
+```
+
+The project uses [shadcn-svelte](https://www.shadcn-svelte.com) for its UI primitives. New primitives can be added with:
+
+```bash
+bun x shadcn-svelte@latest add <component>
+```
+
+## Verifying your setup
+
+```bash
+bun run check
+bun run build
+```

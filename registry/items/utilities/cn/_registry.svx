@@ -1,0 +1,21 @@
+---
+name: cn
+type: registry:lib
+title: cn
+description: Merge Tailwind class lists, resolving conflicts with tailwind-merge.
+dependencies:
+  - clsx
+  - tailwind-merge
+files:
+  - path: src/lib/utils.ts
+    type: registry:lib
+    target: lib/utils.ts
+---
+
+`cn()` combines `clsx` (conditional class joining) with `tailwind-merge` (conflict resolution), so a later class wins over an earlier, conflicting one instead of both being applied.
+
+```ts
+import { cn } from "$lib/utils";
+
+cn("px-2 py-1", isActive && "bg-primary", "px-4"); // => "py-1 bg-primary px-4"
+```

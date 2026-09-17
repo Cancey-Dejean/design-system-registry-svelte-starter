@@ -1,0 +1,11 @@
+---
+title: Theming
+description: Light and dark mode, and what's next for accent themes.
+order: 4
+---
+
+Theming is class-based: adding `.dark` to `<html>` swaps every CSS variable in `app.css` to its dark-mode value. The toggle in the site header flips this class and persists the choice to `localStorage`; a small inline script in `app.html` reads that value before the page paints, so there's no flash of the wrong theme on load.
+
+## One theme, for now
+
+This phase ships a single neutral theme with light and dark variants. Multiple accent color presets (the way the reference React site offers several) are planned for a later phase.

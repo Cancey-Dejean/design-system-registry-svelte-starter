@@ -1,0 +1,17 @@
+---
+title: Registry
+description: How components are cataloged, and what's next for distribution.
+order: 2
+---
+
+Every component, block, and utility lives under `registry/items/<section>/<name>/`, with three files:
+
+- `_registry.svx` — frontmatter metadata plus a prose usage guide.
+- `_preview.svelte` — the live demo rendered on this site and reused as the "Code" tab's source.
+- `stories/<name>.stories.svelte` — a Storybook story for the same component.
+
+The catalog is built at request time with Vite's `import.meta.glob`, so adding a new item is just adding a new folder — no build step or manifest to hand-maintain.
+
+## CLI distribution (coming later)
+
+A hosted `registry.json` and per-item `/r/<name>.json` endpoints, so this registry can be installed into other projects the same way `shadcn-svelte add` works today, are planned for a later phase. The "Install → CLI" tab on each item page is a placeholder until then.

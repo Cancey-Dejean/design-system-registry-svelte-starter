@@ -1,0 +1,14 @@
+---
+title: Styles
+description: Tailwind v4 tokens and how components are styled.
+order: 3
+---
+
+Styling is Tailwind v4, configured CSS-first in `src/lib/styles/app.css`. Colors are defined as CSS variables in OKLCH, mapped to Tailwind utilities through an `@theme inline` block — the same pattern [shadcn-svelte's](https://www.shadcn-svelte.com) `init` command generates.
+
+## Rules of thumb
+
+- Use semantic tokens (`bg-primary`, `text-muted-foreground`) instead of raw color utilities.
+- Use `gap-*` for spacing between flex/grid children instead of `space-x-*`/`space-y-*`.
+- Use `size-*` when width and height match.
+- Never hand-write `dark:` overrides on color — the token itself changes under `.dark`.

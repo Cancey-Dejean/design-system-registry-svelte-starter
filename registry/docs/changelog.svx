@@ -1,0 +1,13 @@
+---
+title: Changelog
+description: Notable changes to the design system.
+order: 6
+---
+
+## Phase 1
+
+- Doc-shell built on shadcn-svelte's `sidebar-07` block.
+- Docs, Components, Blocks, and Utilities sections, backed by a file-based registry catalog.
+- Live component previews, syntax-highlighted source, and manual install instructions on every item page.
+- Light/dark theming with a no-flash toggle.
+- Storybook stories colocated with each registry item.

@@ -2,16 +2,27 @@
 import tailwindcss from "@tailwindcss/vite";
 import adapter from "@sveltejs/adapter-vercel";
 import { sveltekit } from "@sveltejs/kit/vite";
+import { vitePreprocess } from "@sveltejs/vite-plugin-svelte";
+import { mdsvex } from "mdsvex";
 import { defineConfig, lazyPlugins } from "vite-plus";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { storybookTest } from "@storybook/addon-vitest/vitest-plugin";
 import { playwright } from "vite-plus/test/browser-playwright";
+
+const mdsvexOptions = {
+  extensions: [".svx"],
+};
 const dirname =
   typeof __dirname !== "undefined" ? __dirname : path.dirname(fileURLToPath(import.meta.url));
 
 // More info at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon
 export default defineConfig({
+  server: {
+    fs: {
+      allow: [path.resolve(dirname, "registry")],
+    },
+  },
   fmt: {},
   lint: {
     jsPlugins: [{ name: "vite-plus", specifier: "vite-plus/oxlint-plugin" }],
@@ -21,6 +32,11 @@ export default defineConfig({
   plugins: lazyPlugins(() => [
     tailwindcss(),
     sveltekit({
+      extensions: [".svelte", ".svx"],
+      preprocess: [vitePreprocess(), mdsvex(mdsvexOptions)],
+      alias: {
+        $registry: "registry",
+      },
       compilerOptions: {
         // Force runes mode for the project, except for libraries. Can be removed in svelte 6.
         runes: ({ filename }) =>
