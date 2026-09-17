@@ -20,7 +20,9 @@
     <Breadcrumb.List>
       <Breadcrumb.Item class="hidden md:block">
         {#if activeItem}
-          <Breadcrumb.Link href={activeSection.basePath}>{activeSection.title}</Breadcrumb.Link>
+          <Breadcrumb.Link href={activeSection.items[0]?.url ?? activeSection.basePath}>
+            {activeSection.title}
+          </Breadcrumb.Link>
         {:else}
           <Breadcrumb.Page>{activeSection.title}</Breadcrumb.Page>
         {/if}

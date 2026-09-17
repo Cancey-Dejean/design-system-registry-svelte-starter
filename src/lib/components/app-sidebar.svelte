@@ -1,7 +1,7 @@
 <script lang="ts">
   import { page } from "$app/state";
   import * as Sidebar from "$lib/components/ui/sidebar/index.js";
-  import NavSection from "./nav-section.svelte";
+  import NavMain from "./nav-main.svelte";
   import SearchDialog from "./search-dialog.svelte";
   import { isNavItemActive, registryOverviewLink, type SiteNavSection } from "$lib/navigation";
   import { registryConfig } from "$registry/config";
@@ -35,9 +35,7 @@
     </div>
   </Sidebar.Header>
   <Sidebar.Content>
-    {#each sections as section (section.id)}
-      <NavSection {section} />
-    {/each}
+    <NavMain {sections} />
   </Sidebar.Content>
   <Sidebar.Footer>
     <Sidebar.Menu>

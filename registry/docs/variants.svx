@@ -1,0 +1,121 @@
+---
+title: Variant files
+description: Author tailwind-variants recipes so stories, types, and installs stay in sync.
+order: 3
+---
+
+Any file named `*.variants.ts` under `registry/items/**` must follow the recipe in [`button.variants.ts`](/components/button). That file is the source of truth. Do not inline `tv({ base, variants })` inside `.svelte` files or hardcode variant-name arrays in stories.
+
+## Layout
+
+Keep the recipe next to the component (kebab-case names matching the item folder):
+
+```text
+registry/items/components/button/
+  button.svelte
+  button.variants.ts
+  button.types.ts
+  _registry.mdx
+  _preview.svelte
+```
+
+Multi-part items can add part-scoped recipes such as `item-media.variants.ts` or `empty-media.variants.ts`. Re-export from `index.ts` when the item has a barrel.
+
+## Recipe
+
+Split the variant map from the `tv()` call. Export key lists from `Object.keys` for stories and docs previews:
+
+```ts
+import { tv } from 'tailwind-variants';
+
+export const exampleCva = {
+	variants: {
+		variant: {
+			default: 'bg-primary text-primary-foreground',
+			outline: 'border-border bg-background'
+		},
+		size: {
+			default: 'h-9 px-4 text-sm',
+			sm: 'h-8 px-3 text-xs'
+		}
+	},
+	defaultVariants: {
+		variant: 'default',
+		size: 'default'
+	}
+} as const;
+
+export const exampleVariants = tv({
+	base: 'inline-flex items-center rounded-md font-medium disabled:opacity-50',
+	...exampleCva
+});
+
+export const EXAMPLE_VARIANTS = Object.keys(
+	exampleCva.variants.variant
+) as (keyof typeof exampleCva.variants.variant)[];
+
+export const EXAMPLE_SIZES = Object.keys(
+	exampleCva.variants.size
+) as (keyof typeof exampleCva.variants.size)[];
+```
+
+Export one `Object.keys` list per **string** axis that stories or docs need (`variant`, `size`, `tone`, and so on). Skip boolean axes.
+
+Simpler single-axis recipes (for example `alert.variants.ts`) may call `tv({ base, variants, defaultVariants })` directly and export `VariantProps` types from the same file.
+
+If the file defines more than one recipe, repeat the same config → `tv` → keys sequence for each.
+
+## Types and usage
+
+Put `VariantProps` aliases in `<name>.types.ts` when that file exists. Derive them from the `tv` export, not from a duplicated string union:
+
+```ts
+import type { VariantProps } from 'tailwind-variants';
+import { exampleVariants } from './example.variants';
+
+export type ExampleVariant = VariantProps<typeof exampleVariants>['variant'];
+export type ExampleSize = VariantProps<typeof exampleVariants>['size'];
+```
+
+In the Svelte component, compose classes with `cn` from `$lib/utils.js`:
+
+```svelte
+<script lang="ts" module>
+	import { cn } from '$lib/utils.js';
+	import type { ExampleProps } from './example.types';
+	import { exampleVariants } from './example.variants';
+</script>
+
+<script lang="ts">
+	let {
+		class: className,
+		variant = 'default',
+		size = 'default',
+		...restProps
+	}: ExampleProps = $props();
+</script>
+
+<div class={cn(exampleVariants({ variant, size }), className)} {...restProps}></div>
+```
+
+Re-export the recipe from `index.ts` when present:
+
+```ts
+export {
+	exampleVariants,
+	exampleCva,
+	EXAMPLE_VARIANTS,
+	EXAMPLE_SIZES
+} from './example.variants.js';
+```
+
+Stories and `_preview.svelte` should import those key lists for options instead of repeating names by hand.
+
+## Checklist
+
+- Use only `tv` from `tailwind-variants` (see `button.variants.ts`). Do not use `class-variance-authority` / `cva`.
+- Use kebab-case file names (`button.variants.ts`, not `Button.variants.ts`).
+- Name the helpers `{name}Cva`, `{name}Variants`, and `{NAME}_VARIANTS` / `{NAME}_SIZES` when exporting key lists.
+- Derive published key lists from `Object.keys(config.variants.*)`.
+- Derive prop types from `VariantProps<typeof …Variants>`, not hand-written unions.
+- List the `.variants.ts` file in `_registry.mdx` `files` when the item publishes it.

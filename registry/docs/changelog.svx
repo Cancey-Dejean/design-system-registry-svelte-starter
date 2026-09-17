@@ -1,21 +1,65 @@
 ---
 title: Changelog
-description: Notable changes to the design system.
-order: 7
+description: Track user-facing changes to this registry.
+order: 8
 ---
 
-## Phase 2
+Use this page to publish notable registry updates, new items, breaking changes, and migration notes.
 
-- CLI/registry distribution: `registry.json` and per-item `/r/<name>.json`, built via `bun run registry:build` from the same `_registry.svx` frontmatter used everywhere else.
-- `/registry` overview page, and a live "CLI" install tab on every item page.
-- `⌘K`/`Ctrl K` search across docs and registry items, powered by Orama.
-- `llms.txt`/`llms-full.txt` and a raw-Markdown `.md` twin of every content page.
-- Amber and Violet accent color presets, alongside the existing light/dark toggle.
+---
 
-## Phase 1
+## August 9, 2026
 
-- Doc-shell built on shadcn-svelte's `sidebar-07` block.
-- Docs, Components, Blocks, and Utilities sections, backed by a file-based registry catalog.
-- Live component previews, syntax-highlighted source, and manual install instructions on every item page.
-- Light/dark theming with a no-flash toggle.
-- Storybook stories colocated with each registry item.
+### Registry catalog
+
+Finished registering and documenting the late component pass (installable JSON + Storybook + `_preview.svelte`), including:
+
+- `field`, `hover-card`, `input-otp`, `item`, `kbd`, `menubar`, `native-select`, `navigation-menu`, `pagination`, `progress`, `radio-group`, `resizable`, `scroll-area`, `select`, `sheet`, `sidebar`, `skeleton`, `slider`, `sonner`, `switch`, `tabs`, `toggle`, `toggle-group`, `tooltip`
+- Composition wiring via `localRegistryDependencies` (e.g. `sidebar`, `toggle-group` → `toggle`)
+
+### Docs / platform
+
+- Fixed docs SSR 500s caused by eager registry previews loading **LayerChart**: Vite `ssr.noExternal` now includes `layerchart` and `@layerstack/*` so Node does not try to load raw `.svelte` packages natively.
+
+---
+
+## August 8, 2026
+
+Large expansion of the installable component catalog, docs previews, and Storybook coverage across the full shadcn-svelte-style UI set.
+
+### Earlier on August 8
+
+- **Layout & structure:** `accordion`, `alert`, `alert-dialog`, `aspect-ratio`, `avatar`, `breadcrumb`, `button-group`, `card`, `container`, `empty`, `separator`, `table`
+- **Forms & inputs:** `checkbox`, `field`, `input`, `input-group`, `label`, `textarea`
+- **Dates:** `calendar`, `range-calendar`, `datepicker` (Popover + Calendar composition)
+- **Overlays & menus:** `dialog`, `drawer`, `popover`, `dropdown-menu`, `context-menu`, `command`, `combobox` (Popover + Command composition)
+- **Feedback & motion:** `collapsible`, `carousel`, `chart`, `spinner`
+- **Data:** `data-table` (TanStack Table v9 example built on `table`)
+
+### Second batch (started)
+
+- **Navigation & chrome:** `hover-card`, `menubar`, `navigation-menu`, `pagination`, `sidebar`, `tabs`, `tooltip`
+- **Forms & controls:** `input-otp`, `native-select`, `radio-group`, `select`, `slider`, `switch`, `toggle`, `toggle-group`
+- **Display & layout:** `item`, `kbd`, `progress`, `scroll-area`, `sheet`, `skeleton`
+- **Utilities:** `resizable` (paneforge), `sonner` (toasts via `svelte-sonner` + `mode-watcher`)
+
+See **August 9, 2026** for completion notes and the LayerChart SSR fix.
+
+### Supporting work
+
+- Storybook stories and docs previews (`_preview.svelte`) for registered items.
+- Relative imports between local registry items; list/button/toggle variants extracted to `*.variants.ts` where re-exported.
+- `localRegistryDependencies` for compositions (e.g. `sidebar` → sheet/tooltip/separator/input/skeleton/button; `toggle-group` → toggle).
+- Demo dependencies: `@tanstack/svelte-table`, `chrono-node`, `svelte-sonner`, `mode-watcher`, `paneforge` (where used).
+
+### Starter items (unchanged)
+
+Still published from the initial release: `button`, `heading`, `text`, `link-text`, `link-spread`, plus foundation items such as `icons` and `logos`.
+
+---
+
+## v0.1.0: July 27, 2026
+
+- Initial SvelteKit docs site and live shadcn-compatible registry.
+- Published starter items: `button`, `heading`, `text`, `link-text`, `link-spread`, `hero-split`, and `styles`.
+- Added authoring scripts `registry:new` / `registry:doctor` and the `shadcn-registry` agent skill.

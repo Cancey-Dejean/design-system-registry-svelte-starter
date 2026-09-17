@@ -1,14 +1,11 @@
 ---
-title: Styles
-description: Tailwind v4 tokens and how components are styled.
-order: 3
+title: Theming
+description: Customize the docs shell and published components with your own design tokens.
+order: 6
 ---
 
-Styling is Tailwind v4, configured CSS-first in `src/lib/styles/app.css`. Colors are defined as CSS variables in OKLCH, mapped to Tailwind utilities through an `@theme inline` block — the same pattern [shadcn-svelte's](https://www.shadcn-svelte.com) `init` command generates.
+The docs app uses the local shadcn-svelte configuration in `components.json` and the global theme in `src/styles/globals.css`.
 
-## Rules of thumb
+Published registry items are independent from the docs shell. Put installable component source in `registry/items/**`, and include any required CSS, dependencies, or registry dependencies in the item frontmatter.
 
-- Use semantic tokens (`bg-primary`, `text-muted-foreground`) instead of raw color utilities.
-- Use `gap-*` for spacing between flex/grid children instead of `space-x-*`/`space-y-*`.
-- Use `size-*` when width and height match.
-- Never hand-write `dark:` overrides on color — the token itself changes under `.dark`.
+Use semantic tokens such as `background`, `foreground`, `primary`, `muted`, and `border` so installed components remain easy to customize. Prefer Tailwind classes like `bg-primary` and `text-muted-foreground` over raw color values.

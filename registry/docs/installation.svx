@@ -1,32 +1,55 @@
 ---
 title: Installation
-description: How to set up the project locally.
+description: Install Design System UI Svelte items with the shadcn-svelte CLI.
 order: 1
 ---
 
-## Prerequisites
+Install any item from **Design System UI Svelte** with the [shadcn-svelte CLI](https://www.shadcn-svelte.com/docs/cli). Replace `button` with the item name from the catalog.
 
-- [Bun](https://bun.sh) 1.4+
-- Node.js 22+
+Start with [styles](/docs/styles) so your project has the design system CSS foundation before adding components.
 
-## Setup
+## Configure the registry
 
-```bash
-bun install
-bun run dev
+Your project must already be set up with [shadcn-svelte](https://www.shadcn-svelte.com/docs/installation). Then add this registry to `components.json` so the CLI can resolve `@design-system-ui-svelte/*` items:
+
+```json
+{
+  "registries": {
+    "@design-system-ui-svelte": "https://design-system-registry-svelte.vercel.app/r/{name}.json"
+  }
+}
 ```
 
-The project uses [shadcn-svelte](https://www.shadcn-svelte.com) for its UI primitives. New primitives can be added with:
+Update the URL to your deployed `homepage` from `registry/config.ts`. Do this once per project. Without it, installs fail with `Unknown registry "@design-system-ui-svelte"`.
 
-```bash
-bun x shadcn-svelte@latest add <component>
+## Install an item
+
+### npm
+
+```sh
+npx shadcn-svelte@latest add @design-system-ui-svelte/button
 ```
 
-## Verifying your setup
+### pnpm
 
-```bash
-bun run check
-bun run build
+```sh
+pnpm dlx shadcn-svelte@latest add @design-system-ui-svelte/button
 ```
 
-See [CLI](/docs/cli) for how to install items from this registry into another project.
+### yarn
+
+```sh
+yarn dlx shadcn-svelte@latest add @design-system-ui-svelte/button
+```
+
+### bun
+
+```sh
+bunx --bun shadcn-svelte@latest add @design-system-ui-svelte/button
+```
+
+You can also install via the full item URL without registering the namespace:
+
+```sh
+npx shadcn-svelte@latest add https://design-system-registry-svelte.vercel.app/r/button.json
+```

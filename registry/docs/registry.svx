@@ -1,23 +1,39 @@
 ---
 title: Registry
-description: How components are cataloged, and how to install them elsewhere.
-order: 2
+description: Scaffold and author installable registry items under registry/items.
+order: 4
 ---
 
-Every component, block, and utility lives under `registry/items/<section>/<name>/`, with three files:
+Registry items live under `registry/items/**` and can be installed by shadcn-compatible CLIs. Start new items with the scaffold command so the folder, `_registry.mdx`, source file, metadata, and generated registry JSON paths follow the template conventions.
 
-- `_registry.svx` — frontmatter metadata plus a prose usage guide.
-- `_preview.svelte` — the live demo rendered on this site and reused as the "Code" tab's source.
-- `stories/<name>.stories.svelte` — a Storybook story for the same component.
-
-The catalog is built at request time with Vite's `import.meta.glob`, so adding a new item is just adding a new folder — no manifest to hand-maintain.
-
-## CLI distribution
-
-Every item is also installable into other projects via the shadcn-svelte CLI, the same way `shadcn-svelte add <name>` installs from the official registry:
-
-```bash
-bun x shadcn-svelte@latest add https://design-system-starter-svelte-docs.vercel.app/r/<name>.json
+```sh
+bun --bun ./scripts/new.ts --type registry:ui --name example-card --description "A compact card component."
 ```
 
-The "Install → CLI" tab on each item page has the exact command pre-filled. Behind the scenes, `bun run registry:build` reads every item's `_registry.svx` frontmatter, generates a `registry.json`, and runs it through `shadcn-svelte registry build` to produce the served `/r/<name>.json` files — no hand-written server endpoints. The whole registry is also available as one file at `/registry.json`.
+Or run the command without flags for an interactive prompt:
+
+```sh
+bun --bun ./scripts/new.ts
+```
+
+These authoring scripts expect [Bun](https://bun.com/). Consumers of the published registry do not need Bun — they install with `npx`, `pnpm dlx`, `yarn dlx`, or `bunx`.
+
+## Item layout
+
+```text
+registry/items/components/example-card/
+  example-card.svelte
+  _registry.mdx
+  _preview.svelte
+  stories/example-card.stories.ts
+```
+
+- `_registry.mdx` — YAML frontmatter (name, type, files, dependencies) plus optional Usage MDX
+- `_preview.svelte` — live docs demo (never published in item JSON)
+- Source `.svelte` / `.ts` files — published to consumers via `/r/<name>.json`
+
+Validate the catalog after changes:
+
+```sh
+bun --bun ./scripts/doctor.ts
+```

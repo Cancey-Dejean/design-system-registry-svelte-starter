@@ -1,18 +1,25 @@
 ---
 title: Agents
-description: Notes for AI coding agents working in this repo.
-order: 6
+description: Give AI coding tools the right context for using and authoring this registry.
+order: 7
 ---
 
-This project uses `vp` (the Vite+ toolchain) to run scripts — use `vp dev`, `vp build`, and `vp check` rather than calling `vite`/`svelte-kit` directly.
+This template is designed to work well with coding agents and LLM-powered tools. It exposes Markdown-first routes for reading context, and it ships an installable Agent Skill for authoring registry items correctly.
 
-## Adding a registry item
+## Install the Registry Skill
 
-1. Create `registry/items/<section>/<name>/` where `<section>` is `components`, `blocks`, or `utilities`.
-2. Add `_registry.svx` (frontmatter + usage prose), `_preview.svelte` (live demo), and `stories/<name>.stories.svelte`.
-3. The catalog picks it up automatically — no manifest to update.
+From this repository (or your fork):
 
-## Conventions
+```sh
+npx skills add <owner>/<repo> --skill shadcn-registry
+```
 
-- shadcn-svelte primitives live in `src/lib/components/ui/`; registry items live in `registry/items/`. Don't mix the two.
-- Registry item metadata types come from `src/lib/registry/item-types.ts` — keep new items within that union.
+The skill teaches agents to scaffold items under `registry/items/**`, write `_registry.mdx` and `_preview.svelte`, and run `scripts/doctor.ts`.
+
+For consuming shadcn-svelte primitives in the docs shell, use the separate `shadcn-svelte` skill under `.agents/skills/shadcn-svelte`.
+
+## Machine-readable routes
+
+- `/llms.txt` — short index for LLM tools
+- `/llms-full.txt` — fuller dump of docs and registry context
+- Any docs or registry page as `.md` (for example `/docs/installation.md` or `/components/button.md`)
