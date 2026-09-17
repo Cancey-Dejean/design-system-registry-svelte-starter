@@ -1,0 +1,42 @@
+---
+name: styles
+type: registry:style
+title: Styles
+description: Design tokens with three selectable theme presets (default, secondary, tertiary).
+dependencies:
+  - tailwindcss
+  - tw-animate-css
+  - "@tailwindcss/typography"
+  - "@fontsource-variable/inter"
+files:
+  - path: registry/items/utilities/styles/globals.css
+    type: registry:file
+    target: src/lib/styles/globals.css
+  - path: registry/items/utilities/styles/theme.css
+    type: registry:file
+    target: src/lib/styles/theme.css
+  - path: registry/items/utilities/styles/theme-secondary.css
+    type: registry:file
+    target: src/lib/styles/theme-secondary.css
+  - path: registry/items/utilities/styles/theme-tertiary.css
+    type: registry:file
+    target: src/lib/styles/theme-tertiary.css
+---
+
+A CSS-first token set for `@tailwindcss/v4`, split into a base theme (`theme.css`) plus two alternate presets (`theme-secondary.css`, `theme-tertiary.css`). `globals.css` wires up the Tailwind imports and pulls all three in — swap the active preset per-page or per-user by setting `data-theme="theme-secondary"` (or `theme-tertiary`) on `<html>`; omit the attribute for the default palette.
+
+```ts
+document.documentElement.dataset.theme = "theme-secondary"; // or "theme-tertiary"
+```
+
+Each preset only overrides `--primary`, `--ring`, `--sidebar-primary`, `--selection`, and the `--chart-*` scale — everything else (background, foreground, card, border, radius) is shared, so switching presets only changes the accent, not the whole surface.
+
+## Install
+
+Copy the four files into `src/lib/styles/` and import `globals.css` once from your root layout:
+
+```svelte
+<script>
+  import "$lib/styles/globals.css";
+</script>
+```

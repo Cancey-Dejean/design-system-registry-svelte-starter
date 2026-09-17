@@ -16,7 +16,7 @@
 <button
   type="button"
   onclick={copy}
-  class="inline-flex items-center gap-1.5 rounded-md border px-2.5 py-1.5 text-sm text-muted-foreground hover:bg-accent hover:text-accent-foreground"
+  class="inline-flex items-center gap-1.5 rounded-md border px-2.5 py-1.5 text-sm hover:bg-accent hover:text-accent-foreground"
 >
   {#if copied}
     <CheckIcon class="size-3.5" />
