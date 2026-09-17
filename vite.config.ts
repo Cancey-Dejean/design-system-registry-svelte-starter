@@ -4,6 +4,7 @@ import adapter from "@sveltejs/adapter-vercel";
 import { sveltekit } from "@sveltejs/kit/vite";
 import { vitePreprocess } from "@sveltejs/vite-plugin-svelte";
 import { mdsvex } from "mdsvex";
+import rehypeSlug from "rehype-slug";
 import { defineConfig, lazyPlugins } from "vite-plus";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -12,6 +13,7 @@ import { playwright } from "vite-plus/test/browser-playwright";
 
 const mdsvexOptions = {
   extensions: [".svx"],
+  rehypePlugins: [rehypeSlug],
 };
 const dirname =
   typeof __dirname !== "undefined" ? __dirname : path.dirname(fileURLToPath(import.meta.url));

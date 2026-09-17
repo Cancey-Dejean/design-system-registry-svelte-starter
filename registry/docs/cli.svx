@@ -1,0 +1,31 @@
+---
+title: CLI
+description: Install items from this registry with the shadcn-svelte CLI.
+order: 4
+---
+
+Any item can be installed directly into another project, without cloning this repo:
+
+```bash
+bunx shadcn-svelte@latest add https://design-system-starter-svelte-docs.vercel.app/r/button.json
+```
+
+Every item page's Install tab has this command pre-filled for that item, with the package manager of your choice (npm, pnpm, yarn, or bun).
+
+## Referencing items by name
+
+To use `add <name>` instead of the full URL, add this registry to the consuming project's `components.json`:
+
+```json
+{
+  "registries": {
+    "@design-system-ui": "https://design-system-starter-svelte-docs.vercel.app/r/{name}.json"
+  }
+}
+```
+
+```bash
+bunx shadcn-svelte@latest add @design-system-ui/button
+```
+
+See [Registry](/docs/registry) for how items are built and served.

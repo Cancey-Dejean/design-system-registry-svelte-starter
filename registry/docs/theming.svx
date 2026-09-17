@@ -1,7 +1,7 @@
 ---
 title: Theming
 description: Light/dark mode and accent color presets.
-order: 4
+order: 5
 ---
 
 Theming is class-based: adding `.dark` to `<html>` swaps every CSS variable in `app.css` to its dark-mode value. The toggle in the site header flips this class and persists the choice to `localStorage`; a small inline script in `app.html` reads that value before the page paints, so there's no flash of the wrong theme on load.

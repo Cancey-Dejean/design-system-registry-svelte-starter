@@ -1,7 +1,7 @@
 ---
 title: Agents
 description: Notes for AI coding agents working in this repo.
-order: 5
+order: 6
 ---
 
 This project uses `vp` (the Vite+ toolchain) to run scripts — use `vp dev`, `vp build`, and `vp check` rather than calling `vite`/`svelte-kit` directly.

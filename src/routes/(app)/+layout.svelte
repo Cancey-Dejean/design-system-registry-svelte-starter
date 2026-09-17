@@ -6,6 +6,10 @@
   import SiteFooter from "$lib/components/site-footer.svelte";
   import ThemeToggle from "$lib/components/theme-toggle.svelte";
   import AccentThemeToggle from "$lib/components/accent-theme-toggle.svelte";
+  import { Button } from "$lib/components/ui/button/index.js";
+  import { registryConfig } from "$registry/config";
+  import BookOpenIcon from "@lucide/svelte/icons/book-open";
+  import CodeIcon from "@lucide/svelte/icons/code";
 
   let { data, children } = $props();
 </script>
@@ -20,6 +24,24 @@
         <SiteBreadcrumb sections={data.sections} />
       </div>
       <div class="flex items-center gap-1">
+        <Button
+          href={registryConfig.storybookUrl}
+          target="_blank"
+          variant="ghost"
+          size="icon"
+          aria-label="Storybook"
+        >
+          <BookOpenIcon data-icon="inline-start" class="size-4" />
+        </Button>
+        <Button
+          href={registryConfig.repositoryUrl}
+          target="_blank"
+          variant="ghost"
+          size="icon"
+          aria-label="GitHub"
+        >
+          <CodeIcon data-icon="inline-start" class="size-4" />
+        </Button>
         <AccentThemeToggle />
         <ThemeToggle />
       </div>

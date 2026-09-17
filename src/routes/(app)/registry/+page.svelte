@@ -1,4 +1,6 @@
 <script lang="ts">
+  import LinkCardGrid from "$lib/components/registry/link-card-grid.svelte";
+
   let { data } = $props();
 </script>
 
@@ -14,33 +16,13 @@
 
   <section class="flex flex-col gap-3">
     <h2 class="text-lg font-semibold">Docs</h2>
-    <ul class="flex flex-col gap-2">
-      {#each data.docs as doc (doc.url)}
-        <li>
-          <a href={doc.url} class="text-primary underline-offset-4 hover:underline">{doc.title}</a>
-          {#if doc.description}
-            <p class="text-sm text-muted-foreground">{doc.description}</p>
-          {/if}
-        </li>
-      {/each}
-    </ul>
+    <LinkCardGrid items={data.docs} />
   </section>
 
   {#each data.sections as section (section.id)}
     <section class="flex flex-col gap-3">
       <h2 class="text-lg font-semibold">{section.title}</h2>
-      <ul class="flex flex-col gap-2">
-        {#each section.items as item (item.url)}
-          <li>
-            <a href={item.url} class="text-primary underline-offset-4 hover:underline"
-              >{item.title}</a
-            >
-            {#if item.description}
-              <p class="text-sm text-muted-foreground">{item.description}</p>
-            {/if}
-          </li>
-        {/each}
-      </ul>
+      <LinkCardGrid items={section.items} />
     </section>
   {/each}
 </div>
