@@ -24,5 +24,5 @@
     </article>
     <PagePager prev={data.prev} next={data.next} />
   </article>
-  <PageToc containerId="doc-content" />
+  <PageToc items={data.toc} />
 {/if}

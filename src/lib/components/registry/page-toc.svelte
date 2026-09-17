@@ -1,16 +1,7 @@
 <script lang="ts">
-  let { containerId }: { containerId: string } = $props();
+  import type { HeadingEntry } from "$lib/registry/extract-headings";
 
-  let items = $state<{ id: string; label: string }[]>([]);
-
-  $effect(() => {
-    const container = document.getElementById(containerId);
-    if (!container) return;
-    items = Array.from(container.querySelectorAll<HTMLHeadingElement>("h2[id]")).map((heading) => ({
-      id: heading.id,
-      label: heading.textContent ?? "",
-    }));
-  });
+  let { items }: { items: HeadingEntry[] } = $props();
 </script>
 
 {#if items.length}

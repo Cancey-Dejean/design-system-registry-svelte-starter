@@ -39,6 +39,10 @@
   );
   let cliArgs = $derived(`shadcn-svelte@latest add ${registryConfig.homepage}/r/${name}.json`);
   let copyPageText = $derived(`# ${metadata.title}\n\n${getRegistryItemRawSource(section, name) ?? ""}`);
+  let tocItems = $derived([
+    { id: "installation", label: "Installation" },
+    ...(content ? [{ id: "usage", label: "Usage" }] : []),
+  ]);
 </script>
 
 <article id="item-doc-content" class="flex min-w-0 flex-1 flex-col gap-8">
@@ -126,4 +130,4 @@
 
   <PagePager {prev} {next} />
 </article>
-<PageToc containerId="item-doc-content" />
+<PageToc items={tocItems} />
