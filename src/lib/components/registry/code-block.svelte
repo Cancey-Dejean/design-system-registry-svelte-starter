@@ -1,7 +1,9 @@
 <script lang="ts">
+  import { enhanceCodeBlocks } from "$lib/actions/enhance-code-blocks";
+
   let { html }: { html: string } = $props();
 </script>
 
-<div class="overflow-x-auto rounded-md border text-sm [&_pre]:p-4 [&_pre]:leading-relaxed">
+<div use:enhanceCodeBlocks class="text-sm [&_pre]:m-0">
   {@html html}
 </div>

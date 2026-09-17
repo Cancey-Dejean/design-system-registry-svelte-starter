@@ -10,10 +10,21 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { storybookTest } from "@storybook/addon-vitest/vitest-plugin";
 import { playwright } from "vite-plus/test/browser-playwright";
+import { highlightCode } from "./src/lib/shiki";
+
+// mdsvex splices a custom highlighter's return value directly into the compiled
+// Svelte markup, so raw `{`/`}`/`` ` `` in the highlighted HTML (e.g. from a JSON
+// sample) must be escaped and the whole block wrapped in `{@html \`...\`}`.
+const escapeSvelty = (str: string) =>
+  str.replace(/[{}`]/g, (c) => ({ "{": "&#123;", "}": "&#125;", "`": "&#96;" })[c] ?? c);
 
 const mdsvexOptions = {
   extensions: [".svx"],
   rehypePlugins: [rehypeSlug],
+  highlight: {
+    highlighter: async (code: string, lang?: string | null) =>
+      `{@html \`${escapeSvelty(await highlightCode(code, lang ?? ""))}\`}`,
+  },
 };
 const dirname =
   typeof __dirname !== "undefined" ? __dirname : path.dirname(fileURLToPath(import.meta.url));
