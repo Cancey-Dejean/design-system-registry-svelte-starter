@@ -1,8 +1,10 @@
 <script lang="ts">
   import { cn } from "$lib/utils";
 
-  let { class: className, ...restProps }: { class?: string } & Record<string, unknown> =
-    $props();
+  let {
+    class: className,
+    ...restProps
+  }: { class?: string } & Record<string, unknown> = $props();
 </script>
 
 <svg
