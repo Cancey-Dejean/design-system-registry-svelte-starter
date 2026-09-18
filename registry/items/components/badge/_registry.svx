@@ -18,7 +18,7 @@ This site uses `Badge` to label each item's registry `type` on its doc page.
 
 ```svelte
 <script lang="ts">
-  import { Badge } from "../../components/badge";
+  import { Badge } from "~/components/badge";
 </script>
 
 <Badge>Default</Badge>

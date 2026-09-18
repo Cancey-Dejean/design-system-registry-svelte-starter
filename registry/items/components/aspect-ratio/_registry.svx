@@ -6,10 +6,10 @@ description: Displays content within a fixed aspect ratio.
 dependencies:
   - bits-ui
 files:
-  - path: index.ts
+  - path: registry/items/components/aspect-ratio/index.ts
     type: registry:ui
     target: '~/components/aspect-ratio/index.ts'
-  - path: aspect-ratio.svelte
+  - path: registry/items/components/aspect-ratio/aspect-ratio.svelte
     type: registry:ui
     target: '~/components/aspect-ratio/aspect-ratio.svelte'
 ---
@@ -19,7 +19,7 @@ Pass `ratio` as a number (for example `16 / 9` or `1`).
 
 ```svelte
 <script lang="ts">
-	import { AspectRatio } from '$lib/components/ui/aspect-ratio/index.js';
+	import { AspectRatio } from '~/components/aspect-ratio';
 </script>
 
 <div class="w-[450px]">

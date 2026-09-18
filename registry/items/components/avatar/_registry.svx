@@ -6,25 +6,25 @@ description: An image element with a fallback for representing the user.
 dependencies:
   - bits-ui
 files:
-  - path: index.ts
+  - path: src/lib/components/ui/avatar/index.ts
     type: registry:ui
     target: '~/components/avatar/index.ts'
-  - path: avatar.svelte
+  - path: src/lib/components/ui/avatar/avatar.svelte
     type: registry:ui
     target: '~/components/avatar/avatar.svelte'
-  - path: avatar-image.svelte
+  - path: src/lib/components/ui/avatar/avatar-image.svelte
     type: registry:ui
     target: '~/components/avatar/avatar-image.svelte'
-  - path: avatar-fallback.svelte
+  - path: src/lib/components/ui/avatar/avatar-fallback.svelte
     type: registry:ui
     target: '~/components/avatar/avatar-fallback.svelte'
-  - path: avatar-badge.svelte
+  - path: src/lib/components/ui/avatar/avatar-badge.svelte
     type: registry:ui
     target: '~/components/avatar/avatar-badge.svelte'
-  - path: avatar-group.svelte
+  - path: src/lib/components/ui/avatar/avatar-group.svelte
     type: registry:ui
     target: '~/components/avatar/avatar-group.svelte'
-  - path: avatar-group-count.svelte
+  - path: src/lib/components/ui/avatar/avatar-group-count.svelte
     type: registry:ui
     target: '~/components/avatar/avatar-group-count.svelte'
 ---

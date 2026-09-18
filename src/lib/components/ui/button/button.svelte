@@ -38,6 +38,7 @@
 		WithElementRef<HTMLAnchorAttributes> & {
 			variant?: ButtonVariant;
 			size?: ButtonSize;
+			newTab?: boolean;
 		};
 </script>
 
@@ -48,6 +49,7 @@
 		size = "default",
 		ref = $bindable(null),
 		href = undefined,
+		newTab = false,
 		type = "button",
 		disabled,
 		children,
@@ -64,6 +66,8 @@
 		aria-disabled={disabled}
 		role={disabled ? "link" : undefined}
 		tabindex={disabled ? -1 : undefined}
+		target={newTab ? "_blank" : undefined}
+		rel={newTab ? "noopener noreferrer" : undefined}
 		{...restProps}
 	>
 		{@render children?.()}

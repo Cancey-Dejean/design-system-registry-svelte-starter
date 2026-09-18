@@ -1,10 +1,11 @@
 <script lang="ts">
-  import Button from "./button.svelte";
-  import { BUTTON_VARIANTS } from "./button.variants";
+  import { Button, type ButtonVariant } from "$lib/components/ui/button";
+
+  const variants: ButtonVariant[] = ["default", "outline", "secondary", "ghost", "destructive", "link"];
 </script>
 
 <div class="flex flex-wrap items-center gap-2">
-  {#each BUTTON_VARIANTS as variant (variant)}
+  {#each variants as variant (variant)}
     <Button {variant} class="capitalize">{variant}</Button>
   {/each}
 </div>

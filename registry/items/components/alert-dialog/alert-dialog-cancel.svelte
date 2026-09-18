@@ -3,8 +3,8 @@
   import type {
     ButtonSize,
     ButtonVariant,
-  } from "$registry/items/components/button/";
-  import { buttonVariants } from "$registry/items/components/button/";
+  } from "$lib/components/ui/button";
+  import { buttonVariants } from "$lib/components/ui/button";
   import { cn } from "$lib/utils.js";
 
   let {

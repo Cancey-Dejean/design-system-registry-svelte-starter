@@ -1,6 +1,6 @@
 <script module>
   import { defineMeta } from "@storybook/addon-svelte-csf";
-  import * as Accordion from "../index.js";
+  import * as Accordion from "$lib/components/ui/accordion";
   import StoryWrapper from "$lib/components/utility/story-wrapper.svelte";
 
   const { Story } = defineMeta({

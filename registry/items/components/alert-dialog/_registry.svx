@@ -5,46 +5,46 @@ title: Alert Dialog
 description: A modal dialog for confirmations and other actions that require an explicit response.
 dependencies:
   - bits-ui
-localRegistryDependencies:
+registryDependencies:
   - button
 files:
-  - path: index.ts
+  - path: registry/items/components/alert-dialog/index.ts
     type: registry:ui
     target: '~/components/alert-dialog/index.ts'
-  - path: alert-dialog.svelte
+  - path: registry/items/components/alert-dialog/alert-dialog.svelte
     type: registry:ui
     target: '~/components/alert-dialog/alert-dialog.svelte'
-  - path: alert-dialog-trigger.svelte
+  - path: registry/items/components/alert-dialog/alert-dialog-trigger.svelte
     type: registry:ui
     target: '~/components/alert-dialog/alert-dialog-trigger.svelte'
-  - path: alert-dialog-portal.svelte
+  - path: registry/items/components/alert-dialog/alert-dialog-portal.svelte
     type: registry:ui
     target: '~/components/alert-dialog/alert-dialog-portal.svelte'
-  - path: alert-dialog-overlay.svelte
+  - path: registry/items/components/alert-dialog/alert-dialog-overlay.svelte
     type: registry:ui
     target: '~/components/alert-dialog/alert-dialog-overlay.svelte'
-  - path: alert-dialog-content.svelte
+  - path: registry/items/components/alert-dialog/alert-dialog-content.svelte
     type: registry:ui
     target: '~/components/alert-dialog/alert-dialog-content.svelte'
-  - path: alert-dialog-header.svelte
+  - path: registry/items/components/alert-dialog/alert-dialog-header.svelte
     type: registry:ui
     target: '~/components/alert-dialog/alert-dialog-header.svelte'
-  - path: alert-dialog-footer.svelte
+  - path: registry/items/components/alert-dialog/alert-dialog-footer.svelte
     type: registry:ui
     target: '~/components/alert-dialog/alert-dialog-footer.svelte'
-  - path: alert-dialog-title.svelte
+  - path: registry/items/components/alert-dialog/alert-dialog-title.svelte
     type: registry:ui
     target: '~/components/alert-dialog/alert-dialog-title.svelte'
-  - path: alert-dialog-description.svelte
+  - path: registry/items/components/alert-dialog/alert-dialog-description.svelte
     type: registry:ui
     target: '~/components/alert-dialog/alert-dialog-description.svelte'
-  - path: alert-dialog-action.svelte
+  - path: registry/items/components/alert-dialog/alert-dialog-action.svelte
     type: registry:ui
     target: '~/components/alert-dialog/alert-dialog-action.svelte'
-  - path: alert-dialog-cancel.svelte
+  - path: registry/items/components/alert-dialog/alert-dialog-cancel.svelte
     type: registry:ui
     target: '~/components/alert-dialog/alert-dialog-cancel.svelte'
-  - path: alert-dialog-media.svelte
+  - path: registry/items/components/alert-dialog/alert-dialog-media.svelte
     type: registry:ui
     target: '~/components/alert-dialog/alert-dialog-media.svelte'
 ---
@@ -54,8 +54,8 @@ Compose with `Trigger`, `Content`, `Header`, `Title`, `Description`, `Footer`, `
 
 ```svelte
 <script lang="ts">
-	import * as AlertDialog from '$lib/components/ui/alert-dialog/index.js';
-	import { buttonVariants } from '$lib/components/ui/button.variants.js';
+	import * as AlertDialog from '~/components/alert-dialog';
+	import { buttonVariants } from '$lib/components/ui/button';
 </script>
 
 <AlertDialog.Root>
