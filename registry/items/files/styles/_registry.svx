@@ -10,16 +10,16 @@ dependencies:
 files:
   - path: registry/items/files/styles/globals.css
     type: registry:file
-    target: src/lib/styles/globals.css
+    target: "~/styles/globals.css"
   - path: registry/items/files/styles/theme.css
     type: registry:file
-    target: src/lib/styles/theme.css
+    target: "~/styles/theme.css"
   - path: registry/items/files/styles/theme-secondary.css
     type: registry:file
-    target: src/lib/styles/theme-secondary.css
+    target: "~/styles/theme-secondary.css"
   - path: registry/items/files/styles/theme-tertiary.css
     type: registry:file
-    target: src/lib/styles/theme-tertiary.css
+    target: "~/styles/theme-tertiary.css"
 ---
 
 A CSS-first token set for `@tailwindcss/v4`, split into a base theme (`theme.css`) plus two alternate presets (`theme-secondary.css`, `theme-tertiary.css`). `globals.css` wires up the Tailwind imports and pulls all three in — swap the active preset per-page or per-user by setting `data-theme="theme-secondary"` (or `theme-tertiary`) on `<html>`; omit the attribute for the default palette.
@@ -32,10 +32,10 @@ Each preset only overrides `--primary`, `--ring`, `--sidebar-primary`, `--select
 
 ## Install
 
-Copy the four files into `src/lib/styles/` and import `globals.css` once from your root layout:
+Copy the four files into `styles/` at the project root and import `globals.css` once from your root layout:
 
 ```svelte
 <script>
-  import "$lib/styles/globals.css";
+  import "../../styles/globals.css";
 </script>
 ```

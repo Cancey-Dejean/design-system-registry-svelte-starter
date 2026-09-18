@@ -49,10 +49,10 @@ CSS-only items are authored in that same `files/` folder:
 files:
   - path: registry/items/files/styles/globals.css
     type: registry:file
-    target: src/lib/styles/globals.css
+    target: "~/styles/globals.css"
 ```
 
-`target` is where the file lands in a consumer's project when installed via the CLI.
+`target` is where the file lands in a consumer's project when installed via the CLI. Prefix with `~/` for a path from the project root (required for CSS files on `registry:style` items — otherwise the CLI nests them under the Tailwind CSS filename from `components.json`).
 
 ## Generating and validating
 

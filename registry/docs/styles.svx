@@ -4,7 +4,7 @@ description: Install the design system CSS foundation with the shadcn-svelte CLI
 order: 2
 ---
 
-Before components look correct, add the design system style files. This installs `globals.css` plus the default, secondary, and tertiary theme presets into `src/lib/styles/`.
+Before components look correct, add the design system style files. This installs `globals.css` plus the default, secondary, and tertiary theme presets into `styles/` at the project root.
 
 ## Prerequisites
 
@@ -56,12 +56,12 @@ npx shadcn-svelte@latest add https://design-system-starter-svelte-docs.vercel.ap
 
 ## What gets installed
 
-| File                   | Destination                          |
-| ---------------------- | ------------------------------------ |
-| `globals.css`          | `src/lib/styles/globals.css`         |
-| `theme.css`            | `src/lib/styles/theme.css`           |
-| `theme-secondary.css`  | `src/lib/styles/theme-secondary.css` |
-| `theme-tertiary.css`   | `src/lib/styles/theme-tertiary.css`  |
+| File                   | Destination                 |
+| ---------------------- | --------------------------- |
+| `globals.css`          | `styles/globals.css`        |
+| `theme.css`            | `styles/theme.css`          |
+| `theme-secondary.css`  | `styles/theme-secondary.css` |
+| `theme-tertiary.css`   | `styles/theme-tertiary.css` |
 
 The CLI also installs the packages the stylesheet depends on (`tailwindcss`, `tw-animate-css`, and `@fontsource-variable/inter`).
 
@@ -73,7 +73,7 @@ Import the globals entry once from your root layout (`src/routes/+layout.svelte`
 
 ```svelte
 <script>
-  import "$lib/styles/globals.css";
+  import "../../styles/globals.css";
 </script>
 ```
 
