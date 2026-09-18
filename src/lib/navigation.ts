@@ -15,22 +15,24 @@ export interface SiteNavSection {
 }
 
 export function getSiteNavigationSections(): SiteNavSection[] {
+  const docs = getAllDocs();
   const docsSection: SiteNavSection = {
     id: "docs",
     title: "Docs",
     basePath: "/docs",
-    items: getAllDocs().map((doc) => ({
+    items: docs.map((doc) => ({
       title: doc.metadata.title,
-      url: doc.slug === "styles" ? "/utilities/styles" : `/docs/${doc.slug}`,
+      url: `/docs/${doc.slug}`,
     })),
   };
 
   const allItems = getAllRegistryItems();
+  const docsSlugs = new Set(docs.map((doc) => doc.slug));
 
   const registryNavSections = registrySectionIds.map((id) => {
     const section = registrySections[id];
     const items = allItems
-      .filter((item) => item.section === id)
+      .filter((item) => item.section === id && !docsSlugs.has(item.name))
       .map((item) => ({
         title: item.metadata.title,
         url: `${section.basePath}/${item.name}`,
