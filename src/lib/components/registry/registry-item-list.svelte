@@ -15,7 +15,7 @@
 
 <div class="flex flex-col gap-4 py-8 grow">
   <h1 class="text-3xl font-semibold tracking-tight">{title}</h1>
-  <div class="grid gap-4 sm:grid-cols-2 md:grid-cols-4">
+  <div class="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
     {#each items as item (item.name)}
       <a href={`${basePath}/${item.name}`} class="block">
         <Card.Root class="h-full transition-colors hover:border-foreground/40">

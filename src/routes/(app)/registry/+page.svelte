@@ -4,13 +4,13 @@
   let { data } = $props();
 </script>
 
-<div class="mx-auto flex max-w-3xl flex-col gap-8 py-8">
+<div class="flex flex-col gap-8 py-8 grow">
   <div class="flex flex-col gap-2">
     <h1 class="text-3xl font-semibold tracking-tight">Registry</h1>
     <p class="text-muted-foreground">
       Every page on this site, in one flat index. See
-      <a href="/docs/registry" class="underline underline-offset-4">Registry</a> for how to install
-      any item via the shadcn-svelte CLI.
+      <a href="/docs/registry" class="underline underline-offset-4">Registry</a>
+      for how to install any item via the shadcn-svelte CLI.
     </p>
   </div>
 
