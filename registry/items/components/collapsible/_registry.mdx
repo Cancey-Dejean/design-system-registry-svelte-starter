@@ -1,0 +1,37 @@
+---
+name: collapsible
+type: registry:ui
+title: Collapsible
+description: An interactive component which expands and collapses a panel.
+dependencies:
+  - bits-ui
+files:
+  - path: index.ts
+    type: registry:ui
+    target: '@ui/collapsible/index.ts'
+  - path: collapsible.svelte
+    type: registry:ui
+    target: '@ui/collapsible/collapsible.svelte'
+  - path: collapsible-trigger.svelte
+    type: registry:ui
+    target: '@ui/collapsible/collapsible-trigger.svelte'
+  - path: collapsible-content.svelte
+    type: registry:ui
+    target: '@ui/collapsible/collapsible-content.svelte'
+---
+
+Use collapsible for a single expandable section. Bind `open` on the root, and compose with
+`Collapsible.Trigger` and `Collapsible.Content`.
+
+```svelte
+<script lang="ts">
+	import * as Collapsible from '$lib/components/ui/collapsible/index.js';
+</script>
+
+<Collapsible.Root>
+	<Collapsible.Trigger>Can I use this in my project?</Collapsible.Trigger>
+	<Collapsible.Content>
+		Yes. Free to use for personal and commercial projects. No attribution required.
+	</Collapsible.Content>
+</Collapsible.Root>
+```

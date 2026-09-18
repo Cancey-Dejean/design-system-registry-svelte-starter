@@ -1,0 +1,72 @@
+---
+name: drawer
+type: registry:ui
+title: Drawer
+description: A drawer component for Svelte, built on Vaul Svelte.
+dependencies:
+  - vaul-svelte
+localRegistryDependencies:
+  - button
+files:
+  - path: index.ts
+    type: registry:ui
+    target: '@ui/drawer/index.ts'
+  - path: drawer.svelte
+    type: registry:ui
+    target: '@ui/drawer/drawer.svelte'
+  - path: drawer-trigger.svelte
+    type: registry:ui
+    target: '@ui/drawer/drawer-trigger.svelte'
+  - path: drawer-portal.svelte
+    type: registry:ui
+    target: '@ui/drawer/drawer-portal.svelte'
+  - path: drawer-overlay.svelte
+    type: registry:ui
+    target: '@ui/drawer/drawer-overlay.svelte'
+  - path: drawer-content.svelte
+    type: registry:ui
+    target: '@ui/drawer/drawer-content.svelte'
+  - path: drawer-header.svelte
+    type: registry:ui
+    target: '@ui/drawer/drawer-header.svelte'
+  - path: drawer-footer.svelte
+    type: registry:ui
+    target: '@ui/drawer/drawer-footer.svelte'
+  - path: drawer-title.svelte
+    type: registry:ui
+    target: '@ui/drawer/drawer-title.svelte'
+  - path: drawer-description.svelte
+    type: registry:ui
+    target: '@ui/drawer/drawer-description.svelte'
+  - path: drawer-close.svelte
+    type: registry:ui
+    target: '@ui/drawer/drawer-close.svelte'
+  - path: drawer-nested.svelte
+    type: registry:ui
+    target: '@ui/drawer/drawer-nested.svelte'
+---
+
+Use drawer for bottom (or edge) panels on mobile and secondary flows. Compose with trigger,
+content, header, and footer. Set `direction` to `top`, `right`, `bottom`, or `left`.
+
+```svelte
+<script lang="ts">
+	import * as Drawer from '$lib/components/ui/drawer/index.js';
+	import { buttonVariants } from '$lib/components/ui/button.variants.js';
+	import Button from '$lib/components/ui/button.svelte';
+</script>
+
+<Drawer.Root>
+	<Drawer.Trigger class={buttonVariants({ variant: 'outline' })}>Open</Drawer.Trigger>
+	<Drawer.Content>
+		<Drawer.Header>
+			<Drawer.Title>Are you absolutely sure?</Drawer.Title>
+			<Drawer.Description>This action cannot be undone.</Drawer.Description>
+		</Drawer.Header>
+		<Drawer.Footer>
+			<Button>Submit</Button>
+			<Drawer.Close class={buttonVariants({ variant: 'outline' })}>Cancel</Drawer.Close>
+		</Drawer.Footer>
+	</Drawer.Content>
+</Drawer.Root>
+```

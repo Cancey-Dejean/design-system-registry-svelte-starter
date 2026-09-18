@@ -30,15 +30,16 @@ registry/items/files/styles/
 
 ## Where the source lives
 
-`files[].path` in `_registry.svx` points to the actual source file — it doesn't have to live inside the item folder:
+**Every registry item's source lives inside its own item folder, under `registry/items/<section>/<name>/`.** `src/lib/components/**` is the documentation site's own application shell — it is never where a registry item's `.svelte`/`.ts` source lives, even for components (`button`, `badge`, `card`, `accordion`, `tabs`, `avatar`, `breadcrumb`, …) that also happen to render the docs site's own UI. The docs site consumes those the same way an external consumer would after installing them — import via the `$registry` alias (`$registry/items/components/<name>/index.js`), never by re-implementing the component under `src/lib/components/ui/`. See the `registry-source-boundary` agent skill (`.agents/skills/registry-source-boundary/SKILL.md`) for the full rationale and how to catch a drifted duplicate.
 
-- **Components that wrap a shadcn-svelte primitive** (`button`, `badge`, `card`, `accordion`, `tabs`) are sourced from `src/lib/components/ui/<name>/...` in this repo. Their `target` is `~/components/<name>/...` so they install to `components/` at the consumer project root.
+`files[].path` in `_registry.svx` points to the real on-disk source file:
+
+- **Components, blocks, and utilities authored for this registry** (`button`, `badge`, `card`, `accordion`, `tabs`, `avatar`, `hero`, `cn`, …) keep their source directly in the item folder (or `src/lib/utils.ts` for `cn`).
 - **Published CSS and other standalone files** (`styles`) keep `_registry.svx`, `_preview.svelte`, and the CSS together under `registry/items/files/<name>/`. They still appear in the Utilities catalog (for example [`/utilities/styles`](/utilities/styles)).
-- **Blocks and utilities authored for this registry** (`hero`, `announcement-bar`, `cn`) keep their source directly in the item folder (or `src/lib/utils.ts` for `cn`) and reference it the same way.
 
 ```yaml
 files:
-  - path: src/lib/components/ui/button/button.svelte
+  - path: registry/items/components/button/button.svelte
     type: registry:ui
     target: "~/components/button/button.svelte"
 ```

@@ -1,0 +1,29 @@
+---
+name: label
+type: registry:ui
+title: Label
+description: Renders an accessible label associated with controls.
+dependencies:
+  - bits-ui
+files:
+  - path: index.ts
+    type: registry:ui
+    target: '@ui/label/index.ts'
+  - path: label.svelte
+    type: registry:ui
+    target: '@ui/label/label.svelte'
+---
+
+Use label to associate text with form controls via matching `for` / `id`.
+
+```svelte
+<script lang="ts">
+	import { Label } from '$lib/components/ui/label/index.js';
+	import { Input } from '$lib/components/ui/input/index.js';
+</script>
+
+<div class="grid gap-2">
+	<Label for="email">Email</Label>
+	<Input id="email" type="email" placeholder="you@example.com" />
+</div>
+```

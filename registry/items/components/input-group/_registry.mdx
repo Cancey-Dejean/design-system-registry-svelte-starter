@@ -1,0 +1,53 @@
+---
+name: input-group
+type: registry:ui
+title: Input Group
+description: Groups an input with addons, buttons, or text.
+dependencies:
+  - tailwind-variants
+localRegistryDependencies:
+  - input
+  - textarea
+  - button
+files:
+  - path: index.ts
+    type: registry:ui
+    target: '@ui/input-group/index.ts'
+  - path: input-group.svelte
+    type: registry:ui
+    target: '@ui/input-group/input-group.svelte'
+  - path: input-group-addon.svelte
+    type: registry:ui
+    target: '@ui/input-group/input-group-addon.svelte'
+  - path: input-group-button.svelte
+    type: registry:ui
+    target: '@ui/input-group/input-group-button.svelte'
+  - path: input-group-input.svelte
+    type: registry:ui
+    target: '@ui/input-group/input-group-input.svelte'
+  - path: input-group-text.svelte
+    type: registry:ui
+    target: '@ui/input-group/input-group-text.svelte'
+  - path: input-group-textarea.svelte
+    type: registry:ui
+    target: '@ui/input-group/input-group-textarea.svelte'
+---
+
+Use input group to attach prefixes, suffixes, or actions to an input.
+
+```svelte
+<script lang="ts">
+	import SearchIcon from '@lucide/svelte/icons/search';
+	import * as InputGroup from '$lib/components/ui/input-group/index.js';
+</script>
+
+<InputGroup.Root>
+	<InputGroup.Input placeholder="Search..." />
+	<InputGroup.Addon>
+		<SearchIcon />
+	</InputGroup.Addon>
+	<InputGroup.Addon align="inline-end">
+		<InputGroup.Button>Search</InputGroup.Button>
+	</InputGroup.Addon>
+</InputGroup.Root>
+```

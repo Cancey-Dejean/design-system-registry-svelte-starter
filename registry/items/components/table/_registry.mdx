@@ -1,0 +1,60 @@
+---
+name: table
+type: registry:ui
+title: Table
+description: A responsive table element used as the base for data tables.
+files:
+  - path: index.ts
+    type: registry:ui
+    target: '@ui/table/index.ts'
+  - path: table.svelte
+    type: registry:ui
+    target: '@ui/table/table.svelte'
+  - path: table-header.svelte
+    type: registry:ui
+    target: '@ui/table/table-header.svelte'
+  - path: table-body.svelte
+    type: registry:ui
+    target: '@ui/table/table-body.svelte'
+  - path: table-footer.svelte
+    type: registry:ui
+    target: '@ui/table/table-footer.svelte'
+  - path: table-row.svelte
+    type: registry:ui
+    target: '@ui/table/table-row.svelte'
+  - path: table-head.svelte
+    type: registry:ui
+    target: '@ui/table/table-head.svelte'
+  - path: table-cell.svelte
+    type: registry:ui
+    target: '@ui/table/table-cell.svelte'
+  - path: table-caption.svelte
+    type: registry:ui
+    target: '@ui/table/table-caption.svelte'
+---
+
+Use table primitives for structured tabular data. Compose with TanStack Table for full data-grid features
+(see the **data-table** guide item).
+
+```svelte
+<script lang="ts">
+	import * as Table from '$lib/components/ui/table/index.js';
+</script>
+
+<Table.Root>
+	<Table.Header>
+		<Table.Row>
+			<Table.Head>Invoice</Table.Head>
+			<Table.Head>Status</Table.Head>
+			<Table.Head class="text-end">Amount</Table.Head>
+		</Table.Row>
+	</Table.Header>
+	<Table.Body>
+		<Table.Row>
+			<Table.Cell>INV001</Table.Cell>
+			<Table.Cell>Paid</Table.Cell>
+			<Table.Cell class="text-end">$250.00</Table.Cell>
+		</Table.Row>
+	</Table.Body>
+</Table.Root>
+```

@@ -1,0 +1,66 @@
+---
+name: field
+type: registry:ui
+title: Field
+description: Combine labels, controls, and help text to compose accessible form fields and grouped inputs.
+dependencies:
+  - tailwind-variants
+localRegistryDependencies:
+  - label
+  - separator
+files:
+  - path: index.ts
+    type: registry:ui
+    target: '@ui/field/index.ts'
+  - path: field.svelte
+    type: registry:ui
+    target: '@ui/field/field.svelte'
+  - path: field.variants.ts
+    type: registry:ui
+    target: '@ui/field/field.variants.ts'
+  - path: field-set.svelte
+    type: registry:ui
+    target: '@ui/field/field-set.svelte'
+  - path: field-legend.svelte
+    type: registry:ui
+    target: '@ui/field/field-legend.svelte'
+  - path: field-group.svelte
+    type: registry:ui
+    target: '@ui/field/field-group.svelte'
+  - path: field-content.svelte
+    type: registry:ui
+    target: '@ui/field/field-content.svelte'
+  - path: field-label.svelte
+    type: registry:ui
+    target: '@ui/field/field-label.svelte'
+  - path: field-title.svelte
+    type: registry:ui
+    target: '@ui/field/field-title.svelte'
+  - path: field-description.svelte
+    type: registry:ui
+    target: '@ui/field/field-description.svelte'
+  - path: field-separator.svelte
+    type: registry:ui
+    target: '@ui/field/field-separator.svelte'
+  - path: field-error.svelte
+    type: registry:ui
+    target: '@ui/field/field-error.svelte'
+---
+
+Use field to wrap form controls with labels, descriptions, and errors. Compose `Field.Group` and
+`Field.Set` for multi-field layouts. Set `orientation` to `vertical`, `horizontal`, or `responsive`.
+
+```svelte
+<script lang="ts">
+	import * as Field from '$lib/components/ui/field/index.js';
+	import { Input } from '$lib/components/ui/input/index.js';
+</script>
+
+<Field.Group>
+	<Field.Field>
+		<Field.Label for="username">Username</Field.Label>
+		<Input id="username" placeholder="shadcn" />
+		<Field.Description>This is your public display name.</Field.Description>
+	</Field.Field>
+</Field.Group>
+```

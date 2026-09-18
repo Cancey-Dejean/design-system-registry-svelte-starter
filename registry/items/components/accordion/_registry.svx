@@ -7,19 +7,19 @@ dependencies:
   - bits-ui
   - "@lucide/svelte"
 files:
-  - path: src/lib/components/ui/accordion/index.ts
+  - path: registry/items/components/accordion/index.ts
     type: registry:ui
     target: "~/components/accordion/index.ts"
-  - path: src/lib/components/ui/accordion/accordion.svelte
+  - path: registry/items/components/accordion/accordion.svelte
     type: registry:ui
     target: "~/components/accordion/accordion.svelte"
-  - path: src/lib/components/ui/accordion/accordion-item.svelte
+  - path: registry/items/components/accordion/accordion-item.svelte
     type: registry:ui
     target: "~/components/accordion/accordion-item.svelte"
-  - path: src/lib/components/ui/accordion/accordion-trigger.svelte
+  - path: registry/items/components/accordion/accordion-trigger.svelte
     type: registry:ui
     target: "~/components/accordion/accordion-trigger.svelte"
-  - path: src/lib/components/ui/accordion/accordion-content.svelte
+  - path: registry/items/components/accordion/accordion-content.svelte
     type: registry:ui
     target: "~/components/accordion/accordion-content.svelte"
 ---
@@ -29,7 +29,7 @@ Set `type="single"` for one open panel at a time, or `type="multiple"` to allow 
 
 ```svelte
 <script lang="ts">
-	import * as Accordion from '$lib/components/ui/accordion';
+	import * as Accordion from '~/components/accordion';
 </script>
 
 <Accordion.Root type="single" value="item-1">

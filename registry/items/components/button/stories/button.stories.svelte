@@ -1,12 +1,10 @@
 <script module>
   import { defineMeta } from "@storybook/addon-svelte-csf";
   import { fn } from "storybook/test";
-  import { Button } from "$lib/components/ui/button";
+  import { Button } from "$registry/items/components/button";
   import { Settings } from "@lucide/svelte";
   import StoryWrapper from "$lib/components/utility/story-wrapper.svelte";
-
-  const BUTTON_VARIANTS = ["default", "outline", "secondary", "ghost", "destructive", "link"];
-  const BUTTON_SIZES = ["default", "xs", "sm", "lg", "icon", "icon-xs", "icon-sm", "icon-lg"];
+  import { BUTTON_SIZES, BUTTON_VARIANTS } from "../button.variants";
 
   const { Story } = defineMeta({
     title: "Components/Button",

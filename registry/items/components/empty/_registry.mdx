@@ -1,0 +1,57 @@
+---
+name: empty
+type: registry:ui
+title: Empty
+description: Use the Empty component to display an empty state.
+dependencies:
+  - tailwind-variants
+files:
+  - path: index.ts
+    type: registry:ui
+    target: '@ui/empty/index.ts'
+  - path: empty.svelte
+    type: registry:ui
+    target: '@ui/empty/empty.svelte'
+  - path: empty-header.svelte
+    type: registry:ui
+    target: '@ui/empty/empty-header.svelte'
+  - path: empty-media.svelte
+    type: registry:ui
+    target: '@ui/empty/empty-media.svelte'
+  - path: empty-media.variants.ts
+    type: registry:ui
+    target: '@ui/empty/empty-media.variants.ts'
+  - path: empty-title.svelte
+    type: registry:ui
+    target: '@ui/empty/empty-title.svelte'
+  - path: empty-description.svelte
+    type: registry:ui
+    target: '@ui/empty/empty-description.svelte'
+  - path: empty-content.svelte
+    type: registry:ui
+    target: '@ui/empty/empty-content.svelte'
+---
+
+Use empty for zero-data states. Compose `Empty.Header` with media, title, and description, then
+optional actions in `Empty.Content`. Set `Empty.Media` `variant` to `icon` for a tinted icon shell.
+
+```svelte
+<script lang="ts">
+	import FolderIcon from '@lucide/svelte/icons/folder';
+	import * as Empty from '$lib/components/ui/empty/index.js';
+	import Button from '$lib/components/ui/button.svelte';
+</script>
+
+<Empty.Root>
+	<Empty.Header>
+		<Empty.Media variant="icon">
+			<FolderIcon />
+		</Empty.Media>
+		<Empty.Title>No data</Empty.Title>
+		<Empty.Description>No data found</Empty.Description>
+	</Empty.Header>
+	<Empty.Content>
+		<Button>Add data</Button>
+	</Empty.Content>
+</Empty.Root>
+```

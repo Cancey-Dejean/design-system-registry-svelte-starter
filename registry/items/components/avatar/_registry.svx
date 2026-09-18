@@ -6,25 +6,25 @@ description: An image element with a fallback for representing the user.
 dependencies:
   - bits-ui
 files:
-  - path: src/lib/components/ui/avatar/index.ts
+  - path: registry/items/components/avatar/index.ts
     type: registry:ui
     target: '~/components/avatar/index.ts'
-  - path: src/lib/components/ui/avatar/avatar.svelte
+  - path: registry/items/components/avatar/avatar.svelte
     type: registry:ui
     target: '~/components/avatar/avatar.svelte'
-  - path: src/lib/components/ui/avatar/avatar-image.svelte
+  - path: registry/items/components/avatar/avatar-image.svelte
     type: registry:ui
     target: '~/components/avatar/avatar-image.svelte'
-  - path: src/lib/components/ui/avatar/avatar-fallback.svelte
+  - path: registry/items/components/avatar/avatar-fallback.svelte
     type: registry:ui
     target: '~/components/avatar/avatar-fallback.svelte'
-  - path: src/lib/components/ui/avatar/avatar-badge.svelte
+  - path: registry/items/components/avatar/avatar-badge.svelte
     type: registry:ui
     target: '~/components/avatar/avatar-badge.svelte'
-  - path: src/lib/components/ui/avatar/avatar-group.svelte
+  - path: registry/items/components/avatar/avatar-group.svelte
     type: registry:ui
     target: '~/components/avatar/avatar-group.svelte'
-  - path: src/lib/components/ui/avatar/avatar-group-count.svelte
+  - path: registry/items/components/avatar/avatar-group-count.svelte
     type: registry:ui
     target: '~/components/avatar/avatar-group-count.svelte'
 ---
@@ -34,7 +34,7 @@ Compose with `Avatar.Badge`, `Avatar.Group`, and `Avatar.GroupCount` for status 
 
 ```svelte
 <script lang="ts">
-	import * as Avatar from '$lib/components/ui/avatar/index.js';
+	import * as Avatar from '~/components/avatar';
 </script>
 
 <Avatar.Root>

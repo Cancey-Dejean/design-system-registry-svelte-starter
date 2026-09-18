@@ -19,7 +19,6 @@ Use this page to publish notable registry updates, new items, breaking changes, 
 ### Components
 
 - Added `alert` (title, description, and corner-action composition), `logos` (a searchable brand/partner logo gallery, including a Svelte logo), `alert-dialog`, `aspect-ratio`, and `avatar` to the Components catalog.
-- `button` gained an optional `newTab` prop (sets `target="_blank" rel="noopener noreferrer"` when `href` is used), matching behavior already documented in its stories.
 
 ### Blocks
 
@@ -27,10 +26,9 @@ Use this page to publish notable registry updates, new items, breaking changes, 
 
 ### Registry
 
-- Fixed `accordion`: its `_registry.svx` pointed at stale, duplicated `.svelte` source files inside the item folder that had drifted from the real published source in `src/lib/components/ui/accordion/`. `files[].path` now points at the real source, and the duplicate files were removed.
+- **`registry/items/components/<name>/` is the source of truth for each component's `.svelte`/`.ts` files** — not `src/lib/components/ui/<name>/`. `accordion`, `avatar`, `badge`, and `button` had picked up a second, unreferenced copy of their source under `src/lib/components/ui/`; the app's own header, dialog, sheet, sidebar, input-group, and alert-dialog had also drifted into importing that copy. Removed the `src/lib/components/ui/` copies and repointed every consumer at the registry item folder (via the `$registry` alias, e.g. `$registry/items/components/button/index.js`), and fixed each item's `_registry.svx` `files[].path` to point at its real location under `registry/items/components/<name>/`.
 - Fixed `alert` and `logos`: their `_registry.svx` `files[].path` entries were relative to the item folder (and, for `alert`, left over from an unadapted React template) instead of real on-disk paths, so `registry:doctor` couldn't find them. Also removed a dead `LogoSvgProps` export in `logos`' `index.ts` pointing at a `logo-set/types.ts` file that never existed.
-- Fixed the same stale-duplicate-source pattern in `avatar` and `badge` (each had an orphaned, drifted copy of its `.svelte`/variants files sitting in the item folder alongside the real source in `src/lib/components/ui/`) and in `button` (orphaned `button.svelte`, `button.types.ts`, `button.variants.ts`, `index.ts`, which had also picked up a `newTab` prop and a `link` variant gap not present in the real, live-everywhere source — `newTab` was ported into the real component; the duplicates were removed).
-- Fixed `alert-dialog` and `aspect-ratio`: self-authored items whose `_registry.svx` `files[].path` entries were relative to the item folder instead of real on-disk paths. `alert-dialog` also used `localRegistryDependencies` (not a recognized frontmatter field — renamed to `registryDependencies`) and its preview/story/action/cancel components imported `buttonVariants` from the now-removed `button` duplicate instead of the real `button` component.
+- Fixed `alert-dialog` and `aspect-ratio`: self-authored items whose `_registry.svx` `files[].path` entries were relative to the item folder instead of real on-disk paths. `alert-dialog` also used `localRegistryDependencies` (not a recognized frontmatter field — renamed to `registryDependencies`).
 
 ---
 

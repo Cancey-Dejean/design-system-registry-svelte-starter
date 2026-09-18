@@ -1,0 +1,88 @@
+---
+name: range-calendar
+type: registry:ui
+title: Range Calendar
+description: A calendar component that allows users to select a range of dates.
+dependencies:
+  - bits-ui
+  - '@internationalized/date'
+  - '@lucide/svelte'
+localRegistryDependencies:
+  - button
+files:
+  - path: index.ts
+    type: registry:ui
+    target: '@ui/range-calendar/index.ts'
+  - path: range-calendar.svelte
+    type: registry:ui
+    target: '@ui/range-calendar/range-calendar.svelte'
+  - path: range-calendar-caption.svelte
+    type: registry:ui
+    target: '@ui/range-calendar/range-calendar-caption.svelte'
+  - path: range-calendar-cell.svelte
+    type: registry:ui
+    target: '@ui/range-calendar/range-calendar-cell.svelte'
+  - path: range-calendar-day.svelte
+    type: registry:ui
+    target: '@ui/range-calendar/range-calendar-day.svelte'
+  - path: range-calendar-grid.svelte
+    type: registry:ui
+    target: '@ui/range-calendar/range-calendar-grid.svelte'
+  - path: range-calendar-grid-body.svelte
+    type: registry:ui
+    target: '@ui/range-calendar/range-calendar-grid-body.svelte'
+  - path: range-calendar-grid-head.svelte
+    type: registry:ui
+    target: '@ui/range-calendar/range-calendar-grid-head.svelte'
+  - path: range-calendar-grid-row.svelte
+    type: registry:ui
+    target: '@ui/range-calendar/range-calendar-grid-row.svelte'
+  - path: range-calendar-head-cell.svelte
+    type: registry:ui
+    target: '@ui/range-calendar/range-calendar-head-cell.svelte'
+  - path: range-calendar-header.svelte
+    type: registry:ui
+    target: '@ui/range-calendar/range-calendar-header.svelte'
+  - path: range-calendar-heading.svelte
+    type: registry:ui
+    target: '@ui/range-calendar/range-calendar-heading.svelte'
+  - path: range-calendar-month.svelte
+    type: registry:ui
+    target: '@ui/range-calendar/range-calendar-month.svelte'
+  - path: range-calendar-month-select.svelte
+    type: registry:ui
+    target: '@ui/range-calendar/range-calendar-month-select.svelte'
+  - path: range-calendar-months.svelte
+    type: registry:ui
+    target: '@ui/range-calendar/range-calendar-months.svelte'
+  - path: range-calendar-nav.svelte
+    type: registry:ui
+    target: '@ui/range-calendar/range-calendar-nav.svelte'
+  - path: range-calendar-next-button.svelte
+    type: registry:ui
+    target: '@ui/range-calendar/range-calendar-next-button.svelte'
+  - path: range-calendar-prev-button.svelte
+    type: registry:ui
+    target: '@ui/range-calendar/range-calendar-prev-button.svelte'
+  - path: range-calendar-year-select.svelte
+    type: registry:ui
+    target: '@ui/range-calendar/range-calendar-year-select.svelte'
+---
+
+Use range calendar for start–end date selection. Bind `value` as `{ start, end }`. Switch
+`captionLayout` between `label`, `dropdown`, `dropdown-months`, and `dropdown-years`.
+
+```svelte
+<script lang="ts">
+	import { getLocalTimeZone, today } from '@internationalized/date';
+	import { RangeCalendar } from '$lib/components/ui/range-calendar/index.js';
+
+	const start = today(getLocalTimeZone());
+	let value = $state({
+		start,
+		end: start.add({ days: 7 })
+	});
+</script>
+
+<RangeCalendar bind:value class="rounded-md border shadow-sm" />
+```

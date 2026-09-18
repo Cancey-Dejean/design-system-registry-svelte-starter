@@ -1,0 +1,84 @@
+---
+name: calendar
+type: registry:ui
+title: Calendar
+description: A calendar component that allows users to select dates.
+dependencies:
+  - bits-ui
+  - '@internationalized/date'
+  - '@lucide/svelte'
+localRegistryDependencies:
+  - button
+files:
+  - path: index.ts
+    type: registry:ui
+    target: '@ui/calendar/index.ts'
+  - path: calendar.svelte
+    type: registry:ui
+    target: '@ui/calendar/calendar.svelte'
+  - path: calendar-caption.svelte
+    type: registry:ui
+    target: '@ui/calendar/calendar-caption.svelte'
+  - path: calendar-cell.svelte
+    type: registry:ui
+    target: '@ui/calendar/calendar-cell.svelte'
+  - path: calendar-day.svelte
+    type: registry:ui
+    target: '@ui/calendar/calendar-day.svelte'
+  - path: calendar-grid.svelte
+    type: registry:ui
+    target: '@ui/calendar/calendar-grid.svelte'
+  - path: calendar-grid-body.svelte
+    type: registry:ui
+    target: '@ui/calendar/calendar-grid-body.svelte'
+  - path: calendar-grid-head.svelte
+    type: registry:ui
+    target: '@ui/calendar/calendar-grid-head.svelte'
+  - path: calendar-grid-row.svelte
+    type: registry:ui
+    target: '@ui/calendar/calendar-grid-row.svelte'
+  - path: calendar-head-cell.svelte
+    type: registry:ui
+    target: '@ui/calendar/calendar-head-cell.svelte'
+  - path: calendar-header.svelte
+    type: registry:ui
+    target: '@ui/calendar/calendar-header.svelte'
+  - path: calendar-heading.svelte
+    type: registry:ui
+    target: '@ui/calendar/calendar-heading.svelte'
+  - path: calendar-month.svelte
+    type: registry:ui
+    target: '@ui/calendar/calendar-month.svelte'
+  - path: calendar-month-select.svelte
+    type: registry:ui
+    target: '@ui/calendar/calendar-month-select.svelte'
+  - path: calendar-months.svelte
+    type: registry:ui
+    target: '@ui/calendar/calendar-months.svelte'
+  - path: calendar-nav.svelte
+    type: registry:ui
+    target: '@ui/calendar/calendar-nav.svelte'
+  - path: calendar-next-button.svelte
+    type: registry:ui
+    target: '@ui/calendar/calendar-next-button.svelte'
+  - path: calendar-prev-button.svelte
+    type: registry:ui
+    target: '@ui/calendar/calendar-prev-button.svelte'
+  - path: calendar-year-select.svelte
+    type: registry:ui
+    target: '@ui/calendar/calendar-year-select.svelte'
+---
+
+Use calendar for single date selection. Bind `value` and set `type="single"`. Switch
+`captionLayout` between `label`, `dropdown`, `dropdown-months`, and `dropdown-years`.
+
+```svelte
+<script lang="ts">
+	import { getLocalTimeZone, today } from '@internationalized/date';
+	import { Calendar } from '$lib/components/ui/calendar/index.js';
+
+	let value = $state(today(getLocalTimeZone()));
+</script>
+
+<Calendar type="single" bind:value class="rounded-md border shadow-sm" captionLayout="dropdown" />
+```

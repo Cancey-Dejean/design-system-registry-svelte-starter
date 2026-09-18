@@ -1,0 +1,42 @@
+---
+name: button-group
+type: registry:ui
+title: Button Group
+description: A container that groups related buttons together with consistent styling.
+dependencies:
+  - tailwind-variants
+localRegistryDependencies:
+  - separator
+files:
+  - path: index.ts
+    type: registry:ui
+    target: '~/components/button-group/index.ts'
+  - path: button-group.svelte
+    type: registry:ui
+    target: '~/components/button-group/button-group.svelte'
+  - path: button-group.variants.ts
+    type: registry:ui
+    target: '~/components/button-group/button-group.variants.ts'
+  - path: button-group-text.svelte
+    type: registry:ui
+    target: '~/components/button-group/button-group-text.svelte'
+  - path: button-group-separator.svelte
+    type: registry:ui
+    target: '~/components/button-group/button-group-separator.svelte'
+---
+
+Use button group to cluster related actions. Set `orientation` to `horizontal` or `vertical`.
+Pair with `ButtonGroup.Separator` for non-outline button variants.
+
+```svelte
+<script lang="ts">
+	import * as ButtonGroup from '$lib/components/ui/button-group/index.js';
+	import Button from '$lib/components/ui/button.svelte';
+</script>
+
+<ButtonGroup.Root aria-label="Actions">
+	<Button variant="outline">Archive</Button>
+	<Button variant="secondary">Report</Button>
+	<Button>Snooze</Button>
+</ButtonGroup.Root>
+```

@@ -6,7 +6,7 @@
   import SiteFooter from "$lib/components/site-footer.svelte";
   import ThemeToggle from "$lib/components/theme-toggle.svelte";
   import AccentThemeToggle from "$lib/components/accent-theme-toggle.svelte";
-  import { Button } from "$lib/components/ui/button/index.js";
+  import { Button } from "$registry/items/components/button/index.js";
   import { registryConfig } from "$registry/config";
   import StorybookIcon from "$registry/items/components/logos/logo-set/storybook-icon.svelte";
   import GithubIcon from "$registry/items/components/logos/logo-set/github-icon.svelte";

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { buttonVariants } from "$lib/components/ui/button";
+  import { buttonVariants } from "$registry/items/components/button";
   import * as AlertDialog from "./index.js";
 </script>
 

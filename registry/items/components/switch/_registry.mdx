@@ -1,0 +1,29 @@
+---
+name: switch
+type: registry:ui
+title: Switch
+description: A control that allows the user to toggle between checked and not checked.
+dependencies:
+  - bits-ui
+files:
+  - path: index.ts
+    type: registry:ui
+    target: '@ui/switch/index.ts'
+  - path: switch.svelte
+    type: registry:ui
+    target: '@ui/switch/switch.svelte'
+---
+
+Use switch for binary on/off settings. Bind `checked` and pair with a label via matching `id` / `for`.
+
+```svelte
+<script lang="ts">
+	import { Label } from '$lib/components/ui/label/index.js';
+	import { Switch } from '$lib/components/ui/switch/index.js';
+</script>
+
+<div class="flex items-center space-x-2">
+	<Switch id="airplane-mode" />
+	<Label for="airplane-mode">Airplane Mode</Label>
+</div>
+```

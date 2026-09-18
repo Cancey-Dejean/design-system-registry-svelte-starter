@@ -1,6 +1,6 @@
 <script module>
   import { defineMeta } from "@storybook/addon-svelte-csf";
-  import { Badge } from "$lib/components/ui/badge";
+  import { Badge } from "../index.js";
 
   const { Story } = defineMeta({
     title: "Components/Badge",

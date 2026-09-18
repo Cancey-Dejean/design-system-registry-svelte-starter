@@ -1,0 +1,90 @@
+---
+name: menubar
+type: registry:ui
+title: Menubar
+description: A visually persistent menu common in desktop applications that provides quick access to a consistent set of commands.
+dependencies:
+  - bits-ui
+  - '@lucide/svelte'
+files:
+  - path: index.ts
+    type: registry:ui
+    target: '@ui/menubar/index.ts'
+  - path: menubar.svelte
+    type: registry:ui
+    target: '@ui/menubar/menubar.svelte'
+  - path: menubar-menu.svelte
+    type: registry:ui
+    target: '@ui/menubar/menubar-menu.svelte'
+  - path: menubar-trigger.svelte
+    type: registry:ui
+    target: '@ui/menubar/menubar-trigger.svelte'
+  - path: menubar-portal.svelte
+    type: registry:ui
+    target: '@ui/menubar/menubar-portal.svelte'
+  - path: menubar-content.svelte
+    type: registry:ui
+    target: '@ui/menubar/menubar-content.svelte'
+  - path: menubar-item.svelte
+    type: registry:ui
+    target: '@ui/menubar/menubar-item.svelte'
+  - path: menubar-checkbox-item.svelte
+    type: registry:ui
+    target: '@ui/menubar/menubar-checkbox-item.svelte'
+  - path: menubar-radio-group.svelte
+    type: registry:ui
+    target: '@ui/menubar/menubar-radio-group.svelte'
+  - path: menubar-radio-item.svelte
+    type: registry:ui
+    target: '@ui/menubar/menubar-radio-item.svelte'
+  - path: menubar-label.svelte
+    type: registry:ui
+    target: '@ui/menubar/menubar-label.svelte'
+  - path: menubar-separator.svelte
+    type: registry:ui
+    target: '@ui/menubar/menubar-separator.svelte'
+  - path: menubar-shortcut.svelte
+    type: registry:ui
+    target: '@ui/menubar/menubar-shortcut.svelte'
+  - path: menubar-group.svelte
+    type: registry:ui
+    target: '@ui/menubar/menubar-group.svelte'
+  - path: menubar-group-heading.svelte
+    type: registry:ui
+    target: '@ui/menubar/menubar-group-heading.svelte'
+  - path: menubar-sub.svelte
+    type: registry:ui
+    target: '@ui/menubar/menubar-sub.svelte'
+  - path: menubar-sub-trigger.svelte
+    type: registry:ui
+    target: '@ui/menubar/menubar-sub-trigger.svelte'
+  - path: menubar-sub-content.svelte
+    type: registry:ui
+    target: '@ui/menubar/menubar-sub-content.svelte'
+---
+
+Use menubar for persistent top-level app menus. Compose `Menu` + `Trigger` + `Content` with items,
+checkboxes, radios, shortcuts, and nested `Sub` menus.
+
+```svelte
+<script lang="ts">
+	import * as Menubar from '$lib/components/ui/menubar/index.js';
+</script>
+
+<Menubar.Root>
+	<Menubar.Menu>
+		<Menubar.Trigger>File</Menubar.Trigger>
+		<Menubar.Content>
+			<Menubar.Item>
+				New Tab
+				<Menubar.Shortcut>⌘T</Menubar.Shortcut>
+			</Menubar.Item>
+			<Menubar.Item>New Window</Menubar.Item>
+			<Menubar.Separator />
+			<Menubar.Item>Share</Menubar.Item>
+			<Menubar.Separator />
+			<Menubar.Item>Print</Menubar.Item>
+		</Menubar.Content>
+	</Menubar.Menu>
+</Menubar.Root>
+```

@@ -1,0 +1,70 @@
+---
+name: command
+type: registry:ui
+title: Command
+description: A fast, composable command menu for keyboard-first search and actions.
+dependencies:
+  - bits-ui
+  - '@lucide/svelte'
+localRegistryDependencies:
+  - dialog
+  - input-group
+files:
+  - path: index.ts
+    type: registry:ui
+    target: '@ui/command/index.ts'
+  - path: command.svelte
+    type: registry:ui
+    target: '@ui/command/command.svelte'
+  - path: command-dialog.svelte
+    type: registry:ui
+    target: '@ui/command/command-dialog.svelte'
+  - path: command-input.svelte
+    type: registry:ui
+    target: '@ui/command/command-input.svelte'
+  - path: command-list.svelte
+    type: registry:ui
+    target: '@ui/command/command-list.svelte'
+  - path: command-empty.svelte
+    type: registry:ui
+    target: '@ui/command/command-empty.svelte'
+  - path: command-group.svelte
+    type: registry:ui
+    target: '@ui/command/command-group.svelte'
+  - path: command-item.svelte
+    type: registry:ui
+    target: '@ui/command/command-item.svelte'
+  - path: command-link-item.svelte
+    type: registry:ui
+    target: '@ui/command/command-link-item.svelte'
+  - path: command-separator.svelte
+    type: registry:ui
+    target: '@ui/command/command-separator.svelte'
+  - path: command-shortcut.svelte
+    type: registry:ui
+    target: '@ui/command/command-shortcut.svelte'
+  - path: command-loading.svelte
+    type: registry:ui
+    target: '@ui/command/command-loading.svelte'
+---
+
+Use command for searchable action menus. Compose input, list, groups, and items. Use
+`Command.Dialog` for a modal command palette.
+
+```svelte
+<script lang="ts">
+	import * as Command from '$lib/components/ui/command/index.js';
+</script>
+
+<Command.Root class="rounded-lg border shadow-md">
+	<Command.Input placeholder="Type a command or search..." />
+	<Command.List>
+		<Command.Empty>No results found.</Command.Empty>
+		<Command.Group heading="Suggestions">
+			<Command.Item>Calendar</Command.Item>
+			<Command.Item>Search Emoji</Command.Item>
+			<Command.Item>Calculator</Command.Item>
+		</Command.Group>
+	</Command.List>
+</Command.Root>
+```

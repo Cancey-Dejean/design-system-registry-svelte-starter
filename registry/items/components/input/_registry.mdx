@@ -1,0 +1,23 @@
+---
+name: input
+type: registry:ui
+title: Input
+description: A styled text input field.
+files:
+  - path: index.ts
+    type: registry:ui
+    target: '@ui/input/index.ts'
+  - path: input.svelte
+    type: registry:ui
+    target: '@ui/input/input.svelte'
+---
+
+Use input for single-line text entry. Supports standard HTML input types and bindable `value`.
+
+```svelte
+<script lang="ts">
+	import { Input } from '$lib/components/ui/input/index.js';
+</script>
+
+<Input type="email" placeholder="Email" class="max-w-xs" />
+```

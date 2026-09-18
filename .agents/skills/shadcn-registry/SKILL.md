@@ -10,7 +10,7 @@ Use this skill for installable registry items across all public shadcn registry 
 ## Workflow
 
 1. Inspect the local repo instructions first.
-2. Put published item source under `registry/items/**`. Do not put installable item source under `src/lib/components/ui`; that folder is only for the docs app shell (components that wrap a shadcn-svelte primitive are the exception — their real source lives there and `_registry.svx` just points `files[].path` at it).
+2. Put published item source under `registry/items/**` — always, with no exceptions, even for components that also render the docs site's own UI (button, badge, card, accordion, tabs, avatar, breadcrumb, …). Never put installable item source under `src/lib/components/ui`; that folder is the docs app shell only and must never duplicate a registry item. See the `registry-source-boundary` skill for the guardrail checks and why this matters.
 3. There's no scaffold CLI in this repo. Copy an existing item folder as a starting point (`registry/items/components/button` is a good one) and adjust it.
 
 ## Type Map
@@ -49,8 +49,7 @@ Dependency fields:
 - `dependencies`: npm packages imported by published files (`bits-ui`, `tailwind-variants`, `clsx`, `tailwind-merge`, …).
 - `registryDependencies`: other local registry item `name`s this one installs alongside (e.g. `cn`). There's no separate "upstream primitive" field — this repo has no shadcn-svelte-primitive registry to depend on.
 - `files`: required for hooks, libs, blocks, pages, and multi-file items. `path` is the **real on-disk source path** — it does not have to (and often doesn't) live inside the item folder:
-  - Components wrapping a shadcn-svelte primitive source from `src/lib/components/ui/<name>/...`, with `target: "~/components/<name>/...".`
-  - Blocks and utilities authored for this registry (`hero`, `cn`) keep source directly in the item folder (or `src/lib/utils.ts` for `cn`).
+  - Components, blocks, and utilities authored for this registry (`button`, `badge`, `hero`, `cn`, …) keep source directly in the item folder (or `src/lib/utils.ts` for `cn`), with `target: "~/components/<name>/...".`
   - CSS/standalone files keep everything together under `registry/items/files/<name>/`.
   - Metadata-only style, theme, font, base, and universal items may omit `files` entirely.
 

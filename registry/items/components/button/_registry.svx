@@ -6,12 +6,18 @@ description: A button with variants, sizes, and optional link rendering via href
 dependencies:
   - tailwind-variants
 files:
-  - path: src/lib/components/ui/button/index.ts
+  - path: registry/items/components/button/index.ts
     type: registry:ui
     target: '~/components/button/index.ts'
-  - path: src/lib/components/ui/button/button.svelte
+  - path: registry/items/components/button/button.svelte
     type: registry:ui
     target: '~/components/button/button.svelte'
+  - path: registry/items/components/button/button.types.ts
+    type: registry:ui
+    target: '~/components/button/button.types.ts'
+  - path: registry/items/components/button/button.variants.ts
+    type: registry:ui
+    target: '~/components/button/button.variants.ts'
 ---
 
 Use the button for primary actions, secondary actions, links, and icon-only controls. Pass `href` to
@@ -19,7 +25,7 @@ render as an anchor, or set `newTab` to open the link in a new tab.
 
 ```svelte
 <script lang="ts">
-	import { Button } from '$lib/components/ui/button';
+	import { Button } from '~/components/button';
 </script>
 
 <div class="flex items-center gap-3">

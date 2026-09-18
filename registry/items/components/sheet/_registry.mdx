@@ -1,0 +1,68 @@
+---
+name: sheet
+type: registry:ui
+title: Sheet
+description: Extends the Dialog component to display content that complements the main content of the screen.
+dependencies:
+  - bits-ui
+  - '@lucide/svelte'
+localRegistryDependencies:
+  - button
+files:
+  - path: index.ts
+    type: registry:ui
+    target: '@ui/sheet/index.ts'
+  - path: sheet.svelte
+    type: registry:ui
+    target: '@ui/sheet/sheet.svelte'
+  - path: sheet-trigger.svelte
+    type: registry:ui
+    target: '@ui/sheet/sheet-trigger.svelte'
+  - path: sheet-close.svelte
+    type: registry:ui
+    target: '@ui/sheet/sheet-close.svelte'
+  - path: sheet-portal.svelte
+    type: registry:ui
+    target: '@ui/sheet/sheet-portal.svelte'
+  - path: sheet-overlay.svelte
+    type: registry:ui
+    target: '@ui/sheet/sheet-overlay.svelte'
+  - path: sheet-content.svelte
+    type: registry:ui
+    target: '@ui/sheet/sheet-content.svelte'
+  - path: sheet-header.svelte
+    type: registry:ui
+    target: '@ui/sheet/sheet-header.svelte'
+  - path: sheet-footer.svelte
+    type: registry:ui
+    target: '@ui/sheet/sheet-footer.svelte'
+  - path: sheet-title.svelte
+    type: registry:ui
+    target: '@ui/sheet/sheet-title.svelte'
+  - path: sheet-description.svelte
+    type: registry:ui
+    target: '@ui/sheet/sheet-description.svelte'
+---
+
+Use sheet for edge panels (dialog-based). Compose trigger, content, header, and footer. Pass `side`
+on `Content` as `top`, `right`, `bottom`, or `left`.
+
+```svelte
+<script lang="ts">
+	import * as Sheet from '$lib/components/ui/sheet/index.js';
+	import { buttonVariants } from '$lib/components/ui/button.variants.js';
+</script>
+
+<Sheet.Root>
+	<Sheet.Trigger class={buttonVariants({ variant: 'outline' })}>Open</Sheet.Trigger>
+	<Sheet.Content>
+		<Sheet.Header>
+			<Sheet.Title>Are you sure absolutely sure?</Sheet.Title>
+			<Sheet.Description>
+				This action cannot be undone. This will permanently delete your account and remove your data
+				from our servers.
+			</Sheet.Description>
+		</Sheet.Header>
+	</Sheet.Content>
+</Sheet.Root>
+```

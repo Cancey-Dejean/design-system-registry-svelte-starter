@@ -1,0 +1,90 @@
+---
+name: dropdown-menu
+type: registry:ui
+title: Dropdown Menu
+description: Displays a menu of actions or functions triggered by a button.
+dependencies:
+  - bits-ui
+  - '@lucide/svelte'
+files:
+  - path: index.ts
+    type: registry:ui
+    target: '@ui/dropdown-menu/index.ts'
+  - path: dropdown-menu.svelte
+    type: registry:ui
+    target: '@ui/dropdown-menu/dropdown-menu.svelte'
+  - path: dropdown-menu-trigger.svelte
+    type: registry:ui
+    target: '@ui/dropdown-menu/dropdown-menu-trigger.svelte'
+  - path: dropdown-menu-portal.svelte
+    type: registry:ui
+    target: '@ui/dropdown-menu/dropdown-menu-portal.svelte'
+  - path: dropdown-menu-content.svelte
+    type: registry:ui
+    target: '@ui/dropdown-menu/dropdown-menu-content.svelte'
+  - path: dropdown-menu-item.svelte
+    type: registry:ui
+    target: '@ui/dropdown-menu/dropdown-menu-item.svelte'
+  - path: dropdown-menu-checkbox-item.svelte
+    type: registry:ui
+    target: '@ui/dropdown-menu/dropdown-menu-checkbox-item.svelte'
+  - path: dropdown-menu-checkbox-group.svelte
+    type: registry:ui
+    target: '@ui/dropdown-menu/dropdown-menu-checkbox-group.svelte'
+  - path: dropdown-menu-radio-group.svelte
+    type: registry:ui
+    target: '@ui/dropdown-menu/dropdown-menu-radio-group.svelte'
+  - path: dropdown-menu-radio-item.svelte
+    type: registry:ui
+    target: '@ui/dropdown-menu/dropdown-menu-radio-item.svelte'
+  - path: dropdown-menu-label.svelte
+    type: registry:ui
+    target: '@ui/dropdown-menu/dropdown-menu-label.svelte'
+  - path: dropdown-menu-separator.svelte
+    type: registry:ui
+    target: '@ui/dropdown-menu/dropdown-menu-separator.svelte'
+  - path: dropdown-menu-shortcut.svelte
+    type: registry:ui
+    target: '@ui/dropdown-menu/dropdown-menu-shortcut.svelte'
+  - path: dropdown-menu-group.svelte
+    type: registry:ui
+    target: '@ui/dropdown-menu/dropdown-menu-group.svelte'
+  - path: dropdown-menu-group-heading.svelte
+    type: registry:ui
+    target: '@ui/dropdown-menu/dropdown-menu-group-heading.svelte'
+  - path: dropdown-menu-sub.svelte
+    type: registry:ui
+    target: '@ui/dropdown-menu/dropdown-menu-sub.svelte'
+  - path: dropdown-menu-sub-trigger.svelte
+    type: registry:ui
+    target: '@ui/dropdown-menu/dropdown-menu-sub-trigger.svelte'
+  - path: dropdown-menu-sub-content.svelte
+    type: registry:ui
+    target: '@ui/dropdown-menu/dropdown-menu-sub-content.svelte'
+---
+
+Use dropdown menu for actions triggered by a button. Compose with item, checkbox item, radio groups,
+and nested submenus.
+
+```svelte
+<script lang="ts">
+	import * as DropdownMenu from '$lib/components/ui/dropdown-menu/index.js';
+	import Button from '$lib/components/ui/button.svelte';
+</script>
+
+<DropdownMenu.Root>
+	<DropdownMenu.Trigger>
+		{#snippet child({ props })}
+			<Button {...props} variant="outline">Open</Button>
+		{/snippet}
+	</DropdownMenu.Trigger>
+	<DropdownMenu.Content class="w-56">
+		<DropdownMenu.Label>My Account</DropdownMenu.Label>
+		<DropdownMenu.Separator />
+		<DropdownMenu.Item>Profile</DropdownMenu.Item>
+		<DropdownMenu.Item>Billing</DropdownMenu.Item>
+		<DropdownMenu.Item>Team</DropdownMenu.Item>
+		<DropdownMenu.Item>Subscription</DropdownMenu.Item>
+	</DropdownMenu.Content>
+</DropdownMenu.Root>
+```

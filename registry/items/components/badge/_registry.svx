@@ -6,10 +6,13 @@ description: A small label for status, counts, or categories.
 dependencies:
   - tailwind-variants
 files:
-  - path: src/lib/components/ui/badge/badge.svelte
+  - path: registry/items/components/badge/badge.svelte
     type: registry:ui
     target: "~/components/badge/badge.svelte"
-  - path: src/lib/components/ui/badge/index.ts
+  - path: registry/items/components/badge/badge.variants.ts
+    type: registry:ui
+    target: "~/components/badge/badge.variants.ts"
+  - path: registry/items/components/badge/index.ts
     type: registry:ui
     target: "~/components/badge/index.ts"
 ---

@@ -1,0 +1,23 @@
+---
+name: textarea
+type: registry:ui
+title: Textarea
+description: A multi-line text input field.
+files:
+  - path: index.ts
+    type: registry:ui
+    target: '@ui/textarea/index.ts'
+  - path: textarea.svelte
+    type: registry:ui
+    target: '@ui/textarea/textarea.svelte'
+---
+
+Use textarea for multi-line text entry. Bind `value` like a standard form control.
+
+```svelte
+<script lang="ts">
+	import { Textarea } from '$lib/components/ui/textarea/index.js';
+</script>
+
+<Textarea placeholder="Type your message here." />
+```

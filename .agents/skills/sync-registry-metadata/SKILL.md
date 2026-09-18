@@ -27,11 +27,12 @@ Skip when edits are limited to private authoring-only files with no consumer imp
 
 ## Where the source actually lives
 
-`files[].path` in `_registry.svx` points at the real source file — it does **not** have to live inside the item folder:
+**Registry item source lives inside the item folder — `registry/items/<section>/<name>/` — full stop, even for components that also render the docs site's own UI** (`button`, `badge`, `card`, `accordion`, `tabs`, `avatar`, `breadcrumb`, …). `src/lib/components/**` is the documentation site's own application shell; it must never hold a duplicate of a registry item's source. See the `registry-source-boundary` skill for the guardrail checks — this exact mistake (a scaffolder creating a second copy under `src/lib/components/ui/<name>/`) has happened repeatedly in this repo.
 
-- **Components that wrap a shadcn-svelte primitive** (`button`, `badge`, `card`, `accordion`, `tabs`) are sourced from `src/lib/components/ui/<name>/...`. Set `target` to `~/components/<name>/...` so they install at the consumer project root.
+- **Components, blocks, and utilities authored for this registry** (`button`, `badge`, `hero`, `cn`, …) keep their source directly in the item folder; `cn` points at `src/lib/utils.ts` since it's a general-purpose helper, not UI.
 - **Published CSS and other standalone files** (`styles`) keep `_registry.svx` and `_preview.svelte` in `registry/items/files/<name>/` next to the CSS. The catalog maps `files/` onto the Utilities section (`/utilities/styles`).
-- **Blocks and utilities authored for this registry** (`hero`, `announcement-bar`) keep their source directly in the item folder; `cn` points at `src/lib/utils.ts`.
+
+The docs site consumes a registry item's component the same way an external consumer would — via the `$registry` alias (`$registry/items/components/<name>/index.js`) — never by importing a copy under `$lib/components/ui/<name>`.
 
 ## Workflow
 
@@ -56,20 +57,20 @@ Skip when edits are limited to private authoring-only files with no consumer imp
 ## `_preview.svelte` Checklist (when the item has one)
 
 - [ ] Renders as a plain Svelte component with a default export (no named `Preview` export required — `loadRegistryItemPreview` just imports `.default`)
-- [ ] Imports from the same paths a consumer would use (`$lib/components/ui/<name>`, not a relative path into the item folder, unless the item's own source lives in the item folder)
+- [ ] Imports locally (`./index.js` or the specific file) since the item's own source lives in the item folder — never `$lib/components/ui/<name>`
 - [ ] Showcases the default or most representative state after the change
 - [ ] Reflects new variants, props, or behavior consumers will see on the docs page's "Preview" tab
 - [ ] A `_preview.svelte` is optional — `item-doc-page.svelte` falls back to "No preview available." when one is missing, so don't force one onto a CSS-only item like `styles`
 
 ## Change → Update Map
 
-| Source change                          | `_registry.svx`                     | `_preview.svelte`                            |
-| --------------------------------------- | ------------------------------------ | --------------------------------------------- |
-| Added/removed/renamed publishable file  | Update `files`                       | Update imports if the preview used that file   |
-| New npm import in published source      | Add to `dependencies`                | —                                              |
-| New local registry item dependency      | Add to `registryDependencies`        | —                                              |
-| New variant, size, or prop              | Update the usage example             | Show the new option when it's the best demo    |
-| Renamed export or prop                  | Update the usage example             | Update props passed to the preview             |
+| Source change                          | `_registry.svx`               | `_preview.svelte`                            |
+| -------------------------------------- | ----------------------------- | -------------------------------------------- |
+| Added/removed/renamed publishable file | Update `files`                | Update imports if the preview used that file |
+| New npm import in published source     | Add to `dependencies`         | —                                            |
+| New local registry item dependency     | Add to `registryDependencies` | —                                            |
+| New variant, size, or prop             | Update the usage example      | Show the new option when it's the best demo  |
+| Renamed export or prop                 | Update the usage example      | Update props passed to the preview           |
 
 ## Verification Signals
 
@@ -86,10 +87,10 @@ Adding a new file to an existing item:
 ```yaml
 # _registry.svx frontmatter — add the new file
 files:
-  - path: src/lib/components/ui/badge/badge.svelte
+  - path: registry/items/components/badge/badge.svelte
     type: registry:ui
     target: "~/components/badge/badge.svelte"
-  - path: src/lib/components/ui/badge/index.ts
+  - path: registry/items/components/badge/index.ts
     type: registry:ui
     target: "~/components/badge/index.ts"
 ```
