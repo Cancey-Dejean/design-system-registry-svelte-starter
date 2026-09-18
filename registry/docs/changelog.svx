@@ -16,6 +16,10 @@ Use this page to publish notable registry updates, new items, breaking changes, 
 
 Each is published as installable JSON under `/r/<name>.json`, with a live preview on its docs page and a matching Storybook story. See [Registry](/docs/registry) for how items are authored.
 
+### Styles docs
+
+- The [Styles](/docs/styles) page now matches the published `styles` item: `@design-system-ui` namespace, four files in `src/lib/styles/`, and the secondary/tertiary `data-theme` presets.
+
 ### Styles
 
 - The `styles` utility now publishes the CSS in `registry/items/files/styles` (`globals.css` plus the default, secondary, and tertiary theme presets). Install it before components so semantic tokens resolve.
