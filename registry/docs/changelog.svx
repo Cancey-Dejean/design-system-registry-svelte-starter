@@ -8,13 +8,17 @@ Use this page to publish notable registry updates, new items, breaking changes, 
 
 ## Current catalog
 
-- **Components:** `accordion`, `badge`, `button`, `card`, `tabs`
+- **Components:** `accordion`, `alert`, `badge`, `button`, `card`, `logos`, `tabs`
 - **Blocks:** `hero`
 - **Utilities:** `cn`, `styles`
 
 ---
 
 ## September 18, 2026
+
+### Components
+
+- Added `alert` (title, description, and corner-action composition) and `logos` (a searchable brand/partner logo gallery, including a Svelte logo) to the Components catalog.
 
 ### Blocks
 
@@ -23,6 +27,7 @@ Use this page to publish notable registry updates, new items, breaking changes, 
 ### Registry
 
 - Fixed `accordion`: its `_registry.svx` pointed at stale, duplicated `.svelte` source files inside the item folder that had drifted from the real published source in `src/lib/components/ui/accordion/`. `files[].path` now points at the real source, and the duplicate files were removed.
+- Fixed `alert` and `logos`: their `_registry.svx` `files[].path` entries were relative to the item folder (and, for `alert`, left over from an unadapted React template) instead of real on-disk paths, so `registry:doctor` couldn't find them. Also removed a dead `LogoSvgProps` export in `logos`' `index.ts` pointing at a `logo-set/types.ts` file that never existed.
 
 ---
 
