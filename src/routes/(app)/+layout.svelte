@@ -8,8 +8,8 @@
   import AccentThemeToggle from "$lib/components/accent-theme-toggle.svelte";
   import { Button } from "$lib/components/ui/button/index.js";
   import { registryConfig } from "$registry/config";
-  import StorybookIcon from "$lib/components/icons/storybook-icon.svelte";
-  import GithubIcon from "$lib/components/icons/github-icon.svelte";
+  import StorybookIcon from "$registry/items/components/logos/logo-set/storybook-icon.svelte";
+  import GithubIcon from "$registry/items/components/logos/logo-set/github-icon.svelte";
 
   let { data, children } = $props();
 </script>
