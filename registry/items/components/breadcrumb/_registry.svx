@@ -1,0 +1,58 @@
+---
+name: breadcrumb
+type: registry:ui
+title: Breadcrumb
+description: Displays the path to the current resource using a hierarchy of links.
+dependencies:
+  - '@lucide/svelte'
+files:
+  - path: index.ts
+    type: registry:ui
+    target: '~/components/breadcrumb/index.ts'
+  - path: breadcrumb.svelte
+    type: registry:ui
+    target: '~/components/breadcrumb/breadcrumb.svelte'
+  - path: breadcrumb-list.svelte
+    type: registry:ui
+    target: '~/components/breadcrumb/breadcrumb-list.svelte'
+  - path: breadcrumb-item.svelte
+    type: registry:ui
+    target: '~/components/breadcrumb/breadcrumb-item.svelte'
+  - path: breadcrumb-link.svelte
+    type: registry:ui
+    target: '~/components/breadcrumb/breadcrumb-link.svelte'
+  - path: breadcrumb-page.svelte
+    type: registry:ui
+    target: '~/components/breadcrumb/breadcrumb-page.svelte'
+  - path: breadcrumb-separator.svelte
+    type: registry:ui
+    target: '~/components/breadcrumb/breadcrumb-separator.svelte'
+  - path: breadcrumb-ellipsis.svelte
+    type: registry:ui
+    target: '~/components/breadcrumb/breadcrumb-ellipsis.svelte'
+---
+
+Use breadcrumb to show hierarchical location. End with `Breadcrumb.Page` for the current item,
+and insert `Breadcrumb.Ellipsis` when collapsing middle segments.
+
+```svelte
+<script lang="ts">
+	import * as Breadcrumb from '$lib/components/ui/breadcrumb/index.js';
+</script>
+
+<Breadcrumb.Root>
+	<Breadcrumb.List>
+		<Breadcrumb.Item>
+			<Breadcrumb.Link href="/">Home</Breadcrumb.Link>
+		</Breadcrumb.Item>
+		<Breadcrumb.Separator />
+		<Breadcrumb.Item>
+			<Breadcrumb.Link href="/components">Components</Breadcrumb.Link>
+		</Breadcrumb.Item>
+		<Breadcrumb.Separator />
+		<Breadcrumb.Item>
+			<Breadcrumb.Page>Breadcrumb</Breadcrumb.Page>
+		</Breadcrumb.Item>
+	</Breadcrumb.List>
+</Breadcrumb.Root>
+```
