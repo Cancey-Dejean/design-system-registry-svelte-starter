@@ -8,60 +8,42 @@ Before components look correct, add the design system style files. This installs
 
 ## Prerequisites
 
-Your project should already be set up with [shadcn-svelte](https://www.shadcn-svelte.com/docs/installation) and Tailwind CSS.
-
-Add the Design System UI Svelte registry to `components.json` (once per project):
-
-```json
-{
-  "registries": {
-    "@design-system-ui": "https://design-system-starter-svelte-docs.vercel.app/r/{name}.json"
-  }
-}
-```
-
-Without this, the CLI returns `Unknown registry "@design-system-ui"`. See [Installation](/docs/installation) for the full setup flow.
+Your project should already be set up with [shadcn-svelte](https://www.shadcn-svelte.com/docs/installation) and Tailwind CSS. See [Installation](/docs/installation) for the full setup flow.
 
 ## Install
 
 ### npm
 
 ```sh
-npx shadcn-svelte@latest add @design-system-ui/styles
+npx shadcn-svelte@latest add https://design-system-starter-svelte-docs.vercel.app/r/styles.json
 ```
 
 ### pnpm
 
 ```sh
-pnpm dlx shadcn-svelte@latest add @design-system-ui/styles
+pnpm dlx shadcn-svelte@latest add https://design-system-starter-svelte-docs.vercel.app/r/styles.json
 ```
 
 ### yarn
 
 ```sh
-yarn dlx shadcn-svelte@latest add @design-system-ui/styles
+yarn dlx shadcn-svelte@latest add https://design-system-starter-svelte-docs.vercel.app/r/styles.json
 ```
 
 ### bun
 
 ```sh
-bunx --bun shadcn-svelte@latest add @design-system-ui/styles
-```
-
-Or with a full URL, without registering the namespace:
-
-```sh
-npx shadcn-svelte@latest add https://design-system-starter-svelte-docs.vercel.app/r/styles.json
+bun x shadcn-svelte@latest add https://design-system-starter-svelte-docs.vercel.app/r/styles.json
 ```
 
 ## What gets installed
 
-| File                   | Destination                 |
-| ---------------------- | --------------------------- |
-| `globals.css`          | `styles/globals.css`        |
-| `theme.css`            | `styles/theme.css`          |
+| File                   | Destination                  |
+| ---------------------- | ---------------------------- |
+| `globals.css`          | `styles/globals.css`         |
+| `theme.css`            | `styles/theme.css`           |
 | `theme-secondary.css`  | `styles/theme-secondary.css` |
-| `theme-tertiary.css`   | `styles/theme-tertiary.css` |
+| `theme-tertiary.css`   | `styles/theme-tertiary.css`  |
 
 The CLI also installs the packages the stylesheet depends on (`tailwindcss`, `tw-animate-css`, and `@fontsource-variable/inter`).
 

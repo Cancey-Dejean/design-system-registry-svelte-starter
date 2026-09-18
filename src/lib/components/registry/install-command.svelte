@@ -12,7 +12,7 @@
   const STORAGE_KEY = "package-manager";
 
   const EXEC_PREFIX: Record<PackageManager, string> = {
-    bun: "bunx",
+    bun: "bun x",
     npm: "npx",
     pnpm: "pnpm dlx",
     yarn: "yarn dlx",

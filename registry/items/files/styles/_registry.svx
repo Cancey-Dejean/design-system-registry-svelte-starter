@@ -32,7 +32,11 @@ Each preset only overrides `--primary`, `--ring`, `--sidebar-primary`, `--select
 
 ## Install
 
-Copy the four files into `styles/` at the project root and import `globals.css` once from your root layout:
+```sh
+bun x shadcn-svelte@latest add https://design-system-starter-svelte-docs.vercel.app/r/styles.json
+```
+
+Files land in `styles/` at the project root. Import `globals.css` once from your root layout:
 
 ```svelte
 <script>

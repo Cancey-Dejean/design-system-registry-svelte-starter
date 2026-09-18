@@ -6,7 +6,7 @@ order: 0
 
 **Design System UI Svelte** is a collection of copy-paste developer utility components, hooks, and blocks for Svelte. Each item is ready to drop into your project without locking you into a heavyweight package dependency.
 
-Install anything from the catalog with the [shadcn-svelte CLI](https://www.shadcn-svelte.com/docs/cli). Items land in your codebase as source you own, so you can read, adapt, and extend them like the rest of your app.
+Install anything from the catalog with the [shadcn-svelte CLI](https://www.shadcn-svelte.com/docs/cli). Pass the item JSON URL (`/r/<name>.json`) — namespaced aliases like `@design-system-ui/button` are not supported. Items land in your codebase as source you own, so you can read, adapt, and extend them like the rest of your app.
 
 Start with the [`styles`](/utilities/styles) registry item for the design system CSS foundation before installing components.
 

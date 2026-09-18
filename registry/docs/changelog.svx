@@ -16,17 +16,22 @@ Use this page to publish notable registry updates, new items, breaking changes, 
 
 Each is published as installable JSON under `/r/<name>.json`, with a live preview on its docs page and a matching Storybook story. See [Registry](/docs/registry) for how items are authored.
 
+### CLI install commands
+
+- Install commands now use the item JSON URL. shadcn-svelte does not support namespaced aliases like `@design-system-ui/styles`.
+- Bun install examples use `bun x shadcn-svelte@latest add …`.
+
 ### Styles install path
 
 - The `styles` item now installs into `styles/` at the consumer project root (`~/styles/*.css`) instead of next to the project's Tailwind CSS file.
 
 ### Styles authoring
 
-- The `styles` item now keeps `_registry.svx`, `_preview.svelte`, and the published CSS together in `registry/items/files/styles`. It still installs as `@design-system-ui/styles` and shows under [Utilities](/utilities/styles).
+- The `styles` item now keeps `_registry.svx`, `_preview.svelte`, and the published CSS together in `registry/items/files/styles`. It still shows under [Utilities](/utilities/styles).
 
 ### Styles docs
 
-- The [Styles](/docs/styles) page now matches the published `styles` item: `@design-system-ui` namespace, four files in `src/lib/styles/`, and the secondary/tertiary `data-theme` presets.
+- The [Styles](/docs/styles) page now matches the published `styles` item: four files in `styles/` at the project root, and the secondary/tertiary `data-theme` presets.
 
 ### Styles
 

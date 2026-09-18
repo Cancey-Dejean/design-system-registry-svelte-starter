@@ -8,6 +8,8 @@ This template is designed to work well with coding agents and LLM-powered tools.
 
 There's no separate authoring skill for registry items yet — see [Registry](/docs/registry) for how items are structured, and validate changes with `bun run registry:generate`.
 
+Consumers install items with the JSON URL from `/r/<name>.json`, not a namespaced alias. See [Installation](/docs/installation).
+
 ## Machine-readable routes
 
 - `/llms.txt` — short index for LLM tools

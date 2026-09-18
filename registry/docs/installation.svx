@@ -4,52 +4,36 @@ description: Install Design System UI Svelte items with the shadcn-svelte CLI.
 order: 1
 ---
 
-Install any item from **Design System UI Svelte** with the [shadcn-svelte CLI](https://www.shadcn-svelte.com/docs/cli). Replace `button` with the item name from the catalog.
+Install any item from **Design System UI Svelte** with the [shadcn-svelte CLI](https://www.shadcn-svelte.com/docs/cli). Pass the item's JSON URL — shadcn-svelte does not resolve namespaced aliases like `@design-system-ui/button`.
 
-Start with the [`styles`](/utilities/styles) registry item so your project has the design system CSS foundation before adding components. See [Styles](/docs/styles) for what the tokens include.
-
-## Configure the registry
-
-Your project must already be set up with [shadcn-svelte](https://www.shadcn-svelte.com/docs/installation). Then add this registry to `components.json` so the CLI can resolve `@design-system-ui/*` items:
-
-```json
-{
-  "registries": {
-    "@design-system-ui": "https://design-system-starter-svelte-docs.vercel.app/r/{name}.json"
-  }
-}
-```
-
-Update the URL to your deployed `homepage` from `registry/config.ts`. Do this once per project. Without it, installs fail with `Unknown registry "@design-system-ui"`.
+Your project must already be set up with [shadcn-svelte](https://www.shadcn-svelte.com/docs/installation). Start with the [`styles`](/utilities/styles) registry item so your project has the design system CSS foundation before adding components. See [Styles](/docs/styles) for what the tokens include.
 
 ## Install an item
+
+Replace `button` with the item name from the catalog.
 
 ### npm
 
 ```sh
-npx shadcn-svelte@latest add @design-system-ui/button
+npx shadcn-svelte@latest add https://design-system-starter-svelte-docs.vercel.app/r/button.json
 ```
 
 ### pnpm
 
 ```sh
-pnpm dlx shadcn-svelte@latest add @design-system-ui/button
+pnpm dlx shadcn-svelte@latest add https://design-system-starter-svelte-docs.vercel.app/r/button.json
 ```
 
 ### yarn
 
 ```sh
-yarn dlx shadcn-svelte@latest add @design-system-ui/button
+yarn dlx shadcn-svelte@latest add https://design-system-starter-svelte-docs.vercel.app/r/button.json
 ```
 
 ### bun
 
 ```sh
-bunx --bun shadcn-svelte@latest add @design-system-ui/button
+bun x shadcn-svelte@latest add https://design-system-starter-svelte-docs.vercel.app/r/button.json
 ```
 
-You can also install via the full item URL without registering the namespace:
-
-```sh
-npx shadcn-svelte@latest add https://design-system-starter-svelte-docs.vercel.app/r/button.json
-```
+Update the URL to your deployed `homepage` from `registry/config.ts`. Each item page shows the same command with that item's name.
