@@ -1,39 +1,23 @@
 ---
 title: Installation
 description: Install Design System UI Svelte items with the shadcn-svelte CLI.
-order: 2
+order: 1
 ---
 
-Install any item from **Design System UI Svelte** with the [shadcn-svelte CLI](https://www.shadcn-svelte.com/docs/cli). Pass the item's JSON URL — shadcn-svelte does not resolve namespaced aliases like `@design-system-ui/button`.
+Install any item from **Design System UI Svelte** with the [shadcn-svelte CLI](https://www.shadcn-svelte.com/docs/cli), passing the item's JSON URL. Each item page shows this command with that item's name already filled in.
 
-Your project must already be set up with [shadcn-svelte](https://www.shadcn-svelte.com/docs/installation). Start with the [`styles`](/utilities/styles) registry item so your project has the design system CSS foundation before adding components. See [Styles](/docs/styles) for what the tokens include.
+Your project must already be set up with [shadcn-svelte](https://www.shadcn-svelte.com/docs/installation). Start with the [`styles`](/docs/styles) registry item so your project has the design system CSS foundation before adding components.
 
-## Install an item
+## Optional: use a short alias
 
-Replace `button` with the item name from the catalog.
+By default, shadcn-svelte does not resolve namespaced aliases like `@design-system-ui/button` — you have to pass the full JSON URL every time. To use the shorter alias instead, add a `registries` entry to your project's `components.json`:
 
-### npm
-
-```sh
-npx shadcn-svelte@latest add https://design-system-starter-svelte-docs.vercel.app/r/button.json
+```json
+{
+  "registries": {
+    "@design-system-ui": "https://design-system-starter-svelte-docs.vercel.app/r/{name}.json"
+  }
+}
 ```
 
-### pnpm
-
-```sh
-pnpm dlx shadcn-svelte@latest add https://design-system-starter-svelte-docs.vercel.app/r/button.json
-```
-
-### yarn
-
-```sh
-yarn dlx shadcn-svelte@latest add https://design-system-starter-svelte-docs.vercel.app/r/button.json
-```
-
-### bun
-
-```sh
-bun x shadcn-svelte@latest add https://design-system-starter-svelte-docs.vercel.app/r/button.json
-```
-
-Update the URL to your deployed `homepage` from `registry/config.ts`. Each item page shows the same command with that item's name.
+Update the URL to your deployed `homepage` from `registry/config.ts` if you're self-hosting the registry. Once that's set, `npx shadcn-svelte@latest add @design-system-ui/<name>` works in place of the full JSON URL.

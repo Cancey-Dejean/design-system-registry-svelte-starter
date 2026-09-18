@@ -1,7 +1,7 @@
 ---
 title: Styles
 description: Install the design system CSS foundation with the shadcn-svelte CLI.
-order: 1
+order: 2
 ---
 
 Before components look correct, add the design system style files. This installs `globals.css` plus the default, secondary, and tertiary theme presets into `styles/` at the project root.
