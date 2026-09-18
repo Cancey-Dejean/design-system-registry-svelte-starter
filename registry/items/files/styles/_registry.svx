@@ -6,6 +6,7 @@ description: Design tokens with three selectable theme presets (default, seconda
 dependencies:
   - tailwindcss
   - tw-animate-css
+  - shadcn-svelte
   - "@fontsource-variable/inter"
 files:
   - path: registry/items/files/styles/globals.css
@@ -23,6 +24,8 @@ files:
 ---
 
 A CSS-first token set for `@tailwindcss/v4`, split into a base theme (`theme.css`) plus two alternate presets (`theme-secondary.css`, `theme-tertiary.css`). `globals.css` wires up the Tailwind imports and pulls all three in — swap the active preset per-page or per-user by setting `data-theme="theme-secondary"` (or `theme-tertiary`) on `<html>`; omit the attribute for the default palette.
+
+`globals.css` also imports `shadcn-svelte/tailwind.css`, which registers the `data-open`/`data-closed`/`data-active`/etc. custom variants and the `accordion-down`/`accordion-up` keyframes that installed components (like `accordion`, `dialog`, `dropdown-menu`, `sheet`, `tooltip`) rely on for their open/close animations. Without it those components still work, but render without transitions.
 
 ```ts
 document.documentElement.dataset.theme = "theme-secondary"; // or "theme-tertiary"
