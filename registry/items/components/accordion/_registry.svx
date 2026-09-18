@@ -5,23 +5,23 @@ title: Accordion
 description: A collapsible section list built on bits-ui with single or multiple open items.
 dependencies:
   - bits-ui
-  - '@lucide/svelte'
+  - "@lucide/svelte"
 files:
-  - path: src/lib/components/ui/accordion/index.ts
+  - path: index.ts
     type: registry:ui
-    target: '~/components/accordion/index.ts'
-  - path: src/lib/components/ui/accordion/accordion.svelte
+    target: "~/components/accordion/index.ts"
+  - path: accordion.svelte
     type: registry:ui
-    target: '~/components/accordion/accordion.svelte'
-  - path: src/lib/components/ui/accordion/accordion-item.svelte
+    target: "~/components/accordion/accordion.svelte"
+  - path: accordion-item.svelte
     type: registry:ui
-    target: '~/components/accordion/accordion-item.svelte'
-  - path: src/lib/components/ui/accordion/accordion-trigger.svelte
+    target: "~/components/accordion/accordion-item.svelte"
+  - path: accordion-trigger.svelte
     type: registry:ui
-    target: '~/components/accordion/accordion-trigger.svelte'
-  - path: src/lib/components/ui/accordion/accordion-content.svelte
+    target: "~/components/accordion/accordion-trigger.svelte"
+  - path: accordion-content.svelte
     type: registry:ui
-    target: '~/components/accordion/accordion-content.svelte'
+    target: "~/components/accordion/accordion-content.svelte"
 ---
 
 Use the accordion for FAQs, settings groups, and other content that should stay compact until expanded.
