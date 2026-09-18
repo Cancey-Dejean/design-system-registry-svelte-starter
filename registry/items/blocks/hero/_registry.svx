@@ -2,25 +2,24 @@
 name: hero
 type: registry:block
 title: Hero
-description: A full-bleed marketing hero with announcement badge, dual CTAs, and an optional product image.
+description: A marketing hero section with a heading, supporting copy, primary and secondary CTAs, and a tiled image gallery.
 files:
-  - path: registry/items/blocks/hero/hero.svelte
+  - path: Hero.vue
     type: registry:block
-    target: components/blocks/hero.svelte
+    target: components/hero/Hero.vue
+  - path: index.ts
+    type: registry:block
+    target: components/hero/index.ts
 ---
 
-A full-width hero section for landing pages: an optional announcement badge, a headline, description, one or two calls to action, and an optional product screenshot.
+Drop `Hero` at the top of a marketing page. It's self-contained and fills the available width.
 
-```svelte
-<script lang="ts">
-  import Hero from "$lib/components/blocks/hero.svelte";
+```vue
+<script setup lang="ts">
+import { Hero } from "@/components/hero";
 </script>
 
-<Hero
-  announcement="New: v2.0 is here"
-  title="Build your design system faster"
-  description="A shadcn-svelte based component registry, ready to install into any project."
-  primaryCta={{ label: "Get Started", href: "/docs/installation" }}
-  secondaryCta={{ label: "Browse components", href: "/components" }}
-/>
+<template>
+  <Hero />
+</template>
 ```

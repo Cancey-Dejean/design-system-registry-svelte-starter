@@ -13,9 +13,11 @@ const config: StorybookConfig = {
   addons: [
     "@storybook/addon-svelte-csf",
     "@chromatic-com/storybook",
-    "@storybook/addon-vitest",
-    "@storybook/addon-a11y",
     "@storybook/addon-docs",
+    "@storybook/addon-a11y",
+    "@storybook/addon-themes",
+    "@storybook/addon-links",
+    "@storybook/addon-vitest",
   ],
   framework: "@storybook/sveltekit",
   async viteFinal(viteConfig) {

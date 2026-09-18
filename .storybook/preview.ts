@@ -1,12 +1,28 @@
 import type { Preview } from "@storybook/sveltekit";
+import { INITIAL_VIEWPORTS } from "storybook/viewport";
+import { withThemeByClassName } from "@storybook/addon-themes";
+import "$registry/items/files/styles/globals.css";
 
 const preview: Preview = {
   parameters: {
+    docs: {
+      codePanel: true,
+    },
     controls: {
       matchers: {
         color: /(background|color)$/i,
         date: /Date$/i,
       },
+    },
+    options: {
+      storySort: {
+        method: "alphabetical",
+        order: [],
+      },
+    },
+
+    viewport: {
+      options: INITIAL_VIEWPORTS,
     },
 
     a11y: {
@@ -16,6 +32,15 @@ const preview: Preview = {
       test: "todo",
     },
   },
+  decorators: [
+    withThemeByClassName({
+      themes: {
+        light: "light",
+        dark: "dark",
+      },
+      defaultTheme: "light",
+    }),
+  ],
 };
 
 export default preview;
