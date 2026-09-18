@@ -57,5 +57,6 @@ export function isNavItemActive(url: string, pathname: string): boolean {
 }
 
 export function isNavSectionActive(section: SiteNavSection, pathname: string): boolean {
+  if (pathname === (section.indexUrl ?? section.basePath)) return true;
   return section.items.some((item) => isNavItemActive(item.url, pathname));
 }
