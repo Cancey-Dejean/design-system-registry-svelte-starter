@@ -1,10 +1,52 @@
+<script module lang="ts">
+  export interface HeroCta {
+    label: string;
+    href: string;
+  }
+
+  export interface HeroImage {
+    src: string;
+    alt?: string;
+  }
+
+  const defaultImages: HeroImage[] = [
+    {
+      src: "https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&h=528&q=80",
+    },
+    {
+      src: "https://images.unsplash.com/photo-1485217988980-11786ced9454?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&h=528&q=80",
+    },
+    {
+      src: "https://images.unsplash.com/photo-1559136555-9303baea8ebd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&crop=focalpoint&fp-x=.4&w=396&h=528&q=80",
+    },
+    {
+      src: "https://images.unsplash.com/photo-1670272504528-790c24957dda?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&crop=left&w=400&h=528&q=80",
+    },
+    {
+      src: "https://images.unsplash.com/photo-1670272505284-8faba1c31f7d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&h=528&q=80",
+    },
+  ];
+</script>
+
 <script lang="ts">
   import { cn } from "$lib/utils";
 
   let {
     class: className,
+    announcement,
+    title = "We’re changing the way people connect",
+    description = "Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat aliqua. Anim aute id magna aliqua ad ad non deserunt sunt.",
+    primaryCta = { label: "Get started", href: "#" },
+    secondaryCta = { label: "Live demo", href: "#" },
+    images = defaultImages,
   }: {
     class?: string;
+    announcement?: string;
+    title?: string;
+    description?: string;
+    primaryCta?: HeroCta;
+    secondaryCta?: HeroCta;
+    images?: HeroImage[];
   } = $props();
 </script>
 
@@ -78,28 +120,33 @@
       >
         <!-- Content -->
         <div class="relative w-full lg:max-w-xl lg:shrink-0 xl:max-w-2xl">
+          {#if announcement}
+            <div
+              class="mb-6 inline-flex items-center rounded-full bg-indigo-50 px-3 py-1 text-sm font-medium text-indigo-600 ring-1 ring-indigo-600/10 ring-inset dark:bg-indigo-500/10 dark:text-indigo-400 dark:ring-indigo-400/20"
+            >
+              {announcement}
+            </div>
+          {/if}
           <h1
             class="text-5xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-7xl dark:text-white"
           >
-            We’re changing the way people connect
+            {title}
           </h1>
           <p
             class="mt-8 text-lg font-medium text-pretty text-gray-500 sm:max-w-md sm:text-xl/8 lg:max-w-none dark:text-gray-400"
           >
-            Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui
-            lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat
-            fugiat aliqua. Anim aute id magna aliqua ad ad non deserunt sunt.
+            {description}
           </p>
           <div class="mt-10 flex items-center gap-x-6">
             <a
-              href="#"
+              href={primaryCta.href}
               class="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 dark:bg-indigo-500 dark:hover:bg-indigo-400 dark:focus-visible:outline-indigo-500"
-              >Get started</a
+              >{primaryCta.label}</a
             >
             <a
-              href="#"
+              href={secondaryCta.href}
               class="text-sm/6 font-semibold text-gray-900 dark:text-white"
-              >Live demo <span aria-hidden="true">→</span></a
+              >{secondaryCta.label} <span aria-hidden="true">→</span></a
             >
           </div>
         </div>
@@ -113,8 +160,8 @@
           >
             <div class="relative">
               <img
-                src="https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&h=528&q=80"
-                alt=""
+                src={images[0]?.src}
+                alt={images[0]?.alt ?? ""}
                 class="aspect-2/3 w-full rounded-xl bg-gray-900/5 object-cover shadow-lg dark:bg-gray-700/5"
               />
               <div
@@ -127,8 +174,8 @@
           >
             <div class="relative">
               <img
-                src="https://images.unsplash.com/photo-1485217988980-11786ced9454?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&h=528&q=80"
-                alt=""
+                src={images[1]?.src}
+                alt={images[1]?.alt ?? ""}
                 class="aspect-2/3 w-full rounded-xl bg-gray-900/5 object-cover shadow-lg dark:bg-gray-700/5"
               />
               <div
@@ -137,8 +184,8 @@
             </div>
             <div class="relative">
               <img
-                src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&crop=focalpoint&fp-x=.4&w=396&h=528&q=80"
-                alt=""
+                src={images[2]?.src}
+                alt={images[2]?.alt ?? ""}
                 class="aspect-2/3 w-full rounded-xl bg-gray-900/5 object-cover shadow-lg dark:bg-gray-700/5"
               />
               <div
@@ -149,8 +196,8 @@
           <div class="w-44 flex-none space-y-8 pt-32 sm:pt-0">
             <div class="relative">
               <img
-                src="https://images.unsplash.com/photo-1670272504528-790c24957dda?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&crop=left&w=400&h=528&q=80"
-                alt=""
+                src={images[3]?.src}
+                alt={images[3]?.alt ?? ""}
                 class="aspect-2/3 w-full rounded-xl bg-gray-900/5 object-cover shadow-lg dark:bg-gray-700/5"
               />
               <div
@@ -159,8 +206,8 @@
             </div>
             <div class="relative">
               <img
-                src="https://images.unsplash.com/photo-1670272505284-8faba1c31f7d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&h=528&q=80"
-                alt=""
+                src={images[4]?.src}
+                alt={images[4]?.alt ?? ""}
                 class="aspect-2/3 w-full rounded-xl bg-gray-900/5 object-cover shadow-lg dark:bg-gray-700/5"
               />
               <div

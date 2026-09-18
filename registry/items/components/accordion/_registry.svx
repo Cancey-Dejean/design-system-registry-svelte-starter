@@ -7,19 +7,19 @@ dependencies:
   - bits-ui
   - '@lucide/svelte'
 files:
-  - path: index.ts
+  - path: src/lib/components/ui/accordion/index.ts
     type: registry:ui
     target: '~/components/accordion/index.ts'
-  - path: accordion.svelte
+  - path: src/lib/components/ui/accordion/accordion.svelte
     type: registry:ui
     target: '~/components/accordion/accordion.svelte'
-  - path: accordion-item.svelte
+  - path: src/lib/components/ui/accordion/accordion-item.svelte
     type: registry:ui
     target: '~/components/accordion/accordion-item.svelte'
-  - path: accordion-trigger.svelte
+  - path: src/lib/components/ui/accordion/accordion-trigger.svelte
     type: registry:ui
     target: '~/components/accordion/accordion-trigger.svelte'
-  - path: accordion-content.svelte
+  - path: src/lib/components/ui/accordion/accordion-content.svelte
     type: registry:ui
     target: '~/components/accordion/accordion-content.svelte'
 ---

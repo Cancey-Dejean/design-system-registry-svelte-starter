@@ -8,41 +8,58 @@ Use this page to publish notable registry updates, new items, breaking changes, 
 
 ---
 
-## Current catalog
+## August 9, 2026
 
-**Components:** `accordion`, `badge`, `button`, `card`, `tabs`
-**Blocks:** `announcement-bar`, `hero`
-**Utilities:** `cn`, `styles`
+### Registry catalog
 
-Each is published as installable JSON under `/r/<name>.json`, with a live preview on its docs page and a matching Storybook story. See [Registry](/docs/registry) for how items are authored.
+Finished registering and documenting the late component pass (installable JSON + Storybook + `_preview.svelte`), including:
 
-### Component install path
+- `field`, `hover-card`, `input-otp`, `item`, `kbd`, `menubar`, `native-select`, `navigation-menu`, `pagination`, `progress`, `radio-group`, `resizable`, `scroll-area`, `select`, `sheet`, `sidebar`, `skeleton`, `slider`, `sonner`, `switch`, `tabs`, `toggle`, `toggle-group`, `tooltip`
+- Composition wiring via `localRegistryDependencies` (e.g. `sidebar`, `toggle-group` → `toggle`)
 
-- UI components now install into `components/<name>/` at the consumer project root (`~/components/button`, `~/components/badge`, …) instead of `src/lib/components/ui/<name>`.
+### Docs / platform
 
-### CLI install commands
+- Fixed docs SSR 500s caused by eager registry previews loading **LayerChart**: Vite `ssr.noExternal` now includes `layerchart` and `@layerstack/*` so Node does not try to load raw `.svelte` packages natively.
 
-- Install commands now use the item JSON URL. shadcn-svelte does not support namespaced aliases like `@design-system-ui/styles`.
-- Bun install examples use `bun x shadcn-svelte@latest add …`.
+---
 
-### Styles install path
+## August 8, 2026
 
-- The `styles` item now installs into `styles/` at the consumer project root (`~/styles/*.css`) instead of next to the project's Tailwind CSS file.
+Large expansion of the installable component catalog, docs previews, and Storybook coverage across the full shadcn-svelte-style UI set.
 
-### Styles authoring
+### Earlier on August 8
 
-- The `styles` item now keeps `_registry.svx`, `_preview.svelte`, and the published CSS together in `registry/items/files/styles`. It still shows under [Utilities](/utilities/styles).
+- **Layout & structure:** `accordion`, `alert`, `alert-dialog`, `aspect-ratio`, `avatar`, `breadcrumb`, `button-group`, `card`, `container`, `empty`, `separator`, `table`
+- **Forms & inputs:** `checkbox`, `field`, `input`, `input-group`, `label`, `textarea`
+- **Dates:** `calendar`, `range-calendar`, `datepicker` (Popover + Calendar composition)
+- **Overlays & menus:** `dialog`, `drawer`, `popover`, `dropdown-menu`, `context-menu`, `command`, `combobox` (Popover + Command composition)
+- **Feedback & motion:** `collapsible`, `carousel`, `chart`, `spinner`
+- **Data:** `data-table` (TanStack Table v9 example built on `table`)
 
-### Styles docs
+### Second batch (started)
 
-- The [Styles](/docs/styles) page now matches the published `styles` item: four files in `styles/` at the project root, and the secondary/tertiary `data-theme` presets.
+- **Navigation & chrome:** `hover-card`, `menubar`, `navigation-menu`, `pagination`, `sidebar`, `tabs`, `tooltip`
+- **Forms & controls:** `input-otp`, `native-select`, `radio-group`, `select`, `slider`, `switch`, `toggle`, `toggle-group`
+- **Display & layout:** `item`, `kbd`, `progress`, `scroll-area`, `sheet`, `skeleton`
+- **Utilities:** `resizable` (paneforge), `sonner` (toasts via `svelte-sonner` + `mode-watcher`)
 
-### Styles
+See **August 9, 2026** for completion notes and the LayerChart SSR fix.
 
-- The `styles` utility now publishes the CSS in `registry/items/files/styles` (`globals.css` plus the default, secondary, and tertiary theme presets). Install it before components so semantic tokens resolve.
+### Supporting work
 
-### Docs shell
+- Storybook stories and docs previews (`_preview.svelte`) for registered items.
+- Relative imports between local registry items; list/button/toggle variants extracted to `*.variants.ts` where re-exported.
+- `localRegistryDependencies` for compositions (e.g. `sidebar` → sheet/tooltip/separator/input/skeleton/button; `toggle-group` → toggle).
+- Demo dependencies: `@tanstack/svelte-table`, `chrono-node`, `svelte-sonner`, `mode-watcher`, `paneforge` (where used).
 
-- Sidebar navigation rebuilt to match the shadcn-svelte `sidebar-07` pattern: one flat, collapsible menu per top-level section (Docs, Components, Blocks, Utilities), closing fully flush rather than leaving an icon rail.
-- "Copy Page" and previous/next navigation moved into the page header as compact icon controls.
-- Section breadcrumbs link to the section's first page instead of a non-navigable overview route.
+### Starter items (unchanged)
+
+Still published from the initial release: `button`, `heading`, `text`, `link-text`, `link-spread`, plus foundation items such as `icons` and `logos`.
+
+---
+
+## v0.1.0: July 27, 2026
+
+- Initial SvelteKit docs site and live shadcn-compatible registry.
+- Published starter items: `button`, `heading`, `text`, `link-text`, `link-spread`, `hero-split`, and `styles`.
+- Added authoring scripts `registry:new` / `registry:doctor` and the `shadcn-registry` agent skill.

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import * as Accordion from "$registry/items/components/accordion/index.js";
+  import * as Accordion from "$lib/components/ui/accordion";
 
   let value = $state("item-1");
 </script>
