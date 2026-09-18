@@ -1,0 +1,34 @@
+---
+name: aspect-ratio
+type: registry:ui
+title: Aspect Ratio
+description: Displays content within a fixed aspect ratio.
+dependencies:
+  - bits-ui
+files:
+  - path: index.ts
+    type: registry:ui
+    target: '~/components/aspect-ratio/index.ts'
+  - path: aspect-ratio.svelte
+    type: registry:ui
+    target: '~/components/aspect-ratio/aspect-ratio.svelte'
+---
+
+Use aspect ratio to constrain media or other content to a consistent width-to-height proportion.
+Pass `ratio` as a number (for example `16 / 9` or `1`).
+
+```svelte
+<script lang="ts">
+	import { AspectRatio } from '$lib/components/ui/aspect-ratio/index.js';
+</script>
+
+<div class="w-[450px]">
+	<AspectRatio ratio={16 / 9} class="bg-muted">
+		<img
+			src="https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?w=800&dpr=2&q=80"
+			alt="Gray by Drew Beamer"
+			class="h-full w-full rounded-md object-cover"
+		/>
+	</AspectRatio>
+</div>
+```
