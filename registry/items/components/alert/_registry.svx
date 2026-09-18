@@ -4,37 +4,41 @@ type: registry:ui
 title: Alert
 description: Displays a callout for user attention with optional title, description, and action.
 dependencies:
-  - class-variance-authority
+  - tailwind-variants
 files:
-  - path: alert.tsx
+  - path: registry/items/components/alert/alert.svelte
     type: registry:ui
-    target: components/ui/alert/alert.tsx
-  - path: alert.variants.ts
+    target: "~/components/alert/alert.svelte"
+  - path: registry/items/components/alert/alert-title.svelte
     type: registry:ui
-    target: components/ui/alert/alert.variants.ts
+    target: "~/components/alert/alert-title.svelte"
+  - path: registry/items/components/alert/alert-description.svelte
+    type: registry:ui
+    target: "~/components/alert/alert-description.svelte"
+  - path: registry/items/components/alert/alert-action.svelte
+    type: registry:ui
+    target: "~/components/alert/alert-action.svelte"
+  - path: registry/items/components/alert/alert.variants.ts
+    type: registry:ui
+    target: "~/components/alert/alert.variants.ts"
+  - path: registry/items/components/alert/index.ts
+    type: registry:ui
+    target: "~/components/alert/index.ts"
 ---
 
 Use alerts for status messages, warnings, and important callouts.
 
-```tsx
-import {
-  Alert,
-  AlertAction,
-  AlertDescription,
-  AlertTitle,
-} from "@/components/alert/alert";
+```svelte
+<script lang="ts">
+  import CheckCircle2Icon from "@lucide/svelte/icons/check-circle-2";
+  import * as Alert from "~/components/alert";
+</script>
 
-export function Example() {
-  return (
-    <Alert>
-      <AlertTitle>Heads up!</AlertTitle>
-      <AlertDescription>
-        You can add components and dependencies to your app using the CLI.
-      </AlertDescription>
-    </Alert>
-  );
-}
+<Alert.Root>
+  <CheckCircle2Icon />
+  <Alert.Title>Success! Your changes have been saved</Alert.Title>
+  <Alert.Description>This is an alert with icon, title and description.</Alert.Description>
+</Alert.Root>
 ```
 
-Pass `variant="destructive"` for error-style callouts. Compose an icon as a child of `Alert` for
-leading indicators, and use `AlertAction` for a corner action.
+Pass `variant="destructive"` for error-style callouts. Compose an icon as a direct child of `Alert.Root` for a leading indicator, and use `Alert.Action` for a corner action.
