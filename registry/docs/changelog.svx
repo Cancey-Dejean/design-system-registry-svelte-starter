@@ -6,6 +6,24 @@ order: 8
 
 Use this page to publish notable registry updates, new items, breaking changes, and migration notes.
 
+## Current catalog
+
+- **Components:** `accordion`, `badge`, `button`, `card`, `tabs`
+- **Blocks:** `hero`
+- **Utilities:** `cn`, `styles`
+
+---
+
+## September 18, 2026
+
+### Blocks
+
+- `hero` is now configurable via props instead of hardcoded content: `announcement` (optional badge), `title`, `description`, `primaryCta`/`secondaryCta` (`{ label, href }`), and `images` (array of `{ src, alt? }`). All props default to the original copy and images, so existing usage is unaffected.
+
+### Registry
+
+- Fixed `accordion`: its `_registry.svx` pointed at stale, duplicated `.svelte` source files inside the item folder that had drifted from the real published source in `src/lib/components/ui/accordion/`. `files[].path` now points at the real source, and the duplicate files were removed.
+
 ---
 
 ## August 9, 2026
