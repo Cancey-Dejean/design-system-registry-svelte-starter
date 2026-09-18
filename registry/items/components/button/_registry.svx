@@ -2,27 +2,35 @@
 name: button
 type: registry:ui
 title: Button
-description: A clickable button with several visual variants.
+description: A button with variants, sizes, and optional link rendering via href.
 dependencies:
-  - bits-ui
   - tailwind-variants
 files:
-  - path: src/lib/components/ui/button/button.svelte
+  - path: index.ts
     type: registry:ui
-    target: "~/components/button/button.svelte"
-  - path: src/lib/components/ui/button/index.ts
+    target: '~/components/button/index.ts'
+  - path: button.svelte
     type: registry:ui
-    target: "~/components/button/index.ts"
+    target: '~/components/button/button.svelte'
+  - path: button.types.ts
+    type: registry:ui
+    target: '~/components/button/button.types.ts'
+  - path: button.variants.ts
+    type: registry:ui
+    target: '~/components/button/button.variants.ts'
 ---
 
-Buttons trigger an action when clicked. Use the `variant` and `size` props to match the surrounding UI, or pass `href` to render as a link.
+Use the button for primary actions, secondary actions, links, and icon-only controls. Pass `href` to
+render as an anchor, or set `newTab` to open the link in a new tab.
 
 ```svelte
 <script lang="ts">
-  import { Button } from "../../components/button";
+	import Button from '$lib/@ds/button/button.svelte';
 </script>
 
-<Button>Click me</Button>
-<Button variant="outline">Outline</Button>
-<Button variant="destructive">Delete</Button>
+<div class="flex items-center gap-3">
+	<Button variant="default">Save</Button>
+	<Button variant="outline">Cancel</Button>
+	<Button href="/docs" variant="ghost">Docs</Button>
+</div>
 ```

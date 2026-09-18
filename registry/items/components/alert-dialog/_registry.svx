@@ -1,0 +1,79 @@
+---
+name: alert-dialog
+type: registry:ui
+title: Alert Dialog
+description: A modal dialog for confirmations and other actions that require an explicit response.
+dependencies:
+  - bits-ui
+localRegistryDependencies:
+  - button
+files:
+  - path: index.ts
+    type: registry:ui
+    target: '~/components/alert-dialog/index.ts'
+  - path: alert-dialog.svelte
+    type: registry:ui
+    target: '~/components/alert-dialog/alert-dialog.svelte'
+  - path: alert-dialog-trigger.svelte
+    type: registry:ui
+    target: '~/components/alert-dialog/alert-dialog-trigger.svelte'
+  - path: alert-dialog-portal.svelte
+    type: registry:ui
+    target: '~/components/alert-dialog/alert-dialog-portal.svelte'
+  - path: alert-dialog-overlay.svelte
+    type: registry:ui
+    target: '~/components/alert-dialog/alert-dialog-overlay.svelte'
+  - path: alert-dialog-content.svelte
+    type: registry:ui
+    target: '~/components/alert-dialog/alert-dialog-content.svelte'
+  - path: alert-dialog-header.svelte
+    type: registry:ui
+    target: '~/components/alert-dialog/alert-dialog-header.svelte'
+  - path: alert-dialog-footer.svelte
+    type: registry:ui
+    target: '~/components/alert-dialog/alert-dialog-footer.svelte'
+  - path: alert-dialog-title.svelte
+    type: registry:ui
+    target: '~/components/alert-dialog/alert-dialog-title.svelte'
+  - path: alert-dialog-description.svelte
+    type: registry:ui
+    target: '~/components/alert-dialog/alert-dialog-description.svelte'
+  - path: alert-dialog-action.svelte
+    type: registry:ui
+    target: '~/components/alert-dialog/alert-dialog-action.svelte'
+  - path: alert-dialog-cancel.svelte
+    type: registry:ui
+    target: '~/components/alert-dialog/alert-dialog-cancel.svelte'
+  - path: alert-dialog-media.svelte
+    type: registry:ui
+    target: '~/components/alert-dialog/alert-dialog-media.svelte'
+---
+
+Use alert dialog for destructive or high-impact actions that need confirmation before continuing.
+Compose with `Trigger`, `Content`, `Header`, `Title`, `Description`, `Footer`, `Cancel`, and `Action`.
+
+```svelte
+<script lang="ts">
+	import * as AlertDialog from '$lib/components/ui/alert-dialog/index.js';
+	import { buttonVariants } from '$lib/components/ui/button.variants.js';
+</script>
+
+<AlertDialog.Root>
+	<AlertDialog.Trigger class={buttonVariants({ variant: 'outline' })}
+		>Show Dialog</AlertDialog.Trigger
+	>
+	<AlertDialog.Content>
+		<AlertDialog.Header>
+			<AlertDialog.Title>Are you absolutely sure?</AlertDialog.Title>
+			<AlertDialog.Description>
+				This action cannot be undone. This will permanently delete your account and remove your data
+				from our servers.
+			</AlertDialog.Description>
+		</AlertDialog.Header>
+		<AlertDialog.Footer>
+			<AlertDialog.Cancel>Cancel</AlertDialog.Cancel>
+			<AlertDialog.Action>Continue</AlertDialog.Action>
+		</AlertDialog.Footer>
+	</AlertDialog.Content>
+</AlertDialog.Root>
+```

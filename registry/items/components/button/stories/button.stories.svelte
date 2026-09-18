@@ -1,24 +1,139 @@
 <script module>
   import { defineMeta } from "@storybook/addon-svelte-csf";
-  import { Button } from "$lib/components/ui/button";
+  import { fn } from "storybook/test";
+  import Button from "../button.svelte";
+  import { Settings } from "@lucide/svelte";
+  import StoryWrapper from "$lib/components/utility/story-wrapper.svelte";
+  import { BUTTON_SIZES, BUTTON_VARIANTS } from "../button.variants";
 
   const { Story } = defineMeta({
     title: "Components/Button",
     component: Button,
-    tags: ["autodocs"],
     argTypes: {
       variant: {
-        control: { type: "select" },
-        options: ["default", "outline", "secondary", "ghost", "destructive", "link"],
+        control: "select",
+        description: "The visual style variant of the button",
+        options: BUTTON_VARIANTS,
+        table: {
+          defaultValue: { summary: "default" },
+        },
       },
       size: {
-        control: { type: "select" },
-        options: ["default", "xs", "sm", "lg", "icon"],
+        control: "select",
+        description: "The size of the button",
+        options: BUTTON_SIZES.filter((size) => !size.startsWith("icon")),
+        as: { control: false },
+        icon: { control: false },
+      },
+      disabled: {
+        control: "boolean",
+        description: "Whether the button is disabled",
+        table: {
+          defaultValue: { summary: "false" },
+        },
+      },
+      href: {
+        control: "text",
+        description:
+          "If provided, renders as an anchor tag instead of a button",
+        table: {
+          disable: true,
+        },
+      },
+      type: {
+        control: "select",
+        description:
+          "The button type attribute (only applies when not using href)",
+        table: {
+          defaultValue: { summary: "button" },
+        },
+      },
+      ref: {
+        control: false,
+        description: "The ref of the button",
+      },
+      newTab: {
+        control: "boolean",
+        description: "Whether the link should open in a new tab",
+        table: {
+          disable: true,
+        },
       },
     },
+    args: {
+      variant: "default",
+      size: "default",
+      disabled: false,
+      type: "button",
+      onclick: fn(),
+    },
+    decorators: [() => StoryWrapper],
   });
 </script>
 
-<Story name="Default">Button</Story>
-<Story name="Outline" args={{ variant: "outline" }}>Outline</Story>
-<Story name="Destructive" args={{ variant: "destructive" }}>Delete</Story>
+<Story name="Default" args={{ variant: "default" }}>
+  {#snippet children()}
+    Button
+  {/snippet}
+</Story>
+
+<Story name="Disabled" args={{ disabled: true }}>
+  {#snippet children()}
+    Disabled
+  {/snippet}
+</Story>
+
+<Story name="Icon" args={{ size: "icon", variant: "default" }}>
+  {#snippet children()}
+    <Settings />
+  {/snippet}
+</Story>
+
+<Story
+  name="Link"
+  args={{ variant: "default", href: "https://example.com", newTab: true }}
+  argTypes={{
+    href: {
+      table: {
+        disable: false,
+      },
+    },
+    newTab: {
+      table: {
+        disable: false,
+      },
+    },
+  }}
+>
+  {#snippet children()}
+    Link
+  {/snippet}
+</Story>
+
+<Story
+  name="Link Text"
+  args={{ href: "https://example.com", variant: "link", newTab: true }}
+  argTypes={{
+    href: {
+      table: {
+        disable: false,
+      },
+    },
+    newTab: {
+      table: {
+        disable: false,
+      },
+    },
+  }}
+>
+  {#snippet children()}
+    Link Text
+  {/snippet}
+</Story>
+
+<Story name="With Icon" args={{ variant: "default" }}>
+  {#snippet children()}
+    <Settings />
+    Button with Icon
+  {/snippet}
+</Story>
