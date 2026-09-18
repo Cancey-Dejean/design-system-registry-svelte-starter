@@ -6,28 +6,28 @@ description: Displays the path to the current resource using a hierarchy of link
 dependencies:
   - '@lucide/svelte'
 files:
-  - path: index.ts
+  - path: registry/items/components/breadcrumb/index.ts
     type: registry:ui
     target: '~/components/breadcrumb/index.ts'
-  - path: breadcrumb.svelte
+  - path: registry/items/components/breadcrumb/breadcrumb.svelte
     type: registry:ui
     target: '~/components/breadcrumb/breadcrumb.svelte'
-  - path: breadcrumb-list.svelte
+  - path: registry/items/components/breadcrumb/breadcrumb-list.svelte
     type: registry:ui
     target: '~/components/breadcrumb/breadcrumb-list.svelte'
-  - path: breadcrumb-item.svelte
+  - path: registry/items/components/breadcrumb/breadcrumb-item.svelte
     type: registry:ui
     target: '~/components/breadcrumb/breadcrumb-item.svelte'
-  - path: breadcrumb-link.svelte
+  - path: registry/items/components/breadcrumb/breadcrumb-link.svelte
     type: registry:ui
     target: '~/components/breadcrumb/breadcrumb-link.svelte'
-  - path: breadcrumb-page.svelte
+  - path: registry/items/components/breadcrumb/breadcrumb-page.svelte
     type: registry:ui
     target: '~/components/breadcrumb/breadcrumb-page.svelte'
-  - path: breadcrumb-separator.svelte
+  - path: registry/items/components/breadcrumb/breadcrumb-separator.svelte
     type: registry:ui
     target: '~/components/breadcrumb/breadcrumb-separator.svelte'
-  - path: breadcrumb-ellipsis.svelte
+  - path: registry/items/components/breadcrumb/breadcrumb-ellipsis.svelte
     type: registry:ui
     target: '~/components/breadcrumb/breadcrumb-ellipsis.svelte'
 ---
@@ -37,7 +37,7 @@ and insert `Breadcrumb.Ellipsis` when collapsing middle segments.
 
 ```svelte
 <script lang="ts">
-	import * as Breadcrumb from '$lib/components/ui/breadcrumb/index.js';
+	import * as Breadcrumb from '~/components/breadcrumb';
 </script>
 
 <Breadcrumb.Root>

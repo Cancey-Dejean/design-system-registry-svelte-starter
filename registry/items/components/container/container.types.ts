@@ -1,12 +1,12 @@
-import type { Snippet } from 'svelte';
-import type { HTMLAttributes } from 'svelte/elements';
-import type { VariantProps } from 'tailwind-variants';
-import type { containerVariants } from './container.variants';
+import type { Snippet } from "svelte";
+import type { HTMLAttributes } from "svelte/elements";
+import type { VariantProps } from "tailwind-variants";
+import type { containerVariants } from "./container.variants";
 
-export type ContainerSize = VariantProps<typeof containerVariants>['size'];
+export type ContainerSize = VariantProps<typeof containerVariants>["size"];
 
 export type ContainerProps = HTMLAttributes<HTMLDivElement> & {
-	size?: ContainerSize;
-	ref?: HTMLDivElement | null;
-	children?: Snippet;
+  size?: ContainerSize;
+  ref?: HTMLDivElement | null;
+  children?: Snippet;
 };

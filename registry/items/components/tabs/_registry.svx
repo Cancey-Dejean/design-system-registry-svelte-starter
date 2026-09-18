@@ -1,0 +1,46 @@
+---
+name: tabs
+type: registry:ui
+title: Tabs
+description: Layered content sections (tab panels) shown one at a time.
+dependencies:
+  - bits-ui
+  - tailwind-variants
+files:
+  - path: registry/items/components/tabs/index.ts
+    type: registry:ui
+    target: "~/components/tabs/index.ts"
+  - path: registry/items/components/tabs/tabs.svelte
+    type: registry:ui
+    target: "~/components/tabs/tabs.svelte"
+  - path: registry/items/components/tabs/tabs-list.svelte
+    type: registry:ui
+    target: "~/components/tabs/tabs-list.svelte"
+  - path: registry/items/components/tabs/tabs-list.variants.ts
+    type: registry:ui
+    target: "~/components/tabs/tabs-list.variants.ts"
+  - path: registry/items/components/tabs/tabs-trigger.svelte
+    type: registry:ui
+    target: "~/components/tabs/tabs-trigger.svelte"
+  - path: registry/items/components/tabs/tabs-content.svelte
+    type: registry:ui
+    target: "~/components/tabs/tabs-content.svelte"
+---
+
+Use tabs to switch between related panels. Bind `value` on the root; match each trigger and content by `value`.
+`Tabs.List` supports `variant="default" | "line"`; the root supports horizontal/vertical orientation.
+
+```svelte
+<script lang="ts">
+	import * as Tabs from '~/components/tabs';
+</script>
+
+<Tabs.Root value="account" class="w-[400px]">
+	<Tabs.List>
+		<Tabs.Trigger value="account">Account</Tabs.Trigger>
+		<Tabs.Trigger value="password">Password</Tabs.Trigger>
+	</Tabs.List>
+	<Tabs.Content value="account">Make changes to your account here.</Tabs.Content>
+	<Tabs.Content value="password">Change your password here.</Tabs.Content>
+</Tabs.Root>
+```

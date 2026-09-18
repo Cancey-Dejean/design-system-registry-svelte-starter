@@ -1,6 +1,6 @@
 <script module lang="ts">
 	import { defineMeta } from '@storybook/addon-svelte-csf';
-	import { buttonVariants } from '$lib/components/ui/button.variants.js';
+	import { buttonVariants } from '../../button/button.variants.js';
 	import * as Tooltip from '../index.js';
 	import StoryWrapper from '$lib/components/utility/story-wrapper.svelte';
 
@@ -30,7 +30,7 @@
 <Story name="Sides">
 	<div class="flex min-h-40 flex-wrap items-center justify-center gap-4">
 		<Tooltip.Provider>
-			{#each ['top', 'right', 'bottom', 'left'] as side (side)}
+			{#each ['top', 'right', 'bottom', 'left'] as const as side (side)}
 				<Tooltip.Root>
 					<Tooltip.Trigger class={buttonVariants({ variant: 'outline' })}>
 						{side}

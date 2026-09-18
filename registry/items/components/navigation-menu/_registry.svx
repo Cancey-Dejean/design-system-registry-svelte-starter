@@ -1,0 +1,62 @@
+---
+name: navigation-menu
+type: registry:ui
+title: Navigation Menu
+description: A collection of links for navigating websites.
+dependencies:
+  - bits-ui
+  - "@lucide/svelte"
+  - tailwind-variants
+files:
+  - path: registry/items/components/navigation-menu/index.ts
+    type: registry:ui
+    target: "~/components/navigation-menu/index.ts"
+  - path: registry/items/components/navigation-menu/navigation-menu.svelte
+    type: registry:ui
+    target: "~/components/navigation-menu/navigation-menu.svelte"
+  - path: registry/items/components/navigation-menu/navigation-menu-list.svelte
+    type: registry:ui
+    target: "~/components/navigation-menu/navigation-menu-list.svelte"
+  - path: registry/items/components/navigation-menu/navigation-menu-item.svelte
+    type: registry:ui
+    target: "~/components/navigation-menu/navigation-menu-item.svelte"
+  - path: registry/items/components/navigation-menu/navigation-menu-trigger.svelte
+    type: registry:ui
+    target: "~/components/navigation-menu/navigation-menu-trigger.svelte"
+  - path: registry/items/components/navigation-menu/navigation-menu-trigger.variants.ts
+    type: registry:ui
+    target: "~/components/navigation-menu/navigation-menu-trigger.variants.ts"
+  - path: registry/items/components/navigation-menu/navigation-menu-content.svelte
+    type: registry:ui
+    target: "~/components/navigation-menu/navigation-menu-content.svelte"
+  - path: registry/items/components/navigation-menu/navigation-menu-link.svelte
+    type: registry:ui
+    target: "~/components/navigation-menu/navigation-menu-link.svelte"
+  - path: registry/items/components/navigation-menu/navigation-menu-indicator.svelte
+    type: registry:ui
+    target: "~/components/navigation-menu/navigation-menu-indicator.svelte"
+  - path: registry/items/components/navigation-menu/navigation-menu-viewport.svelte
+    type: registry:ui
+    target: "~/components/navigation-menu/navigation-menu-viewport.svelte"
+---
+
+Use navigation-menu for site nav with dropdown panels. Compose `List` / `Item` with `Trigger` +
+`Content` menus, and `Link` for direct destinations. Import `navigationMenuTriggerStyle` for link
+items that match trigger chrome.
+
+```svelte
+<script lang="ts">
+	import * as NavigationMenu from '~/components/navigation-menu';
+</script>
+
+<NavigationMenu.Root>
+	<NavigationMenu.List>
+		<NavigationMenu.Item>
+			<NavigationMenu.Trigger>Item One</NavigationMenu.Trigger>
+			<NavigationMenu.Content>
+				<NavigationMenu.Link href="#/">Link</NavigationMenu.Link>
+			</NavigationMenu.Content>
+		</NavigationMenu.Item>
+	</NavigationMenu.List>
+</NavigationMenu.Root>
+```

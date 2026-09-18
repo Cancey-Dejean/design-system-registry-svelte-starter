@@ -9,7 +9,7 @@
 	import CircleXIcon from '@lucide/svelte/icons/circle-x';
 	import { useId } from 'bits-ui';
 	import { type Component, tick } from 'svelte';
-	import { buttonVariants } from '$lib/components/ui/button.variants.js';
+	import { buttonVariants } from '../../button/button.variants.js';
 	import Button from '../../button/button.svelte';
 	import * as Command from '../../command/index.js';
 	import * as Popover from '../../popover/index.js';

@@ -1,6 +1,6 @@
 <script lang="ts">
   import { goto } from "$app/navigation";
-  import * as Command from "$lib/components/ui/command/index.js";
+  import * as Command from "$registry/items/components/command/index.js";
   import { create, insertMultiple, search as oramaSearch, type AnyOrama } from "@orama/orama";
   import SearchIcon from "@lucide/svelte/icons/search";
   import type { SearchIndexEntry } from "$lib/search/build-index";

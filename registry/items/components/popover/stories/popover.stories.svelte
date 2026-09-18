@@ -1,6 +1,6 @@
 <script module>
 	import { defineMeta } from '@storybook/addon-svelte-csf';
-	import { buttonVariants } from '$lib/components/ui/button.variants.js';
+	import { buttonVariants } from '../../button/button.variants.js';
 	import * as Popover from '../index.js';
 	import StoryWrapper from '$lib/components/utility/story-wrapper.svelte';
 

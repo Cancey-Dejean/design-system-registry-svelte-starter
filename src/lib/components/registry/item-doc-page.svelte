@@ -1,5 +1,5 @@
 <script lang="ts">
-  import * as Tabs from "$lib/components/ui/tabs/index.js";
+  import * as Tabs from "$registry/items/components/tabs/index.js";
   import TerminalIcon from "@lucide/svelte/icons/terminal";
   import CopyIcon from "@lucide/svelte/icons/copy";
   import AppWindowIcon from "@lucide/svelte/icons/app-window";

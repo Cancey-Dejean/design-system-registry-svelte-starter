@@ -1,0 +1,39 @@
+---
+name: toggle
+type: registry:ui
+title: Toggle
+description: A two-state button that can be either on or off.
+dependencies:
+  - bits-ui
+  - tailwind-variants
+files:
+  - path: registry/items/components/toggle/index.ts
+    type: registry:ui
+    target: "~/components/toggle/index.ts"
+  - path: registry/items/components/toggle/toggle.svelte
+    type: registry:ui
+    target: "~/components/toggle/toggle.svelte"
+  - path: registry/items/components/toggle/toggle.variants.ts
+    type: registry:ui
+    target: "~/components/toggle/toggle.variants.ts"
+---
+
+Use toggle for on/off controls like formatting buttons. Bind `pressed`; choose `variant` (`default` | `outline`)
+and `size` (`sm` | `default` | `lg`).
+
+```svelte
+<script lang="ts">
+	import BookmarkIcon from '@lucide/svelte/icons/bookmark';
+	import { Toggle } from '~/components/toggle';
+</script>
+
+<Toggle
+	aria-label="Toggle bookmark"
+	size="sm"
+	variant="outline"
+	class="data-[state=on]:bg-transparent data-[state=on]:*:[svg]:fill-blue-500 data-[state=on]:*:[svg]:stroke-blue-500"
+>
+	<BookmarkIcon />
+	Bookmark
+</Toggle>
+```

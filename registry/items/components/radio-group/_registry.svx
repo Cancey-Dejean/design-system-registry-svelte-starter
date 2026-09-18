@@ -1,0 +1,44 @@
+---
+name: radio-group
+type: registry:ui
+title: Radio Group
+description: A set of checkable buttons—known as radio buttons—where no more than one of the buttons can be checked at a time.
+dependencies:
+  - bits-ui
+  - "@lucide/svelte"
+files:
+  - path: registry/items/components/radio-group/radio-group.svelte
+    type: registry:ui
+    target: "~/components/radio-group/radio-group.svelte"
+  - path: registry/items/components/radio-group/radio-group-item.svelte
+    type: registry:ui
+    target: "~/components/radio-group/radio-group-item.svelte"
+  - path: registry/items/components/radio-group/index.ts
+    type: registry:ui
+    target: "~/components/radio-group/index.ts"
+---
+
+Use radio-group for mutually exclusive choices. Bind `value` on `Root` and pair items with labels
+via matching `id` / `for`.
+
+```svelte
+<script lang="ts">
+	import { Label } from '~/components/label';
+	import * as RadioGroup from '~/components/radio-group';
+</script>
+
+<RadioGroup.Root value="comfortable">
+	<div class="flex items-center space-x-2">
+		<RadioGroup.Item value="default" id="r1" />
+		<Label for="r1">Default</Label>
+	</div>
+	<div class="flex items-center space-x-2">
+		<RadioGroup.Item value="comfortable" id="r2" />
+		<Label for="r2">Comfortable</Label>
+	</div>
+	<div class="flex items-center space-x-2">
+		<RadioGroup.Item value="compact" id="r3" />
+		<Label for="r3">Compact</Label>
+	</div>
+</RadioGroup.Root>
+```

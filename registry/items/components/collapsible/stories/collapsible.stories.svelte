@@ -1,7 +1,7 @@
 <script module>
 	import { defineMeta } from '@storybook/addon-svelte-csf';
 	import ChevronsUpDownIcon from '@lucide/svelte/icons/chevrons-up-down';
-	import { buttonVariants } from '$lib/components/ui/button.variants.js';
+	import { buttonVariants } from '../../button/button.variants.js';
 	import * as Collapsible from '../index.js';
 	import StoryWrapper from '$lib/components/utility/story-wrapper.svelte';
 

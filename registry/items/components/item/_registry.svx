@@ -1,0 +1,71 @@
+---
+name: item
+type: registry:ui
+title: Item
+description: A versatile component that you can use to display any content.
+dependencies:
+  - tailwind-variants
+registryDependencies:
+  - separator
+files:
+  - path: registry/items/components/item/index.ts
+    type: registry:ui
+    target: "~/components/item/index.ts"
+  - path: registry/items/components/item/item.svelte
+    type: registry:ui
+    target: "~/components/item/item.svelte"
+  - path: registry/items/components/item/item.variants.ts
+    type: registry:ui
+    target: "~/components/item/item.variants.ts"
+  - path: registry/items/components/item/item-group.svelte
+    type: registry:ui
+    target: "~/components/item/item-group.svelte"
+  - path: registry/items/components/item/item-separator.svelte
+    type: registry:ui
+    target: "~/components/item/item-separator.svelte"
+  - path: registry/items/components/item/item-header.svelte
+    type: registry:ui
+    target: "~/components/item/item-header.svelte"
+  - path: registry/items/components/item/item-footer.svelte
+    type: registry:ui
+    target: "~/components/item/item-footer.svelte"
+  - path: registry/items/components/item/item-content.svelte
+    type: registry:ui
+    target: "~/components/item/item-content.svelte"
+  - path: registry/items/components/item/item-title.svelte
+    type: registry:ui
+    target: "~/components/item/item-title.svelte"
+  - path: registry/items/components/item/item-description.svelte
+    type: registry:ui
+    target: "~/components/item/item-description.svelte"
+  - path: registry/items/components/item/item-actions.svelte
+    type: registry:ui
+    target: "~/components/item/item-actions.svelte"
+  - path: registry/items/components/item/item-media.svelte
+    type: registry:ui
+    target: "~/components/item/item-media.svelte"
+  - path: registry/items/components/item/item-media.variants.ts
+    type: registry:ui
+    target: "~/components/item/item-media.variants.ts"
+---
+
+Use item for flexible content rows with title, description, media, and actions. Group rows with
+`Item.Group` and `Item.Separator`. Render as a link via the `child` snippet. Set `variant` and `size`
+on `Item.Root`.
+
+```svelte
+<script lang="ts">
+	import * as Item from '~/components/item';
+	import { Button } from '~/components/button';
+</script>
+
+<Item.Root variant="outline">
+	<Item.Content>
+		<Item.Title>Basic Item</Item.Title>
+		<Item.Description>A simple item with title and description.</Item.Description>
+	</Item.Content>
+	<Item.Actions>
+		<Button variant="outline" size="sm">Action</Button>
+	</Item.Actions>
+</Item.Root>
+```

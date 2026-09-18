@@ -1,0 +1,44 @@
+---
+name: sonner
+type: registry:ui
+title: Sonner
+description: An opinionated toast component for Svelte, themed to match the design system.
+dependencies:
+  - svelte-sonner
+  - mode-watcher
+  - "@lucide/svelte"
+files:
+  - path: registry/items/components/sonner/index.ts
+    type: registry:ui
+    target: "~/components/sonner/index.ts"
+  - path: registry/items/components/sonner/sonner.svelte
+    type: registry:ui
+    target: "~/components/sonner/sonner.svelte"
+---
+
+Use sonner for toast notifications. Mount `Toaster` once near the root of your app, then call `toast`
+from `svelte-sonner` anywhere. Theme follows [mode-watcher](https://github.com/svecosystem/mode-watcher);
+status icons come from lucide.
+
+```svelte
+<script lang="ts">
+	import { toast } from 'svelte-sonner';
+	import { Toaster } from '~/components/sonner';
+	import { Button } from '~/components/button';
+</script>
+
+<Toaster />
+<Button
+	variant="outline"
+	onclick={() =>
+		toast('Event has been created', {
+			description: 'Sunday, December 03, 2023 at 9:00 AM',
+			action: {
+				label: 'Undo',
+				onClick: () => console.info('Undo')
+			}
+		})}
+>
+	Show Toast
+</Button>
+```

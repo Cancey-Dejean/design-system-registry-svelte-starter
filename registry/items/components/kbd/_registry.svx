@@ -1,0 +1,30 @@
+---
+name: kbd
+type: registry:ui
+title: Kbd
+description: Used to display textual user input from keyboard.
+files:
+  - path: registry/items/components/kbd/index.ts
+    type: registry:ui
+    target: "~/components/kbd/index.ts"
+  - path: registry/items/components/kbd/kbd.svelte
+    type: registry:ui
+    target: "~/components/kbd/kbd.svelte"
+  - path: registry/items/components/kbd/kbd-group.svelte
+    type: registry:ui
+    target: "~/components/kbd/kbd-group.svelte"
+---
+
+Use kbd to show keyboard shortcuts. Compose keys with `Kbd.Group` and nest `Kbd.Root` for each key.
+
+```svelte
+<script lang="ts">
+	import * as Kbd from '~/components/kbd';
+</script>
+
+<Kbd.Group>
+	<Kbd.Root>Ctrl</Kbd.Root>
+	<span>+</span>
+	<Kbd.Root>B</Kbd.Root>
+</Kbd.Group>
+```

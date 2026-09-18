@@ -21,7 +21,7 @@
 			<Button variant="outline">Import Project</Button>
 		</div>
 	</Empty.Content>
-	<Button variant="link" class="text-muted-foreground" size="sm" href="#/">
+	<Button variant="ghost" class="text-muted-foreground" size="sm" href="#/">
 		Learn More <ArrowUpRightIcon class="inline" />
 	</Button>
 </Empty.Root>

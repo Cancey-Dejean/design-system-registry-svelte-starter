@@ -1,0 +1,30 @@
+---
+name: heading
+type: registry:ui
+title: Heading
+description: A semantic heading that decouples the heading level from its visual size, weight, and tone.
+dependencies:
+  - tailwind-variants
+files:
+  - path: registry/items/components/heading/heading.svelte
+    type: registry:ui
+    target: '~/components/heading/heading.svelte'
+  - path: registry/items/components/heading/heading.types.ts
+    type: registry:ui
+    target: '~/components/heading/heading.types.ts'
+  - path: registry/items/components/heading/heading.variants.ts
+    type: registry:ui
+    target: '~/components/heading/heading.variants.ts'
+---
+
+Pick `level` for document semantics and `size` for the visual scale, so a page can keep a single `h1`
+without being locked into the largest type size.
+
+```svelte
+<script lang="ts">
+	import Heading from '~/components/heading/heading.svelte';
+</script>
+
+<Heading level={1} size="2xl">Design system</Heading>
+<Heading level={2} size="md" tone="muted">Components</Heading>
+```

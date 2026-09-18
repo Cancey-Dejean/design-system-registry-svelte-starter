@@ -1,0 +1,67 @@
+---
+name: table
+type: registry:ui
+title: Table
+description: A responsive table element used as the base for data tables.
+files:
+  - path: registry/items/components/table/index.ts
+    type: registry:ui
+    target: "~/components/table/index.ts"
+  - path: registry/items/components/table/table.svelte
+    type: registry:ui
+    target: "~/components/table/table.svelte"
+  - path: registry/items/components/table/table-header.svelte
+    type: registry:ui
+    target: "~/components/table/table-header.svelte"
+  - path: registry/items/components/table/table-body.svelte
+    type: registry:ui
+    target: "~/components/table/table-body.svelte"
+  - path: registry/items/components/table/table-footer.svelte
+    type: registry:ui
+    target: "~/components/table/table-footer.svelte"
+  - path: registry/items/components/table/table-row.svelte
+    type: registry:ui
+    target: "~/components/table/table-row.svelte"
+  - path: registry/items/components/table/table-head.svelte
+    type: registry:ui
+    target: "~/components/table/table-head.svelte"
+  - path: registry/items/components/table/table-cell.svelte
+    type: registry:ui
+    target: "~/components/table/table-cell.svelte"
+  - path: registry/items/components/table/table-caption.svelte
+    type: registry:ui
+    target: "~/components/table/table-caption.svelte"
+---
+
+Use table primitives for structured tabular data. Compose `Header`, `Body`, `Footer`, `Row`, `Head`,
+`Cell`, and `Caption` around `Root`.
+
+```svelte
+<script lang="ts">
+	import * as Table from '~/components/table';
+</script>
+
+<Table.Root>
+	<Table.Caption>A list of your recent invoices.</Table.Caption>
+	<Table.Header>
+		<Table.Row>
+			<Table.Head class="w-[100px]">Invoice</Table.Head>
+			<Table.Head>Status</Table.Head>
+			<Table.Head class="text-end">Amount</Table.Head>
+		</Table.Row>
+	</Table.Header>
+	<Table.Body>
+		<Table.Row>
+			<Table.Cell class="font-medium">INV001</Table.Cell>
+			<Table.Cell>Paid</Table.Cell>
+			<Table.Cell class="text-end">$250.00</Table.Cell>
+		</Table.Row>
+	</Table.Body>
+	<Table.Footer>
+		<Table.Row>
+			<Table.Cell colspan={2}>Total</Table.Cell>
+			<Table.Cell class="text-end">$250.00</Table.Cell>
+		</Table.Row>
+	</Table.Footer>
+</Table.Root>
+```

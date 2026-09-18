@@ -1,6 +1,6 @@
 <script lang="ts">
 	import ChevronsUpDownIcon from '@lucide/svelte/icons/chevrons-up-down';
-	import { buttonVariants } from '$lib/components/ui/button.variants.js';
+	import { buttonVariants } from '../button/index.js';
 	import * as Collapsible from './index.js';
 </script>
 

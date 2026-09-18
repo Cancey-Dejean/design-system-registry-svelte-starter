@@ -6,7 +6,7 @@
 	import SettingsIcon from '@lucide/svelte/icons/settings';
 	import SmileIcon from '@lucide/svelte/icons/smile';
 	import UserIcon from '@lucide/svelte/icons/user';
-	import { buttonVariants } from '$lib/components/ui/button.variants.js';
+	import { buttonVariants } from '../../button/button.variants.js';
 	import * as Command from '../index.js';
 	import StoryWrapper from '$lib/components/utility/story-wrapper.svelte';
 

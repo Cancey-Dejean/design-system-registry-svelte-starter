@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { buttonVariants } from '$lib/components/ui/button.variants.js';
+	import { buttonVariants } from '../button/button.variants.js';
 	import Button from '../button/button.svelte';
 	import { Input } from '../input/index.js';
 	import * as Dialog from './index.js';

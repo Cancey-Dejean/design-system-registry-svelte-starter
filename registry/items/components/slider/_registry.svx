@@ -1,0 +1,28 @@
+---
+name: slider
+type: registry:ui
+title: Slider
+description: An input where the user selects a value from within a given range.
+dependencies:
+  - bits-ui
+files:
+  - path: registry/items/components/slider/slider.svelte
+    type: registry:ui
+    target: "~/components/slider/slider.svelte"
+  - path: registry/items/components/slider/index.ts
+    type: registry:ui
+    target: "~/components/slider/index.ts"
+---
+
+Use slider for continuous or stepped range selection. Set `type="single"` and bind `value`. Pass
+`max`, `step`, and optionally `orientation="vertical"`.
+
+```svelte
+<script lang="ts">
+	import { Slider } from '~/components/slider';
+
+	let value = $state(33);
+</script>
+
+<Slider type="single" bind:value max={100} step={1} />
+```

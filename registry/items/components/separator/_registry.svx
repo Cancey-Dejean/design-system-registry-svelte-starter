@@ -6,10 +6,10 @@ description: A visual divider between content sections.
 dependencies:
   - bits-ui
 files:
-  - path: index.ts
+  - path: registry/items/components/separator/index.ts
     type: registry:ui
     target: '~/components/separator/index.ts'
-  - path: separator.svelte
+  - path: registry/items/components/separator/separator.svelte
     type: registry:ui
     target: '~/components/separator/separator.svelte'
 ---
@@ -18,7 +18,7 @@ Use separator to divide content. Set `orientation` to `horizontal` (default) or 
 
 ```svelte
 <script lang="ts">
-	import { Separator } from '$lib/components/ui/separator/index.js';
+	import { Separator } from '~/components/separator';
 </script>
 
 <div>

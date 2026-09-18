@@ -9,6 +9,12 @@
 	import { navigationMenuTriggerStyle } from '../navigation-menu-trigger.variants.js';
 	import StoryWrapper from '$lib/components/utility/story-wrapper.svelte';
 
+	type ListItemProps = HTMLAttributes<HTMLAnchorElement> & {
+		title: string;
+		href: string;
+		content: string;
+	};
+
 	const { Story } = defineMeta({
 		title: 'Components/Navigation Menu',
 		decorators: [() => StoryWrapper]
@@ -50,14 +56,6 @@
 				'A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.'
 		}
 	];
-</script>
-
-<script lang="ts">
-	type ListItemProps = HTMLAttributes<HTMLAnchorElement> & {
-		title: string;
-		href: string;
-		content: string;
-	};
 </script>
 
 {#snippet ListItem({ title, content, href, class: className, ...restProps }: ListItemProps)}

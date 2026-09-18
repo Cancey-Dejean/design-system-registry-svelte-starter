@@ -1,0 +1,30 @@
+---
+name: text
+type: registry:ui
+title: Text
+description: A polymorphic body text component with size, weight, tone, and alignment variants.
+dependencies:
+  - tailwind-variants
+files:
+  - path: registry/items/components/text/text.svelte
+    type: registry:ui
+    target: "~/components/text/text.svelte"
+  - path: registry/items/components/text/text.types.ts
+    type: registry:ui
+    target: "~/components/text/text.types.ts"
+  - path: registry/items/components/text/text.variants.ts
+    type: registry:ui
+    target: "~/components/text/text.variants.ts"
+---
+
+Use text for paragraphs, captions, and inline copy. It renders a `p` by default; `as` switches the
+element without changing the typographic styling. Set `size`, `weight`, `tone`, and `align` to style it.
+
+```svelte
+<script lang="ts">
+	import Text from '~/components/text/text.svelte';
+</script>
+
+<Text size="lg">The quick brown fox jumps over the lazy dog.</Text>
+<Text as="span" size="sm" tone="muted">Last updated 2 hours ago</Text>
+```

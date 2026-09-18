@@ -1,0 +1,79 @@
+---
+name: context-menu
+type: registry:ui
+title: Context Menu
+description: Displays a menu to the user — such as a set of actions or functions — triggered by right click.
+dependencies:
+  - bits-ui
+files:
+  - path: registry/items/components/context-menu/index.ts
+    type: registry:ui
+    target: '~/components/context-menu/index.ts'
+  - path: registry/items/components/context-menu/context-menu.svelte
+    type: registry:ui
+    target: '~/components/context-menu/context-menu.svelte'
+  - path: registry/items/components/context-menu/context-menu-trigger.svelte
+    type: registry:ui
+    target: '~/components/context-menu/context-menu-trigger.svelte'
+  - path: registry/items/components/context-menu/context-menu-portal.svelte
+    type: registry:ui
+    target: '~/components/context-menu/context-menu-portal.svelte'
+  - path: registry/items/components/context-menu/context-menu-content.svelte
+    type: registry:ui
+    target: '~/components/context-menu/context-menu-content.svelte'
+  - path: registry/items/components/context-menu/context-menu-item.svelte
+    type: registry:ui
+    target: '~/components/context-menu/context-menu-item.svelte'
+  - path: registry/items/components/context-menu/context-menu-checkbox-item.svelte
+    type: registry:ui
+    target: '~/components/context-menu/context-menu-checkbox-item.svelte'
+  - path: registry/items/components/context-menu/context-menu-radio-group.svelte
+    type: registry:ui
+    target: '~/components/context-menu/context-menu-radio-group.svelte'
+  - path: registry/items/components/context-menu/context-menu-radio-item.svelte
+    type: registry:ui
+    target: '~/components/context-menu/context-menu-radio-item.svelte'
+  - path: registry/items/components/context-menu/context-menu-group.svelte
+    type: registry:ui
+    target: '~/components/context-menu/context-menu-group.svelte'
+  - path: registry/items/components/context-menu/context-menu-group-heading.svelte
+    type: registry:ui
+    target: '~/components/context-menu/context-menu-group-heading.svelte'
+  - path: registry/items/components/context-menu/context-menu-label.svelte
+    type: registry:ui
+    target: '~/components/context-menu/context-menu-label.svelte'
+  - path: registry/items/components/context-menu/context-menu-separator.svelte
+    type: registry:ui
+    target: '~/components/context-menu/context-menu-separator.svelte'
+  - path: registry/items/components/context-menu/context-menu-shortcut.svelte
+    type: registry:ui
+    target: '~/components/context-menu/context-menu-shortcut.svelte'
+  - path: registry/items/components/context-menu/context-menu-sub.svelte
+    type: registry:ui
+    target: '~/components/context-menu/context-menu-sub.svelte'
+  - path: registry/items/components/context-menu/context-menu-sub-trigger.svelte
+    type: registry:ui
+    target: '~/components/context-menu/context-menu-sub-trigger.svelte'
+  - path: registry/items/components/context-menu/context-menu-sub-content.svelte
+    type: registry:ui
+    target: '~/components/context-menu/context-menu-sub-content.svelte'
+---
+
+Use context menu for actions opened with a right click. Compose trigger, content, items, checkboxes,
+radios, and nested submenus.
+
+```svelte
+<script lang="ts">
+	import * as ContextMenu from '~/components/context-menu';
+</script>
+
+<ContextMenu.Root>
+	<ContextMenu.Trigger>Right click</ContextMenu.Trigger>
+	<ContextMenu.Content>
+		<ContextMenu.Item>Profile</ContextMenu.Item>
+		<ContextMenu.Item>Billing</ContextMenu.Item>
+		<ContextMenu.Item>Team</ContextMenu.Item>
+		<ContextMenu.Item>Subscription</ContextMenu.Item>
+	</ContextMenu.Content>
+</ContextMenu.Root>
+```

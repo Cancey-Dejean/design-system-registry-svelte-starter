@@ -1,0 +1,66 @@
+---
+name: field
+type: registry:ui
+title: Field
+description: Combine labels, controls, and help text to compose accessible form fields and grouped inputs.
+dependencies:
+  - tailwind-variants
+registryDependencies:
+  - label
+  - separator
+files:
+  - path: registry/items/components/field/index.ts
+    type: registry:ui
+    target: '~/components/field/index.ts'
+  - path: registry/items/components/field/field.svelte
+    type: registry:ui
+    target: '~/components/field/field.svelte'
+  - path: registry/items/components/field/field.variants.ts
+    type: registry:ui
+    target: '~/components/field/field.variants.ts'
+  - path: registry/items/components/field/field-set.svelte
+    type: registry:ui
+    target: '~/components/field/field-set.svelte'
+  - path: registry/items/components/field/field-legend.svelte
+    type: registry:ui
+    target: '~/components/field/field-legend.svelte'
+  - path: registry/items/components/field/field-group.svelte
+    type: registry:ui
+    target: '~/components/field/field-group.svelte'
+  - path: registry/items/components/field/field-content.svelte
+    type: registry:ui
+    target: '~/components/field/field-content.svelte'
+  - path: registry/items/components/field/field-label.svelte
+    type: registry:ui
+    target: '~/components/field/field-label.svelte'
+  - path: registry/items/components/field/field-title.svelte
+    type: registry:ui
+    target: '~/components/field/field-title.svelte'
+  - path: registry/items/components/field/field-description.svelte
+    type: registry:ui
+    target: '~/components/field/field-description.svelte'
+  - path: registry/items/components/field/field-separator.svelte
+    type: registry:ui
+    target: '~/components/field/field-separator.svelte'
+  - path: registry/items/components/field/field-error.svelte
+    type: registry:ui
+    target: '~/components/field/field-error.svelte'
+---
+
+Use field to wrap form controls with labels, descriptions, and errors. Compose `Field.Group` and
+`Field.Set` for multi-field layouts. Set `orientation` to `vertical`, `horizontal`, or `responsive`.
+
+```svelte
+<script lang="ts">
+	import * as Field from '~/components/field';
+	import { Input } from '~/components/input';
+</script>
+
+<Field.Group>
+	<Field.Field>
+		<Field.Label for="username">Username</Field.Label>
+		<Input id="username" placeholder="shadcn" />
+		<Field.Description>This is your public display name.</Field.Description>
+	</Field.Field>
+</Field.Group>
+```

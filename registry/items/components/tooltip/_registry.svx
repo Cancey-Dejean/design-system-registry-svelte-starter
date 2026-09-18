@@ -1,0 +1,46 @@
+---
+name: tooltip
+type: registry:ui
+title: Tooltip
+description: A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.
+dependencies:
+  - bits-ui
+files:
+  - path: registry/items/components/tooltip/index.ts
+    type: registry:ui
+    target: "~/components/tooltip/index.ts"
+  - path: registry/items/components/tooltip/tooltip.svelte
+    type: registry:ui
+    target: "~/components/tooltip/tooltip.svelte"
+  - path: registry/items/components/tooltip/tooltip-trigger.svelte
+    type: registry:ui
+    target: "~/components/tooltip/tooltip-trigger.svelte"
+  - path: registry/items/components/tooltip/tooltip-portal.svelte
+    type: registry:ui
+    target: "~/components/tooltip/tooltip-portal.svelte"
+  - path: registry/items/components/tooltip/tooltip-content.svelte
+    type: registry:ui
+    target: "~/components/tooltip/tooltip-content.svelte"
+  - path: registry/items/components/tooltip/tooltip-provider.svelte
+    type: registry:ui
+    target: "~/components/tooltip/tooltip-provider.svelte"
+---
+
+Use tooltip for short contextual hints on hover/focus. Place `Tooltip.Provider` once in your root
+layout (or nest providers for different delay settings). Compose `Root`, `Trigger`, and `Content`.
+
+```svelte
+<script lang="ts">
+	import { buttonVariants } from '~/components/button';
+	import * as Tooltip from '~/components/tooltip';
+</script>
+
+<Tooltip.Provider>
+	<Tooltip.Root>
+		<Tooltip.Trigger class={buttonVariants({ variant: 'outline' })}>Hover</Tooltip.Trigger>
+		<Tooltip.Content>
+			<p>Add to library</p>
+		</Tooltip.Content>
+	</Tooltip.Root>
+</Tooltip.Provider>
+```

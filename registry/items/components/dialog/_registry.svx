@@ -1,0 +1,76 @@
+---
+name: dialog
+type: registry:ui
+title: Dialog
+description: A modal dialog that interrupts the user with important content.
+dependencies:
+  - bits-ui
+  - '@lucide/svelte'
+registryDependencies:
+  - button
+files:
+  - path: registry/items/components/dialog/index.ts
+    type: registry:ui
+    target: '~/components/dialog/index.ts'
+  - path: registry/items/components/dialog/dialog.svelte
+    type: registry:ui
+    target: '~/components/dialog/dialog.svelte'
+  - path: registry/items/components/dialog/dialog-trigger.svelte
+    type: registry:ui
+    target: '~/components/dialog/dialog-trigger.svelte'
+  - path: registry/items/components/dialog/dialog-portal.svelte
+    type: registry:ui
+    target: '~/components/dialog/dialog-portal.svelte'
+  - path: registry/items/components/dialog/dialog-overlay.svelte
+    type: registry:ui
+    target: '~/components/dialog/dialog-overlay.svelte'
+  - path: registry/items/components/dialog/dialog-content.svelte
+    type: registry:ui
+    target: '~/components/dialog/dialog-content.svelte'
+  - path: registry/items/components/dialog/dialog-header.svelte
+    type: registry:ui
+    target: '~/components/dialog/dialog-header.svelte'
+  - path: registry/items/components/dialog/dialog-footer.svelte
+    type: registry:ui
+    target: '~/components/dialog/dialog-footer.svelte'
+  - path: registry/items/components/dialog/dialog-title.svelte
+    type: registry:ui
+    target: '~/components/dialog/dialog-title.svelte'
+  - path: registry/items/components/dialog/dialog-description.svelte
+    type: registry:ui
+    target: '~/components/dialog/dialog-description.svelte'
+  - path: registry/items/components/dialog/dialog-close.svelte
+    type: registry:ui
+    target: '~/components/dialog/dialog-close.svelte'
+---
+
+Use dialog for modal confirmation and focused tasks. Compose with trigger, content, header, and footer.
+
+```svelte
+<script lang="ts">
+	import * as Dialog from '~/components/dialog';
+	import { Button, buttonVariants } from '~/components/button';
+</script>
+
+<Dialog.Root>
+	<form>
+		<Dialog.Trigger type="button" class={buttonVariants({ variant: 'outline' })}>
+			Open Dialog
+		</Dialog.Trigger>
+		<Dialog.Content class="sm:max-w-[425px]">
+			<Dialog.Header>
+				<Dialog.Title>Edit profile</Dialog.Title>
+				<Dialog.Description>
+					Make changes to your profile here. Click save when you're done.
+				</Dialog.Description>
+			</Dialog.Header>
+			<Dialog.Footer>
+				<Dialog.Close type="button" class={buttonVariants({ variant: 'outline' })}>
+					Cancel
+				</Dialog.Close>
+				<Button type="submit">Save changes</Button>
+			</Dialog.Footer>
+		</Dialog.Content>
+	</form>
+</Dialog.Root>
+```

@@ -1,0 +1,90 @@
+---
+name: menubar
+type: registry:ui
+title: Menubar
+description: A visually persistent menu common in desktop applications that provides quick access to a consistent set of commands.
+dependencies:
+  - bits-ui
+  - "@lucide/svelte"
+files:
+  - path: registry/items/components/menubar/index.ts
+    type: registry:ui
+    target: "~/components/menubar/index.ts"
+  - path: registry/items/components/menubar/menubar.svelte
+    type: registry:ui
+    target: "~/components/menubar/menubar.svelte"
+  - path: registry/items/components/menubar/menubar-menu.svelte
+    type: registry:ui
+    target: "~/components/menubar/menubar-menu.svelte"
+  - path: registry/items/components/menubar/menubar-trigger.svelte
+    type: registry:ui
+    target: "~/components/menubar/menubar-trigger.svelte"
+  - path: registry/items/components/menubar/menubar-portal.svelte
+    type: registry:ui
+    target: "~/components/menubar/menubar-portal.svelte"
+  - path: registry/items/components/menubar/menubar-content.svelte
+    type: registry:ui
+    target: "~/components/menubar/menubar-content.svelte"
+  - path: registry/items/components/menubar/menubar-item.svelte
+    type: registry:ui
+    target: "~/components/menubar/menubar-item.svelte"
+  - path: registry/items/components/menubar/menubar-checkbox-item.svelte
+    type: registry:ui
+    target: "~/components/menubar/menubar-checkbox-item.svelte"
+  - path: registry/items/components/menubar/menubar-radio-group.svelte
+    type: registry:ui
+    target: "~/components/menubar/menubar-radio-group.svelte"
+  - path: registry/items/components/menubar/menubar-radio-item.svelte
+    type: registry:ui
+    target: "~/components/menubar/menubar-radio-item.svelte"
+  - path: registry/items/components/menubar/menubar-label.svelte
+    type: registry:ui
+    target: "~/components/menubar/menubar-label.svelte"
+  - path: registry/items/components/menubar/menubar-separator.svelte
+    type: registry:ui
+    target: "~/components/menubar/menubar-separator.svelte"
+  - path: registry/items/components/menubar/menubar-shortcut.svelte
+    type: registry:ui
+    target: "~/components/menubar/menubar-shortcut.svelte"
+  - path: registry/items/components/menubar/menubar-group.svelte
+    type: registry:ui
+    target: "~/components/menubar/menubar-group.svelte"
+  - path: registry/items/components/menubar/menubar-group-heading.svelte
+    type: registry:ui
+    target: "~/components/menubar/menubar-group-heading.svelte"
+  - path: registry/items/components/menubar/menubar-sub.svelte
+    type: registry:ui
+    target: "~/components/menubar/menubar-sub.svelte"
+  - path: registry/items/components/menubar/menubar-sub-trigger.svelte
+    type: registry:ui
+    target: "~/components/menubar/menubar-sub-trigger.svelte"
+  - path: registry/items/components/menubar/menubar-sub-content.svelte
+    type: registry:ui
+    target: "~/components/menubar/menubar-sub-content.svelte"
+---
+
+Use menubar for persistent top-level app menus. Compose `Menu` + `Trigger` + `Content` with items,
+checkboxes, radios, shortcuts, and nested `Sub` menus.
+
+```svelte
+<script lang="ts">
+	import * as Menubar from '~/components/menubar';
+</script>
+
+<Menubar.Root>
+	<Menubar.Menu>
+		<Menubar.Trigger>File</Menubar.Trigger>
+		<Menubar.Content>
+			<Menubar.Item>
+				New Tab
+				<Menubar.Shortcut>⌘T</Menubar.Shortcut>
+			</Menubar.Item>
+			<Menubar.Item>New Window</Menubar.Item>
+			<Menubar.Separator />
+			<Menubar.Item>Share</Menubar.Item>
+			<Menubar.Separator />
+			<Menubar.Item>Print</Menubar.Item>
+		</Menubar.Content>
+	</Menubar.Menu>
+</Menubar.Root>
+```

@@ -1,0 +1,42 @@
+---
+name: data-table
+type: registry:ui
+title: Data Table
+description: Powerful tables and datagrids built with TanStack Table and the Table primitives.
+dependencies:
+  - '@tanstack/svelte-table'
+  - '@lucide/svelte'
+registryDependencies:
+  - table
+  - dropdown-menu
+  - button
+  - checkbox
+  - input
+files:
+  - path: registry/items/components/data-table/data-table.svelte
+    type: registry:ui
+    target: '~/components/data-table/data-table.svelte'
+  - path: registry/items/components/data-table/data-table-actions.svelte
+    type: registry:ui
+    target: '~/components/data-table/data-table-actions.svelte'
+  - path: registry/items/components/data-table/data-table-checkbox.svelte
+    type: registry:ui
+    target: '~/components/data-table/data-table-checkbox.svelte'
+  - path: registry/items/components/data-table/data-table-email-button.svelte
+    type: registry:ui
+    target: '~/components/data-table/data-table-email-button.svelte'
+---
+
+Data tables vary by dataset, so this item ships a full payments example (filtering, sorting,
+pagination, column visibility, row selection, and row actions) you can adapt.
+
+Requires TanStack Table **v9** (`@tanstack/svelte-table`) and the **table**, **dropdown-menu**,
+**button**, **checkbox**, and **input** registry items.
+
+```svelte
+<script lang="ts">
+	import DataTable from '~/components/data-table/data-table.svelte';
+</script>
+
+<DataTable />
+```

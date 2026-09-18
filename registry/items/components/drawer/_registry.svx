@@ -1,0 +1,71 @@
+---
+name: drawer
+type: registry:ui
+title: Drawer
+description: A drawer component for Svelte, built on Vaul Svelte.
+dependencies:
+  - vaul-svelte
+registryDependencies:
+  - button
+files:
+  - path: registry/items/components/drawer/index.ts
+    type: registry:ui
+    target: '~/components/drawer/index.ts'
+  - path: registry/items/components/drawer/drawer.svelte
+    type: registry:ui
+    target: '~/components/drawer/drawer.svelte'
+  - path: registry/items/components/drawer/drawer-trigger.svelte
+    type: registry:ui
+    target: '~/components/drawer/drawer-trigger.svelte'
+  - path: registry/items/components/drawer/drawer-portal.svelte
+    type: registry:ui
+    target: '~/components/drawer/drawer-portal.svelte'
+  - path: registry/items/components/drawer/drawer-overlay.svelte
+    type: registry:ui
+    target: '~/components/drawer/drawer-overlay.svelte'
+  - path: registry/items/components/drawer/drawer-content.svelte
+    type: registry:ui
+    target: '~/components/drawer/drawer-content.svelte'
+  - path: registry/items/components/drawer/drawer-header.svelte
+    type: registry:ui
+    target: '~/components/drawer/drawer-header.svelte'
+  - path: registry/items/components/drawer/drawer-footer.svelte
+    type: registry:ui
+    target: '~/components/drawer/drawer-footer.svelte'
+  - path: registry/items/components/drawer/drawer-title.svelte
+    type: registry:ui
+    target: '~/components/drawer/drawer-title.svelte'
+  - path: registry/items/components/drawer/drawer-description.svelte
+    type: registry:ui
+    target: '~/components/drawer/drawer-description.svelte'
+  - path: registry/items/components/drawer/drawer-close.svelte
+    type: registry:ui
+    target: '~/components/drawer/drawer-close.svelte'
+  - path: registry/items/components/drawer/drawer-nested.svelte
+    type: registry:ui
+    target: '~/components/drawer/drawer-nested.svelte'
+---
+
+Use drawer for bottom (or edge) panels on mobile and secondary flows. Compose with trigger,
+content, header, and footer. Set `direction` on `Drawer.Root` to `top`, `right`, `bottom`, or `left`.
+
+```svelte
+<script lang="ts">
+	import * as Drawer from '~/components/drawer';
+	import { Button, buttonVariants } from '~/components/button';
+</script>
+
+<Drawer.Root>
+	<Drawer.Trigger class={buttonVariants({ variant: 'outline' })}>Open</Drawer.Trigger>
+	<Drawer.Content>
+		<Drawer.Header>
+			<Drawer.Title>Are you absolutely sure?</Drawer.Title>
+			<Drawer.Description>This action cannot be undone.</Drawer.Description>
+		</Drawer.Header>
+		<Drawer.Footer>
+			<Button>Submit</Button>
+			<Drawer.Close class={buttonVariants({ variant: 'outline' })}>Cancel</Drawer.Close>
+		</Drawer.Footer>
+	</Drawer.Content>
+</Drawer.Root>
+```

@@ -1,0 +1,53 @@
+---
+name: card
+type: registry:ui
+title: Card
+description: Displays a card with header, content, and footer.
+files:
+  - path: registry/items/components/card/index.ts
+    type: registry:ui
+    target: '~/components/card/index.ts'
+  - path: registry/items/components/card/card.svelte
+    type: registry:ui
+    target: '~/components/card/card.svelte'
+  - path: registry/items/components/card/card-header.svelte
+    type: registry:ui
+    target: '~/components/card/card-header.svelte'
+  - path: registry/items/components/card/card-title.svelte
+    type: registry:ui
+    target: '~/components/card/card-title.svelte'
+  - path: registry/items/components/card/card-description.svelte
+    type: registry:ui
+    target: '~/components/card/card-description.svelte'
+  - path: registry/items/components/card/card-action.svelte
+    type: registry:ui
+    target: '~/components/card/card-action.svelte'
+  - path: registry/items/components/card/card-content.svelte
+    type: registry:ui
+    target: '~/components/card/card-content.svelte'
+  - path: registry/items/components/card/card-footer.svelte
+    type: registry:ui
+    target: '~/components/card/card-footer.svelte'
+---
+
+Use card to group related content. Compose with `Card.Header`, `Card.Content`, and `Card.Footer`.
+Set `size` to `default` or `sm`. Place header actions in `Card.Action`.
+
+```svelte
+<script lang="ts">
+	import * as Card from '~/components/card';
+</script>
+
+<Card.Root class="w-full max-w-sm">
+	<Card.Header>
+		<Card.Title>Card Title</Card.Title>
+		<Card.Description>Card Description</Card.Description>
+	</Card.Header>
+	<Card.Content>
+		<p>Card Content</p>
+	</Card.Content>
+	<Card.Footer>
+		<p>Card Footer</p>
+	</Card.Footer>
+</Card.Root>
+```

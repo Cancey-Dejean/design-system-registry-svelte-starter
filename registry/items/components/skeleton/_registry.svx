@@ -1,0 +1,30 @@
+---
+name: skeleton
+type: registry:ui
+title: Skeleton
+description: Use to show a placeholder while content is loading.
+files:
+  - path: registry/items/components/skeleton/skeleton.svelte
+    type: registry:ui
+    target: "~/components/skeleton/skeleton.svelte"
+  - path: registry/items/components/skeleton/index.ts
+    type: registry:ui
+    target: "~/components/skeleton/index.ts"
+---
+
+Use skeleton as a loading placeholder for content that has not arrived yet. Size and shape with
+utility classes (`h-*`, `w-*`, `rounded-*`).
+
+```svelte
+<script lang="ts">
+	import { Skeleton } from '~/components/skeleton';
+</script>
+
+<div class="flex items-center space-x-4">
+	<Skeleton class="size-12 rounded-full" />
+	<div class="space-y-2">
+		<Skeleton class="h-4 w-[250px]" />
+		<Skeleton class="h-4 w-[200px]" />
+	</div>
+</div>
+```

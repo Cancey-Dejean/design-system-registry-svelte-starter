@@ -1,0 +1,38 @@
+---
+name: native-select
+type: registry:ui
+title: Native Select
+description: A styled native HTML select element with consistent design system integration.
+dependencies:
+  - "@lucide/svelte"
+files:
+  - path: registry/items/components/native-select/index.ts
+    type: registry:ui
+    target: "~/components/native-select/index.ts"
+  - path: registry/items/components/native-select/native-select.svelte
+    type: registry:ui
+    target: "~/components/native-select/native-select.svelte"
+  - path: registry/items/components/native-select/native-select-option.svelte
+    type: registry:ui
+    target: "~/components/native-select/native-select-option.svelte"
+  - path: registry/items/components/native-select/native-select-opt-group.svelte
+    type: registry:ui
+    target: "~/components/native-select/native-select-opt-group.svelte"
+---
+
+Use native-select when you want browser-native dropdown behavior with design system styling. Prefer
+custom Select for rich animated menus. Compose `Root` with `Option` and optional `OptGroup`.
+
+```svelte
+<script lang="ts">
+	import * as NativeSelect from '~/components/native-select';
+</script>
+
+<NativeSelect.Root>
+	<NativeSelect.Option value="">Select status</NativeSelect.Option>
+	<NativeSelect.Option value="todo">Todo</NativeSelect.Option>
+	<NativeSelect.Option value="in-progress">In Progress</NativeSelect.Option>
+	<NativeSelect.Option value="done">Done</NativeSelect.Option>
+	<NativeSelect.Option value="cancelled">Cancelled</NativeSelect.Option>
+</NativeSelect.Root>
+```

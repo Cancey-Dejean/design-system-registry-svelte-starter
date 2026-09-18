@@ -1,0 +1,41 @@
+---
+name: resizable
+type: registry:ui
+title: Resizable
+description: Accessible resizable panel groups and layouts with keyboard support.
+dependencies:
+  - paneforge
+files:
+  - path: registry/items/components/resizable/resizable-pane-group.svelte
+    type: registry:ui
+    target: "~/components/resizable/resizable-pane-group.svelte"
+  - path: registry/items/components/resizable/resizable-handle.svelte
+    type: registry:ui
+    target: "~/components/resizable/resizable-handle.svelte"
+  - path: registry/items/components/resizable/index.ts
+    type: registry:ui
+    target: "~/components/resizable/index.ts"
+---
+
+Use resizable for split layouts. Built on PaneForge. Compose `PaneGroup` + `Pane` + `Handle`. Set
+`direction` to `horizontal` or `vertical`. Pass `withHandle` on `Handle` for a visible grip.
+
+```svelte
+<script lang="ts">
+	import * as Resizable from '~/components/resizable';
+</script>
+
+<Resizable.PaneGroup direction="horizontal" class="max-w-md rounded-lg border">
+	<Resizable.Pane defaultSize={50}>
+		<div class="flex h-[200px] items-center justify-center p-6">
+			<span class="font-semibold">One</span>
+		</div>
+	</Resizable.Pane>
+	<Resizable.Handle withHandle />
+	<Resizable.Pane defaultSize={50}>
+		<div class="flex h-[200px] items-center justify-center p-6">
+			<span class="font-semibold">Two</span>
+		</div>
+	</Resizable.Pane>
+</Resizable.PaneGroup>
+```

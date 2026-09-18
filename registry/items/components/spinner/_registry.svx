@@ -1,0 +1,29 @@
+---
+name: spinner
+type: registry:ui
+title: Spinner
+description: A loading indicator that spins an icon with accessible status semantics.
+dependencies:
+  - "@lucide/svelte"
+files:
+  - path: registry/items/components/spinner/spinner.svelte
+    type: registry:ui
+    target: "~/components/spinner/spinner.svelte"
+  - path: registry/items/components/spinner/spinner.types.ts
+    type: registry:ui
+    target: "~/components/spinner/spinner.types.ts"
+---
+
+Use the spinner to show that a section or action is loading. Pass `class` to change size or color.
+
+```svelte
+<script lang="ts">
+	import Spinner from '~/components/spinner/spinner.svelte';
+</script>
+
+<div class="flex items-center gap-4">
+	<Spinner />
+	<Spinner class="size-5" />
+	<Spinner class="size-6 text-muted-foreground" />
+</div>
+```

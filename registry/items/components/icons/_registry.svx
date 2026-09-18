@@ -1,0 +1,61 @@
+---
+name: icons
+type: registry:ui
+title: Icons
+description: A typed icon component with size variants, Lucide icons, and a custom icon set.
+dependencies:
+  - tailwind-variants
+  - '@lucide/svelte'
+files:
+  - path: registry/items/components/icons/index.ts
+    type: registry:ui
+    target: '~/components/icons/index.ts'
+  - path: registry/items/components/icons/icons.ts
+    type: registry:ui
+    target: '~/components/icons/icons.ts'
+  - path: registry/items/components/icons/icon/icon.svelte
+    type: registry:ui
+    target: '~/components/icons/icon/icon.svelte'
+  - path: registry/items/components/icons/icon/icon.types.ts
+    type: registry:ui
+    target: '~/components/icons/icon/icon.types.ts'
+  - path: registry/items/components/icons/icon/icon.variants.ts
+    type: registry:ui
+    target: '~/components/icons/icon/icon.variants.ts'
+  - path: registry/items/components/icons/icon-grid.svelte
+    type: registry:ui
+    target: '~/components/icons/icon-grid.svelte'
+  - path: registry/items/components/icons/icon-gallery.svelte
+    type: registry:ui
+    target: '~/components/icons/icon-gallery.svelte'
+  - path: registry/items/components/icons/icon-set/types.ts
+    type: registry:ui
+    target: '~/components/icons/icon-set/types.ts'
+  - path: registry/items/components/icons/icon-set/nav-arrow.svelte
+    type: registry:ui
+    target: '~/components/icons/icon-set/nav-arrow.svelte'
+  - path: registry/items/components/icons/icon-set/x-circle-solid.svelte
+    type: registry:ui
+    target: '~/components/icons/icon-set/x-circle-solid.svelte'
+  - path: registry/items/components/icons/icon-set/cloud.svelte
+    type: registry:ui
+    target: '~/components/icons/icon-set/cloud.svelte'
+  - path: registry/items/components/icons/icon-set/key-rounded.svelte
+    type: registry:ui
+    target: '~/components/icons/icon-set/key-rounded.svelte'
+  - path: registry/items/components/icons/icon-set/mail-rounded.svelte
+    type: registry:ui
+    target: '~/components/icons/icon-set/mail-rounded.svelte'
+---
+
+Use `Icon` with a typed `icon` key and optional `size`. Browse the whole set with `IconGallery`, or
+import individual SVGs from `icon-set` directly.
+
+```svelte
+<script lang="ts">
+	import { Icon } from '~/components/icons';
+</script>
+
+<Icon icon="chevron-right" size="md" />
+<Icon icon="shopping-cart" size="lg" />
+```

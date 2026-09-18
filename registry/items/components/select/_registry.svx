@@ -1,0 +1,83 @@
+---
+name: select
+type: registry:ui
+title: Select
+description: Displays a list of options for the user to pick from—triggered by a button.
+dependencies:
+  - bits-ui
+  - "@lucide/svelte"
+registryDependencies:
+  - separator
+files:
+  - path: registry/items/components/select/select.svelte
+    type: registry:ui
+    target: "~/components/select/select.svelte"
+  - path: registry/items/components/select/select-trigger.svelte
+    type: registry:ui
+    target: "~/components/select/select-trigger.svelte"
+  - path: registry/items/components/select/select-portal.svelte
+    type: registry:ui
+    target: "~/components/select/select-portal.svelte"
+  - path: registry/items/components/select/select-content.svelte
+    type: registry:ui
+    target: "~/components/select/select-content.svelte"
+  - path: registry/items/components/select/select-item.svelte
+    type: registry:ui
+    target: "~/components/select/select-item.svelte"
+  - path: registry/items/components/select/select-group.svelte
+    type: registry:ui
+    target: "~/components/select/select-group.svelte"
+  - path: registry/items/components/select/select-group-heading.svelte
+    type: registry:ui
+    target: "~/components/select/select-group-heading.svelte"
+  - path: registry/items/components/select/select-label.svelte
+    type: registry:ui
+    target: "~/components/select/select-label.svelte"
+  - path: registry/items/components/select/select-separator.svelte
+    type: registry:ui
+    target: "~/components/select/select-separator.svelte"
+  - path: registry/items/components/select/select-scroll-up-button.svelte
+    type: registry:ui
+    target: "~/components/select/select-scroll-up-button.svelte"
+  - path: registry/items/components/select/select-scroll-down-button.svelte
+    type: registry:ui
+    target: "~/components/select/select-scroll-down-button.svelte"
+  - path: registry/items/components/select/index.ts
+    type: registry:ui
+    target: "~/components/select/index.ts"
+---
+
+Use select for picking one option from a custom popover list (not native HTML select). Set
+`type="single"` and bind `value`. Compose `Trigger`, `Content`, `Group`, `Label`, and `Item`.
+
+```svelte
+<script lang="ts">
+	import * as Select from '~/components/select';
+
+	const fruits = [
+		{ value: 'apple', label: 'Apple' },
+		{ value: 'banana', label: 'Banana' },
+		{ value: 'blueberry', label: 'Blueberry' }
+	];
+
+	let value = $state('');
+
+	const triggerContent = $derived(fruits.find((f) => f.value === value)?.label ?? 'Select a fruit');
+</script>
+
+<Select.Root type="single" name="favoriteFruit" bind:value>
+	<Select.Trigger class="w-[180px]">
+		{triggerContent}
+	</Select.Trigger>
+	<Select.Content>
+		<Select.Group>
+			<Select.Label>Fruits</Select.Label>
+			{#each fruits as fruit (fruit.value)}
+				<Select.Item value={fruit.value} label={fruit.label}>
+					{fruit.label}
+				</Select.Item>
+			{/each}
+		</Select.Group>
+	</Select.Content>
+</Select.Root>
+```

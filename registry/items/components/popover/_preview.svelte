@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { buttonVariants } from '$lib/components/ui/button.variants.js';
+	import { buttonVariants } from '../button/button.variants.js';
 	import * as Popover from './index.js';
 </script>
 

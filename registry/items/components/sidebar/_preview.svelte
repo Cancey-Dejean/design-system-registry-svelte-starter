@@ -15,8 +15,43 @@
 	];
 </script>
 
-<p>
-	See Storybook for examples. Click here to see the <a href="#" target="_blank"
-		>Sidebar documentation</a
-	>.
-</p>
+<div class="w-full max-w-4xl">
+	<Sidebar.Provider class="min-h-[360px] overflow-hidden rounded-lg border">
+		<Sidebar.Root>
+			<Sidebar.Header>
+				<span class="px-2 text-sm font-semibold">Acme Inc</span>
+			</Sidebar.Header>
+			<Sidebar.Content>
+				<Sidebar.Group>
+					<Sidebar.GroupLabel>Application</Sidebar.GroupLabel>
+					<Sidebar.GroupContent>
+						<Sidebar.Menu>
+							{#each items as item (item.title)}
+								<Sidebar.MenuItem>
+									<Sidebar.MenuButton tooltipContent={item.title}>
+										{#snippet child({ props })}
+											<a href={item.url} {...props}>
+												<item.icon />
+												<span>{item.title}</span>
+											</a>
+										{/snippet}
+									</Sidebar.MenuButton>
+								</Sidebar.MenuItem>
+							{/each}
+						</Sidebar.Menu>
+					</Sidebar.GroupContent>
+				</Sidebar.Group>
+			</Sidebar.Content>
+			<Sidebar.Footer>
+				<span class="px-2 text-xs text-muted-foreground">v1.0.0</span>
+			</Sidebar.Footer>
+		</Sidebar.Root>
+		<Sidebar.Inset>
+			<header class="flex h-12 items-center gap-2 border-b px-4">
+				<Sidebar.Trigger />
+				<span class="text-sm font-medium">Dashboard</span>
+			</header>
+			<div class="p-4 text-sm text-muted-foreground">Main content area</div>
+		</Sidebar.Inset>
+	</Sidebar.Provider>
+</div>

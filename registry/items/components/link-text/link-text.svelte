@@ -10,7 +10,6 @@
 		underline = 'hover',
 		size = 'md',
 		external = false,
-		href,
 		ref = $bindable(null),
 		children,
 		...restProps
@@ -21,7 +20,6 @@
 	this={as}
 	bind:this={ref}
 	data-slot="link"
-	{href}
 	target={external ? '_blank' : undefined}
 	rel={external ? 'noopener noreferrer' : undefined}
 	class={cn(linkTextVariants({ tone, underline, size }), className)}

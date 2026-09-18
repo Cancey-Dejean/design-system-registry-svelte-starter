@@ -18,8 +18,16 @@
   },
   "dependencies": {
     "@orama/orama": "^3.1.18",
+    "@tanstack/svelte-table": "^9.2.4",
+    "chrono-node": "^2.10.1",
+    "embla-carousel-svelte": "^8.6.0",
     "github-slugger": "^2.0.0",
-    "shiki": "^4.4.3"
+    "layerchart": "^2.5.0",
+    "mode-watcher": "^1.1.0",
+    "paneforge": "^1.0.2",
+    "shiki": "^4.4.3",
+    "svelte-sonner": "^1.2.1",
+    "vaul-svelte": "1.0.0-next.7"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "latest",
@@ -38,6 +46,7 @@
     "@sveltejs/vite-plugin-svelte": "^7.1.2",
     "@tailwindcss/typography": "^0.5.19",
     "@tailwindcss/vite": "^4.3.3",
+    "@types/d3-scale": "^4.0.9",
     "@types/node": "^24",
     "@vitest/browser-playwright": "4.1.11",
     "@vitest/coverage-v8": "4.1.11",

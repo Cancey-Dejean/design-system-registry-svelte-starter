@@ -3,7 +3,7 @@
 	import MinusIcon from '@lucide/svelte/icons/minus';
 	import PlusIcon from '@lucide/svelte/icons/plus';
 	import { MediaQuery } from 'svelte/reactivity';
-	import { buttonVariants } from '$lib/components/ui/button.variants.js';
+	import { buttonVariants } from '../../button/button.variants.js';
 	import { cn } from '$lib/utils.js';
 	import Button from '../../button/button.svelte';
 	import * as Dialog from '../../dialog/index.js';

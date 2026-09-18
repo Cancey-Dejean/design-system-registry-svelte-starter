@@ -1,0 +1,47 @@
+---
+name: hover-card
+type: registry:ui
+title: Hover Card
+description: For sighted users to preview content available behind a link.
+dependencies:
+  - bits-ui
+files:
+  - path: registry/items/components/hover-card/index.ts
+    type: registry:ui
+    target: '~/components/hover-card/index.ts'
+  - path: registry/items/components/hover-card/hover-card.svelte
+    type: registry:ui
+    target: '~/components/hover-card/hover-card.svelte'
+  - path: registry/items/components/hover-card/hover-card-trigger.svelte
+    type: registry:ui
+    target: '~/components/hover-card/hover-card-trigger.svelte'
+  - path: registry/items/components/hover-card/hover-card-portal.svelte
+    type: registry:ui
+    target: '~/components/hover-card/hover-card-portal.svelte'
+  - path: registry/items/components/hover-card/hover-card-content.svelte
+    type: registry:ui
+    target: '~/components/hover-card/hover-card-content.svelte'
+---
+
+Use hover-card to preview linked content on hover. Built on bits-ui's LinkPreview primitive.
+Compose `Root`, `Trigger`, and `Content`.
+
+```svelte
+<script lang="ts">
+	import * as HoverCard from '~/components/hover-card';
+</script>
+
+<HoverCard.Root>
+	<HoverCard.Trigger
+		href="https://github.com/sveltejs"
+		target="_blank"
+		rel="noreferrer noopener"
+		class="underline-offset-4 hover:underline"
+	>
+		@sveltejs
+	</HoverCard.Trigger>
+	<HoverCard.Content class="w-80">
+		<p class="text-sm">Cybernetically enhanced web apps.</p>
+	</HoverCard.Content>
+</HoverCard.Root>
+```

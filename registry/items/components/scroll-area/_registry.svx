@@ -1,0 +1,42 @@
+---
+name: scroll-area
+type: registry:ui
+title: Scroll Area
+description: Augments native scroll functionality for custom, cross-browser styling.
+dependencies:
+  - bits-ui
+files:
+  - path: registry/items/components/scroll-area/scroll-area.svelte
+    type: registry:ui
+    target: "~/components/scroll-area/scroll-area.svelte"
+  - path: registry/items/components/scroll-area/scroll-area-scrollbar.svelte
+    type: registry:ui
+    target: "~/components/scroll-area/scroll-area-scrollbar.svelte"
+  - path: registry/items/components/scroll-area/index.ts
+    type: registry:ui
+    target: "~/components/scroll-area/index.ts"
+---
+
+Use scroll-area for styled scrolling regions. Set `orientation` to `vertical` (default),
+`horizontal`, or `both`.
+
+```svelte
+<script lang="ts">
+	import { Separator } from '~/components/separator';
+	import { ScrollArea } from '~/components/scroll-area';
+
+	const tags = Array.from({ length: 50 }).map((_, i, a) => `v1.2.0-beta.${a.length - i}`);
+</script>
+
+<ScrollArea class="h-72 w-48 rounded-md border">
+	<div class="p-4">
+		<h4 class="mb-4 text-sm leading-none font-medium">Tags</h4>
+		{#each tags as tag (tag)}
+			<div class="text-sm">
+				{tag}
+			</div>
+			<Separator class="my-2" />
+		{/each}
+	</div>
+</ScrollArea>
+```

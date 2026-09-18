@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { RangeCalendar as RangeCalendarPrimitive } from 'bits-ui';
 	import ChevronRightIcon from '@lucide/svelte/icons/chevron-right';
-	import type { ButtonVariant } from '$lib/components/ui/button.types.js';
-	import { buttonVariants } from '$lib/components/ui/button.variants.js';
+	import type { ButtonVariant } from '../button/button.types.js';
+	import { buttonVariants } from '../button/button.variants.js';
 	import { cn } from '$lib/utils.js';
 
 	let {

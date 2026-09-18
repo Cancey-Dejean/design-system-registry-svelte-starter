@@ -1,5 +1,5 @@
 <script lang="ts">
-  import * as Card from "$lib/components/ui/card/index.js";
+  import * as Card from "$registry/items/components/card/index.js";
   import type { RegistryItemMetadata } from "$lib/registry/catalog";
 
   let {

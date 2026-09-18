@@ -1,6 +1,6 @@
 <script lang="ts">
   import { page } from "$app/state";
-  import * as Breadcrumb from "$lib/components/ui/breadcrumb/index.js";
+  import * as Breadcrumb from "$registry/items/components/breadcrumb/index.js";
   import { isNavItemActive, type SiteNavSection } from "$lib/navigation";
 
   let { sections }: { sections: SiteNavSection[] } = $props();

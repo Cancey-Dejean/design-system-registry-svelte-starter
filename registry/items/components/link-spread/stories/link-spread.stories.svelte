@@ -1,7 +1,8 @@
-<script module>
+<script module lang="ts">
 	import { defineMeta } from '@storybook/addon-svelte-csf';
 	import LinkSpread from '../link-spread.svelte';
 	import StoryWrapper from '$lib/components/utility/story-wrapper.svelte';
+	import type { LinkSpreadProps } from '../link-spread.types';
 
 	const { Story } = defineMeta({
 		title: 'Components/Link Spread',
@@ -34,7 +35,7 @@
 	});
 </script>
 
-{#snippet cardTemplate(args)}
+{#snippet cardTemplate(args: LinkSpreadProps)}
 	<article
 		class="relative w-full max-w-sm rounded-lg border bg-card p-4 text-card-foreground shadow-sm transition-colors hover:bg-muted/40"
 	>

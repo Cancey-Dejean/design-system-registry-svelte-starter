@@ -1,0 +1,29 @@
+---
+name: link-spread
+type: registry:ui
+title: Link Spread
+description: An absolutely positioned anchor that makes an entire container clickable.
+files:
+  - path: registry/items/components/link-spread/link-spread.svelte
+    type: registry:ui
+    target: "~/components/link-spread/link-spread.svelte"
+  - path: registry/items/components/link-spread/link-spread.types.ts
+    type: registry:ui
+    target: "~/components/link-spread/link-spread.types.ts"
+---
+
+Place link spread inside a relatively positioned parent to make the whole card surface clickable
+while keeping the card content visible and accessible. Always pass an `aria-label`, because the
+anchor has no visible text of its own.
+
+```svelte
+<script lang="ts">
+	import LinkSpread from '~/components/link-spread/link-spread.svelte';
+</script>
+
+<article class="relative">
+	<h3>Card title</h3>
+	<p>Card copy</p>
+	<LinkSpread href="/details" aria-label="Open details" />
+</article>
+```

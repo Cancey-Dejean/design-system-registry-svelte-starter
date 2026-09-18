@@ -1,7 +1,7 @@
 <script lang="ts">
 	import MinusIcon from '@lucide/svelte/icons/minus';
 	import PlusIcon from '@lucide/svelte/icons/plus';
-	import { buttonVariants } from '$lib/components/ui/button.variants.js';
+	import { buttonVariants } from '../button/button.variants.js';
 	import Button from '../button/button.svelte';
 	import * as Drawer from './index.js';
 

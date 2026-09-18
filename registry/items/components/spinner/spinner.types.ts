@@ -1,5 +1,3 @@
-import type { HTMLAttributes } from 'svelte/elements';
+import type { LucideProps } from "@lucide/svelte";
 
-export type SpinnerProps = HTMLAttributes<SVGElement> & {
-	class?: HTMLAttributes<SVGElement>['class'];
-};
+export type SpinnerProps = LucideProps;

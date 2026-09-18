@@ -5,22 +5,22 @@ title: Button Group
 description: A container that groups related buttons together with consistent styling.
 dependencies:
   - tailwind-variants
-localRegistryDependencies:
+registryDependencies:
   - separator
 files:
-  - path: index.ts
+  - path: registry/items/components/button-group/index.ts
     type: registry:ui
     target: '~/components/button-group/index.ts'
-  - path: button-group.svelte
+  - path: registry/items/components/button-group/button-group.svelte
     type: registry:ui
     target: '~/components/button-group/button-group.svelte'
-  - path: button-group.variants.ts
+  - path: registry/items/components/button-group/button-group.variants.ts
     type: registry:ui
     target: '~/components/button-group/button-group.variants.ts'
-  - path: button-group-text.svelte
+  - path: registry/items/components/button-group/button-group-text.svelte
     type: registry:ui
     target: '~/components/button-group/button-group-text.svelte'
-  - path: button-group-separator.svelte
+  - path: registry/items/components/button-group/button-group-separator.svelte
     type: registry:ui
     target: '~/components/button-group/button-group-separator.svelte'
 ---
@@ -30,8 +30,8 @@ Pair with `ButtonGroup.Separator` for non-outline button variants.
 
 ```svelte
 <script lang="ts">
-	import * as ButtonGroup from '$lib/components/ui/button-group/index.js';
-	import Button from '$lib/components/ui/button.svelte';
+	import * as ButtonGroup from '~/components/button-group';
+	import { Button } from '~/components/button';
 </script>
 
 <ButtonGroup.Root aria-label="Actions">

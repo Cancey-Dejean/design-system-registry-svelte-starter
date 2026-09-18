@@ -1,6 +1,6 @@
 <script lang="ts">
   import { page } from "$app/state";
-  import * as Collapsible from "$lib/components/ui/collapsible/index.js";
+  import * as Collapsible from "$registry/items/components/collapsible/index.js";
   import * as Sidebar from "$lib/components/ui/sidebar/index.js";
   import ChevronRightIcon from "@lucide/svelte/icons/chevron-right";
   import { isNavItemActive, isNavSectionActive, type SiteNavSection } from "$lib/navigation";

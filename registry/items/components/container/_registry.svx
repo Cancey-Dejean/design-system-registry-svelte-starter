@@ -1,0 +1,31 @@
+---
+name: container
+type: registry:ui
+title: Container
+description: A centered content wrapper with max-width size variants.
+dependencies:
+  - tailwind-variants
+files:
+  - path: registry/items/components/container/container.svelte
+    type: registry:ui
+    target: '~/components/container/container.svelte'
+  - path: registry/items/components/container/container.types.ts
+    type: registry:ui
+    target: '~/components/container/container.types.ts'
+  - path: registry/items/components/container/container.variants.ts
+    type: registry:ui
+    target: '~/components/container/container.variants.ts'
+---
+
+Use the container to constrain page or section content. Set `size` to `base`, `contained`, `thin`,
+or `full`.
+
+```svelte
+<script lang="ts">
+	import Container from '~/components/container/container.svelte';
+</script>
+
+<Container size="thin">
+	<p>Content goes here...</p>
+</Container>
+```

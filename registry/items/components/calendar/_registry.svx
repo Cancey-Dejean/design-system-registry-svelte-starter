@@ -7,66 +7,66 @@ dependencies:
   - bits-ui
   - '@internationalized/date'
   - '@lucide/svelte'
-localRegistryDependencies:
+registryDependencies:
   - button
 files:
-  - path: index.ts
+  - path: registry/items/components/calendar/index.ts
     type: registry:ui
-    target: '@ui/calendar/index.ts'
-  - path: calendar.svelte
+    target: '~/components/calendar/index.ts'
+  - path: registry/items/components/calendar/calendar.svelte
     type: registry:ui
-    target: '@ui/calendar/calendar.svelte'
-  - path: calendar-caption.svelte
+    target: '~/components/calendar/calendar.svelte'
+  - path: registry/items/components/calendar/calendar-caption.svelte
     type: registry:ui
-    target: '@ui/calendar/calendar-caption.svelte'
-  - path: calendar-cell.svelte
+    target: '~/components/calendar/calendar-caption.svelte'
+  - path: registry/items/components/calendar/calendar-cell.svelte
     type: registry:ui
-    target: '@ui/calendar/calendar-cell.svelte'
-  - path: calendar-day.svelte
+    target: '~/components/calendar/calendar-cell.svelte'
+  - path: registry/items/components/calendar/calendar-day.svelte
     type: registry:ui
-    target: '@ui/calendar/calendar-day.svelte'
-  - path: calendar-grid.svelte
+    target: '~/components/calendar/calendar-day.svelte'
+  - path: registry/items/components/calendar/calendar-grid.svelte
     type: registry:ui
-    target: '@ui/calendar/calendar-grid.svelte'
-  - path: calendar-grid-body.svelte
+    target: '~/components/calendar/calendar-grid.svelte'
+  - path: registry/items/components/calendar/calendar-grid-body.svelte
     type: registry:ui
-    target: '@ui/calendar/calendar-grid-body.svelte'
-  - path: calendar-grid-head.svelte
+    target: '~/components/calendar/calendar-grid-body.svelte'
+  - path: registry/items/components/calendar/calendar-grid-head.svelte
     type: registry:ui
-    target: '@ui/calendar/calendar-grid-head.svelte'
-  - path: calendar-grid-row.svelte
+    target: '~/components/calendar/calendar-grid-head.svelte'
+  - path: registry/items/components/calendar/calendar-grid-row.svelte
     type: registry:ui
-    target: '@ui/calendar/calendar-grid-row.svelte'
-  - path: calendar-head-cell.svelte
+    target: '~/components/calendar/calendar-grid-row.svelte'
+  - path: registry/items/components/calendar/calendar-head-cell.svelte
     type: registry:ui
-    target: '@ui/calendar/calendar-head-cell.svelte'
-  - path: calendar-header.svelte
+    target: '~/components/calendar/calendar-head-cell.svelte'
+  - path: registry/items/components/calendar/calendar-header.svelte
     type: registry:ui
-    target: '@ui/calendar/calendar-header.svelte'
-  - path: calendar-heading.svelte
+    target: '~/components/calendar/calendar-header.svelte'
+  - path: registry/items/components/calendar/calendar-heading.svelte
     type: registry:ui
-    target: '@ui/calendar/calendar-heading.svelte'
-  - path: calendar-month.svelte
+    target: '~/components/calendar/calendar-heading.svelte'
+  - path: registry/items/components/calendar/calendar-month.svelte
     type: registry:ui
-    target: '@ui/calendar/calendar-month.svelte'
-  - path: calendar-month-select.svelte
+    target: '~/components/calendar/calendar-month.svelte'
+  - path: registry/items/components/calendar/calendar-month-select.svelte
     type: registry:ui
-    target: '@ui/calendar/calendar-month-select.svelte'
-  - path: calendar-months.svelte
+    target: '~/components/calendar/calendar-month-select.svelte'
+  - path: registry/items/components/calendar/calendar-months.svelte
     type: registry:ui
-    target: '@ui/calendar/calendar-months.svelte'
-  - path: calendar-nav.svelte
+    target: '~/components/calendar/calendar-months.svelte'
+  - path: registry/items/components/calendar/calendar-nav.svelte
     type: registry:ui
-    target: '@ui/calendar/calendar-nav.svelte'
-  - path: calendar-next-button.svelte
+    target: '~/components/calendar/calendar-nav.svelte'
+  - path: registry/items/components/calendar/calendar-next-button.svelte
     type: registry:ui
-    target: '@ui/calendar/calendar-next-button.svelte'
-  - path: calendar-prev-button.svelte
+    target: '~/components/calendar/calendar-next-button.svelte'
+  - path: registry/items/components/calendar/calendar-prev-button.svelte
     type: registry:ui
-    target: '@ui/calendar/calendar-prev-button.svelte'
-  - path: calendar-year-select.svelte
+    target: '~/components/calendar/calendar-prev-button.svelte'
+  - path: registry/items/components/calendar/calendar-year-select.svelte
     type: registry:ui
-    target: '@ui/calendar/calendar-year-select.svelte'
+    target: '~/components/calendar/calendar-year-select.svelte'
 ---
 
 Use calendar for single date selection. Bind `value` and set `type="single"`. Switch
@@ -75,7 +75,7 @@ Use calendar for single date selection. Bind `value` and set `type="single"`. Sw
 ```svelte
 <script lang="ts">
 	import { getLocalTimeZone, today } from '@internationalized/date';
-	import { Calendar } from '$lib/components/ui/calendar/index.js';
+	import { Calendar } from '~/components/calendar';
 
 	let value = $state(today(getLocalTimeZone()));
 </script>
