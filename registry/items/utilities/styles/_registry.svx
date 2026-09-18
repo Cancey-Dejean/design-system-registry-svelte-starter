@@ -6,19 +6,18 @@ description: Design tokens with three selectable theme presets (default, seconda
 dependencies:
   - tailwindcss
   - tw-animate-css
-  - "@tailwindcss/typography"
   - "@fontsource-variable/inter"
 files:
-  - path: registry/items/utilities/styles/globals.css
+  - path: registry/items/files/styles/globals.css
     type: registry:file
     target: src/lib/styles/globals.css
-  - path: registry/items/utilities/styles/theme.css
+  - path: registry/items/files/styles/theme.css
     type: registry:file
     target: src/lib/styles/theme.css
-  - path: registry/items/utilities/styles/theme-secondary.css
+  - path: registry/items/files/styles/theme-secondary.css
     type: registry:file
     target: src/lib/styles/theme-secondary.css
-  - path: registry/items/utilities/styles/theme-tertiary.css
+  - path: registry/items/files/styles/theme-tertiary.css
     type: registry:file
     target: src/lib/styles/theme-tertiary.css
 ---

@@ -30,6 +30,7 @@ Skip when edits are limited to private authoring-only files with no consumer imp
 `files[].path` in `_registry.svx` points at the real source file — it does **not** have to live inside the item folder:
 
 - **Components that wrap a shadcn-svelte primitive** (`button`, `badge`, `card`, `accordion`, `tabs`) point at `src/lib/components/ui/<name>/...` — the same file the `shadcn-svelte` CLI would generate.
+- **Published CSS and other standalone files** (`styles`) point at `registry/items/files/<name>/...`.
 - **Blocks and utilities authored for this registry** (`hero`, `announcement-bar`) keep their source directly in the item folder; `cn` points at `src/lib/utils.ts`.
 
 ## Workflow

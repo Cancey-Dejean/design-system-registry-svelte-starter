@@ -12,9 +12,13 @@ Use this page to publish notable registry updates, new items, breaking changes, 
 
 **Components:** `accordion`, `badge`, `button`, `card`, `tabs`
 **Blocks:** `announcement-bar`, `hero`
-**Utilities:** `cn`
+**Utilities:** `cn`, `styles`
 
 Each is published as installable JSON under `/r/<name>.json`, with a live preview on its docs page and a matching Storybook story. See [Registry](/docs/registry) for how items are authored.
+
+### Styles
+
+- The `styles` utility now publishes the CSS in `registry/items/files/styles` (`globals.css` plus the default, secondary, and tertiary theme presets). Install it before components so semantic tokens resolve.
 
 ### Docs shell
 

@@ -8,6 +8,6 @@ order: 0
 
 Install anything from the catalog with the [shadcn-svelte CLI](https://www.shadcn-svelte.com/docs/cli). Items land in your codebase as source you own, so you can read, adapt, and extend them like the rest of your app.
 
-Start with [styles](/docs/styles) for the design system CSS foundation before installing components.
+Start with the [`styles`](/utilities/styles) registry item for the design system CSS foundation before installing components.
 
 Browse [components](/components), [utilities](/utilities), and [blocks](/blocks) to find what you need, then follow the install command on each page to add it to your project.

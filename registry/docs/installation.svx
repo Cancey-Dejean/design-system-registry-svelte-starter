@@ -6,7 +6,7 @@ order: 1
 
 Install any item from **Design System UI Svelte** with the [shadcn-svelte CLI](https://www.shadcn-svelte.com/docs/cli). Replace `button` with the item name from the catalog.
 
-Start with [styles](/docs/styles) so your project has the design system CSS foundation before adding components.
+Start with the [`styles`](/utilities/styles) registry item so your project has the design system CSS foundation before adding components. See [Styles](/docs/styles) for what the tokens include.
 
 ## Configure the registry
 

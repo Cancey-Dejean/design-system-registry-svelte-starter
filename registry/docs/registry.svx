@@ -24,6 +24,7 @@ registry/items/components/badge/
 `files[].path` in `_registry.svx` points to the actual source file — it doesn't have to live inside the item folder:
 
 - **Components that wrap a shadcn-svelte primitive** (`button`, `badge`, `card`, `accordion`, `tabs`) point at `src/lib/components/ui/<name>/...` — the same file the `shadcn-svelte` CLI would generate, reused as-is.
+- **Published CSS and other standalone files** live under `registry/items/files/<name>/` (for example `registry/items/files/styles`) and are referenced from the item's `_registry.svx`.
 - **Blocks and utilities authored for this registry** (`hero`, `announcement-bar`, `cn`) keep their source directly in the item folder (or `src/lib/utils.ts` for `cn`) and reference it the same way.
 
 ```yaml
@@ -31,6 +32,15 @@ files:
   - path: src/lib/components/ui/button/button.svelte
     type: registry:ui
     target: components/ui/button/button.svelte
+```
+
+CSS-only items point at `registry/items/files/` instead:
+
+```yaml
+files:
+  - path: registry/items/files/styles/globals.css
+    type: registry:file
+    target: src/lib/styles/globals.css
 ```
 
 `target` is where the file lands in a consumer's project when installed via the CLI.

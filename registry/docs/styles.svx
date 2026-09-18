@@ -42,11 +42,11 @@ The `@theme inline` block maps each custom property to a Tailwind color/radius u
 
 ## Using this in your own project
 
-This file isn't an installable registry item — there's no `styles` entry in the catalog. Copy `src/lib/styles/app.css` into your project (or start from the [shadcn-svelte `init`](https://www.shadcn-svelte.com/docs/installation) output) and import it once from your root layout, the same way this project does in `src/routes/+layout.svelte`:
+Install the [`styles`](/utilities/styles) registry item. It publishes the CSS in `registry/items/files/styles` (`globals.css` plus the default, secondary, and tertiary theme presets) into `src/lib/styles/`. Import `globals.css` once from your root layout:
 
 ```svelte
 <script>
-  import '$lib/styles/app.css';
+  import "$lib/styles/globals.css";
 </script>
 ```
 

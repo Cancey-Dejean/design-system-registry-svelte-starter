@@ -53,6 +53,10 @@ function expectedSectionFor(type: RegistryItemType): RegistrySectionId | undefin
   );
 }
 
+function isRegistrySectionId(value: string): value is RegistrySectionId {
+  return value in registrySections;
+}
+
 // Matches registry/items/<section>/<name>/_registry.svx
 const ITEM_ENTRY_PATTERN = /^registry\/items\/([^/]+)\/([^/]+)\/_registry\.svx$/;
 
@@ -79,7 +83,9 @@ export function getRegistryDiagnostics({
   const registryEntryDirs = new Set<string>();
   for (const path of Object.keys(files)) {
     const dirMatch = /^registry\/items\/([^/]+)\/([^/]+)\//.exec(path);
-    if (dirMatch) itemDirs.add(`registry/items/${dirMatch[1]}/${dirMatch[2]}`);
+    if (dirMatch && isRegistrySectionId(dirMatch[1])) {
+      itemDirs.add(`registry/items/${dirMatch[1]}/${dirMatch[2]}`);
+    }
     const entryMatch = ITEM_ENTRY_PATTERN.exec(path);
     if (entryMatch) registryEntryDirs.add(`registry/items/${entryMatch[1]}/${entryMatch[2]}`);
   }
@@ -175,10 +181,6 @@ export function getRegistryDiagnostics({
   }
 
   return { errors, warnings };
-}
-
-function isRegistrySectionId(value: string): value is RegistrySectionId {
-  return value in registrySections;
 }
 
 export function getRegistryDoctorExitCode(result: RegistryDiagnostics): number {
