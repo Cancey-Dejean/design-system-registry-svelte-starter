@@ -8,26 +8,26 @@ dependencies:
 files:
   - path: src/lib/components/ui/accordion/accordion.svelte
     type: registry:ui
-    target: components/ui/accordion/accordion.svelte
+    target: "~/components/accordion/accordion.svelte"
   - path: src/lib/components/ui/accordion/accordion-item.svelte
     type: registry:ui
-    target: components/ui/accordion/accordion-item.svelte
+    target: "~/components/accordion/accordion-item.svelte"
   - path: src/lib/components/ui/accordion/accordion-trigger.svelte
     type: registry:ui
-    target: components/ui/accordion/accordion-trigger.svelte
+    target: "~/components/accordion/accordion-trigger.svelte"
   - path: src/lib/components/ui/accordion/accordion-content.svelte
     type: registry:ui
-    target: components/ui/accordion/accordion-content.svelte
+    target: "~/components/accordion/accordion-content.svelte"
   - path: src/lib/components/ui/accordion/index.ts
     type: registry:ui
-    target: components/ui/accordion/index.ts
+    target: "~/components/accordion/index.ts"
 ---
 
 Use `Accordion.Root`, `Accordion.Item`, `Accordion.Trigger`, and `Accordion.Content` together to build a set of collapsible sections. Set `type="single"` to allow only one open item at a time, or `"multiple"` to allow several.
 
 ```svelte
 <script lang="ts">
-  import * as Accordion from "$lib/components/ui/accordion";
+  import * as Accordion from "../../components/accordion";
 </script>
 
 <Accordion.Root type="single">

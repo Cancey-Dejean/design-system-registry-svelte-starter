@@ -9,17 +9,17 @@ dependencies:
 files:
   - path: src/lib/components/ui/button/button.svelte
     type: registry:ui
-    target: components/ui/button/button.svelte
+    target: "~/components/button/button.svelte"
   - path: src/lib/components/ui/button/index.ts
     type: registry:ui
-    target: components/ui/button/index.ts
+    target: "~/components/button/index.ts"
 ---
 
 Buttons trigger an action when clicked. Use the `variant` and `size` props to match the surrounding UI, or pass `href` to render as a link.
 
 ```svelte
 <script lang="ts">
-  import { Button } from "$lib/components/ui/button";
+  import { Button } from "../../components/button";
 </script>
 
 <Button>Click me</Button>

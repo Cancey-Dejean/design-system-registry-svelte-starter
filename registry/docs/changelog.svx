@@ -16,6 +16,10 @@ Use this page to publish notable registry updates, new items, breaking changes, 
 
 Each is published as installable JSON under `/r/<name>.json`, with a live preview on its docs page and a matching Storybook story. See [Registry](/docs/registry) for how items are authored.
 
+### Component install path
+
+- UI components now install into `components/<name>/` at the consumer project root (`~/components/button`, `~/components/badge`, …) instead of `src/lib/components/ui/<name>`.
+
 ### CLI install commands
 
 - Install commands now use the item JSON URL. shadcn-svelte does not support namespaced aliases like `@design-system-ui/styles`.

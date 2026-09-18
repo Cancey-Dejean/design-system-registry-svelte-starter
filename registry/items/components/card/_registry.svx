@@ -6,32 +6,32 @@ description: A container for grouping related content and actions.
 files:
   - path: src/lib/components/ui/card/card.svelte
     type: registry:ui
-    target: components/ui/card/card.svelte
+    target: "~/components/card/card.svelte"
   - path: src/lib/components/ui/card/card-header.svelte
     type: registry:ui
-    target: components/ui/card/card-header.svelte
+    target: "~/components/card/card-header.svelte"
   - path: src/lib/components/ui/card/card-title.svelte
     type: registry:ui
-    target: components/ui/card/card-title.svelte
+    target: "~/components/card/card-title.svelte"
   - path: src/lib/components/ui/card/card-description.svelte
     type: registry:ui
-    target: components/ui/card/card-description.svelte
+    target: "~/components/card/card-description.svelte"
   - path: src/lib/components/ui/card/card-content.svelte
     type: registry:ui
-    target: components/ui/card/card-content.svelte
+    target: "~/components/card/card-content.svelte"
   - path: src/lib/components/ui/card/card-footer.svelte
     type: registry:ui
-    target: components/ui/card/card-footer.svelte
+    target: "~/components/card/card-footer.svelte"
   - path: src/lib/components/ui/card/index.ts
     type: registry:ui
-    target: components/ui/card/index.ts
+    target: "~/components/card/index.ts"
 ---
 
 Compose `Card.Header`, `Card.Title`, `Card.Description`, `Card.Content`, and `Card.Footer` inside `Card.Root` — this site's own component and block listing pages use it for their item previews.
 
 ```svelte
 <script lang="ts">
-  import * as Card from "$lib/components/ui/card";
+  import * as Card from "../../components/card";
 </script>
 
 <Card.Root>

@@ -29,7 +29,7 @@ Skip when edits are limited to private authoring-only files with no consumer imp
 
 `files[].path` in `_registry.svx` points at the real source file — it does **not** have to live inside the item folder:
 
-- **Components that wrap a shadcn-svelte primitive** (`button`, `badge`, `card`, `accordion`, `tabs`) point at `src/lib/components/ui/<name>/...` — the same file the `shadcn-svelte` CLI would generate.
+- **Components that wrap a shadcn-svelte primitive** (`button`, `badge`, `card`, `accordion`, `tabs`) are sourced from `src/lib/components/ui/<name>/...`. Set `target` to `~/components/<name>/...` so they install at the consumer project root.
 - **Published CSS and other standalone files** (`styles`) keep `_registry.svx` and `_preview.svelte` in `registry/items/files/<name>/` next to the CSS. The catalog maps `files/` onto the Utilities section (`/utilities/styles`).
 - **Blocks and utilities authored for this registry** (`hero`, `announcement-bar`) keep their source directly in the item folder; `cn` points at `src/lib/utils.ts`.
 
@@ -88,10 +88,10 @@ Adding a new file to an existing item:
 files:
   - path: src/lib/components/ui/badge/badge.svelte
     type: registry:ui
-    target: components/ui/badge/badge.svelte
+    target: "~/components/badge/badge.svelte"
   - path: src/lib/components/ui/badge/index.ts
     type: registry:ui
-    target: components/ui/badge/index.ts
+    target: "~/components/badge/index.ts"
 ```
 
 ## After Editing

@@ -32,7 +32,7 @@ registry/items/files/styles/
 
 `files[].path` in `_registry.svx` points to the actual source file — it doesn't have to live inside the item folder:
 
-- **Components that wrap a shadcn-svelte primitive** (`button`, `badge`, `card`, `accordion`, `tabs`) point at `src/lib/components/ui/<name>/...` — the same file the `shadcn-svelte` CLI would generate, reused as-is.
+- **Components that wrap a shadcn-svelte primitive** (`button`, `badge`, `card`, `accordion`, `tabs`) are sourced from `src/lib/components/ui/<name>/...` in this repo. Their `target` is `~/components/<name>/...` so they install to `components/` at the consumer project root.
 - **Published CSS and other standalone files** (`styles`) keep `_registry.svx`, `_preview.svelte`, and the CSS together under `registry/items/files/<name>/`. They still appear in the Utilities catalog (for example [`/utilities/styles`](/utilities/styles)).
 - **Blocks and utilities authored for this registry** (`hero`, `announcement-bar`, `cn`) keep their source directly in the item folder (or `src/lib/utils.ts` for `cn`) and reference it the same way.
 
@@ -40,7 +40,7 @@ registry/items/files/styles/
 files:
   - path: src/lib/components/ui/button/button.svelte
     type: registry:ui
-    target: components/ui/button/button.svelte
+    target: "~/components/button/button.svelte"
 ```
 
 CSS-only items are authored in that same `files/` folder:
@@ -52,7 +52,7 @@ files:
     target: "~/styles/globals.css"
 ```
 
-`target` is where the file lands in a consumer's project when installed via the CLI. Prefix with `~/` for a path from the project root (required for CSS files on `registry:style` items — otherwise the CLI nests them under the Tailwind CSS filename from `components.json`).
+`target` is where the file lands in a consumer's project when installed via the CLI. Prefix with `~/` for a path from the project root. Without it, `registry:ui` files resolve under the `ui` alias (`src/lib/components/ui`) and `registry:style` CSS files nest under the Tailwind CSS filename from `components.json`.
 
 ## Generating and validating
 

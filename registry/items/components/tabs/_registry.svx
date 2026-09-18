@@ -8,26 +8,26 @@ dependencies:
 files:
   - path: src/lib/components/ui/tabs/tabs.svelte
     type: registry:ui
-    target: components/ui/tabs/tabs.svelte
+    target: "~/components/tabs/tabs.svelte"
   - path: src/lib/components/ui/tabs/tabs-list.svelte
     type: registry:ui
-    target: components/ui/tabs/tabs-list.svelte
+    target: "~/components/tabs/tabs-list.svelte"
   - path: src/lib/components/ui/tabs/tabs-trigger.svelte
     type: registry:ui
-    target: components/ui/tabs/tabs-trigger.svelte
+    target: "~/components/tabs/tabs-trigger.svelte"
   - path: src/lib/components/ui/tabs/tabs-content.svelte
     type: registry:ui
-    target: components/ui/tabs/tabs-content.svelte
+    target: "~/components/tabs/tabs-content.svelte"
   - path: src/lib/components/ui/tabs/index.ts
     type: registry:ui
-    target: components/ui/tabs/index.ts
+    target: "~/components/tabs/index.ts"
 ---
 
 This site's own item pages use `Tabs` to switch between Preview/Code and the two install methods — it's dogfooded here as a registry item too.
 
 ```svelte
 <script lang="ts">
-  import * as Tabs from "$lib/components/ui/tabs";
+  import * as Tabs from "../../components/tabs";
 </script>
 
 <Tabs.Root value="account">
