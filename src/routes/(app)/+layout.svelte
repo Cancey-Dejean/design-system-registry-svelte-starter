@@ -8,8 +8,8 @@
   import AccentThemeToggle from "$lib/components/accent-theme-toggle.svelte";
   import { Button } from "$lib/components/ui/button/index.js";
   import { registryConfig } from "$registry/config";
-  import BookOpenIcon from "@lucide/svelte/icons/book-open";
-  import CodeIcon from "@lucide/svelte/icons/code";
+  import StorybookIcon from "$lib/components/icons/storybook-icon.svelte";
+  import GithubIcon from "$lib/components/icons/github-icon.svelte";
 
   let { data, children } = $props();
 </script>
@@ -36,7 +36,7 @@
           size="icon"
           aria-label="Storybook"
         >
-          <BookOpenIcon data-icon="inline-start" class="size-4" />
+          <StorybookIcon data-icon="inline-start" class="size-4" />
         </Button>
         <Button
           href={registryConfig.repositoryUrl}
@@ -45,7 +45,7 @@
           size="icon"
           aria-label="GitHub"
         >
-          <CodeIcon data-icon="inline-start" class="size-4" />
+          <GithubIcon data-icon="inline-start" class="size-4" />
         </Button>
         <AccentThemeToggle />
         <ThemeToggle />
