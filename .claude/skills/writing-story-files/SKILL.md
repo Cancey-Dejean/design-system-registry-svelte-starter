@@ -20,13 +20,14 @@ registry/items/<section>/<name>/stories/
   <name>.stories.svelte
 ```
 
-`<section>` is `components`, `blocks`, or `utilities` (see `src/lib/registry/sections.ts`). Do not colocate `*.stories.svelte` beside the component source. Do not list `stories/` in `_registry.svx` `files`. Storybook loads `registry/items/**/*.stories.svelte`; `bun run registry:generate` never touches these, so there's nothing to keep in sync.
+`<section>` is `components`, `blocks`, `utilities`, or `files`. Do not colocate `*.stories.svelte` beside the component source. Do not list `stories/` in `_registry.svx` `files`. Storybook loads `registry/items/**/*.stories.svelte`; `bun run registry:generate` never touches these, so there's nothing to keep in sync.
 
 | Item folder | `title` |
 |-------------|---------|
 | `components/` | `Components/<PascalName>` |
 | `blocks/` | `Blocks/<PascalName>` |
 | `utilities/` | `Utilities/<PascalName or exportName>` |
+| `files/` | `Utilities/<PascalName>` (CSS items catalog under Utilities) |
 
 ## Single-component item (e.g. Button, Badge)
 

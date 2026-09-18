@@ -4,7 +4,7 @@ description: Author installable registry items under registry/items and generate
 order: 4
 ---
 
-Registry items live under `registry/items/<section>/<name>/`. Each item is a folder with an `_registry.svx` metadata file, a live preview, and a Storybook story. There's no scaffold CLI yet — copy an existing item folder as a starting point (`registry/items/components/button` is a good one) and adjust it.
+Registry items live under `registry/items/<section>/<name>/`. `<section>` is `components`, `blocks`, `utilities`, or `files`. Each item is a folder with an `_registry.svx` metadata file, a live preview, and a Storybook story. There's no scaffold CLI yet — copy an existing item folder as a starting point (`registry/items/components/button` is a good one) and adjust it.
 
 ## Item layout
 
@@ -13,18 +13,27 @@ registry/items/components/badge/
   _registry.svx
   _preview.svelte
   stories/badge.stories.ts
+
+registry/items/files/styles/
+  _registry.svx
+  _preview.svelte
+  stories/styles.stories.svelte
+  globals.css
+  theme.css
+  theme-secondary.css
+  theme-tertiary.css
 ```
 
 - `_registry.svx` — YAML frontmatter (`name`, `type`, `files`, `dependencies`) plus optional Markdown usage docs, rendered on the item's docs page
 - `_preview.svelte` — live demo shown in the "Preview" tab (never published in the item JSON)
-- `stories/*.stories.ts` — the matching Storybook story
+- `stories/*.stories.svelte` — the matching Storybook story
 
 ## Where the source lives
 
 `files[].path` in `_registry.svx` points to the actual source file — it doesn't have to live inside the item folder:
 
 - **Components that wrap a shadcn-svelte primitive** (`button`, `badge`, `card`, `accordion`, `tabs`) point at `src/lib/components/ui/<name>/...` — the same file the `shadcn-svelte` CLI would generate, reused as-is.
-- **Published CSS and other standalone files** live under `registry/items/files/<name>/` (for example `registry/items/files/styles`) and are referenced from the item's `_registry.svx`.
+- **Published CSS and other standalone files** (`styles`) keep `_registry.svx`, `_preview.svelte`, and the CSS together under `registry/items/files/<name>/`. They still appear in the Utilities catalog (for example [`/utilities/styles`](/utilities/styles)).
 - **Blocks and utilities authored for this registry** (`hero`, `announcement-bar`, `cn`) keep their source directly in the item folder (or `src/lib/utils.ts` for `cn`) and reference it the same way.
 
 ```yaml
@@ -34,7 +43,7 @@ files:
     target: components/ui/button/button.svelte
 ```
 
-CSS-only items point at `registry/items/files/` instead:
+CSS-only items are authored in that same `files/` folder:
 
 ```yaml
 files:
@@ -53,4 +62,4 @@ bun run registry:build      # generate, then build static/r/*.json via `shadcn-s
 bun run registry:doctor     # lint _registry.svx files: bad frontmatter, missing files[], orphan folders
 ```
 
-Run `registry:doctor` after adding or editing an item — it catches the mistakes `registry:generate` doesn't, like a `files[].path` that doesn't exist or a folder placed under the wrong section (`registry/items/<section>/` must be `components`, `blocks`, or `utilities`, or the item is silently invisible to the catalog).
+Run `registry:doctor` after adding or editing an item — it catches the mistakes `registry:generate` doesn't, like a `files[].path` that doesn't exist or a folder placed under the wrong section (`registry/items/<section>/` must be `components`, `blocks`, `utilities`, or `files`, or the item is silently invisible to the catalog).

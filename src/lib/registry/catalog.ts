@@ -1,6 +1,6 @@
 import type { Component } from "svelte";
 import type { RegistryItemType } from "./item-types";
-import { registrySections, type RegistrySectionId } from "./sections";
+import type { RegistrySectionId } from "./sections";
 
 export interface RegistryItemFile {
   path: string;
@@ -55,22 +55,27 @@ function stripFrontmatter(raw: string): string {
 
 const ITEM_PATH_PATTERN = /\/registry\/items\/([^/]+)\/([^/]+)\/_registry\.svx$/;
 
+/** On-disk folder → catalog section. `files/` is authored next to CSS but listed under Utilities. */
+const CATALOG_SECTION_BY_DIR: Record<string, RegistrySectionId> = {
+  components: "components",
+  blocks: "blocks",
+  utilities: "utilities",
+  files: "utilities",
+};
+
 export interface RegistryCatalogItem {
   section: RegistrySectionId;
   name: string;
   metadata: RegistryItemMetadata;
 }
 
-function isRegistrySectionId(value: string): value is RegistrySectionId {
-  return value in registrySections;
-}
-
 function parseItemPath(path: string): { section: RegistrySectionId; name: string } | null {
   const match = ITEM_PATH_PATTERN.exec(path);
   if (!match) return null;
   const [, sectionDir, name] = match;
-  if (!isRegistrySectionId(sectionDir)) return null;
-  return { section: sectionDir, name };
+  const section = CATALOG_SECTION_BY_DIR[sectionDir];
+  if (!section) return null;
+  return { section, name };
 }
 
 export function getAllRegistryItems(): RegistryCatalogItem[] {

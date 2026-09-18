@@ -30,7 +30,7 @@ Skip when edits are limited to private authoring-only files with no consumer imp
 `files[].path` in `_registry.svx` points at the real source file — it does **not** have to live inside the item folder:
 
 - **Components that wrap a shadcn-svelte primitive** (`button`, `badge`, `card`, `accordion`, `tabs`) point at `src/lib/components/ui/<name>/...` — the same file the `shadcn-svelte` CLI would generate.
-- **Published CSS and other standalone files** (`styles`) point at `registry/items/files/<name>/...`.
+- **Published CSS and other standalone files** (`styles`) keep `_registry.svx` and `_preview.svelte` in `registry/items/files/<name>/` next to the CSS. The catalog maps `files/` onto the Utilities section (`/utilities/styles`).
 - **Blocks and utilities authored for this registry** (`hero`, `announcement-bar`) keep their source directly in the item folder; `cn` points at `src/lib/utils.ts`.
 
 ## Workflow
@@ -76,7 +76,7 @@ Skip when edits are limited to private authoring-only files with no consumer imp
 Treat these as action items for this skill:
 
 - `bun run registry:generate` throws or a `files[].path` 404s — the frontmatter references a file that moved or was deleted
-- The item is missing from `/components`, `/blocks`, or `/utilities` — its folder likely isn't under a valid section (`registry/items/<components|blocks|utilities>/<name>/`), so `parseItemPath` in `src/lib/registry/catalog.ts` silently drops it
+- The item is missing from `/components`, `/blocks`, or `/utilities` — its folder likely isn't under a valid on-disk root (`registry/items/<components|blocks|utilities|files>/<name>/`), so `parseItemPath` in `src/lib/registry/catalog.ts` silently drops it. CSS items belong in `files/`, not `utilities/`.
 - `vp check` flags an unused import or a type mismatch in `_registry.svx`'s usage snippet's code fence — fix the snippet to match the current API
 
 ## Example

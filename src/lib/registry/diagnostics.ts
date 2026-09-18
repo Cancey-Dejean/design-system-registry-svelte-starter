@@ -53,8 +53,23 @@ function expectedSectionFor(type: RegistryItemType): RegistrySectionId | undefin
   );
 }
 
-function isRegistrySectionId(value: string): value is RegistrySectionId {
-  return value in registrySections;
+const FILE_ITEM_TYPES: ReadonlySet<RegistryItemType> = new Set([
+  "registry:style",
+  "registry:file",
+  "registry:theme",
+  "registry:font",
+  "registry:base",
+]);
+
+const ON_DISK_ITEM_ROOTS = new Set<string>([...Object.keys(registrySections), "files"]);
+
+function expectedDiskSectionFor(type: RegistryItemType): string | undefined {
+  if (FILE_ITEM_TYPES.has(type)) return "files";
+  return expectedSectionFor(type);
+}
+
+function isOnDiskItemRoot(value: string): boolean {
+  return ON_DISK_ITEM_ROOTS.has(value);
 }
 
 // Matches registry/items/<section>/<name>/_registry.svx
@@ -83,7 +98,7 @@ export function getRegistryDiagnostics({
   const registryEntryDirs = new Set<string>();
   for (const path of Object.keys(files)) {
     const dirMatch = /^registry\/items\/([^/]+)\/([^/]+)\//.exec(path);
-    if (dirMatch && isRegistrySectionId(dirMatch[1])) {
+    if (dirMatch && isOnDiskItemRoot(dirMatch[1])) {
       itemDirs.add(`registry/items/${dirMatch[1]}/${dirMatch[2]}`);
     }
     const entryMatch = ITEM_ENTRY_PATTERN.exec(path);
@@ -130,16 +145,11 @@ export function getRegistryDiagnostics({
         message: `Unknown type "${data.type}" — see src/lib/registry/item-types.ts`,
       });
     } else {
-      const expectedSection = expectedSectionFor(data.type);
-      if (expectedSection && !isRegistrySectionId(sectionDir)) {
+      const expectedDisk = expectedDiskSectionFor(data.type);
+      if (expectedDisk && expectedDisk !== sectionDir) {
         errors.push({
           path,
-          message: `"${sectionDir}" is not a registry section (components/blocks/utilities) — this item is invisible to the catalog.`,
-        });
-      } else if (expectedSection && expectedSection !== sectionDir) {
-        errors.push({
-          path,
-          message: `type "${data.type}" belongs under registry/items/${expectedSection}/, not registry/items/${sectionDir}/`,
+          message: `type "${data.type}" belongs under registry/items/${expectedDisk}/, not registry/items/${sectionDir}/`,
         });
       }
     }
