@@ -50,7 +50,7 @@
   } = $props();
 </script>
 
-<section class={cn("relative isolate", className)}>
+<section class={cn("relative isolate overflow-hidden", className)}>
   <svg
     aria-hidden="true"
     class="absolute top-0 -z-10 h-256 inset-x-0 w-full mask-[radial-gradient(32rem_32rem_at_center,white,transparent)] stroke-gray-200 dark:stroke-white/10"
