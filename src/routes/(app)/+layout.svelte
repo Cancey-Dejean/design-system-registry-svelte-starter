@@ -1,6 +1,6 @@
 <script lang="ts">
   import * as Sidebar from "$lib/components/ui/sidebar/index.js";
-  import { Separator } from "$lib/components/ui/separator/index.js";
+  import { Separator } from "$registry/items/components/separator/index.js";
   import AppSidebar from "$lib/components/app-sidebar.svelte";
   import SiteBreadcrumb from "$lib/components/site-breadcrumb.svelte";
   import SiteFooter from "$lib/components/site-footer.svelte";

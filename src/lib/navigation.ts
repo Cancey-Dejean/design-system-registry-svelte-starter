@@ -11,6 +11,8 @@ export interface SiteNavSection {
   id: string;
   title: string;
   basePath: string;
+  /** Where the section's own nav link points to. Defaults to `basePath` when omitted. */
+  indexUrl?: string;
   items: SiteNavItem[];
 }
 
@@ -20,6 +22,7 @@ export function getSiteNavigationSections(): SiteNavSection[] {
     id: "docs",
     title: "Docs",
     basePath: "/docs",
+    indexUrl: docs.length > 0 ? `/docs/${docs[0].slug}` : "/docs",
     items: docs.map((doc) => ({
       title: doc.metadata.title,
       url: `/docs/${doc.slug}`,

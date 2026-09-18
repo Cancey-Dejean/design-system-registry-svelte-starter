@@ -22,3 +22,21 @@ files:
     type: registry:file
     target: "~/styles/theme-tertiary.css"
 ---
+
+A CSS-first token set for `@tailwindcss/v4`, split into a base theme (`theme.css`) plus two alternate presets (`theme-secondary.css`, `theme-tertiary.css`). `globals.css` wires up the Tailwind imports and pulls all three in — swap the active preset per-page or per-user by setting `data-theme="theme-secondary"` (or `theme-tertiary`) on `<html>`; omit the attribute for the default palette.
+
+`globals.css` also imports `shadcn-svelte/tailwind.css`, which registers the `data-open`/`data-closed`/`data-active`/etc. custom variants and the `accordion-down`/`accordion-up` keyframes that installed components (like `accordion`, `dialog`, `dropdown-menu`, `sheet`, `tooltip`) rely on for their open/close animations. Without it those components still work, but render without transitions.
+
+```ts
+document.documentElement.dataset.theme = "theme-secondary"; // or "theme-tertiary"
+```
+
+Each preset only overrides `--primary`, `--ring`, `--sidebar-primary`, `--selection`, and the `--chart-*` scale — everything else (background, foreground, card, border, radius) is shared, so switching presets only changes the accent, not the whole surface.
+
+Files land in `styles/` at the project root. Import `globals.css` once from your root layout:
+
+```svelte
+<script>
+  import "../../styles/globals.css";
+</script>
+```

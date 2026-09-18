@@ -23,22 +23,24 @@
 </script>
 
 <Sidebar.Root bind:ref {collapsible} {...restProps}>
-  <Sidebar.Header>
-    <Sidebar.Menu>
-      <Sidebar.MenuItem>
-        <Sidebar.MenuButton size="lg">
-          {#snippet child({ props })}
-            <a href="/" {...props}>
-              <div class="flex gap-2 leading-none">
-                <SvelteLogo />
-                <span class="font-semibold">{registryConfig.name}</span>
-              </div>
-            </a>
-          {/snippet}
-        </Sidebar.MenuButton>
-      </Sidebar.MenuItem>
-    </Sidebar.Menu>
-    <div class="px-2">
+  <Sidebar.Header class="gap-0 p-0">
+    <div class="flex h-16 items-center border-b px-2">
+      <Sidebar.Menu>
+        <Sidebar.MenuItem>
+          <Sidebar.MenuButton size="lg">
+            {#snippet child({ props })}
+              <a href="/" {...props}>
+                <div class="flex gap-2 leading-none">
+                  <SvelteLogo />
+                  <span class="font-semibold">{registryConfig.name}</span>
+                </div>
+              </a>
+            {/snippet}
+          </Sidebar.MenuButton>
+        </Sidebar.MenuItem>
+      </Sidebar.Menu>
+    </div>
+    <div class="px-2 pt-2">
       <SearchDialog />
     </div>
   </Sidebar.Header>

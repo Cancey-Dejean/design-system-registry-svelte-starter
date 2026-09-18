@@ -14,14 +14,20 @@
       <Collapsible.Root open={isNavSectionActive(section, page.url.pathname)} class="group/collapsible">
         {#snippet child({ props })}
           <Sidebar.MenuItem {...props}>
+            <Sidebar.MenuButton isActive={isNavItemActive(section.basePath, page.url.pathname)}>
+              {#snippet child({ props })}
+                <a href={section.indexUrl ?? section.basePath} {...props}>
+                  <span>{section.title}</span>
+                </a>
+              {/snippet}
+            </Sidebar.MenuButton>
             <Collapsible.Trigger>
               {#snippet child({ props })}
-                <Sidebar.MenuButton {...props}>
-                  <span>{section.title}</span>
+                <Sidebar.MenuAction {...props}>
                   <ChevronRightIcon
-                    class="ms-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90"
+                    class="transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90"
                   />
-                </Sidebar.MenuButton>
+                </Sidebar.MenuAction>
               {/snippet}
             </Collapsible.Trigger>
             <Collapsible.Content>
