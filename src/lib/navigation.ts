@@ -21,7 +21,7 @@ export function getSiteNavigationSections(): SiteNavSection[] {
     basePath: "/docs",
     items: getAllDocs().map((doc) => ({
       title: doc.metadata.title,
-      url: `/docs/${doc.slug}`,
+      url: doc.slug === "styles" ? "/utilities/styles" : `/docs/${doc.slug}`,
     })),
   };
 
