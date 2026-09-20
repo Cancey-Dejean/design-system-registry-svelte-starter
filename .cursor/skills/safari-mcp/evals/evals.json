@@ -1,0 +1,23 @@
+{
+  "skill_name": "safari-mcp",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I just changed the docs homepage. Verify it in Safari using the MCP tool. If there are things that can be optimized, create a GitHub issue to the relative repo of the project.",
+      "expected_output": "Uses Apple Safari MCP only; fails closed if missing; get_page_content before screenshot; files evidence-backed issues instead of silent Chromium verification or drive-by fixes.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Safari MCP isn't showing up in Cursor. Just check the page in the built-in browser and open a couple GitHub issues for anything that looks off.",
+      "expected_output": "Refuses to treat cursor-ide-browser as Safari; prints setup steps; does not file unverified Safari issues.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "safaridriver --mcp crashed while taking a screenshot of /components/button. File an issue.",
+      "expected_output": "Routes the crash to WebKit, not the app GitHub repo.",
+      "files": []
+    }
+  ]
+}
