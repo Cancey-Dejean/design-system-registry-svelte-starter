@@ -17,7 +17,7 @@ By default, shadcn-svelte does not resolve namespaced aliases like `@design-syst
 ```json
 {
   "registries": {
-    "@design-system-ui": "https://design-system-starter-svelte-docs.vercel.app/r/{name}.json"
+    "@design-system-ui": "https://sveltedocs.canceydejean.dev/r/{name}.json"
   }
 }
 ```

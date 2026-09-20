@@ -14,6 +14,14 @@ Use this page to publish notable registry updates, new items, breaking changes, 
 
 ---
 
+## September 20, 2026
+
+### Docs / install
+
+- Install examples on [Installation](/docs/installation), [CLI](/docs/cli), and [Styles](/docs/styles) now use the published docs host `https://sveltedocs.canceydejean.dev` (from `registry/config.ts` `homepage`) instead of the previous Vercel preview URL.
+
+---
+
 ## September 18, 2026
 
 ### Components
