@@ -4,11 +4,21 @@ description: Install Design System UI Svelte items with the shadcn-svelte CLI.
 order: 1
 ---
 
+<script>
+  import InstallCommand from "$lib/components/registry/install-command.svelte";
+  import { registryConfig } from "$registry/config";
+</script>
+
 Install any item from **Design System UI Svelte** with the [shadcn-svelte CLI](https://www.shadcn-svelte.com/docs/cli), passing the item's JSON URL.
 
 Your project must already be set up with [shadcn-svelte](https://www.shadcn-svelte.com/docs/installation).
 
 Start with the [`styles`](/docs/styles) registry item so your project has the design system CSS foundation before adding components.
+
+<InstallCommand
+  kind="exec"
+  args={`shadcn-svelte@latest add ${registryConfig.homepage}/r/button.json`}
+/>
 
 ## Add registry connection
 

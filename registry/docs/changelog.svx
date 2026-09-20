@@ -19,6 +19,7 @@ Use this page to publish notable registry updates, new items, breaking changes, 
 ### Docs / install
 
 - Install examples on [Installation](/docs/installation), [CLI](/docs/cli), and [Styles](/docs/styles) now use the published docs host `https://sveltedocs.canceydejean.dev` (from `registry/config.ts` `homepage`) instead of the previous Vercel preview URL.
+- The install command is now a single bar with a package-manager menu (npm, pnpm, yarn, bun, vp, deno, using the docs-site logos) and a copy button, on [Installation](/docs/installation) and every item page.
 
 ---
 

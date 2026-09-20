@@ -1,27 +1,46 @@
 <script lang="ts">
+  import type { Component } from "svelte";
   import CheckIcon from "@lucide/svelte/icons/check";
   import CopyIcon from "@lucide/svelte/icons/copy";
   import ChevronDownIcon from "@lucide/svelte/icons/chevron-down";
-  import TerminalIcon from "@lucide/svelte/icons/terminal";
   import * as DropdownMenu from "$lib/components/ui/dropdown-menu/index.js";
+  import * as InputGroup from "$lib/components/ui/input-group/index.js";
+  import NpmLogo from "$lib/components/logos/npm.svelte";
+  import PnpmLogo from "$lib/components/logos/pnpm.svelte";
+  import YarnLogo from "$lib/components/logos/yarn.svelte";
+  import BunLogo from "$lib/components/logos/bun.svelte";
+  import VpLogo from "$lib/components/logos/vp.svelte";
+  import DenoLogo from "$lib/components/logos/deno.svelte";
   import { cn } from "$lib/utils";
+  import { onMount } from "svelte";
 
-  type PackageManager = "bun" | "npm" | "pnpm" | "yarn";
+  type PackageManager = "npm" | "pnpm" | "yarn" | "bun" | "vp" | "deno";
 
-  const PACKAGE_MANAGERS: PackageManager[] = ["bun", "npm", "pnpm", "yarn"];
+  const PACKAGE_MANAGERS: { id: PackageManager; icon: Component }[] = [
+    { id: "npm", icon: NpmLogo },
+    { id: "pnpm", icon: PnpmLogo },
+    { id: "yarn", icon: YarnLogo },
+    { id: "bun", icon: BunLogo },
+    { id: "vp", icon: VpLogo },
+    { id: "deno", icon: DenoLogo },
+  ];
   const STORAGE_KEY = "package-manager";
 
   const EXEC_PREFIX: Record<PackageManager, string> = {
-    bun: "bun x",
     npm: "npx",
     pnpm: "pnpm dlx",
     yarn: "yarn dlx",
+    bun: "bun x",
+    vp: "vp dlx",
+    deno: "deno run -A npm:",
   };
   const ADD_PREFIX: Record<PackageManager, string> = {
-    bun: "bun add",
     npm: "npm install",
     pnpm: "pnpm add",
     yarn: "yarn add",
+    bun: "bun add",
+    vp: "vp add",
+    deno: "deno add npm:",
   };
 
   let {
@@ -35,25 +54,34 @@
     class?: string;
   } = $props();
 
-  let manager = $state<PackageManager>("bun");
-
-  $effect(() => {
-    try {
-      const stored = localStorage.getItem(STORAGE_KEY);
-      if (stored && (PACKAGE_MANAGERS as string[]).includes(stored)) {
-        manager = stored as PackageManager;
-      }
-    } catch {}
+  let manager = $state<PackageManager>("npm");
+  let selected = $derived(
+    PACKAGE_MANAGERS.find((pm) => pm.id === manager) ?? PACKAGE_MANAGERS[0],
+  );
+  let command = $derived.by(() => {
+    const prefix = kind === "exec" ? EXEC_PREFIX[manager] : ADD_PREFIX[manager];
+    return manager === "deno" ? `${prefix}${args}` : `${prefix} ${args}`;
   });
 
-  function selectManager(next: PackageManager) {
-    manager = next;
+  onMount(() => {
     try {
-      localStorage.setItem(STORAGE_KEY, next);
-    } catch {}
-  }
+      const stored = localStorage.getItem(STORAGE_KEY);
+      if (stored && PACKAGE_MANAGERS.some((pm) => pm.id === stored)) {
+        manager = stored as PackageManager;
+      }
+    } catch {
+      // localStorage can throw in private mode
+    }
+  });
 
-  let command = $derived(`${kind === "exec" ? EXEC_PREFIX[manager] : ADD_PREFIX[manager]} ${args}`);
+  function persistManager(value: string) {
+    manager = value as PackageManager;
+    try {
+      localStorage.setItem(STORAGE_KEY, value);
+    } catch {
+      // localStorage can throw in private mode
+    }
+  }
 
   let copied = $state(false);
 
@@ -64,47 +92,54 @@
   }
 </script>
 
-<div class={cn("flex flex-col gap-2", className)}>
-  <DropdownMenu.Root>
-    <DropdownMenu.Trigger>
-      {#snippet child({ props })}
-        <button
-          {...props}
-          type="button"
-          class="flex w-full items-center gap-2 rounded-lg border bg-background px-3 py-2 text-sm hover:bg-accent"
-        >
-          <TerminalIcon class="size-4 text-muted-foreground" />
-          <span class="font-medium">{manager}</span>
-          <ChevronDownIcon class="ms-auto size-4 text-muted-foreground" />
-        </button>
-      {/snippet}
-    </DropdownMenu.Trigger>
-    <DropdownMenu.Content align="start" class="w-40">
-      {#each PACKAGE_MANAGERS as pm (pm)}
-        <DropdownMenu.Item onSelect={() => selectManager(pm)} class="justify-between">
-          {pm}
-          {#if pm === manager}
-            <CheckIcon class="size-4" />
-          {/if}
-        </DropdownMenu.Item>
-      {/each}
-    </DropdownMenu.Content>
-  </DropdownMenu.Root>
-  <div
-    class="flex items-center justify-between gap-2 rounded-lg border bg-muted px-3 py-2 font-mono text-sm"
-  >
-    <code class="overflow-x-auto whitespace-pre">{command}</code>
-    <button
-      type="button"
-      onclick={copy}
-      aria-label="Copy command"
-      class="inline-flex size-6 shrink-0 items-center justify-center rounded text-muted-foreground hover:bg-accent hover:text-accent-foreground"
-    >
-      {#if copied}
-        <CheckIcon class="size-3.5" />
-      {:else}
-        <CopyIcon class="size-3.5" />
-      {/if}
-    </button>
-  </div>
+{#snippet logo(Icon: Component)}
+  <span class="inline-flex size-4 shrink-0 items-center justify-center [&>svg]:size-full">
+    <Icon />
+  </span>
+{/snippet}
+
+<div class={cn("not-prose", className)}>
+  <InputGroup.Root class="h-10">
+    <DropdownMenu.Root>
+      <DropdownMenu.Trigger
+        aria-label="Select package manager"
+        class="text-foreground flex h-full items-center gap-1.5 border-e px-2.5 text-sm font-medium hover:bg-accent"
+      >
+        {@render logo(selected.icon)}
+        {selected.id}
+        <ChevronDownIcon class="size-3.5 text-muted-foreground" />
+      </DropdownMenu.Trigger>
+      <DropdownMenu.Content align="start" class="w-44">
+        <DropdownMenu.Group>
+          <DropdownMenu.RadioGroup value={manager} onValueChange={persistManager}>
+            {#each PACKAGE_MANAGERS as pm (pm.id)}
+              <DropdownMenu.RadioItem value={pm.id}>
+                {@render logo(pm.icon)}
+                {pm.id}
+              </DropdownMenu.RadioItem>
+            {/each}
+          </DropdownMenu.RadioGroup>
+        </DropdownMenu.Group>
+      </DropdownMenu.Content>
+    </DropdownMenu.Root>
+    <InputGroup.Input
+      readonly
+      value={command}
+      aria-label="Install command"
+      class="font-mono text-muted-foreground"
+    />
+    <InputGroup.Addon align="inline-end">
+      <InputGroup.Button
+        size="icon-xs"
+        onclick={copy}
+        aria-label={copied ? "Copied" : "Copy command"}
+      >
+        {#if copied}
+          <CheckIcon />
+        {:else}
+          <CopyIcon />
+        {/if}
+      </InputGroup.Button>
+    </InputGroup.Addon>
+  </InputGroup.Root>
 </div>
