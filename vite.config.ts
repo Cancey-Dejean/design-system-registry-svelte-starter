@@ -38,7 +38,15 @@ export default defineConfig({
   },
   fmt: {},
   lint: {
-    jsPlugins: [{ name: "vite-plus", specifier: "vite-plus/oxlint-plugin" }],
+    jsPlugins: [
+      { name: "vite-plus", specifier: "vite-plus/oxlint-plugin" },
+      "@shadcn/lint",
+    ],
+    settings: {
+      shadcn: {
+        ui: "$lib/components/ui",
+      },
+    },
     rules: { "vite-plus/prefer-vite-plus-imports": "error" },
     options: { typeAware: true, typeCheck: true },
   },
