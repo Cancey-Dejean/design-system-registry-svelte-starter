@@ -1,6 +1,7 @@
 <script lang="ts">
   import { Button } from "$registry/items/components/button/index.js";
   import { registryConfig } from "$registry/config";
+  import StorybookIcon from "$registry/items/components/logos/logo-set/storybook-icon.svelte";
 </script>
 
 <div class="flex min-h-screen flex-col items-center justify-center gap-6 px-6 text-center">
@@ -10,7 +11,10 @@
     ready to install.
   </p>
   <div class="flex gap-3">
-    <Button href="/components">Browse components</Button>
-    <Button href={registryConfig.repositoryUrl} variant="outline" target="_blank">GitHub</Button>
+    <Button href="/components">Browse</Button>
+    <Button href={registryConfig.storybookUrl} variant="outline" target="_blank">
+      <StorybookIcon data-icon="inline-start" class="size-4" />
+      Storybook
+    </Button>
   </div>
 </div>
