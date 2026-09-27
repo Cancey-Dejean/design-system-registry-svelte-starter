@@ -46,9 +46,9 @@
 
 {#if items.length}
   <nav class="hidden w-48 shrink-0 xl:block">
-    <div class="sticky top-24 flex flex-col gap-3">
+    <div class="sticky top-24 flex max-h-[calc(100dvh-8rem)] flex-col gap-3">
       <p class="text-sm font-medium">On This Page</p>
-      <ul class="flex flex-col gap-2 text-sm">
+      <ul class="no-scrollbar scroll-fade flex min-h-0 flex-col gap-2 overflow-y-auto text-sm">
         {#each items as item (item.id)}
           {@const isActive = item.id === activeId}
           <li>
