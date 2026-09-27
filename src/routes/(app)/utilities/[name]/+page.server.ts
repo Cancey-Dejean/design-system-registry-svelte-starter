@@ -1,7 +1,5 @@
 import { redirect } from "@sveltejs/kit";
-import { loadSectionItem } from "$lib/registry/section-loaders";
-import { loadRegistryItemPreviewSource } from "$lib/registry/catalog";
-import { highlightCode } from "$lib/shiki";
+import { loadItemDocPage } from "$lib/registry/item-doc-load.server";
 import type { PageServerLoad } from "./$types";
 
 // Items with their own long-form doc under registry/docs/*.svx don't need a
@@ -14,8 +12,5 @@ export const load: PageServerLoad = async ({ params }) => {
   const docRedirect = DOC_REDIRECTS[params.name];
   if (docRedirect) redirect(308, docRedirect);
 
-  const { section, name, metadata, prev, next } = loadSectionItem("utilities", params.name);
-  const source = await loadRegistryItemPreviewSource(section, name);
-  const previewSourceHtml = source ? await highlightCode(source, "svelte") : "";
-  return { section, name, metadata, previewSourceHtml, prev, next };
+  return await loadItemDocPage("utilities", params.name);
 };

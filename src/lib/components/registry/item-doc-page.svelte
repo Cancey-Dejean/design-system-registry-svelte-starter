@@ -16,6 +16,7 @@
     loadRegistryItemPreview,
     type RegistryItemMetadata,
   } from "$lib/registry/catalog";
+  import type { ManualInstallFile } from "$lib/registry/manual-files";
   import type { RegistrySectionId } from "$lib/registry/sections";
   import type { AdjacentPage } from "$lib/registry/section-loaders";
   import { registryConfig } from "$registry/config";
@@ -25,6 +26,7 @@
     name,
     metadata,
     previewSourceHtml,
+    manualFiles,
     prev,
     next,
   }: {
@@ -32,6 +34,7 @@
     name: string;
     metadata: RegistryItemMetadata;
     previewSourceHtml: string;
+    manualFiles: ManualInstallFile[];
     prev: AdjacentPage | null;
     next: AdjacentPage | null;
   } = $props();
@@ -126,16 +129,21 @@
               <InstallCommand kind="add" args={dependencyArgs} />
             </div>
           {/if}
-          {#if metadata.files?.length}
+          {#if manualFiles.length}
             <div>
               <p class="mb-2 text-sm font-medium">
-                {dependencyArgs ? "2." : "1."} Copy these files into your project
+                {dependencyArgs ? "2." : "1."} Copy and paste the following code
+                into your project.
               </p>
-              <ul class="flex flex-col gap-1 text-sm text-muted-foreground">
-                {#each metadata.files as file (file.target)}
-                  <li class="font-mono">{file.target}</li>
+              <div class="flex flex-col gap-3">
+                {#each manualFiles as file (file.target)}
+                  <CodeBlock
+                    filename={file.target}
+                    html={file.html}
+                    code={file.code}
+                  />
                 {/each}
-              </ul>
+              </div>
             </div>
           {/if}
         </div>

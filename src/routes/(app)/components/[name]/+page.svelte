@@ -9,6 +9,7 @@
   name={data.name}
   metadata={data.metadata}
   previewSourceHtml={data.previewSourceHtml}
+  manualFiles={data.manualFiles}
   prev={data.prev}
   next={data.next}
 />

@@ -1,11 +1,6 @@
-import { loadSectionItem } from "$lib/registry/section-loaders";
-import { loadRegistryItemPreviewSource } from "$lib/registry/catalog";
-import { highlightCode } from "$lib/shiki";
+import { loadItemDocPage } from "$lib/registry/item-doc-load.server";
 import type { PageServerLoad } from "./$types";
 
 export const load: PageServerLoad = async ({ params }) => {
-  const { section, name, metadata, prev, next } = loadSectionItem("blocks", params.name);
-  const source = await loadRegistryItemPreviewSource(section, name);
-  const previewSourceHtml = source ? await highlightCode(source, "svelte") : "";
-  return { section, name, metadata, previewSourceHtml, prev, next };
+  return await loadItemDocPage("blocks", params.name);
 };
