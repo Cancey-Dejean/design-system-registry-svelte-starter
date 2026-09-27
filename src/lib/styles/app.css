@@ -6,6 +6,10 @@
 @custom-variant dark (&:is(.dark *));
 @plugin '@tailwindcss/typography';
 
+@utility transition-smooth {
+  @apply transition-all duration-300 ease-in-out;
+}
+
 :root {
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);

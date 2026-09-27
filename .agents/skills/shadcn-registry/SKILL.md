@@ -1,11 +1,11 @@
 ---
 name: shadcn-registry
-description: Add or adapt installable shadcn-svelte registry items in this SvelteKit template repo.
+description: Add or adapt installable shadcn-svelte registry items in this repo's design-system-ui registry (@design-system-ui).
 ---
 
 # Shadcn Registry (Svelte)
 
-Use this skill for installable registry items across all public shadcn registry types, previews, usage docs, and registry dependency metadata. Local `AGENTS.md` and `README.md` override this file. See [`sync-registry-metadata`](../sync-registry-metadata/SKILL.md) for the full checklist to run after editing an existing item, and [Registry](../../../registry/docs/registry.svx) for the canonical reference.
+Use this skill for installable registry items in **this** repo: design-system-ui (`@design-system-ui`). Docs live at https://sveltedocs.canceydejean.dev. Local `AGENTS.md` and `README.md` override this file. See [`sync-registry-metadata`](../sync-registry-metadata/SKILL.md) for the full checklist to run after editing an existing item, and [Registry](../../../registry/docs/registry.svx) for the canonical reference.
 
 ## Workflow
 
@@ -84,8 +84,8 @@ Keep previews client-safe: static data, local state, and events are fine; avoid 
 Consumers do not need Bun. Document package-manager agnostic commands:
 
 ```sh
-npx shadcn-svelte@latest add https://<homepage>/r/example-card.json
-pnpm dlx shadcn-svelte@latest add https://<homepage>/r/example-card.json
+npx shadcn-svelte@latest add https://sveltedocs.canceydejean.dev/r/example-card.json
+pnpm dlx shadcn-svelte@latest add https://sveltedocs.canceydejean.dev/r/example-card.json
 ```
 
 ## Adaptation Rules
