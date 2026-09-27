@@ -28,8 +28,7 @@
   use:enhanceCodeBlocks
   class={[
     "text-sm [&_pre]:m-0",
-    filename &&
-      "overflow-hidden rounded-lg border [&_.code-copy-button]:hidden [&_pre.shiki]:max-h-96 [&_pre.shiki]:rounded-none [&_pre.shiki]:border-0",
+    filename && "file-code-block overflow-hidden border",
   ]}
 >
   {#if filename}

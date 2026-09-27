@@ -186,6 +186,16 @@ pre.shiki {
   scrollbar-color: var(--border) transparent;
 }
 
+.file-code-block pre.shiki {
+  max-height: 24rem;
+  border: none;
+  border-radius: 0;
+}
+
+.file-code-block .code-copy-button {
+  display: none;
+}
+
 pre.shiki,
 pre.shiki span {
   color: var(--shiki-light);
