@@ -41,7 +41,13 @@ export function getSiteNavigationSections(): SiteNavSection[] {
         url: `${section.basePath}/${item.name}`,
       }))
       .sort((a, b) => a.title.localeCompare(b.title));
-    return { id, title: section.title, basePath: section.basePath, items };
+    return {
+      id,
+      title: section.title,
+      basePath: section.basePath,
+      indexUrl: items[0]?.url ?? section.basePath,
+      items,
+    };
   });
 
   return [docsSection, ...registryNavSections];
