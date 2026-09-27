@@ -14,6 +14,8 @@ Use this page to publish notable registry updates, new items, breaking changes, 
 
 - **Docs:** The homepage outline button now links to Storybook (`registryConfig.storybookUrl`) and shows the Storybook icon.
 - **Update:** Sidebar section titles (Components, Blocks) now open the first item page instead of the section index, matching Docs.
+- **Docs:** [Styles](/docs/styles) and [CLI](/docs/cli) now use the same package-manager dropdown as [Installation](/docs/installation) instead of separate npm/pnpm/yarn/bun code blocks.
+- **Docs:** The item-layout tree on [Registry](/docs/registry) now uses the same green/blue token colors as the YAML `files:` examples.
 
 ---
 

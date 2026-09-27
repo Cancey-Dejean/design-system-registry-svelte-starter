@@ -1,8 +1,21 @@
-import { createHighlighter, type Highlighter, type ShikiTransformer } from "shiki";
+import {
+  createHighlighter,
+  type Highlighter,
+  type LanguageRegistration,
+  type ShikiTransformer,
+} from "shiki";
 
-export type HighlightLang = "svelte" | "typescript" | "bash" | "css" | "json" | "yaml" | "text";
+export type HighlightLang =
+  | "svelte"
+  | "typescript"
+  | "bash"
+  | "css"
+  | "json"
+  | "yaml"
+  | "text"
+  | "tree";
 
-const SHIKI_LANGS: HighlightLang[] = [
+const BUNDLED_LANGS: Exclude<HighlightLang, "tree">[] = [
   "svelte",
   "typescript",
   "bash",
@@ -12,6 +25,26 @@ const SHIKI_LANGS: HighlightLang[] = [
   "text",
 ];
 
+const SHIKI_LANGS: HighlightLang[] = [...BUNDLED_LANGS, "tree"];
+
+// Reuse YAML token scopes so file trees pick up the same green keys / blue
+// strings as the `files:` examples on the Registry docs page.
+const TREE_LANG: LanguageRegistration = {
+  name: "tree",
+  scopeName: "source.tree",
+  aliases: ["filetree"],
+  patterns: [
+    {
+      name: "entity.name.tag.yaml",
+      match: "(?:[\\w.@+-]+/)+",
+    },
+    {
+      name: "string.unquoted.yaml",
+      match: "[\\w.@+-]+",
+    },
+  ],
+};
+
 const LANG_ALIASES: Record<string, HighlightLang> = {
   "": "text",
   sh: "bash",
@@ -19,6 +52,7 @@ const LANG_ALIASES: Record<string, HighlightLang> = {
   ts: "typescript",
   js: "typescript",
   javascript: "typescript",
+  filetree: "tree",
 };
 
 let highlighterPromise: Promise<Highlighter> | null = null;
@@ -26,7 +60,7 @@ let highlighterPromise: Promise<Highlighter> | null = null;
 function getHighlighter() {
   highlighterPromise ??= createHighlighter({
     themes: ["github-light", "github-dark"],
-    langs: SHIKI_LANGS,
+    langs: [...BUNDLED_LANGS, TREE_LANG],
   });
   return highlighterPromise;
 }

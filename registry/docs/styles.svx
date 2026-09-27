@@ -4,6 +4,11 @@ description: Install the design system CSS foundation with the shadcn-svelte CLI
 order: 2
 ---
 
+<script>
+  import InstallCommand from "$lib/components/registry/install-command.svelte";
+  import { registryConfig } from "$registry/config";
+</script>
+
 Before components look correct, add the design system style files. This installs `globals.css` plus the default, secondary, and tertiary theme presets into `styles/` at the project root.
 
 ## Prerequisites
@@ -12,29 +17,10 @@ Your project should already be set up with [shadcn-svelte](https://www.shadcn-sv
 
 ## Install
 
-### npm
-
-```sh
-npx shadcn-svelte@latest add https://sveltedocs.canceydejean.dev/r/styles.json
-```
-
-### pnpm
-
-```sh
-pnpm dlx shadcn-svelte@latest add https://sveltedocs.canceydejean.dev/r/styles.json
-```
-
-### yarn
-
-```sh
-yarn dlx shadcn-svelte@latest add https://sveltedocs.canceydejean.dev/r/styles.json
-```
-
-### bun
-
-```sh
-bun x shadcn-svelte@latest add https://sveltedocs.canceydejean.dev/r/styles.json
-```
+<InstallCommand
+  kind="exec"
+  args={`shadcn-svelte@latest add ${registryConfig.homepage}/r/styles.json`}
+/>
 
 ## What gets installed
 

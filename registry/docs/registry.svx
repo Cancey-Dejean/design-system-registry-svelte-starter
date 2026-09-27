@@ -8,7 +8,7 @@ Registry items live under `registry/items/<section>/<name>/`. `<section>` is `co
 
 ## Item layout
 
-```text
+```tree
 registry/items/components/badge/
   _registry.svx
   _preview.svelte
