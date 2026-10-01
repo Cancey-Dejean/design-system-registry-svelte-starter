@@ -1,4 +1,5 @@
 import { tv } from "tailwind-variants";
+import { cnConfig } from "$lib/utils.js";
 
 export const headingCva = {
   variants: {
@@ -11,13 +12,13 @@ export const headingCva = {
       6: "",
     },
     size: {
-      xs: "[font-size:var(--text-20)]",
-      sm: "[font-size:var(--text-20)] sm:[font-size:var(--text-24)]",
-      md: "[font-size:var(--text-24)] sm:[font-size:var(--text-30)]",
-      lg: "[font-size:var(--text-30)] sm:[font-size:var(--text-36)]",
-      xl: "[font-size:var(--text-36)] sm:[font-size:var(--text-48)]",
-      "2xl": "[font-size:var(--text-48)] sm:[font-size:var(--text-60)]",
-      "3xl": "[font-size:var(--text-60)] sm:[font-size:var(--text-72)]",
+      "3xl": "text-60 sm:text-72",
+      "2xl": "text-48 sm:text-60",
+      xl: "text-36 sm:text-48",
+      lg: "text-30 sm:text-36",
+      md: "text-24 sm:text-30",
+      sm: "text-20 sm:text-24",
+      xs: "text-20",
     },
     weight: {
       regular: "font-normal",
@@ -41,10 +42,13 @@ export const headingCva = {
   },
 } as const;
 
-export const headingVariants = tv({
-  base: "font-semibold tracking-tight leading-none!",
-  ...headingCva,
-});
+export const headingVariants = tv(
+  {
+    base: "font-semibold tracking-tight leading-none!",
+    ...headingCva,
+  },
+  { twMergeConfig: cnConfig },
+);
 
 export const HEADING_LEVELS = Object.keys(
   headingCva.variants.level,

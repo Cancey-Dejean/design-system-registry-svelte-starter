@@ -57,6 +57,64 @@ document.documentElement.dataset.theme = "theme-secondary"; // or "theme-tertiar
 
 Each preset only overrides `--primary`, `--ring`, `--sidebar-primary`, `--selection`, and the `--chart-*` scale — everything else (background, foreground, card, border, radius) is shared, so switching presets only changes the accent, not the whole surface.
 
+## Type scale
+
+`theme.css` defines the font-size scale inside `@theme inline`. Tailwind turns each `--text-*` token into a utility of the same name, so `--text-60` is the class `text-60`.
+
+| Utility    | Size  |
+| ---------- | ----- |
+| `text-10`  | 10px  |
+| `text-12`  | 12px  |
+| `text-14`  | 14px  |
+| `text-16`  | 16px  |
+| `text-18`  | 18px  |
+| `text-20`  | 20px  |
+| `text-24`  | 24px  |
+| `text-30`  | 30px  |
+| `text-36`  | 36px  |
+| `text-48`  | 48px  |
+| `text-60`  | 60px  |
+| `text-72`  | 72px  |
+| `text-96`  | 96px  |
+| `text-120` | 120px |
+
+Heading uses the upper end of that scale and steps up at the `sm` breakpoint (640px):
+
+| Size  | Base      | `sm`      |
+| ----- | --------- | --------- |
+| `xs`  | `text-20` | `text-20` |
+| `sm`  | `text-20` | `text-24` |
+| `md`  | `text-24` | `text-30` |
+| `lg`  | `text-30` | `text-36` |
+| `xl`  | `text-36` | `text-48` |
+| `2xl` | `text-48` | `text-60` |
+| `3xl` | `text-60` | `text-72` |
+
+Text uses the smaller end (`text-12` through `text-20`) and steps up at the same breakpoint.
+
+## Keeping sizes when classes merge
+
+`cn` and `tailwind-variants` know Tailwind's built-in sizes (`text-sm`, `text-xl`). Every other `text-*` class is classified as a text color. A recipe that sets both `text-60` and `text-foreground` loses `text-60` in the merge, and the element keeps the inherited font size. `sm:text-72` lives in its own group, so the larger breakpoint can still apply and the missing size shows up only below `sm`.
+
+This repo registers the scale as font sizes in `registry/items/lib/utils.ts` (`themeTextSizes` and `cnConfig`). `$lib/utils` re-exports that `cn` and `cnConfig`. Pass the same config to every `tv()` recipe that mixes a scale size with a color:
+
+```ts
+import { tv } from "tailwind-variants";
+import { cnConfig } from "$lib/utils.js";
+
+export const headingVariants = tv(
+  {
+    variants: {
+      size: { md: "text-24 sm:text-30" },
+      tone: { default: "text-foreground" },
+    },
+  },
+  { twMergeConfig: cnConfig },
+);
+```
+
+Add a new size in both places: a `--text-*` custom property in `theme.css`, and the same name in `themeTextSizes`.
+
 ## Next steps
 
 Browse the [components](/components) catalog and follow the install command on each item page. The [`styles`](/utilities/styles) item page has the same usage notes as this guide.

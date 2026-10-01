@@ -2,6 +2,21 @@
 
 Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
 
+## Type scale
+
+Font sizes live in `registry/items/files/styles/theme.css` as `--text-10` through `--text-120`. Tailwind exposes each token as a utility (`text-60` comes from `--text-60`). Heading and Text use that scale, and each size steps up at the `sm` breakpoint. The consumer-facing table is in [`registry/docs/styles.svx`](registry/docs/styles.svx).
+
+`cn` and `tailwind-variants` treat an unknown `text-*` class as a text color. Merging `text-60` with `text-foreground` drops `text-60`, so the heading renders at the inherited size. `registry/items/lib/utils.ts` registers the scale as font sizes (`themeTextSizes`, `cnConfig`), and `src/lib/utils.ts` re-exports that `cn`. Any `tv()` recipe that pairs a scale size with a color passes the config through:
+
+```ts
+import { tv } from "tailwind-variants";
+import { cnConfig } from "$lib/utils.js";
+
+tv(recipe, { twMergeConfig: cnConfig });
+```
+
+Add a new size in `theme.css` and under `themeTextSizes`. `themeTextSizes` also lists semantic aliases (`label`, `meta`, `body`, `heading`, `title`, `display`, `display-xl`) so those class names survive a merge. They become real utilities once matching `--text-*` tokens exist in the theme.
+
 ## Creating a project
 
 If you're seeing this, you've probably already done this step. Congrats!

@@ -1,13 +1,13 @@
 import { tv } from "tailwind-variants";
+import { cnConfig } from "$lib/utils.js";
 
 export const textCva = {
   variants: {
     size: {
-      xs: "text-12",
-      sm: "text-14",
-      md: "text-16",
-      lg: "md:text-18 text-16",
-      xl: "md:text-20 text-16",
+      xs: "text-12 sm:text-14",
+      sm: "text-14 sm:text-16",
+      md: "text-16 sm:text-18",
+      lg: "text-18 sm:text-20",
     },
     weight: {
       light: "font-light",
@@ -36,10 +36,13 @@ export const textCva = {
   },
 } as const;
 
-export const textVariants = tv({
-  base: "tracking-tight",
-  ...textCva,
-});
+export const textVariants = tv(
+  {
+    base: "tracking-tight",
+    ...textCva,
+  },
+  { twMergeConfig: cnConfig },
+);
 
 export const TEXT_SIZES = Object.keys(
   textCva.variants.size,
