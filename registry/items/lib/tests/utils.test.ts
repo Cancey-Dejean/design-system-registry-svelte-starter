@@ -2,12 +2,12 @@ import { readFileSync } from "node:fs";
 
 import { describe, expect, test } from "vite-plus/test";
 
-import { headingVariants } from "../components/heading/heading.variants";
-import { cn, themeTextSizes } from "./utils";
+import { headingVariants } from "../../components/heading/heading.variants";
+import { cn, themeTextSizes } from "../utils";
 
 describe("cn", () => {
   test("registers every theme font size", () => {
-    const theme = readFileSync(new URL("../files/styles/theme.css", import.meta.url), "utf8");
+    const theme = readFileSync(new URL("../../files/styles/theme.css", import.meta.url), "utf8");
     const themeSizes = [...theme.matchAll(/--text-([a-z0-9-]+):/g)]
       .map((match) => match[1])
       .filter((name) => name && !name.includes("--"));
