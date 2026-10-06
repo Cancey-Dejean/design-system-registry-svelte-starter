@@ -19,6 +19,7 @@
   "dependencies": {
     "@orama/orama": "^3.1.18",
     "@tanstack/svelte-table": "^9.2.4",
+    "@xyflow/svelte": "^1.7.0",
     "chrono-node": "^2.10.1",
     "embla-carousel-svelte": "^8.6.0",
     "github-slugger": "^2.0.0",

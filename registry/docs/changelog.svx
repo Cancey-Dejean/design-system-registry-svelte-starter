@@ -8,6 +8,14 @@ Use this page to publish notable registry updates, new items, breaking changes, 
 
 ---
 
+## October 6, 2026
+
+### v0.5.0
+
+- **New:** [Component flows](/flows) traces what each registry item depends on, what uses it, and what it installs, in three layouts: a registry map, lineage lanes, and an install chain with each component's variants and props. Linked from the sidebar footer.
+
+---
+
 ## September 27, 2026
 
 ### v0.4.2

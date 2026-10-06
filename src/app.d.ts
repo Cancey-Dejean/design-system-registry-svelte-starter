@@ -4,7 +4,10 @@ declare global {
   namespace App {
     // interface Error {}
     // interface Locals {}
-    // interface PageData {}
+    interface PageData {
+      /** Full-height pages (e.g. the flows canvas) opt out of the site footer. */
+      hideFooter?: boolean;
+    }
     // interface PageState {}
     // interface Platform {}
   }

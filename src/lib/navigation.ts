@@ -58,6 +58,12 @@ export const registryOverviewLink: SiteNavItem = {
   url: "/registry",
 };
 
+export const flowsPage = {
+  title: "Component flows",
+  description: "Trace what each registry item depends on, what uses it, and what it installs.",
+  url: "/flows",
+} as const;
+
 export function isNavItemActive(url: string, pathname: string): boolean {
   return pathname === url || pathname.startsWith(`${url}/`);
 }

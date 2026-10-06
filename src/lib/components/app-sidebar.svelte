@@ -3,7 +3,9 @@
   import * as Sidebar from "$lib/components/ui/sidebar/index.js";
   import NavMain from "./nav-main.svelte";
   import SearchDialog from "./search-dialog.svelte";
+  import WorkflowIcon from "@lucide/svelte/icons/workflow";
   import {
+    flowsPage,
     isNavItemActive,
     registryOverviewLink,
     type SiteNavSection,
@@ -49,6 +51,18 @@
   </Sidebar.Content>
   <Sidebar.Footer>
     <Sidebar.Menu>
+      <Sidebar.MenuItem>
+        <Sidebar.MenuButton
+          isActive={isNavItemActive(flowsPage.url, page.url.pathname)}
+        >
+          {#snippet child({ props })}
+            <a href={flowsPage.url} {...props}>
+              <WorkflowIcon />
+              <span>{flowsPage.title}</span>
+            </a>
+          {/snippet}
+        </Sidebar.MenuButton>
+      </Sidebar.MenuItem>
       <Sidebar.MenuItem>
         <Sidebar.MenuButton
           isActive={isNavItemActive(

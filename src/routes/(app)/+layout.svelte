@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { page } from "$app/state";
   import * as Sidebar from "$lib/components/ui/sidebar/index.js";
   import { Separator } from "$registry/items/components/separator/index.js";
   import AppSidebar from "$lib/components/app-sidebar.svelte";
@@ -56,6 +57,8 @@
         {@render children()}
       </div>
     </div>
-    <SiteFooter />
+    {#if !page.data.hideFooter}
+      <SiteFooter />
+    {/if}
   </Sidebar.Inset>
 </Sidebar.Provider>
