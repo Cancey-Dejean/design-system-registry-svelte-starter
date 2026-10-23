@@ -25,7 +25,7 @@
 
   function reset() {
     query = "";
-    if (!isComponents) void goto(resolve("/blocks"), { keepFocus: true, noScroll: true });
+    if (!isComponents) void goto(resolve("blocks"), { reset: false });
   }
 </script>
 
@@ -42,7 +42,7 @@
   {#if !isComponents}
     <nav aria-label="Block categories" class="flex gap-5 overflow-x-auto border-b">
       {#each [{ id: "all", title: "All blocks", count: items.length }, ...categories] as group (group.id)}
-        <a href={resolve("/blocks") + (group.id === "all" ? "" : `?category=${encodeURIComponent(group.id)}`)} aria-current={category === group.id ? "page" : undefined} class={cn("flex shrink-0 items-center gap-2 border-b-2 py-3 text-sm font-medium transition-colors", category === group.id ? "border-foreground" : "border-transparent text-muted-foreground hover:text-foreground")}>
+        <a href={resolve("blocks") + (group.id === "all" ? "" : `?category=${encodeURIComponent(group.id)}`)} aria-current={category === group.id ? "page" : undefined} class={cn("flex shrink-0 items-center gap-2 border-b-2 py-3 text-sm font-medium transition-colors", category === group.id ? "border-foreground" : "border-transparent text-muted-foreground hover:text-foreground")}>
           {group.title}<Badge variant="secondary">{group.count}</Badge>
         </a>
       {/each}
