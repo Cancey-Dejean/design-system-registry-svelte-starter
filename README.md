@@ -54,4 +54,9 @@ npm run build
 
 You can preview the production build with `npm run preview`.
 
+Keep `esrap` in `devDependencies`: the Svelte compiler requires its `languages/ts` export.
+Storybook also uses an older version, so relying on the transitive dependency alone can resolve
+that older package during cached Vercel installs and fail both builds with
+`ERR_PACKAGE_PATH_NOT_EXPORTED`. Update `package.json` and `bun.lock` together when changing it.
+
 > To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.

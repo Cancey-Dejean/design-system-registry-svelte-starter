@@ -58,6 +58,7 @@
     "bits-ui": "^2.20.0",
     "cn": "^0.3.0",
     "concurrently": "^10.0.5",
+    "esrap": "^2.4.0",
     "fast-check": "^4.10.2",
     "gray-matter": "^4.0.3",
     "mdsvex": "^0.12.8",
