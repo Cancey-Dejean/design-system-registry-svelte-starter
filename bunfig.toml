@@ -1,0 +1,3 @@
+[install]
+# Svelte and Storybook require different esrap APIs; keep dependency trees isolated.
+linker = "isolated"

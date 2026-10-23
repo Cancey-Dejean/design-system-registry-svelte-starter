@@ -58,6 +58,8 @@ Keep `esrap` in `devDependencies`: the Svelte compiler requires its `languages/t
 Storybook also uses an older version, so relying on the transitive dependency alone can resolve
 that older package during cached Vercel installs and fail both builds with
 `ERR_PACKAGE_PATH_NOT_EXPORTED`. Update `package.json` and `bun.lock` together when changing it.
+`bunfig.toml` uses isolated installs so Storybook receives its older `esrap` API while Svelte
+receives its newer API, including when Vercel restores an existing dependency cache.
 
 > To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
 
