@@ -8,6 +8,7 @@ dependencies:
   - "@lucide/svelte"
   - tailwind-variants
 registryDependencies:
+  - is-mobile
   - button
   - input
   - separator

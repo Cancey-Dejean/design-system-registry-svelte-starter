@@ -8,6 +8,7 @@ export interface SiteNavItem {
   title: string;
   url: string;
   badge?: string;
+  isHook?: boolean;
   audience?: "dev" | "maintainers";
 }
 
@@ -44,6 +45,7 @@ export function getSiteNavigationSections(): SiteNavSection[] {
       .filter((item) => item.section === id && !docsSlugs.has(item.name))
       .map((item) => ({
         title: item.metadata.title,
+        isHook: item.metadata.type === "registry:hook",
         url: `${section.basePath}/${item.name}`,
       }))
       .sort((a, b) => a.title.localeCompare(b.title));

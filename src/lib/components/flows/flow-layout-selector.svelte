@@ -48,7 +48,7 @@
         {#snippet child({ props })}
           <label
             {...props}
-            class="grid size-7 cursor-pointer place-items-center rounded-md border border-transparent text-muted-foreground transition-colors hover:bg-muted hover:text-foreground has-checked:border-violet-500/50 has-checked:bg-violet-500/10 has-checked:text-violet-600 has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-violet-500 dark:has-checked:text-violet-400"
+            class="grid size-7 cursor-pointer place-items-center rounded-md border border-transparent text-muted-foreground transition-colors hover:bg-muted hover:text-foreground has-checked:border-[#ff3e00]/50 has-checked:bg-[#ff3e00]/10 has-checked:text-[#d63600] has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-[#ff3e00] dark:has-checked:text-[#ff6b3d]"
           >
             <input
               type="radio"

@@ -10,15 +10,29 @@ Use this page to publish notable registry updates, new items, breaking changes, 
 
 ## Current catalog
 
-- **Components:** `accordion`, `alert`, `alert-dialog`, `aspect-ratio`, `avatar`, `badge`, `breadcrumb`, `button`, `button-group`, `calendar`, `card`, `carousel`, `chart`, `checkbox`, `collapsible`, `combobox`, `command`, `container`, `context-menu`, `data-table`, `datepicker`, `dialog`, `drawer`, `dropdown-menu`, `empty`, `field`, `heading`, `hover-card`, `icons`, `input`, `input-group`, `input-otp`, `item`, `kbd`, `label`, `link-spread`, `link-text`, `logos`, `menubar`, `native-select`, `navigation-menu`, `pagination`, `popover`, `progress`, `radio-group`, `range-calendar`, `resizable`, `scroll-area`, `select`, `separator`, `sheet`, `sidebar`, `skeleton`, `slider`, `sonner`, `spinner`, `switch`, `table`, `tabs`, `text`, `textarea`, `toggle`, `toggle-group`, `tooltip`.
+- **Components:** `accordion`, `alert`, `alert-dialog`, `aspect-ratio`, `avatar`, `badge`, `breadcrumb`, `button`, `button-group`, `calendar`, `card`, `carousel`, `chart`, `checkbox`, `code-block`, `collapsible`, `combobox`, `command`, `container`, `context-menu`, `data-table`, `datepicker`, `dialog`, `drawer`, `dropdown-menu`, `empty`, `field`, `heading`, `hover-card`, `icons`, `input`, `input-group`, `input-otp`, `item`, `kbd`, `label`, `link-spread`, `link-text`, `logos`, `menubar`, `native-select`, `navigation-menu`, `pagination`, `popover`, `progress`, `radio-group`, `range-calendar`, `resizable`, `scroll-area`, `select`, `separator`, `sheet`, `sidebar`, `skeleton`, `slider`, `sonner`, `spinner`, `switch`, `table`, `tabs`, `text`, `textarea`, `toggle`, `toggle-group`, `tooltip`, `trace`.
 - **Blocks:** `hero`.
-- **Utilities:** `dot-canvas`, `styles`.
+- **Utilities:** `dot-canvas`, `is-mobile`, `scroll-fade`, `shimmer`, `styles`, `use-highlighted-code`.
 
 ---
 
 ## October 23, 2026
 
-### v0.7.0
+### v0.11.0
+
+- **New:** `scroll-fade` and `shimmer` are installable utility class helpers backed by shadcn-svelte CSS, with usage docs, live previews, and Storybook examples for directions, sizing, customization, and disabled states.
+
+- **Docs:** Component flow layout controls use Svelte orange for selection and keyboard focus.
+
+- **New:** `trace` is installable with status lines and expandable details, plus a docs preview and Storybook examples.
+
+- **Docs:** Utility hooks display the amber H badge in the sidebar, matching the React reference.
+
+- **New:** `is-mobile` and `use-highlighted-code` are installable hooks listed under Utilities. Highlighting includes its Shiki helper, and Sidebar installs its mobile hook dependency.
+
+- **Fix:** Docs pages load after relocating the mobile breakpoint hook to the registry; the app hook path now forwards to the shared source.
+
+- **New:** `code-block` is installable with composable headers, copy controls, numbered lines, diff states, and styled tokens. Includes a docs preview and Storybook examples.
 
 - **New:** `dot-canvas` is an installable decorative overlay with 12, 20, and 24 pixel grid spacing and a `class` override, matching the React reference.
 - **Docs:** Component and block gallery cards and item detail previews now use the same radial-faded Dot Canvas background. Isolated gallery previews remain transparent to reveal the dots behind their content.
@@ -83,7 +97,7 @@ Use this page to publish notable registry updates, new items, breaking changes, 
 
 ### v0.3.0
 
-- **New:** Finished registering and documenting the late component pass (installable JSON + Storybook + `_preview.svelte`): `field`, `hover-card`, `input-otp`, `item`, `kbd`, `menubar`, `native-select`, `navigation-menu`, `pagination`, `progress`, `radio-group`, `resizable`, `scroll-area`, `select`, `sheet`, `sidebar`, `skeleton`, `slider`, `sonner`, `switch`, `tabs`, `toggle`, `toggle-group`, `tooltip`.
+- **New:** Finished registering and documenting the late component pass (installable JSON + Storybook + `_preview.svelte`): `field`, `hover-card`, `input-otp`, `item`, `kbd`, `menubar`, `native-select`, `navigation-menu`, `pagination`, `progress`, `radio-group`, `resizable`, `scroll-area`, `select`, `sheet`, `sidebar`, `skeleton`, `slider`, `sonner`, `switch`, `tabs`, `toggle`, `toggle-group`, `tooltip`, `trace`.
 - **Update:** Composition wiring via `localRegistryDependencies` (e.g. `sidebar`, `toggle-group` → `toggle`).
 - **Fix:** Docs SSR 500s caused by eager registry previews loading LayerChart. Vite `ssr.noExternal` now includes `layerchart` and `@layerstack/*`.
 

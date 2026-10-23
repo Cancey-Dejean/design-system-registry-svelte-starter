@@ -48,6 +48,13 @@
                             >
                               {item.audience === "maintainers" ? "Maintainers" : "Dev"}
                             </Badge>
+                          {:else if item.isHook}
+                            <Badge
+                              variant="secondary"
+                              title="Hook"
+                              aria-label="Hook"
+                              class="ml-auto size-4.5 shrink-0 justify-center rounded-full bg-amber-500/15 px-0 font-mono text-[10px] font-semibold text-amber-700 dark:text-amber-300"
+                            >H</Badge>
                           {:else if item.badge}
                             <span class="ml-auto rounded-full bg-muted px-1.5 text-[10px] text-muted-foreground">{item.badge}</span>
                           {/if}

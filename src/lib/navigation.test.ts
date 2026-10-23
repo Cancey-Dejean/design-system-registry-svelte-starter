@@ -9,6 +9,16 @@ vi.mock("./registry/docs-catalog", () => ({
 }));
 vi.mock("./registry/catalog", () => ({
   getAllRegistryItems: () => [
+    {
+      section: "utilities",
+      name: "is-mobile",
+      metadata: { title: "Is Mobile", type: "registry:hook" },
+    },
+    {
+      section: "utilities",
+      name: "dot-canvas",
+      metadata: { title: "Dot Canvas", type: "registry:component" },
+    },
     { section: "components", name: "button", metadata: { title: "Button" } },
     { section: "blocks", name: "hero", metadata: { title: "Hero" } },
   ],
@@ -65,4 +75,10 @@ test("matches reference docs audience tags without tagging Introduction or compo
   expect(
     sections.find((section) => section.id === "components")!.items[0].audience,
   ).toBeUndefined();
+});
+
+test("marks hooks by registry type rather than utility name", () => {
+  const items = getSiteNavigationSections().find((section) => section.id === "utilities")!.items;
+  expect(items.find((item) => item.url === "/utilities/is-mobile")?.isHook).toBe(true);
+  expect(items.find((item) => item.url === "/utilities/dot-canvas")?.isHook).toBe(false);
 });

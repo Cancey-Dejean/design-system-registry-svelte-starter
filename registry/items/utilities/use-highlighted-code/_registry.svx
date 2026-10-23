@@ -1,0 +1,36 @@
+---
+name: use-highlighted-code
+type: registry:hook
+title: Use Highlighted Code
+description: Reactive Shiki token lines for code blocks, including incremental updates.
+dependencies:
+  - shiki
+files:
+  - path: registry/items/utilities/use-highlighted-code/use-highlighted-code.svelte.ts
+    type: registry:hook
+    target: "~/hooks/use-highlighted-code.svelte.ts"
+  - path: registry/items/utilities/use-highlighted-code/highlighter.ts
+    type: registry:hook
+    target: "~/hooks/highlighter.ts"
+---
+
+Call during component initialization and pass getters for reactive source and language values. `current` returns plain text while the highlighter loads, then styled token arrays accepted by `CodeBlock.Line`. Unsupported languages remain plain text. Install [Code Block](/components/code-block) separately for the example below.
+
+```svelte
+<script lang="ts">
+  import { useHighlightedCode } from "~/hooks/use-highlighted-code.svelte.js";
+  import * as CodeBlock from "~/components/code-block";
+  let code = $state('const greeting = "hello";');
+  const lines = useHighlightedCode(() => code, () => "typescript");
+</script>
+
+<CodeBlock.Root>
+  <CodeBlock.Content lineNumbers>
+    {#each lines.current as line, index (index)}
+      <CodeBlock.Line code={line} />
+    {/each}
+  </CodeBlock.Content>
+</CodeBlock.Root>
+```
+
+Includes lazy language loading, GitHub light and dark token colors, ANSI, and common language aliases such as `ts`, `js`, and `sh`. Extend `highlighter.ts` to enable additional languages.

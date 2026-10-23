@@ -1,0 +1,46 @@
+---
+name: scroll-fade
+type: registry:lib
+title: Scroll Fade
+description: Utilities for scroll-aware fading at the edges of overflow containers.
+dependencies:
+  - shadcn-svelte
+files:
+  - path: registry/items/utilities/scroll-fade/scroll-fade.ts
+    type: registry:lib
+    target: "~/lib/scroll-fade.ts"
+---
+
+These class helpers use the utilities shipped in `shadcn-svelte/tailwind.css`. The design system [Styles](/utilities/styles) already imports them. In other projects, add this once to your global CSS:
+
+```css
+@import "tailwindcss";
+@import "shadcn-svelte/tailwind.css";
+```
+
+```svelte
+<script lang="ts">
+  import { scrollFadeClass } from "~/lib/scroll-fade";
+</script>
+
+<div class="overflow-hidden rounded-xl border">
+  <div class={`${scrollFadeClass} max-h-48`}>
+    <!-- Scrollable content -->
+  </div>
+</div>
+```
+
+Put borders and backgrounds on an outer wrapper so the mask only fades the content. Class helpers include overflow behavior; direct CSS classes can also be used in markup.
+
+| Class | Effect |
+| --- | --- |
+| `scroll-fade` / `scroll-fade-y` | Fade vertical edges |
+| `scroll-fade-x` | Fade horizontal edges |
+| `scroll-fade-t`, `-b`, `-l`, `-r` | Fade a physical edge |
+| `scroll-fade-s`, `-e` | Fade logical inline edges, including RTL |
+| `scroll-fade-<n>` | Set fade depth using the spacing scale |
+| `scroll-fade-none` | Disable fading |
+
+Exports include `scrollFadeClass`, `scrollFadeYClass`, `scrollFadeXClass`, `scrollFadeEdgeClasses`, `scrollFadeSizeClasses`, and `scrollFadeNoneClass`. Helpers contain complete literal class names that Tailwind can detect. Browsers with scroll timelines reveal fades as content scrolls; browsers without them use static edge masks.
+
+[Upstream Scroll Fade documentation](https://www.shadcn-svelte.com/docs/utils/scroll-fade).

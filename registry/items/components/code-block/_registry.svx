@@ -1,0 +1,67 @@
+---
+name: code-block
+type: registry:ui
+title: Code Block
+description: Composable code blocks with copying, line numbers, token styling, and diff states.
+dependencies:
+  - tailwind-variants
+  - "@lucide/svelte"
+registryDependencies:
+  - button
+files:
+  - path: registry/items/components/code-block/code-block-actions.svelte
+    type: registry:ui
+    target: '~/components/code-block/code-block-actions.svelte'
+  - path: registry/items/components/code-block/code-block-content.svelte
+    type: registry:ui
+    target: '~/components/code-block/code-block-content.svelte'
+  - path: registry/items/components/code-block/code-block-copy-button.svelte
+    type: registry:ui
+    target: '~/components/code-block/code-block-copy-button.svelte'
+  - path: registry/items/components/code-block/code-block-footer.svelte
+    type: registry:ui
+    target: '~/components/code-block/code-block-footer.svelte'
+  - path: registry/items/components/code-block/code-block-header.svelte
+    type: registry:ui
+    target: '~/components/code-block/code-block-header.svelte'
+  - path: registry/items/components/code-block/code-block-line.svelte
+    type: registry:ui
+    target: '~/components/code-block/code-block-line.svelte'
+  - path: registry/items/components/code-block/code-block-line.variants.ts
+    type: registry:ui
+    target: '~/components/code-block/code-block-line.variants.ts'
+  - path: registry/items/components/code-block/code-block-title.svelte
+    type: registry:ui
+    target: '~/components/code-block/code-block-title.svelte'
+  - path: registry/items/components/code-block/code-block.svelte
+    type: registry:ui
+    target: '~/components/code-block/code-block.svelte'
+  - path: registry/items/components/code-block/code-block.variants.ts
+    type: registry:ui
+    target: '~/components/code-block/code-block.variants.ts'
+  - path: registry/items/components/code-block/highlighter.ts
+    type: registry:ui
+    target: '~/components/code-block/highlighter.ts'
+  - path: registry/items/components/code-block/index.ts
+    type: registry:ui
+    target: '~/components/code-block/index.ts'
+---
+
+Compose the header, content, and footer independently. Pass plain text to `Content`, or compose `Line` elements for diff states and styled token arrays. `CopyButton` copies its explicit `value`.
+
+```svelte
+<script lang="ts">
+  import * as CodeBlock from "~/components/code-block";
+  const code = "npm install svelte";
+</script>
+
+<CodeBlock.Root>
+  <CodeBlock.Header>
+    <CodeBlock.Title>Terminal</CodeBlock.Title>
+    <CodeBlock.Actions><CodeBlock.CopyButton value={code} /></CodeBlock.Actions>
+  </CodeBlock.Header>
+  <CodeBlock.Content {code} lineNumbers />
+</CodeBlock.Root>
+```
+
+Root supports `variant="default" | "destructive"` and `size="default" | "sm"`. Content supports `wrap`, `lineNumbers`, and `startLine`. Line supports `default`, `added`, `removed`, and `highlighted` variants. Token arrays accept `content`, `style`, and `class`; syntax highlighting is supplied by the consumer.

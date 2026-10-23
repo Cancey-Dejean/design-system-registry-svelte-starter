@@ -1,0 +1,60 @@
+---
+name: trace
+type: registry:ui
+title: Trace
+description: Composable activity traces with status lines and expandable details.
+dependencies:
+  - bits-ui
+  - "@lucide/svelte"
+registryDependencies:
+  - collapsible
+files:
+  - path: registry/items/components/trace/index.ts
+    type: registry:ui
+    target: "~/components/trace/index.ts"
+  - path: registry/items/components/trace/trace-collapsible-content.svelte
+    type: registry:ui
+    target: "~/components/trace/trace-collapsible-content.svelte"
+  - path: registry/items/components/trace/trace-collapsible-trigger.svelte
+    type: registry:ui
+    target: "~/components/trace/trace-collapsible-trigger.svelte"
+  - path: registry/items/components/trace/trace-collapsible.svelte
+    type: registry:ui
+    target: "~/components/trace/trace-collapsible.svelte"
+  - path: registry/items/components/trace/trace-description.svelte
+    type: registry:ui
+    target: "~/components/trace/trace-description.svelte"
+  - path: registry/items/components/trace/trace-icon.svelte
+    type: registry:ui
+    target: "~/components/trace/trace-icon.svelte"
+  - path: registry/items/components/trace/trace-line.svelte
+    type: registry:ui
+    target: "~/components/trace/trace-line.svelte"
+  - path: registry/items/components/trace/trace-title.svelte
+    type: registry:ui
+    target: "~/components/trace/trace-title.svelte"
+  - path: registry/items/components/trace/trace.svelte
+    type: registry:ui
+    target: "~/components/trace/trace.svelte"
+  - path: registry/items/components/trace/trace.types.ts
+    type: registry:ui
+    target: "~/components/trace/trace.types.ts"
+---
+
+Compose an activity log with lines, decorative icons, titles, and optional descriptions. Set a line's `status` to `running`, `pending`, or `error`; omit it for a completed or neutral step. Use the collapsible parts to reveal supporting output. `Collapsible` supports bindable `open` and the underlying Bits UI props.
+
+```svelte
+<script lang="ts">
+  import * as Trace from "~/components/trace";
+</script>
+
+<Trace.Root>
+  <Trace.Line><Trace.Title>Read project configuration</Trace.Title></Trace.Line>
+  <Trace.Collapsible open>
+    <Trace.CollapsibleTrigger>
+      <Trace.Line><Trace.Title>Ran node --version</Trace.Title></Trace.Line>
+    </Trace.CollapsibleTrigger>
+    <Trace.CollapsibleContent>v24.18.0</Trace.CollapsibleContent>
+  </Trace.Collapsible>
+</Trace.Root>
+```

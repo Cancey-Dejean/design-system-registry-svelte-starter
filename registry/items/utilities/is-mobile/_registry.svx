@@ -1,0 +1,21 @@
+---
+name: is-mobile
+type: registry:hook
+title: Is Mobile
+description: Reactive viewport breakpoint detection using Svelte’s MediaQuery.
+files:
+  - path: registry/items/utilities/is-mobile/is-mobile.svelte.ts
+    type: registry:hook
+    target: "~/hooks/is-mobile.svelte.ts"
+---
+
+Create the hook during component initialization. Read `current` to react to viewport changes. The default mobile breakpoint is 768px; pass a custom breakpoint to override it. During server rendering, `current` is false.
+
+```svelte
+<script lang="ts">
+  import { IsMobile } from "~/hooks/is-mobile.svelte.js";
+  const mobile = new IsMobile();
+</script>
+
+<p>{mobile.current ? "Mobile layout" : "Desktop layout"}</p>
+```
