@@ -71,7 +71,7 @@
     {/each}
     <Sidebar.MenuItem>
       <Sidebar.MenuButton isActive={page.url.pathname === "/flows"}>
-        {#snippet child({ props })}<a href={resolve("/flows")} {...props}><span>Component flows</span></a>{/snippet}
+        {#snippet child({ props })}<a href={resolve("flows")} {...props}><span>Component flows</span></a>{/snippet}
       </Sidebar.MenuButton>
     </Sidebar.MenuItem>
   </Sidebar.Menu>

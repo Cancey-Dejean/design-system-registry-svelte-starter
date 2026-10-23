@@ -28,3 +28,7 @@ vite.config.ts.timestamp-*
 !.vscode/
 !.vscode/settings.json
 !.vscode/extensions.json
+.vitest/
+
+# Test coverage reports
+/coverage/

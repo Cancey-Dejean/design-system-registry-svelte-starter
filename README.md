@@ -58,5 +58,23 @@ Keep `esrap` in `devDependencies`: the Svelte compiler requires its `languages/t
 Storybook also uses an older version, so relying on the transitive dependency alone can resolve
 that older package during cached Vercel installs and fail both builds with
 `ERR_PACKAGE_PATH_NOT_EXPORTED`. Update `package.json` and `bun.lock` together when changing it.
+`bunfig.toml` uses isolated installs so Storybook receives its older `esrap` API while Svelte
+receives its newer API, including when Vercel restores an existing dependency cache.
 
 > To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+
+## Dependency updates
+
+Use Node 24.11 or newer within Node 24 and install from the committed `bun.lock`.
+Vite+ and its Vite alias, Vitest, browser provider, and coverage provider must be updated together;
+run the target version's `vp migrate` rather than changing only a runner pin.
+
+TypeScript stays on 6.x because SvelteKit sync and svelte-check require its JavaScript compiler
+API. [TypeScript 7 currently omits that API](https://devblogs.microsoft.com/typescript/announcing-typescript-7-0/), so Dependabot defers its major updates until the
+Svelte integrations support it. This does not disable TypeScript security updates.
+
+The `source-map-js` and `postcss-selector-parser` overrides enforce the patched releases for
+transitive dependencies. Remove them only after all parent packages require patched versions.
+
+Validate dependency updates with `bun audit`, `vp check`, `vp run check`, `vp test --run`,
+`vp run build`, and `vp run build-storybook`.
