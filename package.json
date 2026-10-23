@@ -27,7 +27,7 @@
     "layerchart": "^2.9.1",
     "mode-watcher": "^1.1.0",
     "paneforge": "^1.0.2",
-    "shiki": "^3.20.0",
+    "shiki": "^4.5.0",
     "svelte-sonner": "^1.2.1",
     "vaul-svelte": "1.0.0-next.7"
   },
