@@ -3,12 +3,12 @@
   import CheckCircle2Icon from "@lucide/svelte/icons/check-circle-2";
   import CircleAlertIcon from "@lucide/svelte/icons/circle-alert";
   import PopcornIcon from "@lucide/svelte/icons/popcorn";
-  import StoryWrapper from "$lib/components/utility/story-wrapper.svelte";
+
   import * as Alert from "../index.js";
 
   const { Story } = defineMeta({
     title: "Components/Alert",
-    decorators: [() => StoryWrapper],
+    parameters: { centered: true },
   });
 </script>
 

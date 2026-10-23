@@ -5,11 +5,10 @@
   import ChevronsUpDownIcon from "@lucide/svelte/icons/chevrons-up-down";
   import PlusIcon from "@lucide/svelte/icons/plus";
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let { teams }: { teams: { name: string; logo: any; plan: string }[] } = $props();
   const sidebar = useSidebar();
 
-  let activeTeam = $state(teams[0]);
+  let activeTeam = $derived(teams[0]);
 </script>
 
 <Sidebar.Menu>

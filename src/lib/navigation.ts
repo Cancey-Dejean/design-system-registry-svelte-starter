@@ -1,3 +1,5 @@
+import { getBlockCategory, getGalleryCategories } from "./registry/gallery";
+import { getDocPath } from "./registry/doc-path";
 import { getAllDocs } from "./registry/docs-catalog";
 import { getAllRegistryItems } from "./registry/catalog";
 import { registrySections, registrySectionIds } from "./registry/sections";
@@ -5,6 +7,8 @@ import { registrySections, registrySectionIds } from "./registry/sections";
 export interface SiteNavItem {
   title: string;
   url: string;
+  badge?: string;
+  audience?: "dev" | "maintainers";
 }
 
 export interface SiteNavSection {
@@ -14,6 +18,7 @@ export interface SiteNavSection {
   /** Where the section's own nav link points to. Defaults to `basePath` when omitted. */
   indexUrl?: string;
   items: SiteNavItem[];
+  categories?: SiteNavItem[];
 }
 
 export function getSiteNavigationSections(): SiteNavSection[] {
@@ -22,10 +27,11 @@ export function getSiteNavigationSections(): SiteNavSection[] {
     id: "docs",
     title: "Docs",
     basePath: "/docs",
-    indexUrl: docs.length > 0 ? `/docs/${docs[0].slug}` : "/docs",
+    indexUrl: "/docs",
     items: docs.map((doc) => ({
       title: doc.metadata.title,
-      url: `/docs/${doc.slug}`,
+      audience: doc.slug === "index" ? undefined : (doc.metadata.audience ?? "dev"),
+      url: getDocPath(doc.slug),
     })),
   };
 
@@ -45,8 +51,21 @@ export function getSiteNavigationSections(): SiteNavSection[] {
       id,
       title: section.title,
       basePath: section.basePath,
-      indexUrl: items[0]?.url ?? section.basePath,
+      indexUrl: section.basePath,
       items,
+      categories:
+        id === "blocks"
+          ? getGalleryCategories(
+              items.map((item) => ({
+                name: item.url.split("/").at(-1)!,
+                metadata: { title: item.title },
+              })),
+            ).map((category) => ({
+              title: category.title,
+              url: `/blocks?category=${category.id}`,
+              badge: String(category.count),
+            }))
+          : undefined,
     };
   });
 
@@ -65,10 +84,24 @@ export const flowsPage = {
 } as const;
 
 export function isNavItemActive(url: string, pathname: string): boolean {
-  return pathname === url || pathname.startsWith(`${url}/`);
+  return pathname === url || (url !== "/docs" && pathname.startsWith(`${url}/`));
 }
 
 export function isNavSectionActive(section: SiteNavSection, pathname: string): boolean {
-  if (pathname === (section.indexUrl ?? section.basePath)) return true;
+  if (
+    pathname === (section.indexUrl ?? section.basePath) ||
+    pathname.startsWith(`${section.basePath}/`)
+  )
+    return true;
   return section.items.some((item) => isNavItemActive(item.url, pathname));
+}
+
+export function isBlockCategoryActive(
+  category: string,
+  pathname: string,
+  selectedCategory: string | null,
+): boolean {
+  if (pathname === "/blocks") return selectedCategory === category;
+  if (!pathname.startsWith("/blocks/")) return false;
+  return getBlockCategory(decodeURIComponent(pathname.split("/")[2])).id === category;
 }

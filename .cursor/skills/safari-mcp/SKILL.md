@@ -69,12 +69,12 @@ Default: **file issues**, do not silently "optimize" the product. Fix in-repo on
 
 Route the issue to the **repo that owns the finding**:
 
-| Finding | Repo |
-|---|---|
+| Finding                                                | Repo                                                                       |
+| ------------------------------------------------------ | -------------------------------------------------------------------------- |
 | App rendering, a11y, performance, Safari CSS/JS quirks | Current git remote (`gh repo view --json nameWithOwner -q .nameWithOwner`) |
-| Files live in a nested package/submodule | That package's remote, not a parent monorepo by default |
-| `safaridriver --mcp` crash, wrong schema, tool no-op | WebKit ([bugs.webkit.org](https://bugs.webkit.org)), **not** the app |
-| Community Safari MCP (AppleScript/extension) | That GitHub repo |
+| Files live in a nested package/submodule               | That package's remote, not a parent monorepo by default                    |
+| `safaridriver --mcp` crash, wrong schema, tool no-op   | WebKit ([bugs.webkit.org](https://bugs.webkit.org)), **not** the app       |
+| Community Safari MCP (AppleScript/extension)           | That GitHub repo                                                           |
 
 Before opening: `gh issue list --search "<symptom>" --state open` and skip duplicates.
 
@@ -86,13 +86,13 @@ Every app issue needs Safari evidence (URL, viewport, Safari version, screenshot
 
 ## Red flags
 
-| Excuse | Reality |
-|--------|---------|
-| "Cursor browser is close enough" | Different engine. Not Safari. |
-| "Screenshot looks fine" | Misses console, network, a11y tree, keyboard. |
+| Excuse                                       | Reality                                         |
+| -------------------------------------------- | ----------------------------------------------- |
+| "Cursor browser is close enough"             | Different engine. Not Safari.                   |
+| "Screenshot looks fine"                      | Misses console, network, a11y tree, keyboard.   |
 | "I'll just fix this alt text while I'm here" | User asked for issues unless they asked to fix. |
-| "Safari MCP isn't loaded, I'll use Chromium" | Fail closed. Set it up. |
-| "set_emulated_media covers dark mode" | It does not. Media **type** only. |
+| "Safari MCP isn't loaded, I'll use Chromium" | Fail closed. Set it up.                         |
+| "set_emulated_media covers dark mode"        | It does not. Media **type** only.               |
 
 ## When not to use
 

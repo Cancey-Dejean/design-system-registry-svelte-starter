@@ -1,11 +1,11 @@
 <script module>
 	import { defineMeta } from '@storybook/addon-svelte-csf';
 	import * as ContextMenu from '../index.js';
-	import StoryWrapper from '$lib/components/utility/story-wrapper.svelte';
+
 
 	const { Story } = defineMeta({
 		title: 'Components/Context Menu',
-		decorators: [() => StoryWrapper]
+		parameters: { centered: true }
 	});
 </script>
 

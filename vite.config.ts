@@ -1,4 +1,3 @@
-/// <reference types="vite-plus" />
 import tailwindcss from "@tailwindcss/vite";
 import adapter from "@sveltejs/adapter-vercel";
 import { sveltekit } from "@sveltejs/kit/vite";
@@ -31,17 +30,15 @@ const dirname =
 
 // More info at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon
 export default defineConfig({
+  optimizeDeps: { include: ["cn"] },
   server: {
     fs: {
       allow: [path.resolve(dirname, "registry")],
     },
   },
-  fmt: {},
+  fmt: { ignorePatterns: [".agents/**", ".codex/**"] },
   lint: {
-    jsPlugins: [
-      { name: "vite-plus", specifier: "vite-plus/oxlint-plugin" },
-      "@shadcn/lint",
-    ],
+    jsPlugins: [{ name: "vite-plus", specifier: "vite-plus/oxlint-plugin" }, "@shadcn/lint"],
     settings: {
       shadcn: {
         ui: "$lib/components/ui",

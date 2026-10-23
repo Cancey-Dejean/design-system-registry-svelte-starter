@@ -1,11 +1,11 @@
 <script module lang="ts">
 	import { defineMeta } from '@storybook/addon-svelte-csf';
 	import * as NativeSelect from '../index.js';
-	import StoryWrapper from '$lib/components/utility/story-wrapper.svelte';
+
 
 	const { Story } = defineMeta({
 		title: 'Components/Native Select',
-		decorators: [() => StoryWrapper]
+		parameters: { centered: true }
 	});
 </script>
 

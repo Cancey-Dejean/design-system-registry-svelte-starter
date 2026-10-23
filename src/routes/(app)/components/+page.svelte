@@ -1,11 +1,5 @@
 <script lang="ts">
-  import RegistryItemList from "$lib/components/registry/registry-item-list.svelte";
-
+  import RegistryGallery from "$lib/components/registry/registry-gallery.svelte";
   let { data } = $props();
 </script>
-
-<RegistryItemList
-  title="Components"
-  items={data.items}
-  basePath="/components"
-/>
+<RegistryGallery items={data.items} section="components" />

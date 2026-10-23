@@ -3,11 +3,11 @@
 	import { toast } from 'svelte-sonner';
 	import Button from '../../button/button.svelte';
 	import { Toaster } from '../index.js';
-	import StoryWrapper from '$lib/components/utility/story-wrapper.svelte';
+
 
 	const { Story } = defineMeta({
 		title: 'Components/Sonner',
-		decorators: [() => StoryWrapper]
+		parameters: { centered: true }
 	});
 </script>
 

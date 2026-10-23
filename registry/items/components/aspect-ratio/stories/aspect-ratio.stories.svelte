@@ -1,12 +1,12 @@
 <script module>
 	import { defineMeta } from '@storybook/addon-svelte-csf';
 	import { AspectRatio } from '../index.js';
-	import StoryWrapper from '$lib/components/utility/story-wrapper.svelte';
+
 
 	const { Story } = defineMeta({
 		title: 'Components/Aspect Ratio',
 		component: AspectRatio,
-		decorators: [() => StoryWrapper],
+		parameters: { centered: true },
 		argTypes: {
 			ratio: {
 				control: 'number',

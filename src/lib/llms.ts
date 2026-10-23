@@ -1,3 +1,4 @@
+import { getDocPath } from "$lib/registry/doc-path";
 import { getAllDocs, getDocRawSource } from "./registry/docs-catalog";
 import { getAllRegistryItems, getRegistryItemRawSource } from "./registry/catalog";
 import { registrySections, registrySectionIds } from "./registry/sections";
@@ -14,7 +15,9 @@ export function buildLlmsTxt(origin: string): string {
   ];
 
   for (const doc of getAllDocs()) {
-    lines.push(`- [${doc.metadata.title}](${origin}/docs/${doc.slug}): ${doc.metadata.description ?? ""}`);
+    lines.push(
+      `- [${doc.metadata.title}](${origin}${getDocPath(doc.slug)}): ${doc.metadata.description ?? ""}`,
+    );
   }
 
   const allItems = getAllRegistryItems();
@@ -38,7 +41,7 @@ export function buildLlmsFullTxt(origin: string): string {
 
   for (const doc of getAllDocs()) {
     const raw = getDocRawSource(doc.slug) ?? "";
-    sections.push(`# ${doc.metadata.title}\n\nURL: ${origin}/docs/${doc.slug}\n\n${raw}`);
+    sections.push(`# ${doc.metadata.title}\n\nURL: ${origin}${getDocPath(doc.slug)}\n\n${raw}`);
   }
 
   for (const item of getAllRegistryItems()) {

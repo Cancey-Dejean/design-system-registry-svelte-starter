@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { resolve } from "$app/paths";
   import { goto } from "$app/navigation";
   import * as Command from "$registry/items/components/command/index.js";
   import { create, insertMultiple, search as oramaSearch, type AnyOrama } from "@orama/orama";
@@ -7,7 +8,7 @@
 
   let open = $state(false);
   let query = $state("");
-  let results = $state<SearchIndexEntry[]>([]);
+
   let dbPromise: Promise<AnyOrama> | null = null;
 
   function getDb() {
@@ -22,27 +23,19 @@
     return dbPromise;
   }
 
-  $effect(() => {
-    const currentQuery = query.trim();
-    if (!currentQuery) {
-      results = [];
-      return;
-    }
-    let cancelled = false;
-    (async () => {
-      const db = await getDb();
-      const { hits } = await oramaSearch(db, { term: currentQuery, limit: 8 });
-      if (!cancelled) results = hits.map((hit) => hit.document as unknown as SearchIndexEntry);
-    })();
-    return () => {
-      cancelled = true;
-    };
-  });
+  async function searchEntries(term: string): Promise<SearchIndexEntry[]> {
+    if (!term.trim()) return [];
+    const db = await getDb();
+    const { hits } = await oramaSearch(db, { term: term.trim(), limit: 8 });
+    return hits.map((hit) => hit.document as unknown as SearchIndexEntry);
+  }
+  const resultsPromise = $derived(searchEntries(query));
+
 
   function select(url: string) {
     open = false;
     query = "";
-    goto(url);
+    goto(resolve("/") + url.slice(1));
   }
 
   function handleKeydown(event: KeyboardEvent) {
@@ -61,7 +54,7 @@
   class="flex w-full items-center gap-2 rounded-md border bg-background px-2 py-1.5 text-sm text-muted-foreground hover:bg-accent"
 >
   <SearchIcon class="size-4" />
-  <span class="flex-1 text-start">Search...</span>
+  <span class="flex-1 text-start">Search docs</span>
   <kbd class="rounded border bg-muted px-1.5 py-0.5 text-xs">⌘K</kbd>
 </button>
 
@@ -73,20 +66,21 @@
 >
   <Command.Input placeholder="Search docs and components..." bind:value={query} />
   <Command.List>
-    {#if query.trim() && results.length === 0}
-      <Command.Empty>No results found.</Command.Empty>
-    {/if}
-    {#if results.length}
-      <Command.Group heading="Results">
-        {#each results as result (result.url)}
-          <Command.LinkItem href={result.url} onSelect={() => select(result.url)}>
-            <div class="flex flex-col">
-              <span>{result.title}</span>
-              <span class="text-xs text-muted-foreground">{result.section}</span>
-            </div>
-          </Command.LinkItem>
-        {/each}
-      </Command.Group>
-    {/if}
+    {#await resultsPromise}
+      <Command.Empty>Searching…</Command.Empty>
+    {:then results}
+      {#if query.trim() && results.length === 0}<Command.Empty>No results found.</Command.Empty>{/if}
+      {#if results.length}
+        <Command.Group heading="Results">
+          {#each results as result (result.url)}
+            <Command.LinkItem href={result.url} onSelect={() => select(result.url)}>
+              <div class="flex flex-col"><span>{result.title}</span><span class="text-xs text-muted-foreground">{result.section}</span></div>
+            </Command.LinkItem>
+          {/each}
+        </Command.Group>
+      {/if}
+    {:catch}
+      <Command.Empty>Search is unavailable. Please try again.</Command.Empty>
+    {/await}
   </Command.List>
 </Command.Dialog>

@@ -2,12 +2,12 @@
 	import { defineMeta } from '@storybook/addon-svelte-csf';
 	import LinkText from '../link-text.svelte';
 	import { LINK_TEXT_SIZES, LINK_TEXT_TONES, LINK_TEXT_UNDERLINES } from '../link-text.variants';
-	import StoryWrapper from '$lib/components/utility/story-wrapper.svelte';
+
 
 	const { Story } = defineMeta({
 		title: 'Components/Link Text',
 		component: LinkText,
-		decorators: [() => StoryWrapper],
+		parameters: { centered: true },
 		argTypes: {
 			tone: {
 				description: 'The color tone of the link',
@@ -41,9 +41,9 @@
 </script>
 
 <Story name="Default">
-	{#snippet children()}
+
 		Click here
-	{/snippet}
+
 </Story>
 
 <Story name="Tones" argTypes={{ tone: { table: { disable: true } } }}>
@@ -71,7 +71,7 @@
 </Story>
 
 <Story name="External" args={{ external: true, href: 'https://example.com' }}>
-	{#snippet children()}
+
 		External link
-	{/snippet}
+
 </Story>

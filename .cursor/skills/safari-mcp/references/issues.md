@@ -63,11 +63,11 @@ EOF
 
 Title pattern: `Safari: <symptom> on <route>`
 
-| Level | Meaning |
-|---|---|
-| P0 | Broken in Safari: cannot complete a core task |
-| P1 | Major a11y, failed requests, serious layout, or clear perf regression |
-| P2 | Polish, minor a11y, measured optimization |
+| Level | Meaning                                                               |
+| ----- | --------------------------------------------------------------------- |
+| P0    | Broken in Safari: cannot complete a core task                         |
+| P1    | Major a11y, failed requests, serious layout, or clear perf regression |
+| P2    | Polish, minor a11y, measured optimization                             |
 
 One issue per distinct problem. Same root cause → one issue. 8+ findings → file P0/P1, then ask before every P2.
 

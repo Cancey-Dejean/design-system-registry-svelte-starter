@@ -2,11 +2,11 @@
 	import { defineMeta } from '@storybook/addon-svelte-csf';
 	import Button from '../../button/button.svelte';
 	import * as DropdownMenu from '../index.js';
-	import StoryWrapper from '$lib/components/utility/story-wrapper.svelte';
+
 
 	const { Story } = defineMeta({
 		title: 'Components/Dropdown Menu',
-		decorators: [() => StoryWrapper]
+		parameters: { centered: true }
 	});
 </script>
 

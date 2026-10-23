@@ -2,11 +2,11 @@
 	import { defineMeta } from '@storybook/addon-svelte-csf';
 	import DataTable from '../data-table.svelte';
 	import * as Table from '../../table/index.js';
-	import StoryWrapper from '$lib/components/utility/story-wrapper.svelte';
+
 
 	const { Story } = defineMeta({
 		title: 'Components/Data Table',
-		decorators: [() => StoryWrapper]
+		parameters: { centered: true }
 	});
 </script>
 

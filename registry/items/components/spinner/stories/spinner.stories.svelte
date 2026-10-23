@@ -1,12 +1,12 @@
 <script module>
 	import { defineMeta } from '@storybook/addon-svelte-csf';
 	import Spinner from '../spinner.svelte';
-	import StoryWrapper from '$lib/components/utility/story-wrapper.svelte';
+
 
 	const { Story } = defineMeta({
 		title: 'Components/Spinner',
 		component: Spinner,
-		decorators: [() => StoryWrapper],
+		parameters: { centered: true },
 		argTypes: {
 			class: { control: 'text' }
 		},

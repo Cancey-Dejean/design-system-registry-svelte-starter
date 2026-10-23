@@ -2,11 +2,11 @@
 	import { defineMeta } from '@storybook/addon-svelte-csf';
 	import { Separator } from '../../separator/index.js';
 	import { ScrollArea } from '../index.js';
-	import StoryWrapper from '$lib/components/utility/story-wrapper.svelte';
+
 
 	const { Story } = defineMeta({
 		title: 'Components/Scroll Area',
-		decorators: [() => StoryWrapper]
+		parameters: { centered: true }
 	});
 
 	const tags = Array.from({ length: 50 }).map((_, i, a) => `v1.2.0-beta.${a.length - i}`);

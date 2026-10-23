@@ -19,7 +19,7 @@
   <AppSidebar sections={data.sections} />
   <Sidebar.Inset>
     <header
-      class="bg-background sticky top-0 z-10 flex h-16 shrink-0 items-center justify-between gap-2 border-b px-4"
+      class="bg-background sticky top-0 z-50 flex h-16 shrink-0 items-center justify-between gap-2 border-b px-3"
     >
       <div class="flex items-center gap-2">
         <Sidebar.Trigger class="-ms-1" />

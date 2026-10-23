@@ -11,11 +11,11 @@
 	import * as Avatar from '../../avatar/index.js';
 	import * as InputGroup from '../../input-group/index.js';
 	import * as Empty from '../index.js';
-	import StoryWrapper from '$lib/components/utility/story-wrapper.svelte';
+
 
 	const { Story } = defineMeta({
 		title: 'Components/Empty',
-		decorators: [() => StoryWrapper]
+		parameters: { centered: true }
 	});
 </script>
 

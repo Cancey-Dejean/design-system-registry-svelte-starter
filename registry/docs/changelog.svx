@@ -8,6 +8,36 @@ Use this page to publish notable registry updates, new items, breaking changes, 
 
 ---
 
+## Current catalog
+
+- **Components:** `accordion`, `alert`, `alert-dialog`, `aspect-ratio`, `avatar`, `badge`, `breadcrumb`, `button`, `button-group`, `calendar`, `card`, `carousel`, `chart`, `checkbox`, `collapsible`, `combobox`, `command`, `container`, `context-menu`, `data-table`, `datepicker`, `dialog`, `drawer`, `dropdown-menu`, `empty`, `field`, `heading`, `hover-card`, `icons`, `input`, `input-group`, `input-otp`, `item`, `kbd`, `label`, `link-spread`, `link-text`, `logos`, `menubar`, `native-select`, `navigation-menu`, `pagination`, `popover`, `progress`, `radio-group`, `range-calendar`, `resizable`, `scroll-area`, `select`, `separator`, `sheet`, `sidebar`, `skeleton`, `slider`, `sonner`, `spinner`, `switch`, `table`, `tabs`, `text`, `textarea`, `toggle`, `toggle-group`, `tooltip`.
+- **Blocks:** `hero`.
+- **Utilities:** `dot-canvas`, `styles`.
+
+---
+
+## October 23, 2026
+
+### v0.7.0
+
+- **New:** `dot-canvas` is an installable decorative overlay with 12, 20, and 24 pixel grid spacing and a `class` override, matching the React reference.
+- **Docs:** Component and block gallery cards and item detail previews now use the same radial-faded Dot Canvas background. Isolated gallery previews remain transparent to reveal the dots behind their content.
+
+- **Docs:** Sidebar audience tags now match the React reference: blue DEV tags for developer docs, a violet MAINTAINERS tag for Registry authoring, and no tag on Introduction. Mark maintainer pages with `audience: maintainers` in their frontmatter.
+
+---
+
+## October 19, 2026
+
+### v0.6.0
+
+- **Fix:** Storybook previews use a shared typed decorator, and Slider stories render their authored controls without runtime errors. Validation now includes the Bun script types and a complete Shiki file-tree grammar.
+- **Docs:** Introduction now opens at `/docs`; `/docs/index` redirects there. Sidebar sections open their indexes, keep their active state, and close the mobile navigation after a route change.
+- **Docs:** Components and Blocks now offer searchable preview galleries, grid and list layouts, block categories, loading states, and empty-state reset controls. Previews follow the docs theme.
+- **Docs:** The shell uses Geist typography, authored page descriptions, canonical links, page titles, and a page-actions menu with Markdown and assistant links.
+
+---
+
 ## October 6, 2026
 
 ### v0.5.0

@@ -3,7 +3,7 @@
   import { fn } from "storybook/test";
   import { Button } from "$registry/items/components/button";
   import { Settings } from "@lucide/svelte";
-  import StoryWrapper from "$lib/components/utility/story-wrapper.svelte";
+
   import { BUTTON_SIZES, BUTTON_VARIANTS } from "../button.variants";
 
   const { Story } = defineMeta({
@@ -67,26 +67,26 @@
       type: "button",
       onclick: fn(),
     },
-    decorators: [() => StoryWrapper],
+    parameters: { centered: true },
   });
 </script>
 
 <Story name="Default" args={{ variant: "default" }}>
-  {#snippet children()}
+
     Button
-  {/snippet}
+
 </Story>
 
 <Story name="Disabled" args={{ disabled: true }}>
-  {#snippet children()}
+
     Disabled
-  {/snippet}
+
 </Story>
 
 <Story name="Icon" args={{ size: "icon", variant: "default" }}>
-  {#snippet children()}
+
     <Settings />
-  {/snippet}
+
 </Story>
 
 <Story
@@ -105,9 +105,9 @@
     },
   }}
 >
-  {#snippet children()}
+
     Link
-  {/snippet}
+
 </Story>
 
 <Story
@@ -126,14 +126,14 @@
     },
   }}
 >
-  {#snippet children()}
+
     Link Text
-  {/snippet}
+
 </Story>
 
 <Story name="With Icon" args={{ variant: "default" }}>
-  {#snippet children()}
+
     <Settings />
     Button with Icon
-  {/snippet}
+
 </Story>

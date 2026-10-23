@@ -1,12 +1,12 @@
 <script module lang="ts">
 	import { defineMeta } from '@storybook/addon-svelte-csf';
 	import { Skeleton } from '../index.js';
-	import StoryWrapper from '$lib/components/utility/story-wrapper.svelte';
+
 
 	const { Story } = defineMeta({
 		title: 'Components/Skeleton',
 		component: Skeleton,
-		decorators: [() => StoryWrapper],
+		parameters: { centered: true },
 		argTypes: {
 			class: { control: 'text' },
 			ref: { control: false }

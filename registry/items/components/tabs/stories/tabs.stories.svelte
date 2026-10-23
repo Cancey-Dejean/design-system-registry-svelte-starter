@@ -5,11 +5,11 @@
 	import { Input } from '../../input/index.js';
 	import { Label } from '../../label/index.js';
 	import * as Tabs from '../index.js';
-	import StoryWrapper from '$lib/components/utility/story-wrapper.svelte';
+
 
 	const { Story } = defineMeta({
 		title: 'Components/Tabs',
-		decorators: [() => StoryWrapper]
+		parameters: { centered: true }
 	});
 </script>
 

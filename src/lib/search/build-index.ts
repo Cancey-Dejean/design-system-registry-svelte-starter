@@ -1,3 +1,4 @@
+import { getDocPath } from "$lib/registry/doc-path";
 import { getAllDocs } from "$lib/registry/docs-catalog";
 import { getAllRegistryItems } from "$lib/registry/catalog";
 import { registrySections } from "$lib/registry/sections";
@@ -13,7 +14,7 @@ export function buildSearchIndex(): SearchIndexEntry[] {
   const docs: SearchIndexEntry[] = getAllDocs().map((doc) => ({
     title: doc.metadata.title,
     description: doc.metadata.description ?? "",
-    url: `/docs/${doc.slug}`,
+    url: getDocPath(doc.slug),
     section: "Docs",
   }));
 

@@ -4,6 +4,7 @@
   import CopyIcon from "@lucide/svelte/icons/copy";
   import AppWindowIcon from "@lucide/svelte/icons/app-window";
   import CodeIcon from "@lucide/svelte/icons/code";
+  import ComponentPreview from "./component-preview.svelte";
   import InstallCommand from "./install-command.svelte";
   import CodeBlock from "./code-block.svelte";
   import PageToc from "./page-toc.svelte";
@@ -56,6 +57,13 @@
   ]);
 </script>
 
+<svelte:head>
+  <title>{metadata.title} | {registryConfig.name}</title>
+  <meta name="description" content={metadata.description} />
+  <link rel="canonical" href={`${registryConfig.homepage}/${section}/${name}`} />
+  <link rel="alternate" type="text/markdown" href={`/${section}/${name}.md`} />
+</svelte:head>
+
 <article id="item-doc-content" class="flex min-w-0 flex-1 flex-col gap-8">
   <header class="flex flex-col gap-2">
     <div class="flex items-center justify-between gap-2">
@@ -83,9 +91,7 @@
         </Tabs.Trigger>
       </Tabs.List>
       <Tabs.Content value="preview">
-        <div
-          class="flex min-h-48 items-center justify-center rounded-md border p-8"
-        >
+        <ComponentPreview>
           {#await previewPromise}
             <p class="text-sm text-muted-foreground">Loading preview…</p>
           {:then Preview}
@@ -95,7 +101,7 @@
               <p class="text-sm text-muted-foreground">No preview available.</p>
             {/if}
           {/await}
-        </div>
+        </ComponentPreview>
       </Tabs.Content>
       <Tabs.Content value="code">
         <CodeBlock html={previewSourceHtml} />

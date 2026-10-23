@@ -13,12 +13,12 @@
 	import Button from '../../button/button.svelte';
 	import * as Command from '../../command/index.js';
 	import * as Popover from '../../popover/index.js';
-	import StoryWrapper from '$lib/components/utility/story-wrapper.svelte';
+
 	import { cn } from '$lib/utils.js';
 
 	const { Story } = defineMeta({
 		title: 'Components/Combobox',
-		decorators: [() => StoryWrapper]
+		parameters: { centered: true }
 	});
 </script>
 

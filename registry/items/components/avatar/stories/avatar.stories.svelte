@@ -2,11 +2,11 @@
 	import { defineMeta } from '@storybook/addon-svelte-csf';
 	import CheckIcon from '@lucide/svelte/icons/check';
 	import * as Avatar from '../index.js';
-	import StoryWrapper from '$lib/components/utility/story-wrapper.svelte';
+
 
 	const { Story } = defineMeta({
 		title: 'Components/Avatar',
-		decorators: [() => StoryWrapper]
+		parameters: { centered: true }
 	});
 </script>
 

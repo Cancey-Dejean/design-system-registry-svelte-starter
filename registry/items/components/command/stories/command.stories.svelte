@@ -8,11 +8,11 @@
 	import UserIcon from '@lucide/svelte/icons/user';
 	import { buttonVariants } from '../../button/button.variants.js';
 	import * as Command from '../index.js';
-	import StoryWrapper from '$lib/components/utility/story-wrapper.svelte';
+
 
 	const { Story } = defineMeta({
 		title: 'Components/Command',
-		decorators: [() => StoryWrapper]
+		parameters: { centered: true }
 	});
 </script>
 

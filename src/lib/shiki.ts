@@ -33,6 +33,7 @@ const TREE_LANG: LanguageRegistration = {
   name: "tree",
   scopeName: "source.tree",
   aliases: ["filetree"],
+  repository: {},
   patterns: [
     {
       name: "entity.name.tag.yaml",

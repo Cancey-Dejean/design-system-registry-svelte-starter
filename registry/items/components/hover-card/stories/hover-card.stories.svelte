@@ -3,11 +3,11 @@
 	import CalendarDaysIcon from '@lucide/svelte/icons/calendar-days';
 	import * as Avatar from '../../avatar/index.js';
 	import * as HoverCard from '../index.js';
-	import StoryWrapper from '$lib/components/utility/story-wrapper.svelte';
+
 
 	const { Story } = defineMeta({
 		title: 'Components/Hover Card',
-		decorators: [() => StoryWrapper]
+		parameters: { centered: true }
 	});
 </script>
 

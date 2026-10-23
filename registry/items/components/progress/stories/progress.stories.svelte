@@ -1,12 +1,12 @@
 <script module lang="ts">
 	import { defineMeta } from '@storybook/addon-svelte-csf';
 	import { Progress } from '../index.js';
-	import StoryWrapper from '$lib/components/utility/story-wrapper.svelte';
+
 
 	const { Story } = defineMeta({
 		title: 'Components/Progress',
 		component: Progress,
-		decorators: [() => StoryWrapper],
+		parameters: { centered: true },
 		argTypes: {
 			value: {
 				control: { type: 'range', min: 0, max: 100, step: 1 },

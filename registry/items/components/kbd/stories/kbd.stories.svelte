@@ -4,11 +4,11 @@
 	import Button from '../../button/button.svelte';
 	import * as InputGroup from '../../input-group/index.js';
 	import * as Kbd from '../index.js';
-	import StoryWrapper from '$lib/components/utility/story-wrapper.svelte';
+
 
 	const { Story } = defineMeta({
 		title: 'Components/Kbd',
-		decorators: [() => StoryWrapper]
+		parameters: { centered: true }
 	});
 </script>
 

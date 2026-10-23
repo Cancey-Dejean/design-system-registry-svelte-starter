@@ -6,11 +6,11 @@
 	import SearchIcon from '@lucide/svelte/icons/search';
 	import SettingsIcon from '@lucide/svelte/icons/settings';
 	import * as Sidebar from '../index.js';
-	import StoryWrapper from '$lib/components/utility/story-wrapper.svelte';
+
 
 	const { Story } = defineMeta({
 		title: 'Components/Sidebar',
-		decorators: [() => StoryWrapper]
+		parameters: { centered: true }
 	});
 
 	const items = [
@@ -35,7 +35,7 @@
 					<Sidebar.MenuItem>
 						<Sidebar.MenuButton tooltipContent={item.title}>
 							{#snippet child({ props })}
-								<a href={item.url} {...props}>
+								<a href="#/" {...props}>
 									<item.icon />
 									<span>{item.title}</span>
 								</a>

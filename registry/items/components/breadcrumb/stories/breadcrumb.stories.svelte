@@ -2,11 +2,11 @@
   import { defineMeta } from "@storybook/addon-svelte-csf";
   import SlashIcon from "@lucide/svelte/icons/slash";
   import * as Breadcrumb from "../index.js";
-  import StoryWrapper from "$lib/components/utility/story-wrapper.svelte";
+
 
   const { Story } = defineMeta({
     title: "Components/Breadcrumb",
-    decorators: [() => StoryWrapper],
+    parameters: { centered: true },
   });
 </script>
 

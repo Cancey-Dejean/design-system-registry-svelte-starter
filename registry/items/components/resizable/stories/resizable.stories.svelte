@@ -1,11 +1,11 @@
 <script module lang="ts">
 	import { defineMeta } from '@storybook/addon-svelte-csf';
 	import * as Resizable from '../index.js';
-	import StoryWrapper from '$lib/components/utility/story-wrapper.svelte';
+
 
 	const { Story } = defineMeta({
 		title: 'Components/Resizable',
-		decorators: [() => StoryWrapper]
+		parameters: { centered: true }
 	});
 </script>
 

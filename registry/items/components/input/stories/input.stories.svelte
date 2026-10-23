@@ -2,12 +2,12 @@
 	import { defineMeta } from '@storybook/addon-svelte-csf';
 	import { Input } from '../index.js';
 	import Button from '../../button/button.svelte';
-	import StoryWrapper from '$lib/components/utility/story-wrapper.svelte';
+
 
 	const { Story } = defineMeta({
 		title: 'Components/Input',
 		component: Input,
-		decorators: [() => StoryWrapper],
+		parameters: { centered: true },
 		argTypes: {
 			type: {
 				control: 'select',

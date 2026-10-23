@@ -52,12 +52,12 @@ STP binary path: `/Applications/Safari Technology Preview.app/Contents/MacOS/saf
 
 ## Failure modes
 
-| Symptom | Fix |
-|---|---|
-| Namespace missing after config | Reload MCP / restart the client |
-| Connection refused / not authorized | Enable remote automation in Safari Developer settings |
-| `--mcp` unknown | Upgrade to Safari 27 or STP 247+ |
-| Wrong browser / Chromium tools | You are not in Safari MCP — do not use `cursor-ide-browser` |
+| Symptom                             | Fix                                                         |
+| ----------------------------------- | ----------------------------------------------------------- |
+| Namespace missing after config      | Reload MCP / restart the client                             |
+| Connection refused / not authorized | Enable remote automation in Safari Developer settings       |
+| `--mcp` unknown                     | Upgrade to Safari 27 or STP 247+                            |
+| Wrong browser / Chromium tools      | You are not in Safari MCP — do not use `cursor-ide-browser` |
 
 ## Privacy
 

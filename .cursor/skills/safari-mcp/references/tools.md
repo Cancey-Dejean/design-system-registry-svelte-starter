@@ -2,23 +2,23 @@
 
 Server name: `Safari` `1.0.0`. Always prefer the live schema over this list.
 
-| Tool | Use for |
-|---|---|
-| `list_tabs` | Open tabs + handles |
-| `create_tab` | New tab, optional `url` |
-| `switch_tab` / `close_tab` | `handle` required |
-| `navigate_to_url` | `url` required; optional `tab_uuid`; waits and returns extracted content |
-| `wait_for_navigation` | Optional `timeout_seconds` (default 30) |
-| `page_info` | URL, title, loading state |
-| `get_page_content` | **Preferred read.** UIDs for interactions. See flags below |
-| `page_interactions` | Batched click/type/keyPress/scroll/selectText/selectMenuItem/hover/highlightText |
-| `screenshot` | PNG **file path**. Viewport default; `full_page` optional |
-| `evaluate_javascript` | Function **body** with `return`. `$uid(N)` from page content |
-| `browser_console_messages` | Clears buffer by default (`clear: true`) |
-| `list_network_requests` / `get_network_request` | Summaries then full headers/body/timing |
-| `set_viewport_size` | `width` + `height` CSS px; window-wide |
-| `set_emulated_media` | CSS media **type** (`screen`/`print`). Empty string clears |
-| `browser_dialogs` | `action`: `list` / `respond` / `dismiss`; `inputText` for prompts |
+| Tool                                            | Use for                                                                          |
+| ----------------------------------------------- | -------------------------------------------------------------------------------- |
+| `list_tabs`                                     | Open tabs + handles                                                              |
+| `create_tab`                                    | New tab, optional `url`                                                          |
+| `switch_tab` / `close_tab`                      | `handle` required                                                                |
+| `navigate_to_url`                               | `url` required; optional `tab_uuid`; waits and returns extracted content         |
+| `wait_for_navigation`                           | Optional `timeout_seconds` (default 30)                                          |
+| `page_info`                                     | URL, title, loading state                                                        |
+| `get_page_content`                              | **Preferred read.** UIDs for interactions. See flags below                       |
+| `page_interactions`                             | Batched click/type/keyPress/scroll/selectText/selectMenuItem/hover/highlightText |
+| `screenshot`                                    | PNG **file path**. Viewport default; `full_page` optional                        |
+| `evaluate_javascript`                           | Function **body** with `return`. `$uid(N)` from page content                     |
+| `browser_console_messages`                      | Clears buffer by default (`clear: true`)                                         |
+| `list_network_requests` / `get_network_request` | Summaries then full headers/body/timing                                          |
+| `set_viewport_size`                             | `width` + `height` CSS px; window-wide                                           |
+| `set_emulated_media`                            | CSS media **type** (`screen`/`print`). Empty string clears                       |
+| `browser_dialogs`                               | `action`: `list` / `respond` / `dismiss`; `inputText` for prompts                |
 
 ## `get_page_content` defaults
 

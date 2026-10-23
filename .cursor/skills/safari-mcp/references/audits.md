@@ -11,8 +11,9 @@ return {
   colorScheme: getComputedStyle(document.documentElement).colorScheme,
   prefersDark: matchMedia("(prefers-color-scheme: dark)").matches,
   prefersReduced: matchMedia("(prefers-reduced-motion: reduce)").matches,
-  theme: document.documentElement.getAttribute("data-theme")
-    || document.documentElement.getAttribute("class"),
+  theme:
+    document.documentElement.getAttribute("data-theme") ||
+    document.documentElement.getAttribute("class"),
   viewport: { w: innerWidth, h: innerHeight, dpr: devicePixelRatio },
   visualViewport: visualViewport && { w: visualViewport.width, h: visualViewport.height },
 };
@@ -50,10 +51,14 @@ const root = document.documentElement;
 const body = document.body;
 return {
   horizontalOverflow: root.scrollWidth > innerWidth + 1,
-  uses100vh: [...document.querySelectorAll("*")].some((el) =>
-    getComputedStyle(el).height.includes("100vh") || getComputedStyle(el).minHeight.includes("100vh")
+  uses100vh: [...document.querySelectorAll("*")].some(
+    (el) =>
+      getComputedStyle(el).height.includes("100vh") ||
+      getComputedStyle(el).minHeight.includes("100vh"),
   ),
-  backdropFilter: CSS.supports("backdrop-filter", "blur(8px)") || CSS.supports("-webkit-backdrop-filter", "blur(8px)"),
+  backdropFilter:
+    CSS.supports("backdrop-filter", "blur(8px)") ||
+    CSS.supports("-webkit-backdrop-filter", "blur(8px)"),
   positionSticky: CSS.supports("position", "sticky"),
   dvh: CSS.supports("height", "100dvh"),
   safeArea: getComputedStyle(document.documentElement).getPropertyValue("env(safe-area-inset-top)"),

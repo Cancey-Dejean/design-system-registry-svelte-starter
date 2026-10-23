@@ -1,0 +1,40 @@
+---
+name: dot-canvas
+type: registry:lib
+title: Dot Canvas
+description: A decorative dotted canvas overlay for design surfaces and page backgrounds.
+dependencies:
+  - cn
+files:
+  - path: registry/items/utilities/dot-canvas/dot-canvas.svelte
+    type: registry:lib
+    target: "~/lib/dot-canvas/dot-canvas.svelte"
+  - path: registry/items/utilities/dot-canvas/dot-canvas.types.ts
+    type: registry:lib
+    target: "~/lib/dot-canvas/dot-canvas.types.ts"
+  - path: registry/items/utilities/dot-canvas/index.ts
+    type: registry:lib
+    target: "~/lib/dot-canvas/index.ts"
+---
+
+Place `DotCanvas` inside a `relative` container. It fills the parent with a dotted grid and ignores
+pointer events, so content above stays interactive. The overlay is decorative and hidden from
+assistive technology.
+
+```svelte
+<script lang="ts">
+  import { DotCanvas } from '~/lib/dot-canvas';
+</script>
+
+<div class="relative h-48 overflow-hidden rounded-xl border">
+  <DotCanvas />
+  <p class="relative z-10 p-6 text-sm">Content sits above the dots.</p>
+</div>
+```
+
+Pass `size` as `12`, `20`, or `24` (default) to change grid pitch. Use `class` for opacity,
+masks, or placement overrides.
+
+```svelte
+<DotCanvas size={12} class="mask-[radial-gradient(ellipse_at_center,transparent_20%,black_85%)]" />
+```

@@ -7,7 +7,7 @@
 
   let activeSection = $derived(
     sections.find((section) =>
-      section.items.some((item) => isNavItemActive(item.url, page.url.pathname)),
+      (section.basePath === page.url.pathname || page.url.pathname.startsWith(`${section.basePath}/`)) || section.items.some((item) => isNavItemActive(item.url, page.url.pathname)),
     ),
   );
   let activeItem = $derived(
@@ -18,9 +18,9 @@
 {#if activeSection}
   <Breadcrumb.Root>
     <Breadcrumb.List>
-      <Breadcrumb.Item class="hidden md:block">
+      <Breadcrumb.Item class={activeItem ? "hidden md:block" : ""}>
         {#if activeItem}
-          <Breadcrumb.Link href={activeSection.items[0]?.url ?? activeSection.basePath}>
+          <Breadcrumb.Link href={activeSection.basePath}>
             {activeSection.title}
           </Breadcrumb.Link>
         {:else}

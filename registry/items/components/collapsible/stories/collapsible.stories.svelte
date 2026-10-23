@@ -3,11 +3,11 @@
 	import ChevronsUpDownIcon from '@lucide/svelte/icons/chevrons-up-down';
 	import { buttonVariants } from '../../button/button.variants.js';
 	import * as Collapsible from '../index.js';
-	import StoryWrapper from '$lib/components/utility/story-wrapper.svelte';
+
 
 	const { Story } = defineMeta({
 		title: 'Components/Collapsible',
-		decorators: [() => StoryWrapper]
+		parameters: { centered: true }
 	});
 </script>
 

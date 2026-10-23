@@ -6,11 +6,11 @@
   import ArrowRightIcon from "@lucide/svelte/icons/arrow-right";
   import * as ButtonGroup from "../index.js";
   import Button from "$registry/items/components/button/button.svelte";
-  import StoryWrapper from "$lib/components/utility/story-wrapper.svelte";
+
 
   const { Story } = defineMeta({
     title: "Components/Button Group",
-    decorators: [() => StoryWrapper],
+    parameters: { centered: true },
   });
 </script>
 

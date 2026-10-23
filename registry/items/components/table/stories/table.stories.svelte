@@ -1,11 +1,11 @@
 <script module>
 	import { defineMeta } from '@storybook/addon-svelte-csf';
 	import * as Table from '../index.js';
-	import StoryWrapper from '$lib/components/utility/story-wrapper.svelte';
+
 
 	const { Story } = defineMeta({
 		title: 'Components/Table',
-		decorators: [() => StoryWrapper]
+		parameters: { centered: true }
 	});
 
 	const invoices = [

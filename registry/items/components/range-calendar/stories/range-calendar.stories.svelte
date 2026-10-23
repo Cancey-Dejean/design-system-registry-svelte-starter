@@ -2,11 +2,11 @@
 	import { defineMeta } from '@storybook/addon-svelte-csf';
 	import { CalendarDate, getLocalTimeZone, today } from '@internationalized/date';
 	import { RangeCalendar } from '../index.js';
-	import StoryWrapper from '$lib/components/utility/story-wrapper.svelte';
+
 
 	const { Story } = defineMeta({
 		title: 'Components/Range Calendar',
-		decorators: [() => StoryWrapper]
+		parameters: { centered: true }
 	});
 </script>
 

@@ -17,11 +17,11 @@
 	import { Label } from '../../label/index.js';
 	import * as Popover from '../../popover/index.js';
 	import DatePicker from '../datepicker.svelte';
-	import StoryWrapper from '$lib/components/utility/story-wrapper.svelte';
+
 
 	const { Story } = defineMeta({
 		title: 'Components/Date Picker',
-		decorators: [() => StoryWrapper]
+		parameters: { centered: true }
 	});
 </script>
 

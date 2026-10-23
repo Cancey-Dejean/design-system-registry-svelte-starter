@@ -1,4 +1,5 @@
 <script module lang="ts">
+  import { resolve } from "$app/paths";
 	import { defineMeta } from '@storybook/addon-svelte-csf';
 	import CircleCheckIcon from '@lucide/svelte/icons/circle-check';
 	import CircleHelpIcon from '@lucide/svelte/icons/circle-help';
@@ -7,7 +8,7 @@
 	import type { HTMLAttributes } from 'svelte/elements';
 	import * as NavigationMenu from '../index.js';
 	import { navigationMenuTriggerStyle } from '../navigation-menu-trigger.variants.js';
-	import StoryWrapper from '$lib/components/utility/story-wrapper.svelte';
+
 
 	type ListItemProps = HTMLAttributes<HTMLAnchorElement> & {
 		title: string;
@@ -17,7 +18,7 @@
 
 	const { Story } = defineMeta({
 		title: 'Components/Navigation Menu',
-		decorators: [() => StoryWrapper]
+		parameters: { centered: true }
 	});
 
 	const components: { title: string; href: string; description: string }[] = [
@@ -63,7 +64,7 @@
 		<NavigationMenu.Link>
 			{#snippet child()}
 				<a
-					{href}
+					href={href.startsWith("#") ? href : resolve("/") + href.slice(1)}
 					class={cn(
 						'block space-y-1 rounded-md p-3 leading-none no-underline transition-colors outline-none select-none hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground',
 						className

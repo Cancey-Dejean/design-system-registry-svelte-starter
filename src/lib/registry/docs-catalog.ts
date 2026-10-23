@@ -5,6 +5,7 @@ export interface DocPageMetadata {
   description?: string;
   order?: number;
   group?: string;
+  audience?: "maintainers";
 }
 
 interface DocModule {

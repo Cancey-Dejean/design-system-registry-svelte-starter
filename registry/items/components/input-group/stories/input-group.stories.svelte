@@ -8,11 +8,11 @@
 	import PlusIcon from '@lucide/svelte/icons/plus';
 	import ArrowUpIcon from '@lucide/svelte/icons/arrow-up';
 	import * as InputGroup from '../index.js';
-	import StoryWrapper from '$lib/components/utility/story-wrapper.svelte';
+
 
 	const { Story } = defineMeta({
 		title: 'Components/Input Group',
-		decorators: [() => StoryWrapper]
+		parameters: { centered: true }
 	});
 </script>
 

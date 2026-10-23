@@ -2,6 +2,7 @@
 title: Registry
 description: Author installable registry items under registry/items and generate their JSON.
 order: 4
+audience: maintainers
 ---
 
 Registry items live under `registry/items/<section>/<name>/`. `<section>` is `components`, `blocks`, `utilities`, or `files`. Each item is a folder with an `_registry.svx` metadata file, a live preview, and a Storybook story. There's no scaffold CLI yet — copy an existing item folder as a starting point (`registry/items/components/button` is a good one) and adjust it.

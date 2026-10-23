@@ -4,11 +4,11 @@
 	import ItalicIcon from '@lucide/svelte/icons/italic';
 	import UnderlineIcon from '@lucide/svelte/icons/underline';
 	import { Toggle } from '../index.js';
-	import StoryWrapper from '$lib/components/utility/story-wrapper.svelte';
+
 
 	const { Story } = defineMeta({
 		title: 'Components/Toggle',
-		decorators: [() => StoryWrapper]
+		parameters: { centered: true }
 	});
 </script>
 

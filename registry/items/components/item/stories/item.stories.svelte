@@ -8,11 +8,11 @@
 	import Button from '../../button/button.svelte';
 	import * as Avatar from '../../avatar/index.js';
 	import * as Item from '../index.js';
-	import StoryWrapper from '$lib/components/utility/story-wrapper.svelte';
+
 
 	const { Story } = defineMeta({
 		title: 'Components/Item',
-		decorators: [() => StoryWrapper]
+		parameters: { centered: true }
 	});
 
 	const music = [

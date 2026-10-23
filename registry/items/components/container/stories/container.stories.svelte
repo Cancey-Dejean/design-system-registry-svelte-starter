@@ -1,12 +1,12 @@
 <script module>
 	import { defineMeta } from '@storybook/addon-svelte-csf';
 	import Container from '../container.svelte';
-	import StoryWrapper from '$lib/components/utility/story-wrapper.svelte';
+	import StoryWrapper from "$lib/components/utility/story-wrapper.svelte";
 
 	const { Story } = defineMeta({
 		title: 'Components/Container',
 		component: Container,
-		decorators: [() => StoryWrapper],
+		parameters: { centered: true },
 
 		argTypes: {
 			size: {
@@ -28,10 +28,10 @@
 </script>
 
 <Story name="Default" args={{ size: 'base' }}>
-	{#snippet children()}
+
 		<StoryWrapper
 			class="border-foreground-muted flex h-50 items-center justify-center rounded-2xl border border-dashed bg-background p-4 text-foreground dark:bg-transparent dark:text-white"
 			>Container</StoryWrapper
 		>
-	{/snippet}
+
 </Story>

@@ -4,11 +4,11 @@
 	import Button from '../../button/button.svelte';
 	import { Input } from '../../input/index.js';
 	import * as Dialog from '../index.js';
-	import StoryWrapper from '$lib/components/utility/story-wrapper.svelte';
+
 
 	const { Story } = defineMeta({
 		title: 'Components/Dialog',
-		decorators: [() => StoryWrapper]
+		parameters: { centered: true }
 	});
 </script>
 

@@ -3,11 +3,11 @@
 	import type { CarouselAPI } from '../context.js';
 	import * as Card from '../../card/index.js';
 	import * as Carousel from '../index.js';
-	import StoryWrapper from '$lib/components/utility/story-wrapper.svelte';
+
 
 	const { Story } = defineMeta({
 		title: 'Components/Carousel',
-		decorators: [() => StoryWrapper]
+		parameters: { centered: true }
 	});
 </script>
 
@@ -16,19 +16,15 @@
 	let current = $state(0);
 	const count = $derived(api ? api.scrollSnapList().length : 0);
 
-	$effect(() => {
-		if (!api) return;
+  function trackSelection() {
+    const currentApi = api;
+    if (!currentApi) return;
+    const onSelect = () => { current = currentApi.selectedScrollSnap() + 1; };
+    onSelect();
+    currentApi.on("select", onSelect);
+    return () => { currentApi.off("select", onSelect); };
+  }
 
-		current = api.selectedScrollSnap() + 1;
-		const onSelect = () => {
-			current = api!.selectedScrollSnap() + 1;
-		};
-		api.on('select', onSelect);
-
-		return () => {
-			api?.off('select', onSelect);
-		};
-	});
 </script>
 
 {#snippet slides(sizeClass = 'text-4xl')}
@@ -132,7 +128,7 @@
 			<Carousel.Previous />
 			<Carousel.Next />
 		</Carousel.Root>
-		<div class="py-2 text-center text-sm text-muted-foreground">
+		<div {@attach () => trackSelection()} class="py-2 text-center text-sm text-muted-foreground">
 			Slide {current} of {count}
 		</div>
 	</div>

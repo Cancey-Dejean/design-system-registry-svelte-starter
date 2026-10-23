@@ -1,3 +1,4 @@
+import { withStoryWrapper } from "../src/lib/components/utility/story-decorator";
 import type { Preview } from "@storybook/sveltekit";
 import { INITIAL_VIEWPORTS } from "storybook/viewport";
 import { withThemeByClassName } from "@storybook/addon-themes";
@@ -33,6 +34,7 @@ const preview: Preview = {
     },
   },
   decorators: [
+    withStoryWrapper,
     withThemeByClassName({
       themes: {
         light: "light",

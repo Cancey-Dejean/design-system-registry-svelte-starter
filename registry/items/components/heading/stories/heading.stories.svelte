@@ -7,12 +7,12 @@
     HEADING_TONES,
     HEADING_WEIGHTS,
   } from "../heading.variants";
-  import StoryWrapper from "$lib/components/utility/story-wrapper.svelte";
+
 
   const { Story } = defineMeta({
     title: "Components/Heading",
     component: Heading,
-    decorators: [() => StoryWrapper],
+    parameters: { centered: true },
     argTypes: {
       level: {
         description: "The semantic heading level (h1–h6)",
@@ -46,9 +46,9 @@
 </script>
 
 <Story name="Default">
-  {#snippet children()}
+
     Heading
-  {/snippet}
+
 </Story>
 
 <Story

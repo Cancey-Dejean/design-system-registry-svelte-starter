@@ -2,12 +2,12 @@
   import { defineMeta } from "@storybook/addon-svelte-csf";
   import CircleAlertIcon from "@lucide/svelte/icons/circle-alert";
   import { buttonVariants } from "$registry/items/components/button";
-  import StoryWrapper from "$lib/components/utility/story-wrapper.svelte";
+
   import * as AlertDialog from "../index.js";
 
   const { Story } = defineMeta({
     title: "Components/Alert Dialog",
-    decorators: [() => StoryWrapper],
+    parameters: { centered: true },
   });
 </script>
 

@@ -3,11 +3,11 @@
 	import { Label } from '../index.js';
 	import { Input } from '../../input/index.js';
 	import { Checkbox } from '../../checkbox/index.js';
-	import StoryWrapper from '$lib/components/utility/story-wrapper.svelte';
+
 
 	const { Story } = defineMeta({
 		title: 'Components/Label',
-		decorators: [() => StoryWrapper]
+		parameters: { centered: true }
 	});
 </script>
 

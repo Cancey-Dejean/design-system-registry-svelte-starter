@@ -2,12 +2,12 @@
 	import { defineMeta } from '@storybook/addon-svelte-csf';
 	import Text from '../text.svelte';
 	import { TEXT_ALIGNMENTS, TEXT_SIZES, TEXT_TONES, TEXT_WEIGHTS } from '../text.variants';
-	import StoryWrapper from '$lib/components/utility/story-wrapper.svelte';
+
 
 	const { Story } = defineMeta({
 		title: 'Components/Text',
 		component: Text,
-		decorators: [() => StoryWrapper],
+		parameters: { centered: true },
 		argTypes: {
 			size: {
 				description: 'The font size of the text',
@@ -42,10 +42,10 @@
 </script>
 
 <Story name="Default">
-	{#snippet children()}
+
 		The quick brown fox jumps over the lazy dog. This is a sample paragraph to demonstrate the text
 		component.
-	{/snippet}
+
 </Story>
 
 <Story name="Sizes" argTypes={{ size: { table: { disable: true } } }}>
@@ -83,7 +83,7 @@
 </Story>
 
 <Story name="As Span" args={{ as: 'span' }}>
-	{#snippet children()}
+
 		This renders as a span element.
-	{/snippet}
+
 </Story>

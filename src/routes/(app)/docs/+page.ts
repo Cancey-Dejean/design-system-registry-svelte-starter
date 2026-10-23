@@ -1,7 +1,4 @@
-import { getAllDocs } from "$lib/registry/docs-catalog";
-
+import { loadDocPage } from "$lib/registry/doc-load";
 export function load() {
-  return {
-    docs: getAllDocs().map((doc) => ({ slug: doc.slug, metadata: doc.metadata })),
-  };
+  return loadDocPage("index");
 }

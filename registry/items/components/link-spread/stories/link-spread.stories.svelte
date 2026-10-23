@@ -1,13 +1,13 @@
 <script module lang="ts">
 	import { defineMeta } from '@storybook/addon-svelte-csf';
 	import LinkSpread from '../link-spread.svelte';
-	import StoryWrapper from '$lib/components/utility/story-wrapper.svelte';
+
 	import type { LinkSpreadProps } from '../link-spread.types';
 
 	const { Story } = defineMeta({
 		title: 'Components/Link Spread',
 		component: LinkSpread,
-		decorators: [() => StoryWrapper],
+		parameters: { centered: true },
 		argTypes: {
 			href: {
 				control: 'text',

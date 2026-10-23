@@ -10,11 +10,11 @@
 	import { Input } from '../../input/index.js';
 	import { Label } from '../../label/index.js';
 	import * as Drawer from '../index.js';
-	import StoryWrapper from '$lib/components/utility/story-wrapper.svelte';
+
 
 	const { Story } = defineMeta({
 		title: 'Components/Drawer',
-		decorators: [() => StoryWrapper]
+		parameters: { centered: true }
 	});
 
 	const DRAWER_SIDES = ['top', 'right', 'bottom', 'left'] as const;

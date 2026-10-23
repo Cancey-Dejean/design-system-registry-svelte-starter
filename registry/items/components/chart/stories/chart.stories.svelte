@@ -3,11 +3,11 @@
 	import { scaleBand } from 'd3-scale';
 	import { BarChart, LineChart } from 'layerchart';
 	import * as Chart from '../index.js';
-	import StoryWrapper from '$lib/components/utility/story-wrapper.svelte';
+
 
 	const { Story } = defineMeta({
 		title: 'Components/Chart',
-		decorators: [() => StoryWrapper]
+		parameters: { centered: true }
 	});
 </script>
 

@@ -1,11 +1,11 @@
 <script module lang="ts">
 	import { defineMeta } from '@storybook/addon-svelte-csf';
 	import * as Menubar from '../index.js';
-	import StoryWrapper from '$lib/components/utility/story-wrapper.svelte';
+
 
 	const { Story } = defineMeta({
 		title: 'Components/Menubar',
-		decorators: [() => StoryWrapper]
+		parameters: { centered: true }
 	});
 </script>
 

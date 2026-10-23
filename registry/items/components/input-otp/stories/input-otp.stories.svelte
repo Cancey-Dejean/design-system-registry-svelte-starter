@@ -2,11 +2,11 @@
 	import { defineMeta } from '@storybook/addon-svelte-csf';
 	import { REGEXP_ONLY_DIGITS_AND_CHARS } from 'bits-ui';
 	import * as InputOTP from '../index.js';
-	import StoryWrapper from '$lib/components/utility/story-wrapper.svelte';
+
 
 	const { Story } = defineMeta({
 		title: 'Components/Input OTP',
-		decorators: [() => StoryWrapper]
+		parameters: { centered: true }
 	});
 </script>
 

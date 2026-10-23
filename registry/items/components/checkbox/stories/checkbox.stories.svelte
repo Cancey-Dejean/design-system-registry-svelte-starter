@@ -1,12 +1,12 @@
 <script module>
 	import { defineMeta } from '@storybook/addon-svelte-csf';
 	import { Checkbox } from '../index.js';
-	import StoryWrapper from '$lib/components/utility/story-wrapper.svelte';
+
 
 	const { Story } = defineMeta({
 		title: 'Components/Checkbox',
 		component: Checkbox,
-		decorators: [() => StoryWrapper],
+		parameters: { centered: true },
 		argTypes: {
 			checked: {
 				control: 'boolean',

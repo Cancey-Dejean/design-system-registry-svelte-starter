@@ -2,11 +2,11 @@
 	import { defineMeta } from '@storybook/addon-svelte-csf';
 	import { buttonVariants } from '../../button/button.variants.js';
 	import * as Popover from '../index.js';
-	import StoryWrapper from '$lib/components/utility/story-wrapper.svelte';
+
 
 	const { Story } = defineMeta({
 		title: 'Components/Popover',
-		decorators: [() => StoryWrapper]
+		parameters: { centered: true }
 	});
 </script>
 

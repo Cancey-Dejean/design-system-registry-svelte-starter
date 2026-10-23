@@ -2,12 +2,12 @@
 	import { defineMeta } from '@storybook/addon-svelte-csf';
 	import { Label } from '../../label/index.js';
 	import { Switch } from '../index.js';
-	import StoryWrapper from '$lib/components/utility/story-wrapper.svelte';
+
 
 	const { Story } = defineMeta({
 		title: 'Components/Switch',
 		component: Switch,
-		decorators: [() => StoryWrapper],
+		parameters: { centered: true },
 		argTypes: {
 			checked: {
 				control: 'boolean',

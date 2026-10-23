@@ -7,11 +7,11 @@
 	import StarIcon from '@lucide/svelte/icons/star';
 	import UnderlineIcon from '@lucide/svelte/icons/underline';
 	import * as ToggleGroup from '../index.js';
-	import StoryWrapper from '$lib/components/utility/story-wrapper.svelte';
+
 
 	const { Story } = defineMeta({
 		title: 'Components/Toggle Group',
-		decorators: [() => StoryWrapper]
+		parameters: { centered: true }
 	});
 </script>
 

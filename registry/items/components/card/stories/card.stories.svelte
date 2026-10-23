@@ -2,11 +2,11 @@
 	import { defineMeta } from '@storybook/addon-svelte-csf';
 	import * as Card from '../index.js';
 	import Button from '../../button/button.svelte';
-	import StoryWrapper from '$lib/components/utility/story-wrapper.svelte';
+
 
 	const { Story } = defineMeta({
 		title: 'Components/Card',
-		decorators: [() => StoryWrapper]
+		parameters: { centered: true }
 	});
 </script>
 

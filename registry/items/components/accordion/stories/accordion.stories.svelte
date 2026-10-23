@@ -1,11 +1,11 @@
 <script module>
   import { defineMeta } from "@storybook/addon-svelte-csf";
   import * as Accordion from "../index.js";
-  import StoryWrapper from "$lib/components/utility/story-wrapper.svelte";
+
 
   const { Story } = defineMeta({
     title: "Components/Accordion",
-    decorators: [() => StoryWrapper],
+    parameters: { centered: true },
   });
 </script>
 
@@ -37,7 +37,7 @@
 </script>
 
 {#snippet faqData()}
-  {#each faqItems as item}
+  {#each faqItems as item (item.value)}
     <Accordion.Item value={item.value}>
       <Accordion.Trigger>{item.trigger}</Accordion.Trigger>
       <Accordion.Content>{item.content}</Accordion.Content>

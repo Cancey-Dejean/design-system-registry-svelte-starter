@@ -4,12 +4,12 @@
 	import IconGallery from '../../icon-gallery.svelte';
 	import Icon from '../icon.svelte';
 	import { ICON_SIZES } from '../icon.variants.js';
-	import StoryWrapper from '$lib/components/utility/story-wrapper.svelte';
+	import StoryWrapper from "$lib/components/utility/story-wrapper.svelte";
 
 	const { Story } = defineMeta({
 		title: 'Components/Icon',
 		component: Icon,
-		decorators: [() => StoryWrapper],
+		parameters: { centered: true },
 		args: {
 			icon: 'aperture',
 			size: 'lg'
