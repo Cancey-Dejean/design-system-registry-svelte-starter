@@ -20,6 +20,10 @@ Use this page to publish notable registry updates, new items, breaking changes, 
 
 ### v0.11.1
 
+- **Fix:** Gallery preview backgrounds use a solid theme background instead of a translucent fill.
+
+- **Fix:** Component documentation previews show a theme-aware border matching the gallery previews.
+
 - **Fix:** On This Page highlights the selected section when clicked and recognizes the final section when the page cannot scroll it up to the header.
 
 ---

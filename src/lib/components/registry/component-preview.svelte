@@ -6,7 +6,7 @@
 
 <div
   data-slot="component-preview"
-  class="relative isolate grid min-h-72 place-items-center rounded-lg bg-background p-6"
+  class="relative isolate grid min-h-72 place-items-center rounded-lg border border-border bg-background p-6"
 >
   <DotCanvas
     class="rounded-[inherit] mask-[radial-gradient(ellipse_at_center,transparent_20%,black_85%)]"

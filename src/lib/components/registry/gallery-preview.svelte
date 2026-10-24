@@ -54,7 +54,7 @@
 </script>
 
 <svelte:window onmessage={handleMessage} />
-<div {@attach observeContainer} class={cn("pointer-events-none relative aspect-[8/5] overflow-hidden rounded-lg border bg-muted/20", stacked && "order-2")} aria-hidden="true" inert>
+<div {@attach observeContainer} class={cn("pointer-events-none relative aspect-[8/5] overflow-hidden rounded-lg border bg-background", stacked && "order-2")} aria-hidden="true" inert>
   <DotCanvas class="mask-[radial-gradient(ellipse_at_center,transparent_20%,black_85%)]" />
   {#if !ready}
     <div class="absolute inset-0 z-10 flex flex-col items-center justify-center gap-4 bg-background p-8">
