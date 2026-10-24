@@ -24,8 +24,12 @@
     function updateActive() {
       ticking = false;
       let current = headings[0].id;
+      const atBottom =
+        window.scrollY > 0 &&
+        window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 1;
       for (const heading of headings) {
-        if (heading.getBoundingClientRect().top <= ACTIVE_OFFSET) {
+        // Short final sections cannot always reach the header before scrolling stops.
+        if (heading.getBoundingClientRect().top <= ACTIVE_OFFSET || atBottom) {
           current = heading.id;
         }
       }
@@ -54,6 +58,8 @@
           <li>
             <a
               href={`#${item.id}`}
+              onclick={() => (activeId = item.id)}
+              aria-current={isActive ? "location" : undefined}
               class={cn(
                 "block border-l-2 py-0.5 pl-3 transition-colors",
                 isActive

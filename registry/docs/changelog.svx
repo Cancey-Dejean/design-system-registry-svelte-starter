@@ -16,6 +16,14 @@ Use this page to publish notable registry updates, new items, breaking changes, 
 
 ---
 
+## October 24, 2026
+
+### v0.11.1
+
+- **Fix:** On This Page highlights the selected section when clicked and recognizes the final section when the page cannot scroll it up to the header.
+
+---
+
 ## October 23, 2026
 
 ### v0.11.0
