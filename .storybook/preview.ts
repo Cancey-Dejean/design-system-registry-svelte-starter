@@ -1,10 +1,26 @@
-import { withStoryWrapper } from "../src/lib/components/utility/story-decorator";
+import { withAccent, withStoryWrapper } from "../src/lib/components/utility/story-decorator";
 import type { Preview } from "@storybook/sveltekit";
 import { INITIAL_VIEWPORTS } from "storybook/viewport";
 import { withThemeByClassName } from "@storybook/addon-themes";
 import "$registry/items/files/styles/globals.css";
 
 const preview: Preview = {
+  initialGlobals: { mode: "system", accent: "theme-primary" },
+  globalTypes: {
+    accent: {
+      description: "Accent palette",
+      toolbar: {
+        title: "Palette",
+        icon: "paintbrush",
+        dynamicTitle: true,
+        items: [
+          { value: "theme-primary", title: "Primary" },
+          { value: "theme-secondary", title: "Secondary" },
+          { value: "theme-tertiary", title: "Tertiary" },
+        ],
+      },
+    },
+  },
   parameters: {
     docs: {
       codePanel: true,
@@ -35,6 +51,7 @@ const preview: Preview = {
   },
   decorators: [
     withStoryWrapper,
+    withAccent,
     withThemeByClassName({
       themes: {
         light: "light",
