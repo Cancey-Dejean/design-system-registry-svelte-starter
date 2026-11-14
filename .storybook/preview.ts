@@ -5,6 +5,22 @@ import { withThemeByClassName } from "@storybook/addon-themes";
 import "$registry/items/files/styles/globals.css";
 
 const preview: Preview = {
+  initialGlobals: { mode: "system", accent: "theme-primary" },
+  globalTypes: {
+    accent: {
+      description: "Accent palette",
+      toolbar: {
+        title: "Palette",
+        icon: "paintbrush",
+        dynamicTitle: true,
+        items: [
+          { value: "theme-primary", title: "Primary" },
+          { value: "theme-secondary", title: "Secondary" },
+          { value: "theme-tertiary", title: "Tertiary" },
+        ],
+      },
+    },
+  },
   parameters: {
     docs: {
       codePanel: true,
